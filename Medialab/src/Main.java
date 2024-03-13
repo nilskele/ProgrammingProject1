@@ -8,5 +8,9 @@ public class Main {
         System.out.println("Hallo terug!");
         System.out.println("Hallo nog eens terug!");
 
+        while (true) {
+            System.out.println("Oeps...");
+        }
+
     }
 }
