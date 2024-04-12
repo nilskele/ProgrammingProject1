@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #BCBCBC;
+    width: 100%;
+}
+
+/* navbar */
+
+.navbar {
+    padding: 5px 10px 5px 10px;
+    background-color: white;
+}
+
+.navbar .h1 {
+    color: #FF0000;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline;
+}
+
+.medialabTitleNav {
+    padding: 10px 0px 0px 20px;
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-item {
+    color: #FF0000;
+    font-size: 16px;
+}
+
+/* welcome div */
+
+.welcomeDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.welcome {
+    background-color: white;
+    border: 2px solid #000000;
+    border-radius: 30px;
+    padding: 20px;
+    margin-top: 70px;
+    width: 80%;
+    box-shadow: 5px 5px 10px #000000;
+}
+
+.welcome h1 {
+    color: #FF0000;
+    font-weight: bolder;
+    font-size: 40px;
+}
+
+.welcome p {
+    font-size: 18px;
+}
+
+.btn-primary {
+    background-color: #FF0000;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #ff7f7f;
+}
+
+.btn-light {
+    color: #FF0000;
+    font-weight: bold;
+    border: 2px solid #000000;
+    background-color: rgba(255, 255, 255, 0);
+    margin-left: 20px;
+    border-radius: 10px;
+}
+
+.btn-light:hover {
+    background-color: #9a9a9a;
+    color: #FF0000;
+}
+
+.Div3D {
+    background: linear-gradient(135deg, #FF0000 0%, #ff7f7f 100%);
+    border-radius: 20px;
+    position: absolute;
+    top: 100px;
+    right: 50px;
+    box-shadow: 5px 5px 10px #000000;
+}
+
+/* admin button */
+
+button.btn.btn-primary.adminbtn {
+    margin: 90px 0 90px 30px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 20px;
+}
+
+/* login form */
+
+.loginForm {
+    background-color: #D9D9D9;
+    padding: 40px;
+    width: 50%;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+button.btn.btn-primary.inloggen {
+    margin: 10px auto 10px auto;
+    display: flex;
+}
+
+.GeenAccount {
+    margin: 20px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.GeenAccount p {
+    margin: 0;
+}
