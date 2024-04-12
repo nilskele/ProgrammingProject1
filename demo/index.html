@@ -11,68 +11,69 @@
 </head>
 
 <body>
-  <div id="container">
-    <nav class="navbar navbar-light">
-      <a class="navbar-brand mb-0 h1 medialab" href="#">
-        <img src="/EhB-logo-transparant.png" width="60" class="d-inline-block align-top"
-          alt="ehb EhB-logo-transparant" />
-        <span class="medialabTitleNav">Medialab</span>
-      </a>
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" href="/info">Info</a>
-          <a class="nav-item nav-link" href="/reglement">Reglement</a>
-        </div>
+  <div id="app">
+    <div id="container">
+      <nav class="navbar navbar-light">
+        <a class="navbar-brand mb-0 h1 medialab" href="#">
+          <img src="/EhB-logo-transparant.png" width="60" class="d-inline-block align-top"
+            alt="ehb EhB-logo-transparant" />
+          <span class="medialabTitleNav">Medialab</span>
+        </a>
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/info">Info</a>
+            <a class="nav-item nav-link" href="/reglement">Reglement</a>
+          </div>
+        </nav>
       </nav>
-    </nav>
-    <div class="welcomeDiv">
-      <div class="welcome">
-        <h1>
-          Welcome <br />
-          in het Medialab
-        </h1>
-        <p>
-          Iets uitlenen? Doe maar gerust, als je de regels <br />
-          hebt gelezen!! Meld uzelf hieronder aan of maak <br />
-          een account met u school mail.
-        </p>
-        <div class="WelcomeButtons">
-          <button class="btn btn-primary">Account aanmaken</button>
-          <button class="btn btn-light">Log in</button>
+      <div class="welcomeDiv">
+        <div class="welcome">
+          <h1>
+            Welcome <br />
+            in het Medialab
+          </h1>
+          <p>
+            Iets uitlenen? Doe maar gerust, als je de regels <br />
+            hebt gelezen!! Meld uzelf hieronder aan of maak <br />
+            een account met u school mail.
+          </p>
+          <div class="WelcomeButtons">
+            <button class="btn btn-primary">Account aanmaken</button>
+            <button class="btn btn-light">Log in</button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="Div3D">
-      <img src="/3d-printer_44218.png" height="400px" alt="3d" />
-    </div>
-    <button class="btn btn-primary adminbtn">Admin</button>
-    <div class="loginForm">
-      <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Email:</label>
-        <div class="col-sm-10">
-          <input type="email" class="form-control" id="inputEmail3" placeholder="Email" />
-        </div>
+      <div class="Div3D">
+        <img src="/3d-printer_44218.png" height="400px" alt="3d" />
       </div>
-      <div class="form-group row">
-        <label for="inputName3" class="col-sm-2 col-form-label">Naam:</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputName3" placeholder="Naam" />
+      <button class="btn btn-primary adminbtn">Admin</button>
+      <div class="loginForm">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Email:</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="Email" />
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">Password:</label>
-        <div class="col-sm-10">
-          <input type="password" class="form-control" id="inputPassword3" placeholder="Password" />
+        <div class="form-group row">
+          <label for="inputName3" class="col-sm-2 col-form-label">Naam:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputName3" placeholder="Naam" />
+          </div>
         </div>
+        <div class="form-group row">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Password:</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword3" placeholder="Password" />
+          </div>
+        </div>
+        <button class="btn btn-primary inloggen">Inloggen</button>
       </div>
-      <button class="btn btn-primary inloggen">Inloggen</button>
-    </div>
-    <div class="GeenAccount">
-      <p>Nog geen account? =</p>
-      <button class="btn btn-light">Account aanmaken</button>
+      <div class="GeenAccount">
+        <p>Nog geen account? =</p>
+        <button class="btn btn-light">Account aanmaken</button>
+      </div>
     </div>
   </div>
-
   <script type="module" src="/src/main.js"></script>
   <script src="/bootstrap/js/bootstrap.js"></script>
 </body>
