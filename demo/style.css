@@ -113,22 +113,27 @@ button.btn.btn-primary.adminbtn {
 }
 
 .form-group {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 button.btn.btn-primary.inloggen {
-    margin: 10px auto 10px auto;
-    display: flex;
+    margin: 20px auto;
+    display: block;
 }
 
 .GeenAccount {
-    margin: 20px ;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
 }
 
 .GeenAccount p {
     margin: 0;
+}
+
+.errorMelding {
+    color: #FF0000;
+    margin-top: 5px;
+    font-size: 14px;
 }
