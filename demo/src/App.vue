@@ -95,33 +95,32 @@ export default {
       this.nameError = "";
       this.passwordError = "";
 
-      // Email validation
+      // Email Valideren
       if (!this.email) {
         this.emailError = "Vul een geldig e-mailadres in.";
       } else if (!this.validateEmail(this.email)) {
         this.emailError = "Vul een geldig e-mailadres in.";
       }
 
-      // Name validation
+      // Naam Valideren
       if (!this.name) {
         this.nameError = "Vul uw naam in.";
       } else if (this.name.length < 3) {
         this.nameError = "Naam moet minstens 3 tekens lang zijn.";
       }
 
-      // Password validation
+      // Passwoord Valideren
       if (!this.password) {
         this.passwordError = "Vul een wachtwoord in.";
       } else if (this.password.length < 8) {
         this.passwordError = "Wachtwoord moet minstens 8 tekens lang zijn.";
       }
 
-      // Check if all fields are valid
+      // Valideren alle velden
       if (this.emailError || this.nameError || this.passwordError) {
         this.loginMessage = "Vul alle velden correct in.";
       } else {
         this.loginMessage = "Login succesvol!";
-        // Voer hier de login-functie uit, bijvoorbeeld een API-aanroep
       }
     },
     validateEmail(email) {
