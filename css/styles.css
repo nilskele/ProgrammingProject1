@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: #BCBCBC;
+    background-color: #9a9a9a;
     width: 100%;
 }
 
@@ -65,10 +65,12 @@ body {
     color: white;
     border: none;
     border-radius: 10px;
+    padding: 0.5rem 1rem;
 }
 
 .btn-primary:hover {
     background-color: #ff7f7f;
+    text-decoration: none;
 }
 
 .btn-light {
@@ -78,11 +80,20 @@ body {
     background-color: rgba(255, 255, 255, 0);
     margin-left: 20px;
     border-radius: 10px;
+    padding: 0.5rem 1rem;
 }
 
 .btn-light:hover {
     background-color: #9a9a9a;
     color: #FF0000;
+    text-decoration: none;
+}
+
+a.btn.btn-primary.inloggen {
+    margin: 10px auto 10px auto;
+    width: 20%;
+    display: flex;
+    justify-content: center;
 }
 
 .Div3D {
@@ -96,10 +107,14 @@ body {
 
 /* admin button */
 
-button.btn.btn-primary.adminbtn {
+a.btn-primary.adminbtn {
     margin: 90px 0 90px 30px;
     padding: 10px 20px 10px 20px;
     border-radius: 20px;
+}
+
+a.btn.btn-primary.adminbtn {
+    margin: 90px 0 90px 30px; 
 }
 
 /* login form */
