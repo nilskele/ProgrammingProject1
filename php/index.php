@@ -27,9 +27,9 @@
             hebt gelezen!! Meld uzelf hieronder aan of maak <br />
             een account met u school mail.
           </p>
-          <div class = "WelcomeButtons">
-            <button class = "btn btn-primary" href = "student.php">Account aanmaken</button>
-            <button class = "btn btn-light" href = "/catalogus">Log in</button>
+          <div class="WelcomeButtons">
+            <a class="btn btn-primary" href="./accountAanmaken.php">Account aanmaken</a>
+            <a class="btn btn-light">Log in</a>
           </div>
         </div>
       </div>
@@ -37,20 +37,12 @@
       <div class = "Div3D" >
         <img src = "../images/3d-printer_44218.png" height = "400px" alt = "3d" />
       </div>
-
-      <button class = "btn btn-primary adminbtn" href = "/admin">
-        Admin
-      </button>
-
-      <div class = "loginForm">
-        <div class = "form-group row">
-
-          <label for = "inputEmail3" class="col-sm-2 col-form-label">
-            Email:
-          </label>
-
-          <div class = "col-sm-10">
-            <input type = "email" class = "form-control" id = "inputEmail3" placeholder = "Email" />
+      <a class="btn btn-primary adminbtn" href="./admin.php">Admin</a>
+      <div class="loginForm">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Email:</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="Email" />
           </div>
 
         </div>
@@ -73,15 +65,11 @@
             <input type = "password" class = "form-control" id = "inputPassword3" placeholder = "Password" />
           </div>
         </div>
-        <button class = "btn btn-primary inloggen" href = "/catalogus">
-          Inloggen
-        </button>
+        <a class="btn btn-primary inloggen" href="./student.php">Inloggen</a>
       </div>
       <div class = "GeenAccount">
         <p>Nog geen account? =</p>
-        <button class = "btn btn-light" href = "/accountAanmaken">
-          Account aanmaken
-        </button>
+        <a class="btn btn-light" href="./accountAanmaken.php">Account aanmaken</a>
       </div>
     </div>
   </div>
