@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite App</title>
-  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
 </head>
 
 <body>
@@ -14,7 +14,7 @@
     <div id="container">
       <nav class="navbar navbar-light">
         <a class="navbar-brand mb-0 h1 medialab" href="#">
-          <img src="/images/EhB-logo-transparant.png" width="60" class="d-inline-block align-top"
+          <img src="../images/EhB-logo-transparant.png" width="60" class="d-inline-block align-top"
             alt="ehb EhB-logo-transparant" />
           <span class="medialabTitleNav">Medialab</span>
         </a>
@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="Div3D">
-        <img src="/images/3d-printer_44218.png" height="400px" alt="3d" />
+        <img src="../images/3d-printer_44218.png" height="400px" alt="3d" />
       </div>
       <button class="btn btn-primary adminbtn">Admin</button>
       <div class="loginForm">
@@ -78,3 +78,5 @@
 </body>
 
 </html>
+
+
