@@ -1,66 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.min.css">
-</head>
-<body>
-<div id="app" class="container">
-    <div class="columns is-centered">
-        <div class="column is-half">
-            <h1 class="title">Login</h1>
-            <form @submit.prevent="login">
-                <div class="field">
-                    <label class="label">Username</label>
-                    <div class="control">
-                        <input class="input" type="text" v-model="username" placeholder="Enter your username">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Password</label>
-                    <div class="control">
-                        <input class="input" type="password" v-model="password" placeholder="Enter your password">
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="control">
-                        <button class="button is-primary">Login</button>
-                    </div>
-                </div>
-            </form>
-            <div v-if="error" class="notification is-danger">
-                {{ error }}
-            </div>
-        </div>
-    </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-<script>
-    new Vue({
-        el: '#app',
-        data: {
-            username: 'Dirk',
-            password: '123',
-            error: ''
-        },
-        methods: {
-            login() {
-                // Here you would typically send a request to your server to authenticate the user
-                // For this example, let's assume the username is "admin" and the password is "password"
-                if (this.username === 'admin' && this.password === 'password') {
-                    // If authentication is successful, you can redirect the user to another page
-                    // For this example, let's just display a success message
-                    alert('Login successful!');
-                } else {
-                    // If authentication fails, display an error message
-                    this.error = 'Invalid username or password';
-                }
-            }
-        }
-    });
-</script>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+
+<body>
+  <div id="app">
+    <div id="container">
+      <nav class="navbar navbar-light">
+        <a class="navbar-brand mb-0 h1 medialab" href="#">
+          <img src="/images/EhB-logo-transparant.png" width="60" class="d-inline-block align-top"
+            alt="ehb EhB-logo-transparant" />
+          <span class="medialabTitleNav">Medialab</span>
+        </a>
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/info">Info</a>
+            <a class="nav-item nav-link" href="/reglement">Reglement</a>
+          </div>
+        </nav>
+      </nav>
+      <div class="welcomeDiv">
+        <div class="welcome">
+          <h1>
+            Welcome <br />
+            in het Medialab
+          </h1>
+          <p>
+            Iets uitlenen? Doe maar gerust, als je de regels <br />
+            hebt gelezen!! Meld uzelf hieronder aan of maak <br />
+            een account met u school mail.
+          </p>
+          <div class="WelcomeButtons">
+            <button class="btn btn-primary">Account aanmaken</button>
+            <button class="btn btn-light">Log in</button>
+          </div>
+        </div>
+      </div>
+      <div class="Div3D">
+        <img src="/images/3d-printer_44218.png" height="400px" alt="3d" />
+      </div>
+      <button class="btn btn-primary adminbtn">Admin</button>
+      <div class="loginForm">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Email:</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="Email" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputName3" class="col-sm-2 col-form-label">Naam:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputName3" placeholder="Naam" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Password:</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword3" placeholder="Password" />
+          </div>
+        </div>
+        <button class="btn btn-primary inloggen">Inloggen</button>
+      </div>
+      <div class="GeenAccount">
+        <p>Nog geen account? =</p>
+        <button class="btn btn-light">Account aanmaken</button>
+      </div>
+    </div>
+  </div>
+  <script type="module" src=""></script>
+  <script src="/bootstrap/js/bootstrap.js"></script>
 </body>
+
 </html>
