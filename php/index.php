@@ -10,21 +10,12 @@
 </head>
 
 <body>
+
   <div id="app">
     <div id="container">
-      <nav class="navbar navbar-light">
-        <a class="navbar-brand mb-0 h1 medialab" href="#">
-          <img src="../images/EhB-logo-transparant.png" width="60" class="d-inline-block align-top"
-            alt="ehb EhB-logo-transparant" />
-          <span class="medialabTitleNav">Medialab</span>
-        </a>
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/info">Info</a>
-            <a class="nav-item nav-link" href="/reglement">Reglement</a>
-          </div>
-        </nav>
-      </nav>
+    <?php
+  include('header.php');
+  ?>
       <div class="welcomeDiv">
         <div class="welcome">
           <h1>
@@ -73,6 +64,7 @@
       </div>
     </div>
   </div>
+
   <script type="module" src=""></script>
   <script src="/bootstrap/js/bootstrap.js"></script>
 </body>
