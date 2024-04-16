@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: #9a9a9a;
+    background-color: #BCBCBC;
     width: 100%;
 }
 
@@ -116,7 +116,6 @@ a.btn-primary.adminbtn {
 a.btn.btn-primary.adminbtn {
     margin: 90px 0 90px 30px; 
 }
-
 
 /* login form */
 
