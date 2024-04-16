@@ -65,7 +65,7 @@
       </div>
       <div class = "GeenAccount">
         <p>Nog geen account? =</p>
-        <a class = "btn btn-light" href = "./accountAanmaken.php">
+        <a class = "btn btn-light accountAanmaken" href = "./accountAanmaken.php">
           Account aanmaken
         </a>
       </div>

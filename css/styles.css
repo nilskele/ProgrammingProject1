@@ -108,7 +108,7 @@ a.btn.btn-primary.inloggen {
 /* admin button */
 
 a.btn-primary.adminbtn {
-    margin: 90px 0 90px 30px;
+    margin: 80px 0 80px 30px;
     padding: 10px 20px 10px 20px;
     border-radius: 20px;
 }
@@ -138,6 +138,7 @@ button.btn.btn-primary.inloggen {
 
 .GeenAccount {
     margin-top: 20px;
+    margin-bottom: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
