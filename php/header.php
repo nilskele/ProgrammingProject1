@@ -7,7 +7,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="navbar-nav">
             <a class="nav-item nav-link" href="/info">Info</a>
-            <a class="nav-item nav-link" href="/reglement">Reglement</a>
+            <a class="nav-item nav-link" href="">Reglement</a>
           </div>
         </nav>
       </nav>

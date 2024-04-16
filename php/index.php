@@ -28,7 +28,7 @@
             een account met u school mail.
           </p>
           <div class="WelcomeButtons">
-            <button class="btn btn-primary" href="/accountAnamaken">Account aanmaken</button>
+            <button class="btn btn-primary" href="student.php">Account aanmaken</button>
             <button class="btn btn-light" href="/catalogus">Log in</button>
           </div>
         </div>

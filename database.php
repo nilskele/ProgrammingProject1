@@ -1,14 +1,14 @@
 <?php
 $servername = "dt5.ehb.be";
-$username "2324PROGPRGR02";
+$username = "2324PROGPRGR02";
 $password = "kEtUhDU5";
-$dbName = "2324PROGPRGR02";
 
-$con = mysqli_connect($servername, $username, $password, $dbName)
 
-if(mysqli_connect_errno()){
-    echo 'failed to connect';
-    exit()
+$conn = new mysqli($servername, $username, $password);
+
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
 }
-echo 'connection succesful'
+echo "Connected successfully";
 ?>
