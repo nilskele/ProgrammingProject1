@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite App</title>
+  <title>Medialab</title>
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
@@ -28,15 +28,15 @@
             een account met u school mail.
           </p>
           <div class="WelcomeButtons">
-            <button class="btn btn-primary">Account aanmaken</button>
-            <button class="btn btn-light">Log in</button>
+            <button class="btn btn-primary" href="/accountAnamaken">Account aanmaken</button>
+            <button class="btn btn-light" href="/catalogus">Log in</button>
           </div>
         </div>
       </div>
       <div class="Div3D">
         <img src="../images/3d-printer_44218.png" height="400px" alt="3d" />
       </div>
-      <button class="btn btn-primary adminbtn">Admin</button>
+      <button class="btn btn-primary adminbtn" href="/admin">Admin</button>
       <div class="loginForm">
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Email:</label>
@@ -56,11 +56,11 @@
             <input type="password" class="form-control" id="inputPassword3" placeholder="Password" />
           </div>
         </div>
-        <button class="btn btn-primary inloggen">Inloggen</button>
+        <button class="btn btn-primary inloggen" href="/catalogus">Inloggen</button>
       </div>
       <div class="GeenAccount">
         <p>Nog geen account? =</p>
-        <button class="btn btn-light">Account aanmaken</button>
+        <button class="btn btn-light" href="/accountAanmaken">Account aanmaken</button>
       </div>
     </div>
   </div>
