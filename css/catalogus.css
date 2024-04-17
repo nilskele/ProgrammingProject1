@@ -1,6 +1,7 @@
 *{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .product {
@@ -8,7 +9,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  box-shadow: 0px 0px 2px #767676;
+  box-shadow: 0px 0px 1px #767676;
 }
 
 .foto {
@@ -16,6 +17,12 @@
   height: 300px;
   margin: 50px 50px 50px 90px;
   background-color: #D9D9D9;
+  ;
+}
+
+.foto img {
+  width: 100%;
+  height: auto;
 }
 
 #merk {
