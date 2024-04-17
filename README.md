@@ -1,2 +1,2 @@
 # ProgrammingProject
-Who ever wrote this is a genius!
+Whoever wrote this is a genius!
