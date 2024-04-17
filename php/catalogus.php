@@ -30,10 +30,10 @@
         </div>
         <div class="info">
           <div class="beschrijving">
-            Beschrijving: asdhasd
+            Beschrijving: Canon M50 fototoestel
           </div>
           <div class="opmerkingen">
-            Opmerkingen: nrhtiahs
+            Opmerkingen: toestel met XLR aansluiting
           </div>
         </div>
       </div>

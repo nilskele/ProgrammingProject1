@@ -36,7 +36,8 @@
 }
 
 .beschikbaarheid {
-  margin-left: 100px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .info{
@@ -46,11 +47,7 @@
 
 .aantal_beschikbaar {
   display: flex;
-  flex-direction: row;
   justify-content: flex-end;
-  text-align: end;
-  height: 50px;
-  align-items: flex-end;
   font-weight: bold;
 }
 
@@ -64,4 +61,9 @@
 
 .opmerkingen {
   margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.merk-naam_product {
+  margin-right: 300px;
 }
