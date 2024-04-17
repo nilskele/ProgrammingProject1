@@ -1,6 +1,6 @@
 
 <nav class = "navbar navbar-light">
-  <a class = "navbar-brand mb-0 h1 medialab" href = "#">
+  <a class = "navbar-brand mb-0 h1 medialab" href = "index.php">
     <img  src = "../images/EhB-logo-transparant.png" 
           width = "60" 
           class = "d-inline-block align-top"
@@ -10,7 +10,7 @@
     </span>
   </a>
   <div class = "navbar-nav">
-  <a class = "nav-item nav-link" href = "">
+  <a class = "nav-item nav-link" href = "mijnLeningen.php">
     Mijn leningen
   </a>
   <a class = "nav-item nav-link" href = "/info">
