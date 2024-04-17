@@ -2,7 +2,7 @@
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/admin.css"> 
 
-<?php include("header.php")?>
+<?php include("header2.php")?>
 
 <div id="adminDashboard">
     <div id="container1">

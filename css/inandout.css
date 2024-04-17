@@ -1,0 +1,61 @@
+body {
+    background-color: white;
+}
+.inOutCatalagus{
+    height: 30vh;
+}
+.inAndOut{
+    margin-left: 15vw;
+    width: 70vw;
+    background-color: grey;
+    border-radius: 1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 3em;
+}
+.defectButton{
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 1em;
+    text-align: center;
+    align-content: center;
+    margin-top: 0.5em;
+    height: 2em;
+    transition: 0.5s;
+}
+.defectButton:hover{
+    background-color: #464545;
+}
+.dots{
+    width: 4em;
+    transition: 0.5s ;
+    border-radius: 3em;
+}
+.dots:hover{
+    
+    background-color: lightgray;
+    width: 4.5em;
+}
+.productState{
+    display: flex;
+    flex-direction: row;
+}
+.inButtons{
+    display: flex;
+    flex-direction: column;
+    margin: 1.5em;
+    
+}
+.productInfo{
+    margin: 1em;
+    padding: 0.5em;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    justify-content: space-between;
+
+    width: 100%;
+}
