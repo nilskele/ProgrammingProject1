@@ -1,0 +1,67 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.product {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: 0px 0px 2px #767676;
+}
+
+.foto {
+  width: 300px;
+  height: 300px;
+  margin: 50px 50px 50px 90px;
+  background-color: #D9D9D9;
+}
+
+#merk {
+  text-decoration: underline;
+  color: #909090;
+  margin: 0;
+}
+
+#product_naam {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+}
+
+.beschikbaarheid {
+  margin-left: 100px;
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+}
+
+.aantal_beschikbaar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  text-align: end;
+  height: 50px;
+  align-items: flex-end;
+  font-weight: bold;
+}
+
+.info {
+  font-size: 1rem;
+}
+
+.beschrijving {
+  margin-top: 20px;
+}
+
+.opmerkingen {
+  margin-top: 20px;
+}

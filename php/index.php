@@ -63,7 +63,7 @@
             <input type = "password" class = "form-control" id = "inputPassword3" placeholder = "Password" />
           </div>
         </div>
-        <a class = "btn btn-primary inloggen" href = "./student.php">
+        <a class = "btn btn-primary inloggen" href = "./catalogus.php">
           Inloggen
         </a>
       </div>
