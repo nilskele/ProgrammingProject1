@@ -15,6 +15,14 @@
   <br>
   <br>
   <br>
+
+  <div class="zoekBalk">
+    <?php include('../zoekbalk/zoekbalk.php')?>
+  </div>
+  
+  <br>
+  <br>
+
   <div class="product">
     <div class="foto">
       <img src="../images/canon-m50.jpg" alt="canon-m50" />

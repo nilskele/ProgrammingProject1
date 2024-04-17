@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.zoekBalk {
+  margin-top: 40px;
+}
+
 .product {
   display: flex;
   flex-direction: row;
