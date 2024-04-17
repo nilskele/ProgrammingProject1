@@ -1,6 +1,6 @@
 
-<nav class = "navbar navbar-light">
-  <a class = "navbar-brand mb-0 h1 medialab" href = "#">
+<nav class = "navbar navbar-light nav_shadow">
+  <a class = "navbar-brand mb-0 h1 medialab" href = "index.php">
     <img  src = "../images/EhB-logo-transparant.png" 
           width = "60" 
           class = "d-inline-block align-top"
