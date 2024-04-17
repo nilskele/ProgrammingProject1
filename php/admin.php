@@ -26,7 +26,7 @@
         </div>
         <div class = "adminAccepteren">
             <div class = "productNr">
-                <h1>Product Nr.</h1>
+                <h1>Kit Nr.</h1>
                 <input type="text" class="form-control" id="inputName3" placeholder="product nr" />
             </div>
             <div class = "knoppen">
