@@ -10,11 +10,14 @@
     </span>
   </a>
   <div class = "navbar-nav">
+  <a class = "nav-item nav-link" href = "">
+    Mijn leningen
+  </a>
   <a class = "nav-item nav-link" href = "/info">
-        Info
-    </a>
-    <a class = "nav-item nav-link" href = "">
-        Reglement
-    </a>
+    Info
+  </a>
+  <a class = "nav-item nav-link" href = "">
+    Reglement
+  </a>
   </div>
 </nav>
