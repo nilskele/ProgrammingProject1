@@ -41,12 +41,16 @@
       <div class = "Div3D" >
         <img src = "../images/3d-printer_44218.png" height = "400px" alt = "3d" />
       </div>
-      <a class="btn btn-primary adminbtn" href="admin.php">Admin</a>
-      <div class="loginForm">
-        <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Email:</label>
-          <div class="col-sm-10">
-            <input type="email" class="form-control" id="inputEmail3" placeholder="Email" />
+      <a class = "btn btn-primary adminbtn" href = "admin.php">
+        Admin
+      </a>
+      <div class = "loginForm">
+        <div class = "form-group row">
+          <label for = "inputEmail3" class = "col-sm-2 col-form-label">
+            Email:
+          </label>
+          <div class = "col-sm-10">
+            <input type = "email" class = "form-control" id = "inputEmail3" placeholder = "Email" />
           </div>
         </div>
 
@@ -64,7 +68,9 @@
         </a>
       </div>
       <div class = "GeenAccount">
-        <p>Nog geen account? =</p>
+        <p>
+          Nog geen account? =
+        </p>
         <a class = "btn btn-light accountAanmaken" href = "./accountAanmaken.php">
           Account aanmaken
         </a>
