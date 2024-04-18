@@ -8,19 +8,6 @@
   <link rel = "stylesheet" href = "../mijnUitleningen/mijnUitleningen.css" />
   <link rel = "stylesheet" href = "../bootstrap/css/bootstrap.min.css" />
   <link rel = "stylesheet" href = "../css/styles.css" />
-  
-  <style>
-    /* CSS styles for colored buttons */
-    button#nietInBezit {
-      background-color: red;
-      color: white;
-    }
-
-    button#welInBezit {
-      background-color: green;
-      color: white;
-    }
-  </style>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>

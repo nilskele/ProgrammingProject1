@@ -1,13 +1,13 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .uitleningenTitle {
-    text-align: center;
-    font-size: 30px;
-    margin-top: 20px;
+  text-align: center;
+  font-size: 30px;
+  margin-top: 20px;
 }
 
 p {
@@ -19,13 +19,23 @@ p {
   padding: 10px;
   display: flex;
   justify-content: center;
-
 }
 
-.table td, th{
-  padding: 10px;  
+.table td,
+th {
+  padding: 10px;
 }
 
 .table button {
   padding: 2px 5px 2px 5px;
+}
+
+button#nietInBezit {
+  background-color: red;
+  color: white;
+}
+
+button#welInBezit {
+  background-color: green;
+  color: white;
 }

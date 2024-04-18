@@ -44,7 +44,7 @@
                 <?php echo $options; ?>
             </select>
 
-            <p class="gevondenItems"><span id="#hoeveelheid gevonden items">( 3 )</span></p>
+            <p class="gevondenItems">(<span id="#hoeveelheid gevonden items">3</span>)</p>
             <div class="vl"></div>
             <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" class="datumZoekbalk inputZoekbalk" />
             <div class="vl"></div>

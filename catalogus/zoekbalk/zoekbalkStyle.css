@@ -1,101 +1,100 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .zoekbalkContainer {
-    display: flex;
-    justify-content: center; 
+  display: flex;
+  justify-content: center;
 }
 
 .vl {
-    border-left: 2px solid #d2d2d2;
-    height: 44px;
-    margin: 0px 5px 0px 5px;
-    padding: 0px 2px 0px 2px;
+  border-left: 2px solid #d2d2d2;
+  height: 44px;
+  margin: 0px 5px 0px 5px;
+  padding: 0px 2px 0px 2px;
 }
 
 .terugLink {
-    text-decoration: none;
-    color: #000;
-    display: flex;
-    height: 44px;
-    text-align: center;
-    margin: 10px 20px 10px 20px;
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  height: 44px;
+  text-align: center;
+  margin: 10px 20px 10px 20px;
 }
 
 .zoekbalkForm {
-    background-color: #efefef;
-    height: 44px;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-    border: #d2d2d2 2px solid;
+  background-color: #efefef;
+  height: 44px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: #d2d2d2 2px solid;
 }
 
 .inputZoekbalk {
-    all: unset;
-    font: 16px system-ui;
-    height: 100%;
-    width: 250px;
-    padding: 6px 10px;
-    text-align: center;
+  all: unset;
+  font: 16px system-ui;
+  height: 100%;
+  width: 250px;
+  padding: 6px 10px;
+  text-align: center;
 }
 
 input[type="checkbox"] {
-    width: auto; 
-    appearance: auto; 
+  width: auto;
+  appearance: auto;
 }
 
-
 .buttonZoekbalk {
-    all: unset;
-    cursor: pointer;
-    width: 44px;
-    height: 44px;
+  all: unset;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
 }
 
 svg {
-    color: #535353;
-    width: 45px;
-    height: auto;
-    padding: 10px;
+  color: #535353;
+  width: 45px;
+  height: auto;
+  padding: 10px;
 }
 
 .categorieZoekbalk {
-    all: unset;
-    padding: 5px;
-    width: 50px;
-    font-family: Arial, Helvetica, sans-serif;
-    cursor: pointer;
+  all: unset;
+  padding: 5px;
+  width: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
 }
 
 .gevondenItems {
-    margin: 10px;
+  margin: 10px;
 }
 
 .datumZoekbalk {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .applyButtonClasses {
-    background-color: #FF0000;
+  background-color: #ff0000;
 }
 
 #kit:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .kitLabel {
-    font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .imagelayoutwijzigen {
-    padding-right: 10px;
-    width: 44px;
-    height: auto;
+  padding-right: 10px;
+  width: 44px;
+  height: auto;
 }
