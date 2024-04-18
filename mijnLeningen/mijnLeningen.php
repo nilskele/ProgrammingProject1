@@ -5,9 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catalogus</title>
+  <link rel = "stylesheet" href = "../mijnLeningen/mijnLeningen.css" />
   <link rel = "stylesheet" href = "../bootstrap/css/bootstrap.min.css" />
   <link rel = "stylesheet" href = "../css/styles.css" />
-  <link rel = "stylesheet" href = "../mijnLeningen/mijnLeningen.css" />
+  
+  <style>
+    /* CSS styles for colored buttons */
+    button#nietInBezit {
+      background-color: red;
+      color: white;
+    }
+
+    button#welInBezit {
+      background-color: green;
+      color: white;
+    }
+  </style>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
@@ -19,10 +32,10 @@
   <br>
   
   <div class='leningenTitle'>
-    <h1>Mijn leningen</h1>
+    <h1>Mijn uitleningen</h1>
   </div>
-  <div>
-    <p>Recente leningen: </p> 
+  <div classe="recent">
+    <p>Recente uitleningen: </p> 
   </div>
   <div class="table">
     <table>
@@ -38,14 +51,14 @@
         <td>16/05/2024</td>
         <td>16/06/2024</td>
         <td><button>Melden</button></td>
-        <td><button id="nietInBezit">Annuleren</button></td>
+        <td><button id="nietInBezit" style="background-color: red; color: white;">Annuleren</button></td>
       </tr>
       <tr>
         <td>Canon EOS</td>
         <td>16/05/2024</td>
         <td>16/06/2024</td>
         <td><button>Melden</button></td>
-        <td><button id="welInBezit">Verlengen</button></td>
+        <td><button id="welInBezit" style="background-color: green; color: white;">Verlengen</button></td>
       </tr>
     </table>
   </div>
