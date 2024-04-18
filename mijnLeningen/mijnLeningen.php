@@ -7,10 +7,12 @@
   <title>Catalogus</title>
   <link rel = "stylesheet" href = "../bootstrap/css/bootstrap.min.css" />
   <link rel = "stylesheet" href = "../css/styles.css" />
-  <link rel = "stylesheet" href = "../css/mijnLeningen.css" />
+  <link rel = "stylesheet" href = "../mijnLeningen/mijnLeningen.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
-  <?php include('header.php')?>
+  <?php include('../php/header.php')?>
   
   <br>
   <br>
@@ -36,17 +38,18 @@
         <td>16/05/2024</td>
         <td>16/06/2024</td>
         <td><button>Melden</button></td>
-        <td><button>Annuleren</button></td>
+        <td><button id="nietInBezit">Annuleren</button></td>
       </tr>
       <tr>
         <td>Canon EOS</td>
         <td>16/05/2024</td>
         <td>16/06/2024</td>
         <td><button>Melden</button></td>
-        <td><button>Verlengen</button></td>
+        <td><button id="welInBezit">Verlengen</button></td>
       </tr>
     </table>
   </div>
 
+  <script src="mijnLeningen.js"></script>
 </body>
 </html>

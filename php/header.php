@@ -10,7 +10,7 @@
     </span>
   </a>
   <div class = "navbar-nav">
-  <a class = "nav-item nav-link" href = "mijnLeningen.php">
+  <a class = "nav-item nav-link" href = "../mijnLeningen/mijnLeningen.php">
     Mijn leningen
   </a>
   <a class = "nav-item nav-link" href = "/info">
