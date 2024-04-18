@@ -7,10 +7,10 @@
   <title>Catalogus</title>
   <link rel = "stylesheet" href = "../bootstrap/css/bootstrap.min.css" />
   <link rel = "stylesheet" href = "../css/styles.css" />
-  <link rel = "stylesheet" href = "catalogus.css" />
+  <link rel = "stylesheet" href = "../css/catalogus.css" />
 </head>
 <body>
-  <?php include('../php/header.php')?>
+  <?php include('header.php')?>
   
   <br>
   <br>
@@ -89,6 +89,6 @@
   </div>
 
   <br>
-  <script src="./catalogus.js"></script>
+  <script src="../js/catalogus.js"></script>
 </body>
 </html>
