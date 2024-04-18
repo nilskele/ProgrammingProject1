@@ -71,13 +71,13 @@
     <button class="arrow_next"><img src="../images/black_arrow_r.png" alt="Next"></button>
   </div>
   <div class="dagen">
-    <div class="dag">Monday</div>
-    <div class="dag">Tuesday</div>
-    <div class="dag">Wednesday</div>
-    <div class="dag">Thursday</div>
-    <div class="dag">Friday</div>
-    <div class="dag">Saturday</div>
-    <div class="dag">Sunday</div>
+    <div class="dag">Maandag</div>
+    <div class="dag">Dinsdag</div>
+    <div class="dag">Woensdag</div>
+    <div class="dag">Donderdag</div>
+    <div class="dag">Vrijdag</div>
+    <div class="dag">Zaterdag</div>
+    <div class="dag">Zondag</div>
   </div>
 </div>
 
