@@ -7,7 +7,7 @@
   <title>Catalogus</title>
   <link rel = "stylesheet" href = "../bootstrap/css/bootstrap.min.css" />
   <link rel = "stylesheet" href = "../css/styles.css" />
-  <link rel = "stylesheet" href = "../css/catalogus.css" />
+  <link rel = "stylesheet" href = "catalogus.css" />
 </head>
 <body>
   <?php include('../php/header.php')?>
@@ -25,7 +25,7 @@
 
   <div class="product">
     <div class="foto">
-      <img src="../images/canon-m50.jpg" alt="canon-m50" />
+      <img src="" alt="canon-m50" />
     </div>
     <div class="top-info-aantal">
       <div class="top-info">
