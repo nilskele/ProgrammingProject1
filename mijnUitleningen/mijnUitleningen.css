@@ -4,13 +4,28 @@
     box-sizing: border-box;
 }
 
-.leningenTitle {
+.uitleningenTitle {
     text-align: center;
     font-size: 30px;
     margin-top: 20px;
 }
 
+p {
+  margin-left: 400px;
+}
+
 .table {
   text-align: center;
   padding: 10px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.table td, th{
+  padding: 10px;  
+}
+
+.table button {
+  border: none;
 }

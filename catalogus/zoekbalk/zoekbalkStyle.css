@@ -34,6 +34,7 @@
     align-items: center;
     justify-content: center;
     padding: 5px;
+    border: #d2d2d2 2px solid;
 }
 
 .inputZoekbalk {
