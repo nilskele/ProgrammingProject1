@@ -14,7 +14,7 @@
     <?php
     include '../database.php';
 
-        $sql = "SELECT naam FROM CATEGORY"; 
+    $sql = "SELECT naam FROM CATEGORY";
     $result = $conn->query($sql);
 
     $options = '';
