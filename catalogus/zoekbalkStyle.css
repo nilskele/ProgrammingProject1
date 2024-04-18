@@ -68,9 +68,13 @@ svg {
 .categorieZoekbalk {
   all: unset;
   padding: 5px;
-  width: 50px;
+  width: 70px;
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
+}
+
+.categoryOptions {
+  color: red;
 }
 
 .gevondenItems {

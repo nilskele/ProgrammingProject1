@@ -16,13 +16,13 @@ $stmt->execute();
 
 $resultaten = $stmt->get_result();
 
-if ($resultaten->num_rows > 0) {
-    while ($row = $resultaten->fetch_assoc()) {
-        echo $row['naam'] . '<br>';
-    }
-} else {
-    echo "No results found";
-}
+ if ($resultaten->num_rows > 0) {
+     while ($row = $resultaten->fetch_assoc()) {
+         echo $row['naam'] . '<br>';
+     }
+ } else {
+     echo "No results found";
+ }
 
 $stmt->close();
 

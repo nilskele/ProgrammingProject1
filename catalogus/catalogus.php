@@ -18,12 +18,12 @@
   <br>
 
   <div class="zoekBalk">
-    <?php include('zoekbalk/zoekbalk.php')?>
+    <?php include('zoekbalk.php')?>
   </div>
   
   <br>
   <br>
-
+  <div class="resultaten"></div>
   <div class="product">
     <div class="foto">
       <img src="../images/canon_eos.png" alt="canon-m50" />
@@ -89,5 +89,6 @@
   </div>
 
   <br>
+  <script src="./catalogus.js"></script>
 </body>
 </html>
