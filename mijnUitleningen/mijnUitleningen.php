@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catalogus</title>
-  <link rel = "stylesheet" href = "../mijnLeningen/mijnLeningen.css" />
+  <link rel = "stylesheet" href = "../mijnLeningen/mijnUitleningen.css" />
   <link rel = "stylesheet" href = "../bootstrap/css/bootstrap.min.css" />
   <link rel = "stylesheet" href = "../css/styles.css" />
   
@@ -31,7 +31,7 @@
   <br>
   <br>
   
-  <div class='leningenTitle'>
+  <div class='uitleningenTitle'>
     <h1>Mijn uitleningen</h1>
   </div>
   <div classe="recent">
@@ -63,6 +63,6 @@
     </table>
   </div>
 
-  <script src="mijnLeningen.js"></script>
+  <script src="mijnUitleningen.js"></script>
 </body>
 </html>
