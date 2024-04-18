@@ -11,7 +11,7 @@
   </a>
   <div class = "navbar-nav">
   <a class = "nav-item nav-link" href = "../mijnUitleningen/mijnUitleningen.php">
-    Mijn leningen
+    Mijn uitleningen
   </a>
   <a class = "nav-item nav-link" href = "/info">
     Info
