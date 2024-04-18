@@ -10,14 +10,14 @@
   <link rel = "stylesheet" href = "../css/catalogus.css" />
 </head>
 <body>
-  <?php include('header.php')?>
+  <?php include('../php/header.php')?>
   
   <br>
   <br>
   <br>
 
   <div class="zoekBalk">
-    <?php include('../zoekbalk/zoekbalk.php')?>
+    <?php include('zoekbalk/zoekbalk.php')?>
   </div>
   
   <br>

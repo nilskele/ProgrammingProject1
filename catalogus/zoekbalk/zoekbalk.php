@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zoekbalk</title>
-    <link rel="stylesheet" href="../zoekbalk/zoekbalkStyle.css" />
+    <link rel="stylesheet" href="zoekbalk/zoekbalkStyle.css" />
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
