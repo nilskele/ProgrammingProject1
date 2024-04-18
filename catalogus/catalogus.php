@@ -26,7 +26,7 @@
 
   <div class="product">
     <div class="foto">
-      <img src="" alt="canon-m50" />
+      <img src="../images/canon_eos.png" alt="canon-m50" />
     </div>
     <div class="top-info-aantal">
       <div class="top-info">
