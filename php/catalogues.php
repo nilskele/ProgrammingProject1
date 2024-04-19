@@ -14,7 +14,10 @@
 </head>
 
 <body>
-  <?php include ('header.php') ?>
+  <?php include ('header.php')  ?>
+  <div class="zoekBalk">
+    <?php include('zoekbalk.php')?>
+  </div>
 
   <!-- ----Product1----- -->
   <div class="container">
