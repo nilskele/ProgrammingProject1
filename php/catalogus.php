@@ -16,7 +16,6 @@
   <br>
   <br>
   <br>
-
   <div class="zoekBalk">
     <?php include('zoekbalk.php')?>
   </div>
