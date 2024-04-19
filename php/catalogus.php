@@ -31,19 +31,19 @@
       <div class="top-info">
         <div class="top">
           <div class="merk-naam_product">
-            <p id="merk"><span>Canon ></span></p>
-            <p id="product_naam"><span>Canon M50</span></p>
+            <p id="merk"><span class="merk_naam"></span></p>
+            <p id="product_naam"><span class="groep_naam"></span></p>
           </div>
           <div class="beschikbaarheid">
-            Beschikbaar vanaf: 16/05/2024
+            Beschikbaar vanaf: <span class="datumBeschikbaar"> </span>
           </div>
         </div>
         <div class="info">
           <div class="beschrijving">
-            Beschrijving: Canon M50 fototoestel
+            <span class="beschrijvingItem"></span>
           </div>
           <div class="opmerkingen">
-            Opmerkingen: toestel met XLR aansluiting
+            <span class="opmerkingItem"></span>
           </div>
         </div>
       </div>

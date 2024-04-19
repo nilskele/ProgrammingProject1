@@ -23,6 +23,12 @@ $(document).ready(function () {
                 resultHtml += "<strong>Beschrijving:</strong> " + item.beschrijving_naam + "<br>";
                 resultHtml += "<strong>Datum beschikbaar:</strong> " + item.datumBeschikbaar + "<br>";
                 resultHtml += "-------------------------<br>";
+
+                $(".groep_naam").text(item.groep_naam);
+                $(".merk_naam").text(item.merk_naam);
+                $(".datumBeschikbaar").text(item.datumBeschikbaar);
+                $(".opmerkingItem").text(item.opmerkingen);
+                $(".beschrijvingItem").text(item.beschrijving_naam);
               });
               $(".resultaten").html(resultHtml);
             }
