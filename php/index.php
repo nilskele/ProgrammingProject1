@@ -28,7 +28,7 @@
             een account met u school mail.
           </p>
           <div class = "WelcomeButtons">
-            <a class = "btn btn-primary" href = "./accountAanmaken.php">
+            <a class = "btn btn-primary" href = "accountAanmaken.php">
               Account aanmaken
             </a>
             <a class = "btn btn-light">
@@ -63,7 +63,7 @@
             <input type = "password" class = "form-control" id = "inputPassword3" placeholder = "Password" />
           </div>
         </div>
-        <a class = "btn btn-primary inloggen" href = "./catalogus.php">
+        <a class = "btn btn-primary inloggen" href = "catalogus.php">
           Inloggen
         </a>
       </div>
@@ -71,7 +71,7 @@
         <p>
           Nog geen account? =
         </p>
-        <a class = "btn btn-light accountAanmaken" href = "./accountAanmaken.php">
+        <a class = "btn btn-light accountAanmaken" href = "accountAanmaken.php">
           Account aanmaken
         </a>
       </div>
@@ -79,7 +79,7 @@
   </div>
 
   <script type = "module" src = ""></script>
-  <script src = "/bootstrap/js/bootstrap.js"></script>
+  <script src = "../bootstrap/js/bootstrap.js"></script>
 </body>
 
 </html>

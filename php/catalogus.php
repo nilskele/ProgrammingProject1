@@ -14,77 +14,30 @@
 </head>
 
 <body>
-  <?php include ('header.php') ?>
-
-  <!-- ----Product1----- -->
-  <div class="container">
-    <div class="card">
-      <div class="row">
-        <div class="col-md-4 img-container">
-          <img src="../images/img1.jpg" class="img-fluid">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <p>Canon></p>
-            <div class="card-title">
-              <h2>Canon M50</h2>
-              <p> Beschikbaar vanaf: 11/03/2024</p>
-            </div>
-            <p class="card-text">
-              Beschrijving: Canon M50 fototoestel
-              <br>
-              Opmerkong: toestel met XLR aansluiting
-            </p>
-          </div>
-          <br>
-          <div class="icon">
-            <h6 class="aantal">Aantal aanwezig: 5</h6>
-            <select class="available">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <button class="btn btn-secondary">+<i class="fas fa-shopping-cart"></i></button>
-          </div>
-        </div>
-      </div>
+  <?php include('header.php')?>
+  
+  <br>
+  <div class="product">
+    <div class="foto">
+      <img src="../images/canon-m50.jpg" alt="canon-m50" />
     </div>
-  </div>
-  </div>
-  </div>
-  <!-- ----Product2----- -->
-  <div class="container mt-5">
-    <div class="card">
-      <div class="row">
-        <div class="col-md-4 img-container">
-          <img src="../images/img2.jpg" class="img-fluid">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <p>Canon></p>
-            <div class="card-title">
-              <h2>Canon EOS D700</h2>
-              <p> Beschikbaar vanaf: 11/03/2024</p>
-            </div>
-            <p class="card-text">Beschrijving: Canon EOS fototoestel
-              <br>
-
-              Opmerkong: toestel met USB-aansluiting
-            </p>
+    <div class="top-info-aantal">
+      <div class="top-info">
+        <div class="top">
+          <div class="merk-naam_product">
+            <p id="merk"><span>Canon ></span></p>
+            <p id="product_naam"><span>Canon M50</span></p>
           </div>
-          <br>
-          <div class="icon">
-            <h6 class="aantal">Aantal aanwezig: 5</h6>
-            <select class="available">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <button class="btn btn-secondary">+<i class="fas fa-shopping-cart"></i></button>
+          <div class="beschikbaarheid">
+            Beschikbaar vanaf: 16/05/2024
+          </div>
+        </div>
+        <div class="info">
+          <div class="beschrijving">
+            Beschrijving: Canon M50 fototoestel
+          </div>
+          <div class="opmerkingen">
+            Opmerkingen: toestel met XLR aansluiting
           </div>
         </div>
       </div>
@@ -128,19 +81,8 @@
       </div>
     </div>
   </div>
-  </div>
-  </div>
-  <!-----Pagination----->
-  <footer>
-    <div class="pagination">
-      <a href="#">&laquo;</a>
-      <a href="#">1</a>
-      <a href="#" class="active">2</a>
-      <a href="#">3</a>
-      <a href="#">... 9</a>
-      <a href="#">&raquo;</a>
-    </div>
-  </footer>
+
+  <br>
 </body>
 
 </html>

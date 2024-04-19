@@ -3,6 +3,7 @@ body {
 }
 .inOutCatalagus{
     height: 30vh;
+    margin-top: 2em;
 }
 .inAndOut{
     margin-left: 15vw;
@@ -25,13 +26,22 @@ body {
     height: 2em;
     transition: 0.5s;
 }
+
 .defectButton:hover{
     background-color: #464545;
+}
+.submitIcon{
+    transition: 0.5s;
+    background-color: blue;
+}
+.submitIcon:hover{
+    width: 2.2em;
 }
 .dots{
     width: 4em;
     transition: 0.5s ;
     border-radius: 3em;
+    
 }
 .dots:hover{
     

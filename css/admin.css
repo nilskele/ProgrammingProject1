@@ -1,23 +1,124 @@
-*{
-    margin:0;
+* {
+    margin: 0;
     padding: 0;
 }
-#adminDashboard{
+
+#adminDashboard {
     margin-left: 13%;
     margin-top: 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    
+
+
 }
-h1{
+
+h1 {
     margin: 0;
 }
-#container1{
+
+#container1 {
     width: 70%;
-    
     display: flex;
     justify-content: space-between;
 }
+
+.container3 {
+    /*background-color: blue;*/
+    margin-top: 100px;
+    height: 500px;
+}
+
+.hoofd_kalender {}
+
+.titel_kalender {
+    padding: 20px;
+    text-align: center;
+   /* background-color: red;*/
+}
+
+.titel_kalender h1 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.buttons_kalender {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   /* background-color: green;*/
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 0px;
+}
+
+/* display flex zodat de twee buttons bij elkaar horen. */
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons-container button {
+    margin-bottom: 10px;
+    border-radius: 15px;
+    width: 200px;
+    height: 40px;
+    background-color: #a39c9b;
+    color: black;
+    border: none;
+    outline: none;
+}
+
+.buttons_kalender form input[type="text"] {
+    border-radius: 15px;
+    background-color: #a39c9b;
+    color: red;
+    padding: 8px 12px;
+    border: none;
+    outline: none;
+}
+
+.buttons_kalender form input[type="text"]::placeholder {
+    color: red;
+}
+
+.calender {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dagen {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.dag {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+
+.arrow_prev,
+.arrow_next {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+}
+
+.arrow_prev img,
+.arrow_next img {
+    width: 80px; /* Adjust the width of the arrow image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
