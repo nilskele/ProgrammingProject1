@@ -25,9 +25,9 @@ h1 {
 }
 
 .container3 {
-    /*background-color: blue;*/
+   /* background-color: blue;*/
     margin-top: 100px;
-    height: 500px;
+    height: 700px;
 }
 
 .hoofd_kalender {}
@@ -47,7 +47,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-   /* background-color: green;*/
+    /*background-color: green;*/
     padding-left: 80px;
     padding-right: 80px;
     padding-top: 0px;
@@ -70,6 +70,11 @@ h1 {
     outline: none;
 }
 
+.buttons-container button:hover {
+    background-color: #464545;
+}
+
+
 .buttons_kalender form input[type="text"] {
     border-radius: 15px;
     background-color: #a39c9b;
@@ -83,29 +88,34 @@ h1 {
     color: red;
 }
 
-.calender {
-    max-width: 800px;
+.kalender {
+    max-width: 1200px;
     margin: 0 auto;
+    /*background-color: darkorchid;*/
 }
 
-.header {
+.header_kalender {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    /*background-color: orange;*/
 }
 
-.dagen {
+.container_kalender {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(8, 1fr);
+}
+
+.item {
+    padding-bottom: 10px;
+    border: 1px solid black
 }
 
 .dag {
-    border: 1px solid #ccc;
-    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
 }
-
 
 .arrow_prev,
 .arrow_next {
@@ -117,8 +127,6 @@ h1 {
 
 .arrow_prev img,
 .arrow_next img {
-    width: 80px; /* Adjust the width of the arrow image */
-    height: auto; /* Maintain aspect ratio */
+    width: 80px;
+    height: auto;
 }
-
-

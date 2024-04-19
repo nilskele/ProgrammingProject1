@@ -64,13 +64,29 @@
     </div>
   </div>
 
-  <div class="calender">
-  <div class="header">
-  <button class="arrow_prev"><img src="../images/black_arrow_l.png" alt="Previous"></button>
+  <div class="kalender">
+  <div class="header_kalender">
+    <button class="arrow_prev"><img src="../images/black_arrow_l.png" alt="Previous"></button>
     <h2>WEEK DATUM HIER</h2>
     <button class="arrow_next"><img src="../images/black_arrow_r.png" alt="Next"></button>
   </div>
-  <div class="dagen">
+  <div class="container_kalender">
+    <div class="items_column">
+      <?php
+      $items = [
+        ['day' => 'Monday', 'content' => 'WEEK 26'],
+        ['day' => 'Tuesday', 'content' => 'CANON M50 1'],
+        ['day' => 'Wednesday', 'content' => 'CANON M50 1'],
+      ];
+
+      
+
+      // Populate the item column with items
+      foreach ($items as $item) {
+        echo '<div class="item">' . $item['content'] . '</div>';
+      }
+      ?>
+    </div>
     <div class="dag">Maandag</div>
     <div class="dag">Dinsdag</div>
     <div class="dag">Woensdag</div>
@@ -82,4 +98,5 @@
 </div>
 
 </div>
+
 
