@@ -8,73 +8,80 @@
   margin-top: 40px;
 }
 
-.img-container {
-  background-color: #f0f0f0;
+.product {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  height: 300px;
-  background-size: cover;
-  background-position: center;
+  box-shadow: 0px 0px 1px #767676;
 }
 
-.img-container img {
+.foto {
+  width: 300px;
+  height: 300px;
+  margin: 50px 50px 50px 90px;
+  background-color: #D9D9D9;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.foto img {
   width: 90%;
   height: auto;
-  max-width: 80%;
-
 }
 
-.card-title {
+#merk {
+  text-decoration: underline;
+  color: #909090;
+  margin: 0;
+}
+
+#product_naam {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.top {
   display: flex;
-  justify-content: space-between;
-
+  flex-direction: row;
+  margin-top: 50px;
 }
 
-.icon {
+.beschikbaarheid {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
 }
 
-.aantal {
-  width: 20%;
-}
-
-.available {
-  width: 5%;
-
-}
-
-.btn {
-  margin-right: 10px;
-  margin-left: 10px;
-  background-color: rgba(255, 191, 0, 0.889);
-  color: black;
-  border-color: rgba(255, 191, 0, 0.889);
-}
-
-.pagination {
-  margin-top: 20px;
-  list-style: none;
+.info{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
 
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
+.aantal_beschikbaar {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: bold;
 }
 
-.pagination a.active {
-  background-color: rgba(255, 191, 0, 0.889);
-  color: white;
-  border-radius: 5px;
+.info {
+  font-size: 1rem;
 }
 
-.pagination a:hover:not(.active) {
-  background-color: #ddd;
-  border-radius: 5px;
+.beschrijving {
+  margin-top: 20px;
+}
+
+.opmerkingen {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.merk-naam_product {
+  margin-right: 300px;
+}
+
+.top-info-aantal {
+  min-width: 680px;
 }
