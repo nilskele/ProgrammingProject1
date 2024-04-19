@@ -15,8 +15,7 @@
 
 <body>
   <?php include('header.php')?>
-  
-  <br>
+
   <div class="product">
     <div class="foto">
       <img src="../images/canon-m50.jpg" alt="canon-m50" />
