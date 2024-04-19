@@ -14,6 +14,7 @@
     <?php
     include 'zoek.php';
     include 'category.php';
+    include 'filter_producten.php';
     ?>
 </head>
 
@@ -33,7 +34,7 @@
                 <?php echo $options; ?>
             </select>
 
-            <p class="gevondenItems">(<span id="hoeveelheid"></span>)</p>
+            <p class="gevondenItems">(<span class="aantalResultaten"></span>)</p>
             <div class="vl"></div>
             <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" class="datumZoekbalk inputZoekbalk" />
             <div class="vl"></div>

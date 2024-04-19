@@ -11,11 +11,3 @@ $(function () {
 
     });
 });
-
-//  van https://www.daterangepicker.com/
-
-
-
-// functie schrijven voor zoek
-// moeglijk gebruik van https://jqueryui.com/autocomplete/ voor autocomplete
-// verbinding maken met database om te zoeken
