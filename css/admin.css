@@ -63,6 +63,40 @@ h1 {
     padding: 0.5em 1.5em 0.5em 1.5em;
     border-radius: 1em;
     text-decoration: none;
+    transition: 0.3s;
+}
+.outBtn{
+    
+    background-color: red;
+    color: white;
+    margin-left: 1em!important;
+    margin-right: 1em!important;
+    padding: 0.5em 2em 0.5em 2em;
+    border-radius: 1em;
+    text-decoration: none;
+    transition: 0.3s;
+    border: 2px solid red;
+    
+    
+}
+.outBtn:hover{
+    background-color: white;
+    color: red;
+    border: 2px solid red;
+}
+.outBtn:active{
+    background-color: #a39c9b;
+    border: 2px solid #a39c9b;
+    color: white;
+}
+.defectBtn:hover{
+    background-color: #464545;
+}
+.accepterenBtn:hover{
+    background-color: #EE4848;
+}
+.reserverenBtn:hover{
+    border: 2px solid red;
 }
 .reserverenBtn{
     background-color: white;
@@ -72,6 +106,8 @@ h1 {
     padding: 0.5em 1.5em 0.5em 1.5em;
     border-radius: 1em;
     text-decoration: none;
+    border: 2px solid white;
+    transition: 0.3s;
 }
 .accepterenBtn{
     background-color: red;
@@ -81,9 +117,84 @@ h1 {
     padding: 0.5em 1.5em 0.5em 1.5em;
     border-radius: 1em;
     text-decoration: none;
+    transition: 0.3s;
+}
+/*small in out*/
+#smallInOutDiv{
+    margin-top: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+#smallInOut1{
+    background-color: #a39c9b;
+    width: 50%;
+    border-radius: 1em;
+    margin-right: 1em;
+    padding: 1em;
+    
+}
+#smallInOut2{
+    background-color: #a39c9b;
+    width: 50%;
+    border-radius: 1em;
+    padding: 1em;
+    margin-left: 1em;
+}
+.dots{
+    width: 3em;
+    margin-left: 9em;
+    transition: 0.3s;
+    border-radius: 2em;
+    
+}
+.dots:hover{
+    background-color: #a39c9b;
+    border-radius: 2em;
+
+}
+.inOutProduct{
+    background-color: white;
+    display: flex;
+    margin: 1em;
+    padding: 1em 1em 0em 1em;
+    flex-direction: row;
+}
+#vandaagInButtons{
+    display: flex;
+    flex-direction: column;
+    margin-right: 1em;
+    
+}
+#vandaagInButtons2{
+    display: flex;
+    flex-direction: column;
+    margin-right: 1em;
+    justify-content: center;
+    
+}
+.defectButton{
+    text-align: center;
+    margin-top: 1em;
+}
+.productInfo{
+    display: flex;
+    flex-direction: row;
+
+    
+    
 }
 
-
+.inoutdiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 80%;
+    
+    
+}
 /*Admin catalogus*/
 .titel_kalender h1 {
     margin-bottom: 10px;

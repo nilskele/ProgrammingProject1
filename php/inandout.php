@@ -41,7 +41,6 @@
       <div class="inButtons">
         <a class="btn btn-primary" href="">Accepteren</a>
         <a class="defectButton" href="">Defect</a>
-
       </div>
       <div class="productInfo">
         <div class="info">
@@ -128,7 +127,7 @@
     <div class="productstate">
       <div class="intButtons2">
         
-        <a class="defectButton" href="">Out</a>
+        <a class="defectButton" href="">Defect</a>
 
       </div>
       <div class="productInfo">

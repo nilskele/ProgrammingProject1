@@ -45,6 +45,51 @@
           </div>
     </div>
 </div>
+<div id="smallInOutDiv">
+  <div id="title-kalender-In-Out">
+    <h1>In and Out</h1>
+    <img src="#" alt="kalender icon">
+  </div>
+  <div class="inoutdiv">
+    <div id="smallInOut1">
+      <h1>Vandaag In</h1>
+      <div class="inOutProduct">
+        <div id="vandaagInButtons">
+          <a class="accepterenBtn" href="">Accepteren</a>
+          <a class=" defectBtn defectButton" href="">Defect</a>
+        </div>
+        <div class="productInfo">
+          <div class="info">
+            <h3>Nils kelecom</h3>
+            <p>Canon,45X8G</p>
+          </div>
+          <div class="moreinfo">
+            <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="smallInOut2">
+      <h1>Vandaag Out</h1>
+      <div class="inOutProduct">
+        <div id="vandaagInButtons2">
+        
+        <a class="OutBtn" href="">Out</a>
+        </div>
+        <div class="productInfo">
+          <div class="info">
+            <h3>Nils kelecom</h3>
+            <p>Canon,45X8G</p>
+          </div>
+          <div class="moreinfo">
+            <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
 
 
   <!-- container voor kalender -->
