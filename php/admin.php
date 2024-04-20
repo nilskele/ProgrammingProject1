@@ -2,6 +2,7 @@
   <link rel = "stylesheet" href = "../css/styles.css" />
   <link rel = "stylesheet" href = "../css/admin.css"> 
 
+
 <?php include("header2.php")?>
 
 <div id = "adminDashboard">
@@ -12,13 +13,13 @@
                 <input type="text" class="form-control grey-input" id="inputName3" placeholder="product nr" />
             </div>
             <div class = "knoppen">
-                <a href = "accepteren.php" class = "btn btn-light">
+                <a href = "accepteren.php" class = "accepterenBtn">
                   accepteren
                 </a>
-                <a href = "defect.php" class = "btn btn-light">
+                <a href = "defect.php" class = "defectBtn">
                   defect
                 </a>
-                <a href = "reserveren.php" class = "btn btn-light">
+                <a href = "reserveren.php" class = "reserverenBtn">
                   reserveren
                 </a>
                 
@@ -30,13 +31,13 @@
                 <input type="text" class="form-control" id="inputName3" placeholder="product nr" />
             </div>
             <div class = "knoppen">
-                <a href = "accepteren.php" class = "btn btn-light">
+                <a href = "accepteren.php" class = "accepterenBtn">
                   accepteren
                 </a>
-                <a href = "defect.php" class = "btn btn-light">
+                <a href = "defect.php" class = "defectBtn">
                   defect
                 </a>
-                <a href = "reserveren.php" class = "btn btn-light">
+                <a href = "reserveren.php" class = "reserverenBtn">
                   reserveren
                 </a>
                 
@@ -65,12 +66,12 @@
     </div>
 
   <div class="calender">
-  <div class="header">
+  <div class="header_kalender">
   <button class="arrow_prev"><img src="../images/black_arrow_l.png" alt="Previous"></button>
     <h2>WEEK DATUM HIER</h2>
     <button class="arrow_next"><img src="../images/black_arrow_r.png" alt="Next"></button>
   </div>
-  <div class="dagen">
+  <div class="container_kalender">
     <div class="dag">Maandag</div>
     <div class="dag">Dinsdag</div>
     <div class="dag">Woensdag</div>

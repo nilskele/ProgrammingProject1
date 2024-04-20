@@ -20,13 +20,15 @@
     background-color: #a39c9b;
     padding: 2em;
     border-radius: 2em;
+    margin-left: -1.8em;
+    margin-right: 4em;
 }
 .knoppen{
     
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 1em;
+    
     
 }
 
@@ -53,7 +55,36 @@ h1 {
     text-align: center;
    /* background-color: red;*/
 }
+.defectBtn{
+    background-color: black;
+    color: white;
+    margin-left: 1em!important;
+    margin-right: 1em!important;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    border-radius: 1em;
+    text-decoration: none;
+}
+.reserverenBtn{
+    background-color: white;
+    color: red;
+    margin-left: 1em!important;
+    margin-right: 1em!important;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    border-radius: 1em;
+    text-decoration: none;
+}
+.accepterenBtn{
+    background-color: red;
+    color: white;
+    margin-left: 1em!important;
+    margin-right: 1em!important;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    border-radius: 1em;
+    text-decoration: none;
+}
 
+
+/*Admin catalogus*/
 .titel_kalender h1 {
     margin-bottom: 10px;
     text-align: center;
