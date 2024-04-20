@@ -64,22 +64,23 @@
       </div>
     </div>
 
-    <div class="calender">
-      <div class="header">
-      <button class="arrow_prev"><img src="../images/black_arrow_l.png" alt="Previous"></button>
-        <h2>WEEK DATUM HIER</h2>
-        <button class="arrow_next"><img src="../images/black_arrow_r.png" alt="Next"></button>
-      </div>
-      <div class="dagen">
-        <div class="dag">Maandag</div>
-        <div class="dag">Dinsdag</div>
-        <div class="dag">Woensdag</div>
-        <div class="dag">Donderdag</div>
-        <div class="dag">Vrijdag</div>
-        <div class="dag">Zaterdag</div>
-        <div class="dag">Zondag</div>
-      </div>
-    </div>
+  <div class="calender">
+  <div class="header">
+  <button class="arrow_prev"><img src="../images/black_arrow_l.png" alt="Previous"></button>
+    <h2>WEEK DATUM HIER</h2>
+    <button class="arrow_next"><img src="../images/black_arrow_r.png" alt="Next"></button>
+  </div>
+  <div class="dagen">
+    <div class="dag">Maandag</div>
+    <div class="dag">Dinsdag</div>
+    <div class="dag">Woensdag</div>
+    <div class="dag">Donderdag</div>
+    <div class="dag">Vrijdag</div>
+    <div class="dag">Zaterdag</div>
+    <div class="dag">Zondag</div>
+  </div>
+</div>
 
 </div>
+
 

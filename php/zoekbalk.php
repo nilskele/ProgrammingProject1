@@ -36,7 +36,7 @@
 
             <p class="gevondenItems">(<span class="aantalResultaten"></span>)</p>
             <div class="vl"></div>
-            <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" class="datumZoekbalk inputZoekbalk" />
+            <input type="text" name="daterange" class="datumZoekbalk inputZoekbalk" />
             <div class="vl"></div>
             <input type="checkbox" id="kit" name="kit" value="kit" class="inputZoekbalk">
             <label for="kit" class="kitLabel">Kit</label>
