@@ -4,14 +4,30 @@
 }
 
 #adminDashboard {
-    margin-left: 13%;
-    margin-top: 10%;
+    margin-top: 10em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
 
+}
+.productNr{
+    text-align: center;
+    margin: 1em;
+}
+.adminAccepteren{
+    background-color: #a39c9b;
+    padding: 2em;
+    border-radius: 2em;
+}
+.knoppen{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1em;
+    
 }
 
 h1 {

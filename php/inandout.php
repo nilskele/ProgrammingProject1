@@ -22,6 +22,7 @@
 .input1{
   width:90%;
 }
+
 </style>
 
 <?php include("header2.php")?>
@@ -44,8 +45,8 @@
       </div>
       <div class="productInfo">
         <div class="info">
-          <h3>Canon</h3>
-          <p>45X8G, Nils kelecom</p>
+          <h3>Nils kelecom</h3>
+          <p>Canon,45X8G</p>
         </div>
         <div class="moreinfo">
           <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
@@ -62,8 +63,8 @@
       </div>
       <div class="productInfo">
         <div class="info">
-          <h3>Canon</h3>
-          <p>45X8G, Nils kelecom</p>
+        <h3>Nils kelecom</h3>
+          <p>Canon,45X8G</p>
         </div>
         <div class="moreinfo">
           <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
@@ -80,8 +81,8 @@
       </div>
       <div class="productInfo">
         <div class="info">
-          <h3>Canon</h3>
-          <p>45X8G, Nils kelecom</p>
+        <h3>Nils kelecom</h3>
+          <p>Canon,45X8G</p>
         </div>
         <div class="moreinfo">
           <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
@@ -98,8 +99,8 @@
       </div>
       <div class="productInfo">
         <div class="info">
-          <h3>Canon</h3>
-          <p>45X8G, Nils kelecom</p>
+        <h3>Nils kelecom</h3>
+          <p>Canon,45X8G</p>
         </div>
         <div class="moreinfo">
           <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
@@ -115,7 +116,36 @@
 </div>
 
 <div class="inAndOut">
-  <h1>Vandaag Out</h1>
-  <input type="text" class="form-control" id="inputName3" placeholder="product nr" />
-  <div class="inOutCatalagus"></div>
+  <h1>vandaag Out</h1>
+  <div class="searchbar">
+    <input type="text" class="form-control input1" id="inputName3" placeholder="product nr" />
+    <a id="sub" href=""><img class="submitIcon"  src="../images/search-26241.png" alt="search logo"></a>
+  </div>
+  
+  
+  
+  <div class="inOutCatalagus overflow-auto">
+    <div class="productstate">
+      <div class="intButtons2">
+        
+        <a class="defectButton" href="">Out</a>
+
+      </div>
+      <div class="productInfo">
+        <div class="info">
+        <h3>Nils kelecom</h3>
+          <p>Canon,45X8G</p>
+        </div>
+        <div class="moreinfo">
+          <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
+        </div>
+      </div>
+      
+
+      
+    </div>
+  </div>  
+  
+    
+
 </div>

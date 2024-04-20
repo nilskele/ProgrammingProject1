@@ -12,7 +12,6 @@ body {
 .navbar {
     padding: 5px 10px 5px 10px;
     background-color: white;
-    z-index: 5;
 }
 .nav_shadow{
     box-shadow: 0px 0px 5px #909090;

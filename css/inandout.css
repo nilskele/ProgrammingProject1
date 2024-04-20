@@ -2,7 +2,7 @@ body {
     background-color: white;
 }
 .inOutCatalagus{
-    height: 30vh;
+    height: 60vh;
     margin-top: 2em;
 }
 .inAndOut{
@@ -10,8 +10,8 @@ body {
     width: 70vw;
     background-color: grey;
     border-radius: 1em;
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin-top: 5em;
+    
     padding: 3em;
 }
 .defectButton{
@@ -55,8 +55,16 @@ body {
 .inButtons{
     display: flex;
     flex-direction: column;
-    margin: 1.5em;
+    margin: 2em;
+    width: 15%;
     
+}
+.intButtons2{
+    display: flex;
+    flex-direction: column;
+    
+    width: 15%;
+    margin:2em 1em 1em 1em;
 }
 .productInfo{
     margin: 1em;
