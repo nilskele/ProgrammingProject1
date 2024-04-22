@@ -141,10 +141,13 @@
   <footer>
     <div class="pagination">
       <a href="#">&laquo;</a>
-      <a href="#">1</a>
-      <a href="#" class="active">2</a>
+      <a href="#">&lsaquo;</a>
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
       <a href="#">3</a>
-      <a href="#">... 9</a>
+      <a href="#">...</a>
+      <a href="#">9</a>
+      <a href="#">&rsaquo;</a>
       <a href="#">&raquo;</a>
     </div>
   </footer>

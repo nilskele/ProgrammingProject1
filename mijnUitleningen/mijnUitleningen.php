@@ -13,6 +13,12 @@
 </head>
 <body>
   <?php include('../php/header.php')?>
+
+  <br>
+  <br>
+  <br>
+
+  
   
   <br>
   <br>
@@ -26,30 +32,20 @@
   </div>
   <div class="table">
     <table>
-      <tr>
-        <th>Product</th>
-        <th>Uitleendatum</th>
-        <th>Terugbrengdatum</th>
-        <th>Defect</th>
-        <th>Reservering</th>
-      </tr>
-      <tr>
-        <td>Canon M50</td>
-        <td>16/05/2024</td>
-        <td>16/06/2024</td>
-        <td><button>Melden</button></td>
-        <td><button id="nietInBezit" style="background-color: red; color: white;">Annuleren</button></td>
-      </tr>
-      <tr>
-        <td>Canon EOS</td>
-        <td>16/05/2024</td>
-        <td>16/06/2024</td>
-        <td><button>Melden</button></td>
-        <td><button id="welInBezit" style="background-color: green; color: white;">Verlengen</button></td>
-      </tr>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Uitleendatum</th>
+          <th>Terugbrengdatum</th>
+          <th>Defect</th>
+          <th>Reservering</th>
+        </tr>
+      <thead>
+      <tbody></tbody>
     </table>
   </div>
 
-  <script src="mijnUitleningen.js"></script>
+  <script src="mandjeOphalen.js"></script>
+  <!-- <script src="mijnUitleningen.js"></script> -->
 </body>
 </html>

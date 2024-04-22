@@ -4,7 +4,7 @@ $(document).ready(function () {
     e.preventDefault();
 
     var zoekterm = $("#zoekbalk").val();
-    if (zoekterm !== "") {
+    if (true) {
       aantalResultaten = 0;
       $.ajax({
         url: "../php/zoek.php",
