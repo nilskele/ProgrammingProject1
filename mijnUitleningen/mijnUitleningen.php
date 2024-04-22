@@ -13,22 +13,9 @@
 </head>
 <body>
   <?php include('../php/header.php')?>
-
-  <br>
-  <br>
-  <br>
-
-  
-  
-  <br>
-  <br>
-  <br>
   
   <div class='uitleningenTitle'>
     <h1>Mijn uitleningen</h1>
-  </div>
-  <div classe="recent">
-    <p>Recente uitleningen: </p> 
   </div>
   <div class="table">
     <table>
