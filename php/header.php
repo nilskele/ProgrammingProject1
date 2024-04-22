@@ -16,7 +16,7 @@
   <a class = "nav-item nav-link" href = "/info">
     Info
   </a>
-  <a class = "nav-item nav-link" href = "">
+  <a class = "nav-item nav-link" href = "reserveren.php">
     Reglement
   </a>
   </div>
