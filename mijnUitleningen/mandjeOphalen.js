@@ -70,18 +70,17 @@ document.addEventListener("DOMContentLoaded", function() {
         // Handle Reserveren button click
         if (target.textContent === 'Annuleren') {
           Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Weet je zeker dat je wil annuleren?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, cancel it!'
+            confirmButtonText: 'Ja, annuleren!'
           }).then((result) => {
             if (result.isConfirmed) {
               Swal.fire(
                 'Cancelled!',
-                'Your reservation has been cancelled.',
+                'Je verlenging is geannuleerd.',
                 'success'
               );
               // Add any further actions here after cancellation confirmation
@@ -97,18 +96,17 @@ document.addEventListener("DOMContentLoaded", function() {
         // Handle Uitlenen button click
         if (target.textContent === 'Annuleren') {
           Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Weet je zeker dat je de reservatie wilt annuleren?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, cancel it!'
+            confirmButtonText: 'Ja, annuleren!'
           }).then((result) => {
             if (result.isConfirmed) {
               Swal.fire(
                 'Cancelled!',
-                'Your reservation has been cancelled.',
+                'Je reservatie is geannuleerd.',
                 'success'
               );
               // Add any further actions here after cancellation confirmation
@@ -118,18 +116,17 @@ document.addEventListener("DOMContentLoaded", function() {
           });
         } else {
           Swal.fire({
-            title: 'Confirm Uitlenen?',
-            text: "Do you want to lend this item?",
+            title: 'Weet je zeker dat je het item wil uitlenen?',
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, lend it!'
+            confirmButtonText: 'Ja, leen het uit!'
           }).then((result) => {
             if (result.isConfirmed) {
               Swal.fire(
-                'Lent!',
-                'The item has been lent.',
+                'Uitgeleend!',
+                'Het item is uitgeleend.',
                 'success'
               );
               // Add any further actions here after lending confirmation
