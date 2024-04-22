@@ -8,6 +8,7 @@
   <link rel = "stylesheet" href = "../bootstrap/css/bootstrap.min.css" />
   <link rel = "stylesheet" href = "../css/styles.css" />
   <link rel = "stylesheet" href = "../css/catalogus.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
   <?php include('header.php')?>
@@ -141,10 +142,13 @@
   <footer>
     <div class="pagination">
       <a href="#">&laquo;</a>
-      <a href="#">1</a>
-      <a href="#" class="active">2</a>
+      <a href="#">&lsaquo;</a>
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
       <a href="#">3</a>
-      <a href="#">... 9</a>
+      <a href="#">...</a>
+      <a href="#">9</a>
+      <a href="#">&rsaquo;</a>
       <a href="#">&raquo;</a>
     </div>
   </footer>

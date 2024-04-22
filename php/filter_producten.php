@@ -37,5 +37,4 @@ if ($categorie !== '') {
 }
 
 
-
-$conn->close();
+?>
