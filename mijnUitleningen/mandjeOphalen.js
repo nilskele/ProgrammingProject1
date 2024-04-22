@@ -18,13 +18,16 @@ document.addEventListener("DOMContentLoaded", function() {
           // Format Uitleendatum to 'dd/mm/yyyy' format
           const uitleendatumFormatted = formatDate(row.datumBeschikbaar);
 
+          // Determine button classes based on possession
+          const buttonClass = row.in_bezit === 1 ? 'reserveren-button' : 'uitlenen-button';
+
           // Populate the table row with data
           newRow.innerHTML = `
             <td>${row.groep_naam}</td>
             <td>${uitleendatumFormatted}</td>
             <td>${getTerugbrengDatum(row.datumBeschikbaar)}</td>
             <td><button class="melden-button">Melden</button></td>
-            <td><button class="reserveren-button" style="background-color: ${row.in_bezit === 1 ? 'red' : 'green'}; color: white;">${row.in_bezit === 1 ? 'Annuleren' : 'Verlengen'}</button></td>
+            <td><button class="${buttonClass}" style="background-color: ${row.in_bezit === 1 ? 'green' : 'red'}; color: white;">${row.in_bezit === 1 ? 'Verlengen' : 'Annuleren'}</button></td>
           `;
 
           // Append the new row to the table body
@@ -82,13 +85,58 @@ document.addEventListener("DOMContentLoaded", function() {
                 'success'
               );
               // Add any further actions here after cancellation confirmation
-              target.textContent = 'Uitlenen';
+              target.textContent = 'Verlengen';
               target.style.backgroundColor = 'green';
             }
           });
         } else {
           target.textContent = 'Annuleren';
           target.style.backgroundColor = 'red';
+        }
+      } else if (target.classList.contains('uitlenen-button')) {
+        // Handle Uitlenen button click
+        if (target.textContent === 'Annuleren') {
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, cancel it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Cancelled!',
+                'Your reservation has been cancelled.',
+                'success'
+              );
+              // Add any further actions here after cancellation confirmation
+              target.textContent = 'Uitlenen';
+              target.style.backgroundColor = 'green';
+            }
+          });
+        } else {
+          Swal.fire({
+            title: 'Confirm Uitlenen?',
+            text: "Do you want to lend this item?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, lend it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Lent!',
+                'The item has been lent.',
+                'success'
+              );
+              // Add any further actions here after lending confirmation
+              target.textContent = 'Annuleren';
+              target.style.backgroundColor = 'red';
+            }
+          });
         }
       }
     }
