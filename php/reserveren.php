@@ -7,7 +7,7 @@
     <link rel = "stylesheet" href = "../bootstrap/css/bootstrap.min.css" />
     <link rel = "stylesheet" href = "../css/styles.css" />
     <link rel = "stylesheet" href = "../css/reserveren.css" />
-<link rel="stylesheet" href="../fontawesome/css/all.css" /> 
+
 <script src="../reserveren.js"></script>
 </head>
 <body>
@@ -27,6 +27,7 @@
     
     
        
+       <i class="fa-solid fa-arrow-left-long">  <a class = "terug" href = "catalogus.php" > terug </a>
 
 <div class="main-container">
 <section id="proditails" class="section-p1">
@@ -85,29 +86,21 @@
        <option>Vrije tijd</option>
        <option>Andere</option>
      </select>
-      <h6 class="h6" >aantal</h6>
-<div class="antaal-dd">
+     <input type="number" value="1" />
+       <p class="aantal">Max aantal</p>
     
-     <input type="number" value="1" class="aantal"  />
-      <p class="max">max antaal:4</p>
-   </div>    
-   
     </div>
     </div>
-  
-    
-   
-    
 
    </div>
+   
  </section>
  </div>
- <div class="btn">
- <button class="reserveren-btn" >Nu reserveren</button>
- <a class = "verder-btn" href = "catalogus.php"> Verderzoeken </a>
+ <div class="btt">
+ <button class="btnn" >Nu reserveren</button>
  </div>
  
-     
+     <a class = "vereder" href = "catalogus.php"> Verderzoeken </a>
    
 </body>  
 </html>
