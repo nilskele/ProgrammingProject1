@@ -105,28 +105,53 @@
         <input type="text" name="Zoeken" placeholder="Zoeken...">
       </form>
       <div class="buttons-container">
-        <a href="/kit_toevoegen"><button>Kit toevoegen</button></a>
-        <a href="/product_toevoegen"><button>Product toevoegen</button></a>
+        <a href="../php/kit_toevoegen"><button>Kit toevoegen</button></a>
+        <a href="../php/product_toevoegen"><button>Product toevoegen</button></a>
       </div>
     </div>
 
-  <div class="calender">
+    <div class="calender">
   <div class="header_kalender">
-  <button class="arrow_prev"><img src="../images/black_arrow_l.png" alt="Previous"></button>
+    <button class="arrow_prev"><img src="../images/black_arrow_l.png" alt="Previous"></button>
     <h2>WEEK DATUM HIER</h2>
     <button class="arrow_next"><img src="../images/black_arrow_r.png" alt="Next"></button>
   </div>
   <div class="container_kalender">
-    <div class="dag">Maandag</div>
-    <div class="dag">Dinsdag</div>
-    <div class="dag">Woensdag</div>
-    <div class="dag">Donderdag</div>
-    <div class="dag">Vrijdag</div>
-    <div class="dag">Zaterdag</div>
-    <div class="dag">Zondag</div>
+    <!-- Kolom voor data -->
+    <div class="data_column">
+      <?php
+      $data = [
+        'WEEK 26',
+        'CANON M50 1',
+        'CANON M50 1'
+      ];
+
+      // Toon data in de kolom
+      foreach ($data as $item) {
+        echo '<div class="item">
+                <div class="item_content">' . $item . '</div>
+                <div class="item_buttons">
+                  <button class="eye_button">👁️</button>
+                  <button class="edit_button">✏️</button>
+                  <button class="delete_button">❌</button>
+                </div>
+                <button class="reserven_button">Reserveren</button>
+              </div>';
+      }
+      ?>
+    </div>
+    <!-- Kolommen voor dagen -->
+    <div class="days_row">
+      <div class="dag">Maandag</div>
+      <div class="dag">Dinsdag</div>
+      <div class="dag">Woensdag</div>
+      <div class="dag">Donderdag</div>
+      <div class="dag">Vrijdag</div>
+      <div class="dag">Zaterdag</div>
+      <div class="dag">Zondag</div>
+    </div>
   </div>
 </div>
 
-</div>
 
 
