@@ -73,7 +73,7 @@
 
 
    <div class="single-pro-details">
-    <h6 class="cc">canon></h6>
+    <h6 class="cc">Canon></h6>
      <h3 class="canon">Canon M50</h3>
      
      
@@ -99,7 +99,7 @@
  </div>
  <div class="btns">
  <button class="reserveren-btn" >Nu reserveren</button>
-      <a class = "verder" href = "catalogus.php"> Verderzoeken </a>
+      <a class = "verder" href = "catalogus.php"> Verder zoeken </a>
 
  </div>
  
