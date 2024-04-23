@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", function() {
           const newRow = document.createElement('tr');
 
           // Format Uitleendatum to 'dd/mm/yyyy' format
-          const uitleendatumFormatted = formatDate(row.datumBeschikbaar);
+          const uitleendatumFormatted = formatDate(row.Uitleendatum);
+          const terugbrengDatumFormatted = formatDate(row.terugbrengDatum);
 
           // Determine button classes based on possession
           const buttonClass = row.in_bezit === 1 ? 'reserveren-button' : 'uitlenen-button';
@@ -25,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function() {
           newRow.innerHTML = `
             <td>${row.groep_naam}</td>
             <td>${uitleendatumFormatted}</td>
-            <td>${getTerugbrengDatum(row.datumBeschikbaar)}</td>
+            <td>${terugbrengDatumFormatted}</td>
             <td><button class="melden-button">Melden</button></td>
-            <td><button class="${buttonClass}" style="background-color: ${row.in_bezit === 1 ? 'green' : 'red'}; color: white;">${row.in_bezit === 1 ? 'Verlengen' : 'Annuleren'}</button></td>
+            <td><button class="${buttonClass}" data-id="${row.product_id}" style="background-color: ${row.in_bezit === 1 ? 'green' : 'red'}; color: white;">${row.in_bezit === 1 ? 'Verlengen' : 'Annuleren'}</button></td>
           `;
 
           // Append the new row to the table body
@@ -45,12 +46,30 @@ document.addEventListener("DOMContentLoaded", function() {
     return terugbrengDatumDate.toLocaleDateString('en-NL');
   }
 
-  // Function to calculate the terugbrengdatum (assumed 5 days after datumBeschikbaar)
-  function getTerugbrengDatum(datumBeschikbaar) {
-    const datumBeschikbaarDate = new Date(datumBeschikbaar);
-    const terugbrengDatumDate = new Date(datumBeschikbaarDate);
-    terugbrengDatumDate.setDate(terugbrengDatumDate.getDate() + 5); // Assuming 5 days lending period
-    return terugbrengDatumDate.toLocaleDateString('en-NL'); // Format the date as per your requirement
+  function updateDatabase(id, action) {
+    // Calculate the number of days to add or subtract based on the action
+    const daysToAdd = action === 'verlengen' ? 7 : (action === 'annuleren' ? -7 : 0);
+  
+    // Send a POST request to updateDatabase.php with the item ID and action
+    fetch('updateDatabase.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id, action, daysToAdd }), // Include daysToAdd in the request body
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Check if the update was successful
+      if (data.success) {
+        // If successful, fetch and populate the table with updated data
+        fetchDataAndPopulateTable();
+      } else {
+        // If not successful, display an error message
+        console.error('Error updating database:', data.message);
+      }
+    })
+    .catch(error => console.error('Error updating database:', error));
   }
 
   // Call the function to fetch data and populate the table when the page loads
@@ -86,6 +105,7 @@ document.addEventListener("DOMContentLoaded", function() {
               // Add any further actions here after cancellation confirmation
               target.textContent = 'Verlengen';
               target.style.backgroundColor = 'green';
+              updateDatabase(id, action);
             }
           });
         } else {
@@ -112,6 +132,7 @@ document.addEventListener("DOMContentLoaded", function() {
               // Add any further actions here after cancellation confirmation
               target.textContent = 'Uitlenen';
               target.style.backgroundColor = 'green';
+              updateDatabase(id, action);
             }
           });
         } else {
@@ -132,6 +153,7 @@ document.addEventListener("DOMContentLoaded", function() {
               // Add any further actions here after lending confirmation
               target.textContent = 'Annuleren';
               target.style.backgroundColor = 'red';
+              updateDatabase(id, action);
             }
           });
         }

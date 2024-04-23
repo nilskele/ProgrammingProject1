@@ -9,7 +9,7 @@ mysqli_select_db($conn, '2324PROGPRGR02') or die('Error selecting the database')
 
 
 if (true) {
-  $stmt = $conn->prepare("SELECT DISTINCT MIJN_LENINGEN.in_bezit, PRODUCT.datumBeschikbaar, GROEP.naam AS groep_naam
+  $stmt = $conn->prepare("SELECT DISTINCT MIJN_LENINGEN.in_bezit, MIJN_LENINGEN.Uitleendatum, MIJN_LENINGEN.terugbrengDatum, GROEP.naam AS groep_naam, PRODUCT.product_id
   FROM MIJN_LENINGEN
   INNER JOIN PRODUCT ON MIJN_LENINGEN.product_id_fk = PRODUCT.product_id
   INNER JOIN GROEP ON PRODUCT.groep_id = GROEP.groep_id

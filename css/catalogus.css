@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-.zoekBalk {
-  margin-top: 40px;
-}
-
 .img-container {
   background-color: #f0f0f0;
   display: flex;
