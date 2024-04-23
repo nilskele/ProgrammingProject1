@@ -18,7 +18,7 @@
 
 
 <section class="up" > 
-  <a class = "terug-btn" href = "catalogus.php" > &#8592terug </a>
+  <a class = "terug" href = "catalogus.php" > &#8592terug </a>
     <h1  id="title">Reserveren</h1>
    
 
@@ -27,7 +27,6 @@
     
     
        
-       <i class="fa-solid fa-arrow-left-long">  <a class = "terug" href = "catalogus.php" > terug </a>
 
 <div class="main-container">
 <section id="proditails" class="section-p1">
@@ -86,9 +85,11 @@
        <option>Vrije tijd</option>
        <option>Andere</option>
      </select>
-     <input type="number" value="1" />
-       <p class="aantal">Max aantal</p>
-    
+<h6 class="h6">aantal</h6>
+     <section class="num">
+     <input type="number" value="1" class="value" />
+       <p class="aantal">Max aantal:4</p>
+</section>
     </div>
     </div>
 
@@ -96,11 +97,12 @@
    
  </section>
  </div>
- <div class="btt">
- <button class="btnn" >Nu reserveren</button>
+ <div class="btns">
+ <button class="reserveren-btn" >Nu reserveren</button>
+      <a class = "verder" href = "catalogus.php"> Verderzoeken </a>
+
  </div>
  
-     <a class = "vereder" href = "catalogus.php"> Verderzoeken </a>
    
 </body>  
 </html>
