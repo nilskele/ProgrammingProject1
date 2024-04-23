@@ -48,7 +48,7 @@
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-            <button class="btn btn-secondary">+<i class="fas fa-shopping-cart"></i></button>
+            <button class="btn btn-secondary" href="reserveren.php">+<i class="fas fa-shopping-cart" href="reserveren.php" ></i></button>
           </div>
         </div>
       </div>
@@ -124,7 +124,7 @@
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-            <button class="btn btn-secondary">+<i class="fas fa-shopping-cart"></i></button>
+            <button class="btn btn-secondary" href="reserveren.php">+<i class="fas fa-shopping-cart" href="reserveren.php" ></i></button>
           </div>
         </div>
       </div>

@@ -34,19 +34,13 @@
   align-items: center;
 }
 #title {
-  padding-top: 30px;
+  padding-top: 70px;
   text-align: center;
 }
-.terug {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-}
-.terug {
-  font-family: "Roboto";
-}
 
-.btnn {
+
+
+.reserveren-btn {
   background-color: rgb(244, 162, 10);
   width: 270px;
   height: 40px;
@@ -62,25 +56,15 @@ a {
 .vereder {
   font-family: "Roboto";
 }
-.terug {
-  font-family: "Roboto";
-}
 
-.btt {
+.btn {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 0px;
+  
 }
 
-.btnn {
-  margin-left: 600px;
-  margin-bottom: 20px;
-}
-.vereder {
-  margin-left: 680px;
-}
 
 .canon{
   font-weight: bold;
@@ -90,4 +74,58 @@ a {
 }
 .main-container{
   border: solid 1px black;
+}
+.aantal{
+  padding-top: 0%;
+  width: 40px;
+  height: 22px;
+}
+select{
+  padding-bottom: 2px;
+ 
+}
+.antaal-dd{
+
+ display: flex;
+  justify-content: left;
+  align-items: left;
+  margin-top: 0px;
+  
+}
+
+.verder-btn{
+  text-decoration: none;
+
+  color: #131414;
+  font-weight: bold;
+}
+.terug-btn {
+  font-family: "Roboto";
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  text-decoration: none;
+  color: #131414;
+  font-weight: bold;
+}
+.max{
+  font-weight: bold;
+  align-items: right;
+}
+.h6{
+  padding-top: 124px;
+}
+.up{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+  #title{
+
+  padding-right: 710px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }

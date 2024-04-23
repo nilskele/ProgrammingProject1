@@ -9,16 +9,6 @@
     <link rel = "stylesheet" href = "../css/reserveren.css" />
 <link rel="stylesheet" href="../fontawesome/css/all.css" /> 
 <script src="../reserveren.js"></script>
-<style>
-    #title {
-        padding-top: 60px;
-        text-align: center;
-    }
-    .terug{
-  font-family:"Roboto";
-}
-
-</style>
 </head>
 <body>
 <div id = "container">
@@ -27,16 +17,17 @@
     ?>
 
 
-<section >
+<section class="up" > 
+  <a class = "terug-btn" href = "catalogus.php" > &#8592terug </a>
     <h1  id="title">Reserveren</h1>
    
 
-  </section>
-    <div class="terug"> 
-       
-       <i class="fa-solid fa-arrow-left-long">  <a class = "terug" href = "catalogus.php" > terug </a>
 
-</div>
+  </section>
+    
+    
+       
+
 <div class="main-container">
 <section id="proditails" class="section-p1">
      
@@ -86,7 +77,7 @@
      <h3 class="canon">Canon M50</h3>
      
      
-     <select>
+     <select class="reden" >
        <option>Reden</option>
        <option>Project</option>
        <option>Eindproject</option>
@@ -94,9 +85,13 @@
        <option>Vrije tijd</option>
        <option>Andere</option>
      </select>
-     <input type="number" value="1" />
-       <p class="aantal">Max aantal</p>
+      <h6 class="h6" >aantal</h6>
+<div class="antaal-dd">
     
+     <input type="number" value="1" class="aantal"  />
+      <p class="max">max antaal:4</p>
+   </div>    
+   
     </div>
     </div>
   
@@ -107,11 +102,12 @@
    </div>
  </section>
  </div>
- <div class="btt">
- <button class="btnn" >Nu reserveren</button>
+ <div class="btn">
+ <button class="reserveren-btn" >Nu reserveren</button>
+ <a class = "verder-btn" href = "catalogus.php"> Verderzoeken </a>
  </div>
  
-     <a class = "vereder" href = "catalogus.php"> Verderzoeken </a>
+     
    
 </body>  
 </html>
