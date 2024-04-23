@@ -25,9 +25,9 @@ $(document).ready(function () {
                                 <p> Beschikbaar vanaf: ${item.datumBeschikbaar}</p>
                             </div>
                             <p class="card-text">
-                                Beschrijving: ${item.beschrijving_naam}
+                                Beschrijving: ${item.beschrijving_naam || "Geen beschrijving"}
                                 <br>
-                                Opmerking: toestel ${item.opmerkingen}
+                                Opmerking: ${item.opmerkingen || "Geen opmerkingen"}
                             </p>
                         </div>
                         <div class="icon">
