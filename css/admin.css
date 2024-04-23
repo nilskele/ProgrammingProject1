@@ -17,7 +17,9 @@
     margin: 1em;
 }
 .adminAccepteren{
-    background-color: #a39c9b;
+    background-color: white;
+    border: 1px solid #cecbcb;
+    box-shadow: #cecbcb 6px 6px;
     padding: 2em;
     border-radius: 2em;
     margin-left: -1.8em;
@@ -129,16 +131,22 @@ h1 {
 
 }
 #smallInOut1{
-    background-color: #a39c9b;
+    background-color: white;
+    border: 1px solid #cecbcb;
+    box-shadow: #cecbcb 6px 6px;
     width: 50%;
     border-radius: 1em;
+    margin-top: 3em;
     margin-right: 1em;
     padding: 1em;
     
 }
 #smallInOut2{
-    background-color: #a39c9b;
+    background-color: white;
+    border: 1px solid #cecbcb;
+    box-shadow: #cecbcb 6px 6px;
     width: 50%;
+    margin-top: 3em;
     border-radius: 1em;
     padding: 1em;
     margin-left: 1em;
@@ -157,6 +165,8 @@ h1 {
 }
 .inOutProduct{
     background-color: white;
+    border:1px solid red;
+    border-radius: 2em;
     display: flex;
     margin: 1em;
     padding: 1em 1em 0em 1em;
