@@ -2,14 +2,13 @@
 include('../database.php'); // Include your database connection code here
 
 // Check if the POST request contains the necessary data
-if (isset($_POST['id']) && isset($_POST['action']) && isset($_POST['daysToAdd'])) {
-    // Get the item ID, action, and daysToAdd from the POST request
+if (isset($_POST['id']) && isset($_POST['daysToAdd'])) {
+    // Get the item ID and daysToAdd from the POST request
     $id = $_POST['id'];
-    $action = $_POST['action'];
     $daysToAdd = $_POST['daysToAdd'];
 
-    // Perform the database update based on the action
-    $query = "UPDATE MIJN_LENINGEN SET terugbrengDatum = DATE_ADD(terugbrengDatum, INTERVAL $daysToAdd DAY) WHERE id = $id";
+    // Perform the database update
+    $query = "UPDATE MIJN_LENINGEN SET terugbrengDatum = DATE_ADD(terugbrengDatum, INTERVAL -7 DAY) WHERE product_id_fk = 2";
 
     // Execute the query
     $result = mysqli_query($connection, $query);

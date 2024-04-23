@@ -47,16 +47,22 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function updateDatabase(id, action) {
-    // Calculate the number of days to add or subtract based on the action
-    const daysToAdd = action === 'verlengen' ? 7 : (action === 'annuleren' ? -7 : 0);
+    let daysToAdd = 0;
   
+    // Calculate the number of days to add or subtract based on the action
+    if (action === 'verlengen') {
+      daysToAdd = 7;
+    } else if (action === 'annuleren') {
+      daysToAdd = -7;
+    }
+    
     // Send a POST request to updateDatabase.php with the item ID and action
     fetch('updateDatabase.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ id, action, daysToAdd }), // Include daysToAdd in the request body
+      body: JSON.stringify({ id, daysToAdd }), // Include daysToAdd in the request body
     })
     .then(response => response.json())
     .then(data => {
@@ -70,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     })
     .catch(error => console.error('Error updating database:', error));
-  }
+  }  
 
   // Call the function to fetch data and populate the table when the page loads
   fetchDataAndPopulateTable();
@@ -81,6 +87,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Check if the clicked element is a button
     if (target.tagName === 'BUTTON') {
+      const id = target.getAttribute('data-id');
+      const action = target.textContent.trim().toLowerCase();
       // Handle button clicks based on class name
       if (target.classList.contains('melden-button')) {
         // Handle Melden button click
@@ -109,8 +117,26 @@ document.addEventListener("DOMContentLoaded", function() {
             }
           });
         } else {
-          target.textContent = 'Annuleren';
-          target.style.backgroundColor = 'red';
+          Swal.fire({
+            title: 'Weet je zeker dat je het item wil verlengen?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ja, verleng het!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Verlenged!',
+                'Het item is verlengd.',
+                'success'
+              );
+              // Add any further actions here after lending confirmation
+              target.textContent = 'Annuleren';
+              target.style.backgroundColor = 'red';
+              updateDatabase(id, action);
+            }
+          });
         }
       } else if (target.classList.contains('uitlenen-button')) {
         // Handle Uitlenen button click

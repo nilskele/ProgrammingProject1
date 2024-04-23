@@ -105,8 +105,8 @@
         <input type="text" name="Zoeken" placeholder="Zoeken...">
       </form>
       <div class="buttons-container">
-        <a href="../php/kit_toevoegen"><button>Kit toevoegen</button></a>
-        <a href="../php/product_toevoegen"><button>Product toevoegen</button></a>
+        <a href="../php/kit_toevoegen.php"><button>Kit toevoegen</button></a>
+        <a href="../php/product_toevoegen.php"><button>Product toevoegen</button></a>
       </div>
     </div>
 
