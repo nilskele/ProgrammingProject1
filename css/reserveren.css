@@ -1,98 +1,121 @@
 .section-p1 {
-  padding: 100px 200px;
-  font-family: "Roboto";
-}
-#proditails {
-  display: flex;
-  margin-top: 20px;
-}
-#proditails .single-pro-img {
-  width: 40%;
-  margin-right: 70px;
-  margin-left: 150px;
-}
-.small-img-group {
-  display: flex;
-  justify-content: space-between;
-}
-
-.small-img-col {
-  flex-basis: 24%;
-  cursor: pointer;
-}
-#proditails .single-pro-details {
-  width: 50%;
-  padding-top: 20px;
-}
-.small-img-col {
-  border: 1px solid #131414;
-  margin: 15px 0;
-}
-.MainImg {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#title {
-  padding-top: 30px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
- 
-  margin-top: 10px;
-}
-.terug {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-}
-.terug {
-  font-family: "Roboto";
-}
-
-.btnn {
-  background-color: rgb(244, 162, 10);
-  width: 270px;
-  height: 40px;
-  border-radius: 7px;
-  font-family: "Roboto";
-  font-weight: bold;
-}
-
-a {
-  color: #131414;
-}
-
-.vereder {
-  font-family: "Roboto";
-  color: #131414;
-  font-weight: bold;
-  text-decoration: none;
-}
-.terug {
-  font-family: "Roboto";
-}
-
-.btn {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    padding: 100px 200px;
+    font-family: "Roboto";
+  }
+  #proditails {
+    display: flex;
+    margin-top: 20px;
+  }
+  #proditails .single-pro-img {
+    width: 40%;
+    margin-right: 70px;
+    margin-left: 150px;
+  }
+  .small-img-group {
+    display: flex;
+    justify-content: space-between;
+  }
   
-}
-
-
-.canon{
-  font-weight: bold;
-}
-.cc{
-  color: gray;
-}
-.main-container{
-  border: solid 1px black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0px;
-}
+  .small-img-col {
+    flex-basis: 24%;
+    cursor: pointer;
+  }
+  #proditails .single-pro-details {
+    width: 50%;
+    padding-top: 20px;
+  }
+  .small-img-col {
+    border: 1px solid #131414;
+    margin: 15px 0;
+  }
+  .MainImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #title {
+    padding-top: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+    margin-top: 10px;
+  }
+  
+  .reserveren-btn {
+    background-color: rgb(244, 162, 10);
+    width: 270px;
+    height: 40px;
+    border-radius: 7px;
+    font-family: "Roboto";
+    font-weight: bold;
+  }
+  
+  a {
+    color: #131414;
+  }
+  
+  .verder {
+    font-family: "Roboto";
+    color: #131414;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .terug {
+    font-family: "Roboto";
+    text-decoration: none;
+  }
+  
+  .btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+  }
+  
+  .canon {
+    font-weight: bold;
+  }
+  .cc {
+    color: gray;
+  }
+  .main-container {
+    border: solid 1px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+  }
+  .terug{
+    text-decoration: none;
+  
+  }
+  .up{
+    display: flex;
+   justify-content: space-between;
+    align-items: center;
+    padding-top: 50px;
+    padding-right: 705px;
+  }
+  .value{
+    height: 25px;
+    width: 35px;
+    
+  
+  }
+  .num{
+    display: flex;
+   flex-direction: row;
+    align-items: center;
+    padding-top: 115px;
+  }
+  .aantal{
+    padding-top: 15px;
+    font-weight: bold;
+    padding-left: 20px;
+  }
+  
+  
+  

@@ -40,7 +40,7 @@
           </div>
           <br>
           <div class="icon">
-            <h6 class="aantal">Aantal aanwezig: 5</h6>
+            <h6 class="aantal">antal aanwezig: 5</h6>
             <select class="available">
               <option value="1">1</option>
               <option value="2">2</option>
@@ -48,7 +48,9 @@
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-            <button class="btn btn-secondary"  >+<i class="fas fa-shopping-cart" ></i></button>
+            <a class="btn btn-secondary" href="reserveren.php">+<i class="fas fa-shopping-cart"></i></a>
+
+            
           </div>
         </div>
       </div>
@@ -86,7 +88,7 @@
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-            <button class="btn btn-secondary">+<i class="fas fa-shopping-cart"></i></button>
+            <a class="btn btn-secondary">+<i class="fas fa-shopping-cart"></i></a>
           </div>
         </div>
       </div>
@@ -124,7 +126,7 @@
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-            <button class="btn btn-secondary" href="reserveren.php">+<i class="fas fa-shopping-cart" href="reserveren.php" ></i></button>
+            <a class="btn btn-secondary">+<i class="fas fa-shopping-cart"></i></a>
           </div>
         </div>
       </div>
