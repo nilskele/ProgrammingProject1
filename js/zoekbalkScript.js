@@ -39,8 +39,6 @@ $(function () {
                             "<strong>Beschrijving:</strong> " + product.beschrijving_naam + "<br>";
                         resultHtml +=
                             "<strong>Datum beschikbaar:</strong> " + product.datumBeschikbaar + "<br>";
-                        resultHtml +=
-                            "<strong>Zichtbaar:</strong> " + product.zichtbaar + "<br>";
                         resultHtml += "-------------------------<br>";
                         aantalResultaten++;
                     });
