@@ -18,7 +18,8 @@ if ($zoekterm !== '%') {
              INNER JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id
              INNER JOIN BESCHRIJVING ON GROEP.beschrijving_id_fk = BESCHRIJVING.besch_id
     
-        WHERE GROEP.naam LIKE ?
+        WHERE GROEP.naam LIKE ? AND PRODUCT.zichtbaar = true AND PRODUCT.isUitgeleend = false
+
         GROUP BY GROEP.naam, MERK.naam, PRODUCT.opmerkingen, BESCHRIJVING.naam");
     $stmt->bind_param("s", $zoekterm);
 
@@ -42,6 +43,10 @@ if ($zoekterm !== '%') {
              INNER JOIN MERK ON GROEP.merk_id_fk = MERK.merk_id
              INNER JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id
              INNER JOIN BESCHRIJVING ON GROEP.beschrijving_id_fk = BESCHRIJVING.besch_id
+             
+    WHERE PRODUCT.zichtbaar = true AND PRODUCT.isUitgeleend = false
+
+
     GROUP BY GROEP.naam, MERK.naam, PRODUCT.opmerkingen, BESCHRIJVING.naam");
 
     $stmt->execute();
