@@ -21,6 +21,10 @@
 
 }
 
+.merk {
+  text-decoration: underline;
+}
+
 .card-title {
   display: flex;
   justify-content: space-between;

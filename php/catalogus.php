@@ -27,7 +27,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <p>Canon></p>
+          <p class="merk">Canon></p>
             <div class="card-title">
               <h2>Canon M50</h2>
               <p> Beschikbaar vanaf: 11/03/2024</p>
@@ -67,7 +67,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <p>Canon></p>
+          <p class="merk">Canon></p>
             <div class="card-title">
               <h2>Canon EOS D700</h2>
               <p> Beschikbaar vanaf: 11/03/2024</p>
@@ -105,7 +105,7 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <p>Canon></p>
+            <p class="merk">Canon></p>
             <div class="card-title">
               <h2>Canon XA35</h2>
               <p> Beschikbaar vanaf: 11/03/2024</p>
