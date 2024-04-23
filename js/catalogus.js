@@ -19,7 +19,7 @@ $(document).ready(function () {
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <p>${item.merk_naam}</p>
+                            <p class="merk">${item.merk_naam}></p>
                             <div class="card-title">
                                 <h2>${item.groep_naam}</h2>
                                 <p> Beschikbaar vanaf: ${item.datumBeschikbaar}</p>
@@ -27,7 +27,7 @@ $(document).ready(function () {
                             <p class="card-text">
                                 Beschrijving: ${item.beschrijving_naam}
                                 <br>
-                                Opmerking: toestel ${item.opmerkingen}
+                                Opmerking: ${item.opmerkingen}
                             </p>
                         </div>
                         <div class="icon">
