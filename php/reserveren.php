@@ -7,18 +7,8 @@
     <link rel = "stylesheet" href = "../bootstrap/css/bootstrap.min.css" />
     <link rel = "stylesheet" href = "../css/styles.css" />
     <link rel = "stylesheet" href = "../css/reserveren.css" />
-<link rel="stylesheet" href="../fontawesome/css/all.css" /> 
-<script src="../reserveren.js"></script>
-<style>
-    #title {
-        padding-top: 60px;
-        text-align: center;
-    }
-    .terug{
-  font-family:"Roboto";
-}
 
-</style>
+<script src="../reserveren.js"></script>
 </head>
 <body>
 <div id = "container">
@@ -27,16 +17,17 @@
     ?>
 
 
-<section >
+<section class="up" > 
+  <a class = "terug" href = "catalogus.php" > &#8592terug </a>
     <h1  id="title">Reserveren</h1>
    
 
-  </section>
-    <div class="terug"> 
-       
-       <i class="fa-solid fa-arrow-left-long">  <a class = "terug" href = "catalogus.php" > terug </a>
 
-</div>
+  </section>
+    
+    
+       
+
 <div class="main-container">
 <section id="proditails" class="section-p1">
      
@@ -82,11 +73,11 @@
 
 
    <div class="single-pro-details">
-    <h6 class="cc">canon></h6>
+    <h6 class="cc">Canon></h6>
      <h3 class="canon">Canon M50</h3>
      
      
-     <select>
+     <select class="reden" >
        <option>Reden</option>
        <option>Project</option>
        <option>Eindproject</option>
@@ -94,24 +85,24 @@
        <option>Vrije tijd</option>
        <option>Andere</option>
      </select>
-     <input type="number" value="1" />
-       <p class="aantal">Max aantal</p>
-    
+<h6 class="h6">aantal</h6>
+     <section class="num">
+     <input type="number" value="1" class="value" />
+       <p class="aantal">Max aantal:4</p>
+</section>
     </div>
     </div>
-  
-    
-   
-    
 
    </div>
+   
  </section>
  </div>
- <div class="btt">
- <button class="btnn" >Nu reserveren</button>
+ <div class="btns">
+ <button class="reserveren-btn" >Nu reserveren</button>
+      <a class = "verder" href = "catalogus.php"> Verder zoeken </a>
+
  </div>
  
-     <a class = "vereder" href = "catalogus.php"> Verderzoeken </a>
    
 </body>  
 </html>

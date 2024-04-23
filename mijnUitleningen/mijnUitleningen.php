@@ -33,6 +33,5 @@
   </div>
 
   <script src="mandjeOphalen.js"></script>
-  <!-- <script src="mijnUitleningen.js"></script> -->
 </body>
 </html>
