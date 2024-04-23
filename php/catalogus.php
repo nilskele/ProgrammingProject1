@@ -13,16 +13,10 @@
 <body>
   <?php include('header.php')?>
   
-  <br>
-  <br>
-  <br>
-  <br>
-  <div class="zoekBalk">
+    <div class="zoekBalk">
     <?php include('zoekbalk.php')?>
   </div>
   
-  <br>
-  <br>
   <div class="resultaten"></div>
   <div class="product">
   <div class="container">
@@ -152,6 +146,7 @@
       <a href="#">&raquo;</a>
     </div>
   </footer>
+  <br>
   <script src="../js/catalogus.js"></script>
 </body>
 </html>
