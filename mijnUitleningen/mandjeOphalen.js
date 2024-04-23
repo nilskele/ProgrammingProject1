@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function formatDate(dateString) {
     const datumBeschikbaarDate = new Date(dateString);
     const terugbrengDatumDate = new Date(datumBeschikbaarDate);
-    terugbrengDatumDate.setDate(terugbrengDatumDate.getDate()); // Assuming 5 days lending period
+    terugbrengDatumDate.setDate(terugbrengDatumDate.getDate());
     return terugbrengDatumDate.toLocaleDateString('en-NL');
   }
 
