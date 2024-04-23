@@ -62,23 +62,26 @@ $(document).ready(function () {
   });
 
   $("#categorie").change(function () {
-      var selectedCategorie = $(this).val();
-      aantalResultaten = 0;
-      if (selectedCategorie !== "all") {
-          $.ajax({
-              url: "../php/filter_producten.php",
-              type: "GET",
-              data: {
-                  categorie: selectedCategorie,
-              },
-              dataType: "json",
-              success: toonResultaten,
-              error: function () {
-                  alert("Er is een fout opgetreden bij het filteren van de producten.(categorie)");
-              },
-          });
-      } else {
-          $(".resultaten").empty();
-      }
-  });
+    var selectedCategorie = $(this).val();
+    if (selectedCategorie !== "all") {
+        aantalResultaten = 0;
+        $.ajax({
+            url: "../php/filter_producten.php",
+            type: "GET",
+            data: {
+                categorie: selectedCategorie
+            },
+            dataType: "json",
+            success: function (data) {
+                toonResultaten(data);
+            },
+            error: function () {
+                alert("Er is een fout opgetreden bij het zoeken.(categorie)");
+            }
+        });
+    } else {
+        $(".resultaten").empty();
+    }
+});
+
 });
