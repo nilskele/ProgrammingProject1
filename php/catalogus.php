@@ -35,7 +35,7 @@
             <p class="card-text">
               Beschrijving: Canon M50 fototoestel
               <br>
-              Opmerkong: toestel met XLR aansluiting
+              Opmerking: toestel met XLR aansluiting
             </p>
           </div>
           <br>
@@ -75,7 +75,7 @@
             <p class="card-text">Beschrijving: Canon EOS fototoestel
               <br>
 
-              Opmerkong: toestel met USB-aansluiting
+              Opmerking: toestel met USB-aansluiting
             </p>
           </div>
           <br>
@@ -113,7 +113,7 @@
             <p class="card-text">Beschrijving: Canon XA35 videocamera
               <br>
 
-              Opmerkong: toestel met USB-aansluiting
+              Opmerking: toestel met USB-aansluiting
             </p>
           </div>
           <br>
