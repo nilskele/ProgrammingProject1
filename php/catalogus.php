@@ -17,125 +17,13 @@
     <?php include('zoekbalk.php')?>
   </div>
   
-  <div class="resultaten"></div>
-  <div class="product">
-  <div class="container">
-    <div class="card">
-      <div class="row">
-        <div class="col-md-4 img-container">
-          <img src="../images/img1.jpg" class="img-fluid">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-          <p class="merk">Canon></p>
-            <div class="card-title">
-              <h2>Canon M50</h2>
-              <p> Beschikbaar vanaf: 11/03/2024</p>
-            </div>
-            <p class="card-text">
-              Beschrijving: Canon M50 fototoestel
-              <br>
-              Opmerking: toestel met XLR aansluiting
-            </p>
-          </div>
-          <br>
-          <div class="icon">
-            <h6 class="aantal">antal aanwezig: 5</h6>
-            <select class="available">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <a class="btn btn-secondary" href="reserveren.php">+<i class="fas fa-shopping-cart"></i></a>
+  <div class="resultaten">
+    
+  </div>
 
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  </div>
-  <!-- ----Product2----- -->
-  <div class="container mt-5">
-    <div class="card">
-      <div class="row">
-        <div class="col-md-4 img-container">
-          <img src="../images/img2.jpg" class="img-fluid">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-          <p class="merk">Canon></p>
-            <div class="card-title">
-              <h2>Canon EOS D700</h2>
-              <p> Beschikbaar vanaf: 11/03/2024</p>
-            </div>
-            <p class="card-text">Beschrijving: Canon EOS fototoestel
-              <br>
 
-              Opmerking: toestel met USB-aansluiting
-            </p>
-          </div>
-          <br>
-          <div class="icon">
-            <h6 class="aantal">Aantal aanwezig: 5</h6>
-            <select class="available">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <a class="btn btn-secondary">+<i class="fas fa-shopping-cart"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  </div>
-  <!-- ----Product3----- -->
-  <div class="container mt-5">
-    <div class="card">
-      <div class="row">
-        <div class="col-md-4 img-container">
-          <img src="../images/img3.jpg" class="img-fluid">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <p class="merk">Canon></p>
-            <div class="card-title">
-              <h2>Canon XA35</h2>
-              <p> Beschikbaar vanaf: 11/03/2024</p>
-            </div>
-            <p class="card-text">Beschrijving: Canon XA35 videocamera
-              <br>
-
-              Opmerking: toestel met USB-aansluiting
-            </p>
-          </div>
-          <br>
-          <div class="icon">
-            <h6 class="aantal">Aantal aanwezig: 5</h6>
-            <select class="available">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <a class="btn btn-secondary">+<i class="fas fa-shopping-cart"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  </div>
   <!-----Pagination----->
-  <footer>
+  <!-- <footer>
     <div class="pagination">
       <a href="#">&laquo;</a>
       <a href="#">&lsaquo;</a>
@@ -147,7 +35,7 @@
       <a href="#">&rsaquo;</a>
       <a href="#">&raquo;</a>
     </div>
-  </footer>
+  </footer> -->
   <br>
   <script src="../js/catalogus.js"></script>
 </body>
