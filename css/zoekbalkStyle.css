@@ -104,3 +104,18 @@ svg {
   width: 44px;
   height: auto;
 }
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.columns .product {
+  width: calc(33.33% - 20px); /* Adjust width as needed, minus margins */
+  margin: 10px; /* Add margin between products */
+}
+
+.columns .col-md-4.img-container,
+.columns .col-md-8 {
+  flex: 0 0 100%; /* Set flex-basis to 100% to make them stack vertically */
+}

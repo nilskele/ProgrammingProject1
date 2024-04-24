@@ -41,8 +41,9 @@
             <input type="checkbox" id="kit" name="kit" value="kit" class="inputZoekbalk">
             <label for="kit" class="kitLabel">Kit</label>
             <div class="vl"></div>
-            <button id="changeLayout" class="buttonZoekbalk"><img class="imagelayoutwijzigen" src="../images/layoutChange.png"></button>
+            <button id="changeLayout" class="buttonZoekbalk"><img class="imagelayoutwijzigen" src="../images/layoutChange1.png"></button>
         </form>
     </div>
     <script src="../js/zoekbalkScript.js"></script>
+    <script src="../js/changeLayout.js"></script>
 </body>
