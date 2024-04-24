@@ -8,7 +8,7 @@ if ($conn->connect_error) {
 $categorie = isset($_GET['categorie']) ? $_GET['categorie'] : '';
 
 if ($categorie !== '') {
-    $stmt = $conn->prepare("SELECT GROEP.naam AS groep_naam, MERK.naam AS merk_naam, PRODUCT.opmerkingen, BESCHRIJVING.naam AS beschrijving_naam, MIN(PRODUCT.datumBeschikbaar) AS datumBeschikbaar
+    $stmt = $conn->prepare("SELECT GROEP.naam AS groep_naam, MERK.naam AS merk_naam, PRODUCT.opmerkingen, BESCHRIJVING.naam AS beschrijving_naam, MIN(PRODUCT.datumBeschikbaar) AS datumBeschikbaar, COUNT(PRODUCT.product_id) AS aantal_beschikbare_producten
     FROM GROEP
              INNER JOIN MERK ON GROEP.merk_id_fk = MERK.merk_id
              INNER JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id

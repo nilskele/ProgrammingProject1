@@ -15,7 +15,7 @@ $(function () {
             let eindDatum = end.format("YYYY-MM-DD");
 
             $.ajax({
-                url: "datePicker.php",
+                url: "../php/datePicker.php",
                 type: "GET",
                 dataType: "json",
                 data: {
@@ -30,36 +30,31 @@ $(function () {
                     if (data.error) {
                         $(".resultaten").html(data.error);
                     } else {
-                        $.each(data, function (index, product) {
+                        $.each(data, function (index, item) {
                             resultHtml += `
                             <?php  include '../php/countAantalBeschikbaar.php' ?>
                             <div class="product">
                                 <div class="container">
-                                    <div class="card mb-3"> <!-- Voeg mb-3 toe voor margin-bottom -->
+                                    <div class="card mb-3">
                                         <div class="row">
                                             <div class="col-md-4 img-container">
                                                 <img src="../images/img1.jpg" class="img-fluid">
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="card-body">
-                                                    <p class="merk">${item.merk_naam}></p>
+                                                    <p class="merk">${item.merk_naam}</p>
                                                     <div class="card-title">
                                                         <h2>${item.groep_naam}</h2>
-                                                        <p> Beschikbaar vanaf: ${item.datumBeschikbaar
-                                                }</p>
+                                                        <p> Beschikbaar vanaf: ${item.datumBeschikbaar}</p>
                                                     </div>
                                                     <p class="card-text">
-                                                        Beschrijving: ${item.beschrijving_naam ||
-                                                "Geen beschrijving"
-                                                }
+                                                        Beschrijving: ${item.beschrijving_naam || "Geen beschrijving"}
                                                         <br>
-                                                        Opmerking: ${item.opmerkingen || "Geen opmerkingen"
-                                                }
+                                                        Opmerking: ${item.opmerkingen || "Geen opmerkingen"}
                                                     </p>
                                                 </div>
                                                 <div class="icon">
-                                                    <h6 class="aantal">Aantal aanwezig: ${item.aantal_beschikbare_producten
-                                                }</h6>
+                                                    <h6 class="aantal">Aantal aanwezig: ${item.aantal_beschikbare_producten}</h6>
                                                     <select class="available">
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
