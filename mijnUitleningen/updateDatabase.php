@@ -8,7 +8,7 @@ if (isset($_POST['id']) && isset($_POST['daysToAdd'])) {
     $daysToAdd = $_POST['daysToAdd'];
 
     // Perform the database update
-    $query = "UPDATE MIJN_LENINGEN SET terugbrengDatum = DATE_ADD(terugbrengDatum, INTERVAL -7 DAY) WHERE product_id_fk = 2";
+    $query = "UPDATE MIJN_LENINGEN SET terugbrengDatum = DATE_ADD(terugbrengDatum, INTERVAL $daysToAdd DAY) WHERE product_id_fk = $id";
 
     // Execute the query
     $result = mysqli_query($connection, $query);
