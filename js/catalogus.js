@@ -11,7 +11,7 @@ $(document).ready(function () {
       $.each(data, function (index, item) {
         resultHtml += `
             <?php  include '../php/countAantalBeschikbaar.php' ?>
-              <div class="product2">
+              <div class="product">
                 <div class="container">
                     <div class="card mb-3"> <!-- Voeg mb-3 toe voor margin-bottom -->
                         <div class="row">
