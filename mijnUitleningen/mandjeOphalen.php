@@ -13,7 +13,8 @@ if (true) {
   FROM MIJN_LENINGEN
   INNER JOIN PRODUCT ON MIJN_LENINGEN.product_id_fk = PRODUCT.product_id
   INNER JOIN GROEP ON PRODUCT.groep_id = GROEP.groep_id
-  WHERE user_id_fk = 1");
+  WHERE user_id_fk = 1
+  ORDER BY MIJN_LENINGEN.terugbrengDatum ASC");
 
   $stmt->execute();
 
