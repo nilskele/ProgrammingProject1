@@ -22,7 +22,7 @@ $(document).ready(function () {
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <p class="merk">${item.merk_naam}</p>
+                    <p class="merk">${item.merk_naam}></p>
                     <div class="card-title">
                       <h2>${item.groep_naam}</h2>
                       <p> Beschikbaar vanaf: ${item.datumBeschikbaar}</p>
