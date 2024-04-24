@@ -8,9 +8,11 @@ if (isset($_POST['selectedDate'])) {
     $selectedDate = mysqli_real_escape_string($conn, $_POST['selectedDate']);
 
     // Query to retrieve rows from MIJN_LENINGEN table with user information
-    $query = "SELECT l.*, u.voornaam, u.achternaam 
+    $query = "SELECT l.*, u.voornaam, u.achternaam, p.product_id, g.naam
               FROM MIJN_LENINGEN l 
               INNER JOIN USER u ON l.user_id_fk = u.user_id
+              INNER JOIN PRODUCT p ON l.product_id_fk = p.product_id
+              INNER JOIN GROEP g ON p.groep_id = g.groep_id
               WHERE l.Uitleendatum = '$selectedDate' OR l.terugbrengDatum = '$selectedDate'";
     
     $result = $conn->query($query);

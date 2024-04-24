@@ -57,17 +57,16 @@
     <h1>In and Out</h1>
     <input type="text" name="selectedDate" id="selectedDate" readonly />
   </div>
-  <div class="inoutdiv">
-    
-  <div id="smallInOut1" class="productContainer overflow-auto ">
-  <h1>Vandaag Out</h1>
-      
-      
-      
+  <div class="inOutTitels">
+    <h1>Vandaag Terug</h1>
+    <h1>Vandaag Geleend</h1>
   </div>
-          <div id="smallInOut2" class="productContainer overflow-auto ">
-              <h1>Vandaag Out</h1>
-          </div>
+  <div class="inoutdiv">
+    <div id="smallInOut1" class="productContainer overflow-auto ">
+    </div>
+      <div id="smallInOut2" class="productContainer overflow-auto "> 
+      </div>
+
 
 
   </div>
