@@ -31,7 +31,7 @@
             <a class = "btn btn-primary" href = "accountAanmaken.php">
               Account aanmaken
             </a>
-            <a class = "btn btn-light">
+            <a class = "btn btn-light" href = "#loginForm">
               Log in
             </a>
           </div>
@@ -44,7 +44,7 @@
       <a class = "btn btn-primary adminbtn" href = "admin.php">
         Admin
       </a>
-      <div class = "loginForm">
+      <div class = "loginForm" id="loginForm">
         <div class = "form-group row">
           <label for = "inputEmail3" class = "col-sm-2 col-form-label">
             Email:
