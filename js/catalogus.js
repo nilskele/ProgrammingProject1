@@ -9,7 +9,7 @@ $(document).ready(function () {
     }
 
     let resultHtml = "";
-    aantalResultaten = 0;
+    aantalResultaten = 0; 
 
     $.each(data, function (index, item) {
       resultHtml += `
