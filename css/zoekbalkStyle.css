@@ -108,7 +108,8 @@ svg {
 .columns {
   display: flex;
   flex-wrap: wrap;
-  margin: 60px
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 .columns .product {
