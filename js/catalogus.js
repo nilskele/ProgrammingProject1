@@ -36,11 +36,13 @@ $(document).ready(function () {
                   <div class="icon">
                     <h6 class="aantal">Aantal aanwezig: ${item.aantal_beschikbare_producten}</h6>
                     <select class="available">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
+                    ${(() => {
+                      let optionsHtml = "";
+                      for (let i = 1; i <= item.aantal_beschikbare_producten; i++) {
+                        optionsHtml += `<option value="${i}">${i}</option>`;
+                      }
+                      return optionsHtml;
+                    })()}
                     </select>
                     <a class="btn btn-secondary" href="reserveren.php">+<i class="fas fa-shopping-cart"></i></a>
                   </div>
@@ -86,7 +88,6 @@ $(document).ready(function () {
         dataType: "json",
         success: toonResultaten,
         error: function () {
-          // vul de resultaten div met een foutmelding zoonder allert, met innerhtml
           aantalResultaten = 0;
           $(".aantalResultaten").text(aantalResultaten);
           resultatenDiv.innerHTML = "Er zijn geen producten gevonden met de zoekterm: " + zoekterm + ".";
