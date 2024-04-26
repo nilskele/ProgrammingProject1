@@ -29,12 +29,13 @@ if ($zoekterm !== '%') {
         while ($row = $resultaten->fetch_assoc()) {
             $response[] = $row;
         }
+        echo json_encode($response);
     } else {
-        $response['error'] = "Geen resultaten gevonden";
+        unset($response);
     }
 
     $stmt->close();
-    echo json_encode($response);
+    
 } else {
     $stmt = $conn->prepare("SELECT GROEP.naam AS groep_naam, MERK.naam AS merk_naam, PRODUCT.opmerkingen, BESCHRIJVING.naam AS beschrijving_naam, MIN(PRODUCT.datumBeschikbaar) AS datumBeschikbaar, COUNT(PRODUCT.product_id) AS aantal_beschikbare_producten
     FROM GROEP
@@ -53,7 +54,7 @@ if ($zoekterm !== '%') {
             $response[] = $row;
         }
     } else {
-        $response['error'] = "Geen resultaten gevonden";
+        $response['error'] = "Geen resultaten gevonden2";
     }
 
     $stmt->close();

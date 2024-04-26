@@ -58,7 +58,6 @@ $(document).ready(function () {
     $(".aantalResultaten").text(aantalResultaten);
   }
 
-  // AJAX-call om producten op te halen
   $.ajax({
     url: "../php/zoek.php",
     type: "GET",
@@ -87,15 +86,43 @@ $(document).ready(function () {
         dataType: "json",
         success: toonResultaten,
         error: function () {
-          alert("Er is een fout opgetreden bij het zoeken.(zoekbalk)");
+          // vul de resultaten div met een foutmelding zoonder allert, met innerhtml
+          aantalResultaten = 0;
+          $(".aantalResultaten").text(aantalResultaten);
+          resultatenDiv.innerHTML = "Er zijn geen producten gevonden met de zoekterm: " + zoekterm + ".";
+
         },
       });
     }
   });
 
+  $("#zoekbalk").keydown(function (e) {
+    if (e.keyCode === 13) { 
+      var zoekterm = $("#zoekbalk").val().trim();
+      if (zoekterm === "") {
+        aantalResultaten = 0;
+        $.ajax({
+          url: "../php/zoek.php",
+          type: "GET",
+          dataType: "json",
+          data: {
+            zoekbalk: "",
+          },
+          dataType: "json",
+          success: function (data) {
+            toonResultaten(data);
+          },
+          error: function () {
+            alert("Er is een fout opgetreden bij het zoeken.(zoekbalk)");
+          },
+        });
+      }
+    }
+  });
+
   $("#categorie").change(function () {
     var selectedCategorie = $(this).val();
-    if (selectedCategorie !== "all") {
+    if (selectedCategorie !== "All") {
       aantalResultaten = 0;
       $.ajax({
         url: "../php/filter_producten.php",
@@ -108,11 +135,26 @@ $(document).ready(function () {
           toonResultaten(data);
         },
         error: function () {
-          alert("Er is een fout opgetreden bij het zoeken.(categorie)");
+          alert("Er is een fout opgetreden bij het zoeken.(categorie1)");
         },
       });
-    } else {
-      $(".resultaten").empty();
+    } else if (selectedCategorie === "All"){
+      aantalResultaten = 0;
+      $.ajax({
+        url: "../php/filter_producten_category_all.php",
+        type: "GET",
+        data: {
+          categorie: "All",
+        },
+        dataType: "json",
+        success: function (data) {
+          toonResultaten(data);
+        },
+        error: function () {
+          alert("Er is een fout opgetreden bij het zoeken.(categorie2)");
+        },
+      });
+      
     }
   });
 });

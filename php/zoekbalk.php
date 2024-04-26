@@ -30,7 +30,7 @@
             <input type="text" id="zoekbalk" name="zoekbalk" placeholder="Zoek naar producten" class="inputZoekbalk">
             &#11167
             <select name="categorie" id="categorie" class="categorieZoekbalk">
-                <option value="all" id="categoryOptions">All</option>
+                <option value="All" id="categoryOptions">All</option>
                 <?php echo $options; ?>
             </select>
 
