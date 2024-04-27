@@ -15,6 +15,7 @@
   <?php include('../php/header.php')?>
   
   <div class='uitleningenTitle'>
+    <a href="javascript:history.back()" class="terugLink">&#8592 Terug</a>
     <h1>Mijn uitleningen</h1>
   </div>
   <div class="table">
