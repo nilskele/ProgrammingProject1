@@ -27,11 +27,11 @@ if (isset($_POST['inputEmail3']) && isset($_POST['inputPassword3'])) {
                 exit();
             } else {
                 header("Location: index.php?error=Invalide email of wachtwoord");
-
+                exit();
             }
         } else {
             header("Location: index.php?error=Invalide email of wachtwoord");
-
+            exit();
     }
 }
 ?>

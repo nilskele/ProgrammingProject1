@@ -24,12 +24,5 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
             text: "Gelieve een wachtwoord in te vullen.",
         });
         event.preventDefault();
-    } else if (window.location.search.includes('error=Invalide%20email%20of%20wachtwoord')) {
-        Swal.fire({
-            icon: "error",
-            title: "Fout",
-            text: "Ongeldige e-mail of wachtwoord.",
-        });
-        event.preventDefault();
     }
 });
