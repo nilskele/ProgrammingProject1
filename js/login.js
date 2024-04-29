@@ -37,8 +37,8 @@ function CloseAdminLogin() {
 }
 
 document.getElementById("AdminLoginForm").addEventListener("submit", function (event) {
-    let email = document.getElementById("inputEmail3").value;
-    let password = document.getElementById("inputPassword3").value;
+    let email = document.getElementById("inputAdminEmail3").value;
+    let password = document.getElementById("inputAdminPassword3").value;
 
     if (email.trim() === "" && password.trim() === "") {
         Swal.fire({
