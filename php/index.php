@@ -32,7 +32,7 @@
             <a class="btn btn-primary" href="accountAanmaken.php">
               Account aanmaken
             </a>
-            <a class="btn btn-light" href="#loginForm">
+            <a class="btn btn-light" href="#inputEmail3">
               Log in
             </a>
           </div>
