@@ -23,6 +23,7 @@ if (isset($_POST['inputEmail3']) && isset($_POST['inputPassword3'])) {
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['voornaam'] = $row['voornaam'];
                 $_SESSION['user_id'] = $row['user_id'];
+                $_SESSION['user_type'] = $row['userType_fk'];
                 header("Location: catalogus.php");
                 exit();
             } else {

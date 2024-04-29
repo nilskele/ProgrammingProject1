@@ -19,5 +19,6 @@
   <a class = "nav-item nav-link" href = "reserveren.php">
     Reglement
   </a>
+  <a class = "nav-item nav-link" href="logout.php"><img src="../images/logout-svgrepo-com.svg" alt="loagout" height="25px"></a>
   </div>
 </nav>
