@@ -5,13 +5,18 @@
 }
 
 .uitleningenTitle {
-  text-align: center;
   font-size: 30px;
   margin-top: 100px;
   margin-bottom: 30px;
   display: flex;
   justify-content: center;
 }
+
+.uitleningenTitle-col-1 {
+  display: flex;
+  align-items: flex-end;
+}
+
 
 .terugLink {
   text-decoration: none;
