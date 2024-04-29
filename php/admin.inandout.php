@@ -25,7 +25,7 @@
 
 </style>
 
-<?php include("header2.php")?>
+<?php include("admin.header.php")?>
 
 <div class="inAndOut">
   <h1>vandaag In</h1>

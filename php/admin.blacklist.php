@@ -2,4 +2,4 @@
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/blacklist.css"> 
 
-<?php include("header2.php")?>
+<?php include("admin.header.php")?>

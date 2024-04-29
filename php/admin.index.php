@@ -10,7 +10,7 @@
 <script src="../js/inandout.js"></script>
 
 
-<?php include("header2.php")?>
+<?php include("admin.header.php")?>
 
 <div id = "adminDashboard">
     <div id = "container1">

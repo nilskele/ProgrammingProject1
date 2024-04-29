@@ -3,7 +3,7 @@
   <link rel = "stylesheet" href = "../css/kit_toevoegen.css"> 
 
 
-<?php include("header2.php")?>
+<?php include("admin.header.php")?>
 
     <h1>Add kit</h1>
     <form action="../add_kit">
