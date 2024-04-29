@@ -15,7 +15,7 @@
   <div id="app">
     <div id="container">
       <?php
-      include('header_login.php');
+      include('index.header.php');
       ?>
       <div class="welcomeDiv">
         <div class="welcome">
@@ -47,7 +47,7 @@
       </button>
 
       <div class="adminLogin" id="AdminLoginDiv">
-        <form action="homepage.adminLogin.php" class="AdminLoginContainer" id="AdminLoginForm" method="POST">
+        <form action="index.adminLogin.php" class="AdminLoginContainer" id="AdminLoginForm" method="POST">
           <h1>Admin Login</h1>
 
           <div class="form-group row">
@@ -69,7 +69,7 @@
       </div>
 
 
-      <form action="login.php" class="loginForm" id="loginForm" method="POST">
+      <form action="index.login.php" class="loginForm" id="loginForm" method="POST">
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Email:</label>
           <div class="col-sm-10">
