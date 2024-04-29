@@ -15,7 +15,7 @@
   <div id="app">
     <div id="container">
       <?php
-      include('header.php');
+      include('header_login.php');
       ?>
       <div class="welcomeDiv">
         <div class="welcome">
