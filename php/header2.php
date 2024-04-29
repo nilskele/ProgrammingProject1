@@ -14,5 +14,6 @@
   
   <a class="nav-item nav-link" href="inandout.php">In and Out</a>
   <a class="nav-item nav-link" href="blacklist.php">Blacklist</a>
+  <a class="nav-item nav-link" href="logout.php"><img src="../images/logout-svgrepo-com.svg" alt="loagout" height="25px"></a>
   </div>
 </nav>
