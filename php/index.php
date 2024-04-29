@@ -47,7 +47,7 @@
       </button>
 
       <div class="adminLogin" id="AdminLoginDiv">
-        <form action="adminLogin.php" class="AdminLoginContainer" id="AdminLoginForm" method="POST">
+        <form action="homepage.adminLogin.php" class="AdminLoginContainer" id="AdminLoginForm" method="POST">
           <h1>Admin Login</h1>
 
           <div class="form-group row">

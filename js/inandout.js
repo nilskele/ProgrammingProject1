@@ -7,7 +7,7 @@ $(function() {
 
         // Send the selected date to a PHP script using AJAX
         $.ajax({
-            url: '../php/inAndOutBackend.php',
+            url: '../php/admin.inAndOutBackend.php',
             method: 'POST',
             data: { selectedDate: selectedDate },
             success: function(response) {
