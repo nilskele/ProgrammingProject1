@@ -5,18 +5,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catalogus</title>
-  <link rel = "stylesheet" href = "../mijnUitleningen/mijnUitleningen.css" />
-  <link rel = "stylesheet" href = "../bootstrap/css/bootstrap.min.css" />
-  <link rel = "stylesheet" href = "../css/styles.css" />
+  <link rel="stylesheet" href="../mijnUitleningen/mijnUitleningen.css" />
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
+
 <body>
   <?php include('../php/header.php')?>
-  
+
   <div class='uitleningenTitle'>
     <div class="uitleningenTitle-col-1"><a href="javascript:history.back()" class="terugLink">&#8592 Terug</a></div>
-    <div class="uitleningenTitle-col-2"><h1>Mijn uitleningen</h1></div>
+    <div class="uitleningenTitle-col-2">
+      <h1>Mijn uitleningen</h1>
+    </div>
     <div class="uitleningenTitle-col-3"></div>
   </div>
   <div class="table">
@@ -29,11 +32,12 @@
           <th>Defect</th>
           <th>Reservering</th>
         </tr>
-      <thead>
-      <tbody></tbody>
+        <thead>
+        <tbody></tbody>
     </table>
   </div>
 
   <script src="mandjeOphalen.js"></script>
 </body>
+
 </html>
