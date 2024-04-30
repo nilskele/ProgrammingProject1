@@ -95,15 +95,15 @@ include('../database.php');
       <button class="arrow_next"><img src="../images/black_arrow_r.png" alt="Next"></button>
     </div>
     <div class="container_kalender">
-     
-      
-  
-  <script src="../js/inandout.js"></script>
 
-</div>
-<script src="../js/inandout.js"></script>
 
-<?php
+
+      <script src="../js/inandout.js"></script>
+
+    </div>
+    <script src="../js/inandout.js"></script>
+
+    <?php
 
 //sql naam van item verkrijgen
 $query_naamItem = "SELECT naam FROM GROEP";
