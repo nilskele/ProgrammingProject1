@@ -60,7 +60,8 @@
           <div class="form-group row">
             <label for="inputAdminPassword3" class="col-sm-2 col-form-label">Password:</label>
             <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputAdminPassword3" name="inputPassword3" placeholder="Password">
+              <input type="password" class="form-control" id="inputAdminPassword3" name="inputPassword3"
+                placeholder="Password">
             </div>
           </div>
           <button type="submit" class="btn btn-primary inloggen">Inloggen</button>
@@ -80,7 +81,8 @@
         <div class="form-group row">
           <label for="inputPassword3" class="col-sm-2 col-form-label">Password:</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword3" name="inputPassword3" placeholder="Password">
+            <input type="password" class="form-control" id="inputPassword3" name="inputPassword3"
+              placeholder="Password">
           </div>
         </div>
         <button type="submit" class="btn btn-primary inloggen">Inloggen</button>

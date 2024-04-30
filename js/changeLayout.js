@@ -1,11 +1,11 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   var button = document.getElementById("changeLayout");
   var products = document.querySelectorAll(".resultaten");
   var image = button.querySelector(".imagelayoutwijzigen");
   var isLayout1 = true; // Initial state
   var isLayoutHidden = false; // Initial state
 
-  button.addEventListener("click", function() {
+  button.addEventListener("click", function () {
     // Define the image sources
     var src1 = "../images/layoutChange1.png";
     var src2 = "../images/layoutChange2.png";
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
     image.src = isLayout1 ? src1 : src2;
 
     // Toggle the hidden class for each product
-    products.forEach(function(product) {
+    products.forEach(function (product) {
       product.classList.toggle("columns", isLayoutHidden);
     });
   });

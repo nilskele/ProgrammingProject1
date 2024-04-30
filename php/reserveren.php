@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +15,9 @@
 <link rel = "stylesheet" href = "../css/reserveren.css" />
    
 </head>
+
 <body>
-<div id = "container">
+  <div id="container">
     <?php
       include('header.php');
     ?>
@@ -27,53 +29,33 @@
    
 
 
-  </section>
-    
-    
-       
+    </section>
 
-<div class="main-container">
-<section id="proditails" class="section-p1">
-     
-     <div class="single-pro-img">
-        <div class="MainImg">
-       <img src="../images/img1.jpg" width="60%" id="MainImg" alt="" />
-    </div>
-       <div class="small-img-group">
-         <div class="small-img-col">
-           <img
-             src="../images/small1.jpeg"
-             width="100%"
-             class="small-img"
-             alt=""
-           />
-         </div>
-         <div class="small-img-col">
-           <img
-             src="../images/small2.jpeg"
-             width="100%"
-             class="small-img"
-             alt=""
-           />
-         </div>
-         <div class="small-img-col">
-           <img
-             src="../images/small3.jpeg"
-             width="100%"
-             class="small-img"
-             alt=""
-           />
-         </div>
-         <div class="small-img-col">
-           <img
-             src="../images/small4.jpeg"
-             width="100%"
-             class="small-img"
-             alt=""
-           />
-         </div>
-       </div>
-     </div>
+
+
+
+    <div class="main-container">
+      <section id="proditails" class="section-p1">
+
+        <div class="single-pro-img">
+          <div class="MainImg">
+            <img src="../images/img1.jpg" width="60%" id="MainImg" alt="" />
+          </div>
+          <div class="small-img-group">
+            <div class="small-img-col">
+              <img src="../images/small1.jpeg" width="100%" class="small-img" alt="" />
+            </div>
+            <div class="small-img-col">
+              <img src="../images/small2.jpeg" width="100%" class="small-img" alt="" />
+            </div>
+            <div class="small-img-col">
+              <img src="../images/small3.jpeg" width="100%" class="small-img" alt="" />
+            </div>
+            <div class="small-img-col">
+              <img src="../images/small4.jpeg" width="100%" class="small-img" alt="" />
+            </div>
+          </div>
+        </div>
 
 
    <div class="single-pro-details">
@@ -95,11 +77,6 @@
      <div id="calendarContainer">
         <div id="calendar"></div>
     </div>
-
-
-
-
-
 
 <h6 class="h6">aantal</h6>
      <section class="num">

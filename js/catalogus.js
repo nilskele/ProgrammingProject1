@@ -9,7 +9,7 @@ $(document).ready(function () {
     }
 
     let resultHtml = "";
-    aantalResultaten = 0; 
+    aantalResultaten = 0;
 
     $.each(data, function (index, item) {
       resultHtml += `
@@ -28,17 +28,25 @@ $(document).ready(function () {
                       <p> Beschikbaar vanaf: ${item.datumBeschikbaar}</p>
                     </div>
                     <p class="card-text">
-                      Beschrijving: ${item.beschrijving_naam || "Geen beschrijving"}
+                      Beschrijving: ${
+                        item.beschrijving_naam || "Geen beschrijving"
+                      }
                       <br>
                       Opmerking: ${item.opmerkingen || "Geen opmerkingen"}
                     </p>
                   </div>
                   <div class="icon">
-                    <h6 class="aantal">Aantal aanwezig: ${item.aantal_beschikbare_producten}</h6>
+                    <h6 class="aantal">Aantal aanwezig: ${
+                      item.aantal_beschikbare_producten
+                    }</h6>
                     <select class="available">
                     ${(() => {
                       let optionsHtml = "";
-                      for (let i = 1; i <= item.aantal_beschikbare_producten; i++) {
+                      for (
+                        let i = 1;
+                        i <= item.aantal_beschikbare_producten;
+                        i++
+                      ) {
                         optionsHtml += `<option value="${i}">${i}</option>`;
                       }
                       return optionsHtml;
@@ -90,15 +98,17 @@ $(document).ready(function () {
         error: function () {
           aantalResultaten = 0;
           $(".aantalResultaten").text(aantalResultaten);
-          resultatenDiv.innerHTML = "Er zijn geen producten gevonden met de zoekterm: " + zoekterm + ".";
-
+          resultatenDiv.innerHTML =
+            "Er zijn geen producten gevonden met de zoekterm: " +
+            zoekterm +
+            ".";
         },
       });
     }
   });
 
   $("#zoekbalk").keydown(function (e) {
-    if (e.keyCode === 13) { 
+    if (e.keyCode === 13) {
       var zoekterm = $("#zoekbalk").val().trim();
       if (zoekterm === "") {
         aantalResultaten = 0;
@@ -139,7 +149,7 @@ $(document).ready(function () {
           alert("Er is een fout opgetreden bij het zoeken.(categorie1)");
         },
       });
-    } else if (selectedCategorie === "All"){
+    } else if (selectedCategorie === "All") {
       aantalResultaten = 0;
       $.ajax({
         url: "../php/filter_producten_category_all.php",
@@ -155,7 +165,6 @@ $(document).ready(function () {
           alert("Er is een fout opgetreden bij het zoeken.(categorie2)");
         },
       });
-      
     }
   });
 });
