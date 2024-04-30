@@ -94,10 +94,9 @@
   }
   .up{
     display: flex;
-   justify-content: space-between;
+    justify-content: space-between;
     align-items: center;
     padding-top: 50px;
-    padding-right: 705px;
   }
   .value{
     height: 25px;
@@ -154,4 +153,20 @@
 .daterangepicker .calendar td.off {
   color: #999; /* Color for unavailable dates */
   cursor: not-allowed; /* Cursor style for unavailable dates */
+}
+
+
+.up-col-1 {
+  display: flex;
+  justify-content: end;
+  width: 40%;
+}
+
+.up-col-2 {
+  width: 20%;
+  text-align: center;
+}
+
+.up-col-3 {
+  width: 40%;
 }
