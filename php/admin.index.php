@@ -8,11 +8,65 @@
 
 <!-- Include your custom JavaScript file -->
 <script src="../js/inandout.js"></script>
+<style>
+    /* Style the overlay */
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+    }
+
+    /* Style the popup */
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        z-index: 10000;
+    }
+
+    /* Style the close button */
+    .close {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+        
+    }
+    .acceptPopup{
+      
+        
+        cursor: pointer;
+        background-color: red;
+        color: white;
+        padding: 0.5em 2em 0.5em 2em;
+        border-radius: 1em;
+        text-decoration: none;
+        border: 2px solid red;
+    }
+</style>
 
 
 <?php include("admin.header.php");
 include('../database.php');
 ?>
+<div id="overlay" class="overlay"></div>
+
+<!-- Popup -->
+<div id="popup" class="popup"></div>
+
 
 <div id="adminDashboard">
   <div id="container1">
@@ -60,8 +114,8 @@ include('../database.php');
     <input type="text" name="selectedDate" id="selectedDate" readonly />
   </div>
   <div class="inOutTitels">
-    <h1>Vandaag Terug</h1>
     <h1>Vandaag Geleend</h1>
+    <h1>Vandaag Terug</h1>
   </div>
   <div class="inoutdiv">
     <div id="smallInOut1" class="productContainer overflow-auto">
