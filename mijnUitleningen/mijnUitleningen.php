@@ -13,12 +13,28 @@
 </head>
 
 <body>
-  <?php include('../php/header.php')?>
+  <?php include('../php/header.php');
+  include('defectMelden.php');
+  ?>
 
   <div class='uitleningenTitle'>
     <div class="uitleningenTitle-col-1"><a href="javascript:history.back()" class="terugLink">&#8592 Terug</a></div>
     <div class="uitleningenTitle-col-2">
       <h1>Mijn uitleningen</h1>
+      <div class="meldenPopUp" id="meldenPopUp">
+        <div class="meldenPopUp-content">
+          <span class="close" onclick="sluitMMeldenPopUp()">&times;</span>
+          <h2>Defect melden</h2>
+          <form id="defectMeldenForm" action="defectMelden.php" method="post">
+            <label for="watDefect">Wat is er defect?</label>
+            <input type="field" id="watDefect" name="watDefect" required> <br>
+            <label for="defectReden">Reden Defect:</label>
+            <input type="hidden" id="lening_id" name="lening_id" value="">
+            <textarea name="redenDefect" id="redenDefect" cols="30" rows="3" required></textarea> <br>
+            <input type="submit" value="Melden" class="submitButton">
+          </form>
+        </div>
+      </div>
     </div>
     <div class="uitleningenTitle-col-3"></div>
   </div>

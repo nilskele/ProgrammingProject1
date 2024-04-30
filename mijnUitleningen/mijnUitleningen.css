@@ -12,6 +12,54 @@
   justify-content: space-around;
 }
 
+.meldenPopUp {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%; 
+  height: 50%;
+  overflow: auto;
+  background-color: #D9D9D9;
+  text-align: left;
+  border-radius: 15px;
+  box-shadow: 0 0 50px black;
+}
+
+.meldenPopUp-content h2 {
+  margin: 20px 0 20px 0;
+  text-align: center;
+}
+
+.meldenPopUp-content form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.meldenPopUp-content label {
+  margin: 10px 0 10px 0;
+  font-size: 20px;
+}
+
+.meldenPopUp-content input {
+  font-size: 20px;
+}
+
+.meldenPopUp-content
+
+.meldenPopUp-content .submitButton {
+  font-size: 25px;
+}
+
+.close {
+  margin: 0 0 0 95%;
+  cursor: pointer;
+}
+
 .uitleningenTitle-col-1 {
   display: flex;
   justify-content: end;

@@ -28,7 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
             <td>${row.groep_naam}</td>
             <td>${uitleendatumFormatted}</td>
             <td>${terugbrengDatumFormatted}</td>
-            <td><button class="melden-button">Melden</button></td>
+            <td><button class="melden-button" value="${
+              row.lening_id
+            }">Melden</button></td>
             <td><button class="${buttonClass}" data-id="${
             row.product_id
           }" style="background-color: ${
@@ -98,8 +100,49 @@ document.addEventListener("DOMContentLoaded", function () {
       const action = target.textContent.trim().toLowerCase();
       // Handle button clicks based on class name
       if (target.classList.contains("melden-button")) {
-        // Handle Melden button click
-        alert("Melden button clicked");
+        let buttonValue = target.getAttribute("value");
+        localStorage.setItem("product_id", buttonValue);
+        document.getElementById("lening_id").value = buttonValue;
+        toonMMeldenPopUp();
+
+
+        const form = document.getElementById("defectMeldenForm");
+
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const lening_id = localStorage.getItem("product_id");
+          document.getElementById("lening_id").value = lening_id;
+
+          const formData = new FormData(form);
+
+          fetch(form.action, {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => {
+              if (response.ok) {
+                Swal.fire(
+                  "Defect gemeld!",
+                  "Het defect is succesvol gemeld.",
+                  "success"
+                );
+              } else {
+                throw new Error("Failed to submit form.");
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+                // maak een sweetalert aan
+                Swal.fire({
+                  title: "Er is iets fout gegaan",
+                  text: "Probeer het later opnieuw.",
+                  icon: "error",
+                  confirmButtonText: "Ok",
+                });
+            });
+        });
       } else if (target.classList.contains("reserveren-button")) {
         // Handle Reserveren button click
         if (target.textContent === "Annuleren") {
@@ -186,3 +229,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+function toonMMeldenPopUp() {
+  document.getElementById("meldenPopUp").style.display = "block";
+}
+
+function sluitMMeldenPopUp() {
+  document.getElementById("meldenPopUp").style.display = "none";
+}
