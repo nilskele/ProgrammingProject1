@@ -10,6 +10,7 @@ Gebruikt gemaakt van:<br>
 <br>
 <br>Datepicker: https://retype.com/?from=datepicker.com 
 <br>Sweetalert: https://sweetalert.js.org/guides/
+<br>Bootstrap: https://getbootstrap.com/
 
 
 
