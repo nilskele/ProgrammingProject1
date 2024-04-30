@@ -166,16 +166,24 @@ h1 {
     margin-left: 1em;
 }
 
+.info {
+    width: 100%;
+}
+
+.moreinfo {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
 
 .dots {
     width: 3em;
-    margin-left: 9em;
+    height: 3em;
     transition: 0.3s;
     border-radius: 2em;
 
 }
 .inOutTitels{
-    
     width: 80vw;
     display: flex;
     justify-content: space-around;
@@ -184,7 +192,6 @@ h1 {
 .dots:hover {
     background-color: #a39c9b;
     border-radius: 2em;
-
 }
 
 .inOutProduct {
@@ -220,7 +227,7 @@ h1 {
 .productInfo {
     display: flex;
     flex-direction: row;
-
+    width: 100%;
 
 
 }
