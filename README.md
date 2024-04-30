@@ -12,3 +12,5 @@ https://chat.openai.com/share/293b9a39-e9c5-43ab-b852-fbb57a77aaad
 https://chat.openai.com/share/d278f4d4-3f93-4d91-a179-b2cadf328e2e
 https://chat.openai.com/share/1a68d947-d2ad-4278-b501-fd6e0d8f6510
 https://chat.openai.com/share/546eed2a-835f-4b36-89e5-0bd1aa8bb4f7
+https://chat.openai.com/c/aedb86a1-1bed-40f8-b5b5-dfdfcd884d38
+https://chat.openai.com/c/3f9ded50-4bd0-4b5f-bedf-b7c09eb6e190
