@@ -40,6 +40,7 @@ https://www.youtube.com/watch?v=gy6LY0Xy2zU&t=388s<br>
 https://stackoverflow.com/questions/982919/sql-update-query-using-joins<br>
 https://stackoverflow.com/questions/60162968/how-to-dynamically-create-these-html-elements-using-js<br>
 https://chat.openai.com/share/bc1fc5a1-6348-4e74-8387-4346ec50cfb9<br>
+https://chat.openai.com/share/40671b2c-bd71-4d43-a342-65fd363f31f0
 <br>
 <br>
 Jente:
