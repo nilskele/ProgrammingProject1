@@ -1,11 +1,12 @@
 # ProgrammingProject
-Whoever wrote this is a genius!
+Whoever wrote this is a genius! <br>
 ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white) ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
 
 
 
-
+<br>
 ![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white) ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white)
+<br>
 Gust:
 https://chat.openai.com/share/7bf0bb43-e63d-4799-be61-42fc6aa0cf1f
 https://chat.openai.com/share/c7cb2562-9d44-47f3-84b2-6a55218c64e2
@@ -19,12 +20,11 @@ https://chat.openai.com/share/1a68d947-d2ad-4278-b501-fd6e0d8f6510
 https://chat.openai.com/share/546eed2a-835f-4b36-89e5-0bd1aa8bb4f7
 https://chat.openai.com/c/aedb86a1-1bed-40f8-b5b5-dfdfcd884d38
 https://chat.openai.com/c/3f9ded50-4bd0-4b5f-bedf-b7c09eb6e190
-
+<br>
 Nils: 
 https://chat.openai.com/share/73994dc4-b488-40a5-aac4-ee6dcb2238f9
 https://www.youtube.com/watch?v=gy6LY0Xy2zU&t=388s
 https://stackoverflow.com/questions/982919/sql-update-query-using-joins
 https://stackoverflow.com/questions/60162968/how-to-dynamically-create-these-html-elements-using-js
 https://chat.openai.com/share/bc1fc5a1-6348-4e74-8387-4346ec50cfb9
-
-![](https://img.shields.io/badge/Code-React-informational?style=flat&logo=react&color=61DAFB)
+<br>
