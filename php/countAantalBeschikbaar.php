@@ -32,4 +32,3 @@ $stmt->close();
 echo json_encode($response)
 
 ?>
-
