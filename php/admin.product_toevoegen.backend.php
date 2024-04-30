@@ -16,7 +16,6 @@ if(isset($_POST['naam'])) {
     // Bind parameters
     $stmt->bind_param('s', $naam);
 
-    // Execute the statement
     $stmt->execute();
 
     // Get the result
