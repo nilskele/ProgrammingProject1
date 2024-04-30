@@ -61,3 +61,8 @@ https://stackoverflow.com/questions/23740548/how-do-i-pass-variables-and-data-fr
 <br>
 <br>
 
+Lucas:
+https://chat.openai.com/share/8e8c51f8-d417-48ab-bab4-abe07de601da
+https://www.youtube.com/watch?v=SgynWhEgvlw
+
+
