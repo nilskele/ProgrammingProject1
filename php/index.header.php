@@ -6,10 +6,10 @@
         </span>
     </a>
     <div class="navbar-nav">
-        <a class="nav-item nav-link" href="/info">
+        <a class="nav-item nav-link" href="#">
             Info
         </a>
-        <a class="nav-item nav-link" href="reserveren.php">
+        <a class="nav-item nav-link" href="#">
             Reglement
         </a>
     </div>
