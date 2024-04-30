@@ -1,3 +1,4 @@
+
 function addEvent() {
   var eventInput = document.getElementById("eventInput");
   var eventName = eventInput.value.trim();
@@ -30,3 +31,4 @@ function deleteEvent(button) {
   var listItem = button.parentElement;
   listItem.remove();
 }
+

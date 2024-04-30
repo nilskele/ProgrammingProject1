@@ -118,4 +118,40 @@
   }
   
   
-  
+  .datumZoekbalk {
+    cursor: pointer;
+  }
+
+ /* Modify appearance of Date Range Picker calendar */
+.daterangepicker {
+  background-color: #fff; /* Background color */
+  border-radius: 5px; /* Border radius */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+  font-family: Arial, sans-serif; /* Font family */
+}
+
+.daterangepicker .calendar {
+  padding: 10px; /* Padding */
+}
+
+.daterangepicker .calendar th,
+.daterangepicker .calendar td {
+  padding: 5px; /* Padding for table cells */
+}
+
+.daterangepicker .calendar th {
+  font-weight: bold; /* Bold font for table headers */
+}
+
+.daterangepicker .calendar td.available {
+  cursor: pointer; /* Cursor style for available dates */
+}
+
+.daterangepicker .calendar td.available:hover {
+  background-color: #f0f0f0; /* Background color on hover */
+}
+
+.daterangepicker .calendar td.off {
+  color: #999; /* Color for unavailable dates */
+  cursor: not-allowed; /* Cursor style for unavailable dates */
+}
