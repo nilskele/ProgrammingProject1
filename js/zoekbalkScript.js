@@ -4,7 +4,7 @@ $(function () {
         {
         opens: "center",
         minDate: moment().toDate(),
-        maxDate: moment().add(1, "week").toDate(),
+        maxDate: moment().add(3, "week").toDate(),
         startDate: moment().toDate(),
         isInvalidDate: function (date) {
             if (date.day() === 6 || date.day() === 0) {
