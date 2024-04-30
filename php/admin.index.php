@@ -62,7 +62,9 @@
     <h1>Vandaag Geleend</h1>
   </div>
   <div class="inoutdiv">
-    <div id="smallInOut1" class="productContainer overflow-auto "></div>
+    <div id="smallInOut1" class="productContainer overflow-auto">
+
+    </div>
     <div id="smallInOut2" class="productContainer overflow-auto "></div>
   </div>
 </div>

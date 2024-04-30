@@ -8,7 +8,12 @@ if (isset($_POST['leningId'])) {
     $leningId = mysqli_real_escape_string($conn, $_POST['leningId']);
 
     // Query to delete the row from MIJN_LENINGEN table
-    $query = "DELETE FROM MIJN_LENINGEN WHERE lening_id = '$leningId'";
+    $query = "UPDATE MIJN_LENINGEN SET isTerugGebracht = True WHERE lening_id = '$leningId'";
+
+
+
+
+
     
     if ($conn->query($query) === TRUE) {
         // If deletion is successful, return success message
