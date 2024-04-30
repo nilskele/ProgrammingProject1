@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../css/styles.css" />
-  <link rel="stylesheet" href="../css/blacklist.css"> 
+<link rel="stylesheet" href="../css/styles.css" />
+<link rel="stylesheet" href="../css/blacklist.css">
 
 <?php include("admin.header.php")?>

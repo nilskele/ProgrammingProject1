@@ -71,12 +71,15 @@ h1 {
     transition: 0.3s;
 }
 
+.intButtons2 {
+    margin-top: 0.7em;
+}
+
 .outBtn {
 
     background-color: red;
     color: white;
-    margin-left: 1em !important;
-    margin-right: 1em !important;
+    margin: 2em 1em 0 1em;
     padding: 0.5em 2em 0.5em 2em;
     border-radius: 1em;
     text-decoration: none;
@@ -147,7 +150,7 @@ h1 {
     border: 1px solid #cecbcb;
     box-shadow: #cecbcb 6px 6px;
     width: 50%;
-    
+    height: 500px;
     border-radius: 1em;
     margin-top: 3em;
     margin-right: 1em;
@@ -164,18 +167,27 @@ h1 {
     border-radius: 1em;
     padding: 1em;
     margin-left: 1em;
+    height: 500px;
 }
 
+.info {
+    width: 100%;
+}
+
+.moreinfo {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
 
 .dots {
     width: 3em;
-    margin-left: 9em;
+    height: 3em;
     transition: 0.3s;
     border-radius: 2em;
 
 }
 .inOutTitels{
-    
     width: 80vw;
     display: flex;
     justify-content: space-around;
@@ -184,7 +196,6 @@ h1 {
 .dots:hover {
     background-color: #a39c9b;
     border-radius: 2em;
-
 }
 
 .inOutProduct {
@@ -195,6 +206,7 @@ h1 {
     margin: 1em;
     padding: 1em 1em 0em 1em;
     flex-direction: row;
+    height: 130px;
 }
 
 #vandaagInButtons {
@@ -220,7 +232,7 @@ h1 {
 .productInfo {
     display: flex;
     flex-direction: row;
-
+    width: 100%;
 
 
 }

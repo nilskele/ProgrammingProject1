@@ -144,6 +144,7 @@ button.btn.btn-primary.adminbtn {
     border: 4px solid #FF0000;
     border-radius: 10px;
     z-index: 3;
+    box-shadow: 0 0 100px black;
 }
 
 .AdminLoginContainer {

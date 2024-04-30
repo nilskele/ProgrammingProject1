@@ -9,14 +9,23 @@
   margin-top: 100px;
   margin-bottom: 30px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .uitleningenTitle-col-1 {
   display: flex;
-  align-items: flex-end;
+  justify-content: end;
+  width: 40%;
 }
 
+.uitleningenTitle-col-2 {
+  width: 20%;
+  text-align: center;
+}
+
+.uitleningenTitle-col-3 {
+  width: 40%;
+}
 
 .terugLink {
   text-decoration: none;

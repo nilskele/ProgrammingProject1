@@ -72,9 +72,9 @@ $(function() {
                     card.className = 'inOutProduct';
                     card.setAttribute('data-lening-id', item.lening_id); // Set data-lening-id attribute
 
-                    // Create the product info div
-                    var productInfo = document.createElement('div');
-                    productInfo.className = 'productInfo';
+          // Create the product info div
+          var productInfo = document.createElement("div");
+          productInfo.className = "productInfo";
 
                     // Populate the product info
                     productInfo.innerHTML = `
@@ -92,8 +92,8 @@ $(function() {
                         </div>
                     `;
 
-                    // Append product info to card
-                    card.appendChild(productInfo);
+          // Append product info to card
+          card.appendChild(productInfo);
 
                     // Append the card to the appropriate container
                     document.getElementById('smallInOut2').appendChild(card);
@@ -105,45 +105,45 @@ $(function() {
         });
     }
 
-    // Event listener for accepting an item
-    $(document).on('click', '.accepterenBtn', function(e) {
-        e.preventDefault();
+  // Event listener for accepting an item
+  $(document).on("click", ".accepterenBtn", function (e) {
+    e.preventDefault();
 
-        // Store the context of 'this' in a variable
-        var $this = $(this);
+    // Store the context of 'this' in a variable
+    var $this = $(this);
 
-        // Retrieve the lening_id associated with the clicked row
-        var leningId = $this.closest('.inOutProduct').data('lening-id');
+    // Retrieve the lening_id associated with the clicked row
+    var leningId = $this.closest(".inOutProduct").data("lening-id");
 
-        // Send AJAX request to delete the row from the database
-        $.ajax({
-            url: '../php/delete_row.php',
-            method: 'POST',
-            data: { leningId: leningId },
-            success: function(response) {
-                // Upon successful deletion, remove the corresponding row from the HTML
-                if (response === 'success') {
-                    // Remove the closest '.inOutProduct' element
-                    $this.closest('.inOutProduct').remove();
-                } else {
-                    console.error('Failed to delete row');
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
-            }
-        });
+    // Send AJAX request to delete the row from the database
+    $.ajax({
+      url: "../php/delete_row.php",
+      method: "POST",
+      data: { leningId: leningId },
+      success: function (response) {
+        // Upon successful deletion, remove the corresponding row from the HTML
+        if (response === "success") {
+          // Remove the closest '.inOutProduct' element
+          $this.closest(".inOutProduct").remove();
+        } else {
+          console.error("Failed to delete row");
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error(error);
+      },
     });
+  });
 
-    // Event listener for marking an item as returned
-    $(document).on('click', '.outBtn', function(e) {
-        e.preventDefault();
+  // Event listener for marking an item as returned
+  $(document).on("click", ".outBtn", function (e) {
+    e.preventDefault();
 
-        // Store the context of 'this' in a variable
-        var $this = $(this);
+    // Store the context of 'this' in a variable
+    var $this = $(this);
 
-        // Retrieve the lening_id associated with the clicked row
-        var leningId = $this.closest('.inOutProduct').data('lening-id');
+    // Retrieve the lening_id associated with the clicked row
+    var leningId = $this.closest(".inOutProduct").data("lening-id");
 
         // Send AJAX request to update the terugbrengDatum to NULL in the database
         $.ajax({
