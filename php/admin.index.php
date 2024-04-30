@@ -111,6 +111,10 @@ include('../database.php');
 $query_naamItem = "SELECT naam FROM GROEP";
 $result_naamItem = $conn->query($query_naamItem);
 
+//zoekopdracht op basis van naam
+$query_selectNaam = "SELECT * FROM `GROEP` WHERE naam = 'Ronin S'";
+$result_selectNaam = $conn->query($query_selectNaam);
+
 
 
 $year = isset($_GET['year']) ? $_GET['year'] : 2024;
@@ -160,13 +164,21 @@ for ($day = strtotime($start_date); $day <= strtotime($end_date); $day = strtoti
 
     echo '</tr>';
 
-    $test = 3;
-    $nu = 1;
-    while($nu < $test) {
+
+$query_lengteProduct = "SELECT COUNT(naam) FROM GROEP WHERE naam = 'RONIN S'";
+$result_lengteproduct = $conn->query($query_lengteProduct);
+    
+    
+$row = $result_lengteproduct->fetch_row();
+
+$lengteproduct = $row[0];
+
+$nu = 1;
+    while($nu < $lengteproduct) {
         
         
-        if ($result_naamItem->num_rows > 0) {
-          while($row_naamItem = $result_naamItem->fetch_assoc()) {
+        if ($result_selectNaam->num_rows > 0) {
+          while($row_naamItem = $result_selectNaam->fetch_assoc()) {
             // Start a new row
             echo '<tr style="border: 1px solid black; height: 12%;">'; 
             // Print the product name in the first column
