@@ -44,6 +44,13 @@
             <button id="changeLayout" class="buttonZoekbalk"><img class="imagelayoutwijzigen" src="../images/layoutChange1.png"></button>
         </form>
     </div>
+    <?php
+    session_start();
+    $user_type = $_SESSION['user_type'];
+    ?>
+    <script type="text/javascript">
+        let usertype = '<?php echo $user_type; ?>';
+    </script>
     <script src="../js/zoekbalkScript.js"></script>
     <script src="../js/changeLayout.js"></script>
 </body>
