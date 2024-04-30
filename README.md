@@ -8,6 +8,7 @@ Whoever wrote this is a genius! <br>
 
 ![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white) ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white)
 <br>
+<br>
 Gust:
 https://chat.openai.com/share/7bf0bb43-e63d-4799-be61-42fc6aa0cf1f
 https://chat.openai.com/share/c7cb2562-9d44-47f3-84b2-6a55218c64e2
@@ -22,10 +23,12 @@ https://chat.openai.com/share/546eed2a-835f-4b36-89e5-0bd1aa8bb4f7
 https://chat.openai.com/c/aedb86a1-1bed-40f8-b5b5-dfdfcd884d38
 https://chat.openai.com/c/3f9ded50-4bd0-4b5f-bedf-b7c09eb6e190
 <br>
+<br>
 Nils: 
 https://chat.openai.com/share/73994dc4-b488-40a5-aac4-ee6dcb2238f9
 https://www.youtube.com/watch?v=gy6LY0Xy2zU&t=388s
 https://stackoverflow.com/questions/982919/sql-update-query-using-joins
 https://stackoverflow.com/questions/60162968/how-to-dynamically-create-these-html-elements-using-js
 https://chat.openai.com/share/bc1fc5a1-6348-4e74-8387-4346ec50cfb9
+<br>
 <br>
