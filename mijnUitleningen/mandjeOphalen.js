@@ -101,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
       // Handle button clicks based on class name
       if (target.classList.contains("melden-button")) {
         let buttonValue = target.getAttribute("value");
-        localStorage.setItem("product_id", buttonValue);
         document.getElementById("lening_id").value = buttonValue;
         toonMMeldenPopUp();
 
@@ -134,7 +133,6 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch((error) => {
               console.error("Error:", error);
-                // maak een sweetalert aan
                 Swal.fire({
                   title: "Er is iets fout gegaan",
                   text: "Probeer het later opnieuw.",
