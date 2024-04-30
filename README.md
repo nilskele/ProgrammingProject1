@@ -1,6 +1,11 @@
 # ProgrammingProject
 Whoever wrote this is a genius!
+![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white) ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
 
+
+
+
+![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white) ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white)
 Gust:
 https://chat.openai.com/share/7bf0bb43-e63d-4799-be61-42fc6aa0cf1f
 https://chat.openai.com/share/c7cb2562-9d44-47f3-84b2-6a55218c64e2
@@ -21,3 +26,5 @@ https://www.youtube.com/watch?v=gy6LY0Xy2zU&t=388s
 https://stackoverflow.com/questions/982919/sql-update-query-using-joins
 https://stackoverflow.com/questions/60162968/how-to-dynamically-create-these-html-elements-using-js
 https://chat.openai.com/share/bc1fc5a1-6348-4e74-8387-4346ec50cfb9
+
+![](https://img.shields.io/badge/Code-React-informational?style=flat&logo=react&color=61DAFB)
