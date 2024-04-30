@@ -87,7 +87,7 @@ $(document).ready(function() {
     var productName = $('#productName').val();
 
     // Check if the product name is empty
-    if (productName.trim() === '') {
+    if (productName === undefined && productName.trim() ==='') {
       alert('Please enter a product name.');
       return;
     }
