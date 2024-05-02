@@ -11,6 +11,7 @@ Gebruikt gemaakt van:<br>
 <br>Datepicker: https://retype.com/?from=datepicker.com 
 <br>Sweetalert: https://sweetalert.js.org/guides/
 <br>Bootstrap: https://getbootstrap.com/
+<br>vlucas/PHP dotenv: https://github.com/vlucas/phpdotenv?tab=readme-ov-file
 
 
 
