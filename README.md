@@ -60,6 +60,7 @@ https://chat.openai.com/share/177a52d4-9228-44f0-b2c3-47206c333ad9<br>
 https://www.linkedin.com/learning/php-with-mysql-essential-training-1-the-basics/php-with-mysql-essential-training-the-basics?u=121303466<br>
 https://stackoverflow.com/questions/41391862/how-to-access-php-session-variable-in-javascript<br>
 https://stackoverflow.com/questions/23740548/how-do-i-pass-variables-and-data-from-php-to-javascript<br>
+https://dev.to/enygma/keeping-credentials-secure-in-php-1mgo<br>
 <br>
 <br>
 
