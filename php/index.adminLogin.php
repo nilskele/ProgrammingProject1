@@ -12,27 +12,29 @@ function valideren($data) {
 
 if (isset($_POST['inputEmail3']) && isset($_POST['inputPassword3'])) {
     $email = valideren($_POST['inputEmail3']);
-    $passwoord = valideren($_POST['inputPassword3']);
+    $plain_password = valideren($_POST['inputPassword3']);
 
-    $sql = "SELECT * FROM USER WHERE email='$email' AND passwoord='$passwoord' AND userType_fk = 1";
-        $result = mysqli_query($conn, $sql);
-        
-        if(mysqli_num_rows($result) === 1) {
-            $row = mysqli_fetch_assoc($result);
-            if($row['email'] === $email && $row['passwoord'] === $passwoord) {
-                $_SESSION['email'] = $row['email'];
-                $_SESSION['voornaam'] = $row['voornaam'];
-                $_SESSION['user_id'] = $row['user_id'];
-                $_SESSION['user_type'] = $row['userType_fk'];
-                header("Location: admin.index.php");
-                exit();
-            } else {
-                header("Location: index.php?error=Invalide email of wachtwoord");
-                exit();
-            }
+    $stmt = $conn->prepare("SELECT * FROM USER WHERE email=? And userType_fk = 1");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+        if(hash('sha256', $plain_password) === $row['passwoord']) {
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['isIngelogd'] = true;
+            $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['user_type'] = $row['userType_fk'];
+            header("Location: admin.index.php");
+            exit();
         } else {
             header("Location: index.php?error=Invalide email of wachtwoord");
             exit();
+        }
+    } else {
+        header("Location: index.php?error=Invalide email of wachtwoord");
+        exit();
     }
 }
 ?>
