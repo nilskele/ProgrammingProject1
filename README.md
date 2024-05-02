@@ -67,5 +67,17 @@ Lucas:
 https://chat.openai.com/share/8e8c51f8-d417-48ab-bab4-abe07de601da <br>
 [https://www.youtube.com/watch?v=SgynWhEgvlw](https://www.youtube.com/watch?v=SgynWhEgvlw <br>
 https://stackoverflow.com/questions/24739126/scroll-to-a-specific-element-using-html <br>)
+<br>
+<br>
 
+Weiam:
+https://youtu.be/yQimoqo0-7g?si=ovJUMtBwCWlU_kjh<br>
+https://youtu.be/ZBgTzx46B8s?si=BG3xPXQg9RiPL7qP<br>
+https://chat.openai.com/share/ed202594-ebc5-487b-ae79-a46f6ec4e197<br>
+https://chat.openai.com/share/06e379b1-131f-4ca3-8e78-1418eec917b8<br>
+https://chat.openai.com/share/9f0a3b29-9770-4aee-a30a-259d6a64e3b1<br>
+https://chat.openai.com/share/d178c3b0-14d3-4a51-957c-81da2c28c649<br>
+https://www.daterangepicker.com/#config<br>
+<br>
+<br>
 
