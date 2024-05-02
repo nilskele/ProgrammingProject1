@@ -2,6 +2,7 @@
 /shelf/
 /workspace.xml
 .DS_Store
+database.php
 # Editor-based HTTP Client requests
 /httpRequests/
 # Datasource local storage ignored files
