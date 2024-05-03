@@ -25,9 +25,9 @@ $(document).ready(function() {
             if (data.length > 0) {
                 $.each(data, function(index, item) {
                     if (item.blacklist_fk === 3) {
-                        addToBlacklist(item.voornaam + ' ' + item.achternaam, item.blacklistDatum, item.user_id);
+                        addToBlacklist(item.voornaam + ' ' + item.achternaam, item.blacklistDatum || "Geen datum opgeslagen", item.user_id);
                     } else if (item.blacklist_fk === 2) {
-                        addToWaarschuwingen(item.voornaam + ' ' + item.achternaam, item.blacklistDatum, item.user_id);
+                        addToWaarschuwingen(item.voornaam + ' ' + item.achternaam, item.blacklistDatum || "Geen datum opgeslagen", item.user_id);
                     }
                 });
             } else {
@@ -61,6 +61,35 @@ $(document).ready(function() {
             },
             error: function(xhr, status, error) {
                 console.error('Fout bij het ophalen van gegevens: ' + error);
+            }
+        });
+    });
+
+
+    $('.inputZoekbalk1').on('keyup', function() {
+        let zoekterm = $(this).val().toLowerCase();
+
+        $('.blacklistLijst .Item').each(function() {
+            let naam = $(this).find('.Naam').text().toLowerCase();
+
+            if (naam.includes(zoekterm)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+
+    $('.inputZoekbalk2').on('keyup', function() {
+        let zoekterm = $(this).val().toLowerCase();
+
+        $('.waarschuwingLijst .Item').each(function() {
+            let naam = $(this).find('.Naam').text().toLowerCase();
+
+            if (naam.includes(zoekterm)) {
+                $(this).show();
+            } else {
+                $(this).hide();
             }
         });
     });

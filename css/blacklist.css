@@ -37,7 +37,8 @@ html, body {
     background-color: #D9D9D9;
     height: 600px;
     border-radius: 20px;
-    box-shadow: 5px 5px 5px #888888;    
+    box-shadow: 5px 5px 5px #888888;
+    position: relative;    
 }
 
 .blacklistContainerHeader h3, .waarschuwingContainerHeader h3 {
@@ -45,6 +46,18 @@ html, body {
     margin-top: 20px;
     margin-bottom: 20px;
     padding-top: 30px;
+}
+
+.inputZoekbalk1, .inputZoekbalk2 {
+    position: absolute;
+    top: 30px;
+    left: 70px;
+    font: 16px system-ui;
+    width: 300px;
+    padding: 6px 10px;
+    text-align: center;
+    border: 2px solid #000;
+    border-radius: 20px;
 }
 
 .blacklistLijst, .waarschuwingLijst {

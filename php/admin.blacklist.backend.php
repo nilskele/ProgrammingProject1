@@ -1,7 +1,7 @@
 <?php
 include('../database.php');
 
-// Controleer of het een AJAX-verzoek is
+
 if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
     $query1 = "SELECT USER.voornaam, USER.achternaam, USER.blacklist_fk, USER.blacklistDatum, USER.user_id
                 FROM USER
@@ -44,7 +44,6 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     $stmt1->close();
     $stmt2->close();
 } else {
-    // Dit is geen AJAX-verzoek, dus doe niets of voer een alternatieve actie uit
-    // Je kunt er bijvoorbeeld voor kiezen om een foutmelding te tonen of door te gaan met de normale HTML-output.
+    echo "error";
 }
 ?>
