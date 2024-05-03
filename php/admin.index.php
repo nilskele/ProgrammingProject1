@@ -157,6 +157,9 @@ include('../database.php');
       <script src="../js/inandout.js"></script>
 
     </div>
+    <div class="toTopAnker">
+      <button onclick="topFunction()" id="topBtn">Top &#8593;</button>
+    </div>
     <script src="../js/inandout.js"></script>
 
     <?php
@@ -283,6 +286,27 @@ function aanpassenWeek(wissel){
     // Redirect to the new week
     window.location.href = "admin.index.php?year=" + newYear + "&week=" + newWeek; // Change "your_page.php" to your actual page
   }
+
+
+
+  let topBtn = document.getElementById("topBtn");
+
+window.onscroll = function () {
+  scrollFunction();
+}
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    topBtn.style.display = "block";
+  } else {
+    topBtn.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
 
 
 </script>
