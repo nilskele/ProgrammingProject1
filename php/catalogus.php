@@ -37,6 +37,9 @@
   </footer> -->
 
   <br>
+  <div class="toTopAnker">
+    <button onclick="topFunction()" id="topBtn">Top &#8593;</button>
+  </div>
   <script src="../js/catalogus.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
