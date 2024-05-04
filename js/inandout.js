@@ -1,31 +1,11 @@
 $(function() {
-    //POPUP
-    function createPopup(templateHTML) {
-        
-        var overlay = document.getElementById('overlay');
-        var popup = document.getElementById('popup');
-    
-        
-        popup.innerHTML = templateHTML;
-    
-        
-        var closeButton = popup.querySelector('.close');
-        closeButton.addEventListener('click', function() {
-            overlay.style.display = 'none';
-            popup.style.display = 'none';
-        });
-    
-        
-        overlay.style.display = 'block';
-        popup.style.display = 'block';
-    }
 
 
 
 
     //ON WINDOW LOAD 
     window.onload = function() {
-        console.log('chechcheck')
+
         var today = moment().format('YYYY-MM-DD');
         fetchDataUitleendatum(today);
         fetchDataTerugbrengDatum(today);
@@ -34,6 +14,8 @@ $(function() {
     function fetchDataUitleendatum(selectedDate) {
         // Clear existing data
         $('#smallInOut1').empty();
+        $('#InOut1').empty();
+        
 
         // Send the selected date to a PHP script using AJAX
         $.ajax({
@@ -75,7 +57,13 @@ $(function() {
                         card.appendChild(productInfo);
 
                         // Append the card to the appropriate container
-                        document.getElementById('smallInOut1').appendChild(card);
+                        
+                        
+                        if (window.location.pathname === '/programmingProject1/php/admin.index.php') {
+                            document.getElementById('smallInOut1').appendChild(card);
+                        } else if(window.location.pathname === '/programmingProject1/php/admin.inandout.php'){
+                            document.getElementById('InOut1').appendChild(card);
+                        }
                     }
                 });
             },
@@ -83,12 +71,14 @@ $(function() {
                 console.error(error);
             }
         });
+        
     }
 
     // Function to fetch and display data for terugbrengDatum
     function fetchDataTerugbrengDatum(selectedDate) {
         // Clear existing data
         $('#smallInOut2').empty();
+        $('#InOut2').empty();
 
         // Send the selected date to a PHP script using AJAX
         $.ajax({
@@ -132,7 +122,17 @@ $(function() {
                         card.appendChild(productInfo);
 
                         // Append the card to the appropriate container
-                        document.getElementById('smallInOut2').appendChild(card);
+                        
+                        
+
+                        if (window.location.pathname === '/programmingProject1/php/admin.index.php') {
+                            console.log("checkcheck")
+                            document.getElementById('smallInOut2').appendChild(card);
+                            
+                        } else if (window.location.pathname === '/programmingProject1/php/admin.inandout.php'){
+                            console.log("checkcheck")
+                            document.getElementById('InOut2').appendChild(card);
+                        }
                     }
                 });
             },
@@ -155,6 +155,7 @@ $(function() {
         }
     }, function(start, end, label) {
         var selectedDate = start.format('YYYY-MM-DD');
+        console.log("checkcheck")
 
         // Call fetchDataUitleendatum function with the selected date
         fetchDataUitleendatum(selectedDate);

@@ -1,6 +1,10 @@
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="../css/styles.css" />
 <link rel="stylesheet" href="../css/inandout.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <style>
 .submitIcon {
   transition: 0.5s;
@@ -29,7 +33,13 @@
 
 <?php include("admin.header.php")?>
 
+
+
 <div class="inAndOut">
+<div id="title-kalender-In-Out">
+    <h1>In and Out</h1>
+    <input type="text" name="selectedDate" id="selectedDate" readonly />
+  </div>
   <h1>vandaag In</h1>
   <div class="searchbar">
     <input type="text" class="form-control input1" id="inputName3" placeholder="product nr" />
@@ -38,78 +48,7 @@
 
 
 
-  <div class="inOutCatalagus overflow-auto">
-    <div class="productstate">
-      <div class="inButtons">
-        <a class="btn btn-primary" href="">Accepteren</a>
-        <a class="defectButton" href="">Defect</a>
-      </div>
-      <div class="productInfo">
-        <div class="info">
-          <h3>Nils kelecom</h3>
-          <p>Canon,45X8G</p>
-        </div>
-        <div class="moreinfo">
-          <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
-        </div>
-      </div>
-
-
-    </div>
-    <div class="productstate">
-      <div class="inButtons">
-        <a class="btn btn-primary" href="">Accepteren</a>
-        <a class="defectButton" href="">Defect</a>
-
-      </div>
-      <div class="productInfo">
-        <div class="info">
-          <h3>Nils kelecom</h3>
-          <p>Canon,45X8G</p>
-        </div>
-        <div class="moreinfo">
-          <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
-        </div>
-      </div>
-
-
-    </div>
-    <div class="productstate">
-      <div class="inButtons">
-        <a class="btn btn-primary" href="">Accepteren</a>
-        <a class="defectButton" href="">Defect</a>
-
-      </div>
-      <div class="productInfo">
-        <div class="info">
-          <h3>Nils kelecom</h3>
-          <p>Canon,45X8G</p>
-        </div>
-        <div class="moreinfo">
-          <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
-        </div>
-      </div>
-
-
-    </div>
-    <div class="productstate">
-      <div class="inButtons">
-        <a class="btn btn-primary" href="">Accepteren</a>
-        <a class="defectButton" href="">Defect</a>
-
-      </div>
-      <div class="productInfo">
-        <div class="info">
-          <h3>Nils kelecom</h3>
-          <p>Canon,45X8G</p>
-        </div>
-        <div class="moreinfo">
-          <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
-        </div>
-      </div>
-
-
-    </div>
+  <div id="InOut1" class="inOutCatalagus overflow-auto">
   </div>
 
 
@@ -125,28 +64,10 @@
 
 
 
-  <div class="inOutCatalagus overflow-auto">
-    <div class="productstate">
-      <div class="intButtons2">
-
-        <a class="defectButton" href="">Defect</a>
-
-      </div>
-      <div class="productInfo">
-        <div class="info">
-          <h3>Nils kelecom</h3>
-          <p>Canon,45X8G</p>
-        </div>
-        <div class="moreinfo">
-          <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
-        </div>
-      </div>
-
-
-
+    <div id="InOut2" class="inOutCatalagus overflow-auto">    
     </div>
-  </div>
 
 
-
+    
 </div>
+<script src="../js/inandout.js"></script>
