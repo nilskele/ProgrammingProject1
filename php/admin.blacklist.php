@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="../css/styles.css" />
 <link rel="stylesheet" href="../css/blacklist.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
 <?php include("admin.header.php");

@@ -39,28 +39,39 @@ $(document).ready(function() {
         }
     });
 
-    $(document).on('click', '.Verwijderen', function(e) {   
-        location.reload();
+    $(document).on('click', '.Verwijderen', function(e) {
+        Swal.fire({
+            title: "Weet je zeker of je deze gebruiker wilt verwijderen uit deze lijst?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ja, verwijderen!",
+        }).then ((result) => {
+            if (result.isConfirmed) {
+                location.reload();
         
-        let user_id = $(this).val(); 
+                let user_id = $(this).val(); 
 
-        let $this = $(this); 
+                let $this = $(this); 
 
-        $.ajax({
-            url: '../php/admin.blacklist.verwijderenBlacklist.php',
-            type: 'POST',
-            data: { user_id: user_id },
-            success: function(response) {
-                console.log(response);
-                if (response === 'success') {
-                    $this.closest('.Item').remove();
+                $.ajax({
+                    url: '../php/admin.blacklist.verwijderenBlacklist.php',
+                    type: 'POST',
+                    data: { user_id: user_id },
+                    success: function(response) {
+                        console.log(response);
+                        if (response === 'success') {
+                            $this.closest('.Item').remove();
 
-                } else {
-                    console.error('Fout bij het verwijderen van de blacklist');
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('Fout bij het ophalen van gegevens: ' + error);
+                        } else {
+                            console.error('Fout bij het verwijderen van de blacklist');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Fout bij het ophalen van gegevens: ' + error);
+                    }
+                });
             }
         });
     });
