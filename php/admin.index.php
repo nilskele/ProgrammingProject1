@@ -5,6 +5,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <!-- Include your custom JavaScript file -->
 <script src="../js/inandout.js"></script>
@@ -73,7 +74,7 @@ include('../database.php');
     <div class="adminAccepteren">
       <div class="productNr">
         <h1>Product Nr.</h1>
-        <input type="text" class="form-control grey-input" id="inputName3" placeholder="product nr" />
+        <input type="text" class="form-control grey-input" id="productNrInput" placeholder="product nr" />
       </div>
       <div class="knoppen">
         <a href="accepteren.php" class="accepterenBtn">
@@ -82,9 +83,9 @@ include('../database.php');
         <a href="defect.php" class="defectBtn">
           defect
         </a>
-        <a href="reserveren.php" class="reserverenBtn">
+        <button class="reserverenBtn" id="reserverenButtonProduct">
           reserveren
-        </a>
+        </button>
 
       </div>
     </div>
@@ -161,6 +162,7 @@ include('../database.php');
       <button onclick="topFunction()" id="topBtn">Top &#8593;</button>
     </div>
     <script src="../js/inandout.js"></script>
+    <script src="../js/admin.index.js"></script>
 
     <?php
 
@@ -287,26 +289,6 @@ function aanpassenWeek(wissel){
     window.location.href = "admin.index.php?year=" + newYear + "&week=" + newWeek; // Change "your_page.php" to your actual page
   }
 
-
-
-  let topBtn = document.getElementById("topBtn");
-
-window.onscroll = function () {
-  scrollFunction();
-}
-
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    topBtn.style.display = "block";
-  } else {
-    topBtn.style.display = "none";
-  }
-}
-
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
 
 
 </script>

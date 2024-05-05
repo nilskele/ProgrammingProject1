@@ -121,7 +121,7 @@ h1 {
     padding: 0.5em 1.5em 0.5em 1.5em;
     border-radius: 1em;
     text-decoration: none;
-    border: 2px solid white;
+    border: 2px solid #c4c4c4;
     transition: 0.3s;
 }
 
