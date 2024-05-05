@@ -41,11 +41,11 @@ $(function() {
 
                         // Populate the product info
                         productInfo.innerHTML = `
-                            <div class="intButtons2">
+                            <div id="intButtons2">
                                 <a class="outBtn" href="">Out</a>
                             </div>
                             <div class="info">
-                                <h3>${item.voornaam} ${item.achternaam}</h3>
+                                <h3 class="Naam">${item.voornaam} ${item.achternaam}</h3>
                                 <p>${item.naam}, ${item.product_id}</p>
                             </div>
                             <div class="moreinfo">
@@ -109,7 +109,7 @@ $(function() {
                                 <a class="defectBtn defectButton" href="">Defect</a>
                             </div>
                             <div class="info">
-                                <h5>${item.voornaam} ${item.achternaam}</h5>
+                                <h5 class="Naam">${item.voornaam} ${item.achternaam}</h5>
                                 <p>User ID: ${item.user_id}</p>
                                 <p>Product ID: ${item.product_id}</p>
                             </div>
@@ -236,11 +236,65 @@ $(function() {
     <button class="close">Close</button>
 `;
 createPopup(template);
-        // Store the context of 'this' in a variable
-        
-    });
+});
 
-    // Fetch data for today on window load
+$('.inputZoekbalk1').on('keyup', function() {
+    let zoekterm = $(this).val().toLowerCase();
+
+    $('#InOut1 .inOutProduct').each(function() {
+        let naam = $(this).find('.Naam').text().toLowerCase();
+
+        if (naam.includes(zoekterm)) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+});
+
+$('.inputZoekbalk2').on('keyup', function() {
+    let zoekterm = $(this).val().toLowerCase();
+
+    $('#smallInOut1 .inOutProduct').each(function() {
+        let naam = $(this).find('.Naam').text().toLowerCase();
+
+        if (naam.includes(zoekterm)) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+});
+
+$('.inputZoekbalk3').on('keyup', function() {
+    let zoekterm = $(this).val().toLowerCase();
+
+    $('#smallInOut2 .inOutProduct').each(function() {
+        let naam = $(this).find('.Naam').text().toLowerCase();
+
+        if (naam.includes(zoekterm)) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+});
+
+$('.inputZoekbalk4').on('keyup', function() {
+    let zoekterm = $(this).val().toLowerCase();
+
+    $('#InOut2 .inOutProduct').each(function() {
+        let naam = $(this).find('.Naam').text().toLowerCase();
+
+        if (naam.includes(zoekterm)) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+});
+
+
     
 });
 
