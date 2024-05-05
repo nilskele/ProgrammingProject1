@@ -118,6 +118,13 @@ include('../database.php');
     <h1>Vandaag Geleend</h1>
     <h1>Vandaag Terug</h1>
   </div>
+  <div class="inOutTitels">
+  <input type="text" id="zoekbalka" name="zoekbalk" placeholder="Zoek naar producten" class="inputZoekbalk3">
+
+  <input type="text" id="zoekbalkb" name="zoekbalk" placeholder="Zoek naar producten" class="inputZoekbalk4">
+
+  </div>
+
   <div class="inoutdiv">
     <div id="smallInOut1" class="productContainer overflow-auto">
 

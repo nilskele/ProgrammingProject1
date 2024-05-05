@@ -5,6 +5,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
 <style>
 .submitIcon {
   transition: 0.5s;
@@ -33,17 +34,21 @@
 
 <?php include("admin.header.php")?>
 
-
-
-<div class="inAndOut">
+<div class="terug">
+        <a href="javascript:history.back()" class="terugLink">&#8592 Terug</a>
+        
+</div>
 <div id="title-kalender-In-Out">
     <h1>In and Out</h1>
     <input type="text" name="selectedDate" id="selectedDate" readonly />
   </div>
-  <h1>vandaag In</h1>
+
+<div class="inAndOut">
+
+  <h1>vandaag Out </h1>
   <div class="searchbar">
-    <input type="text" class="form-control input1" id="inputName3" placeholder="product nr" />
-    <a id="sub" href=""><img class="submitIcon" src="../images/search-26241.png" alt="search logo"></a>
+  <input type="text" id="zoekbalk" name="zoekbalk" placeholder="Zoek naar producten" class="inputZoekbalk1">
+    
   </div>
 
 
@@ -56,10 +61,10 @@
 </div>
 
 <div class="inAndOut">
-  <h1>vandaag Out</h1>
+  <h1>vandaag In</h1>
   <div class="searchbar">
-    <input type="text" class="form-control input1" id="inputName3" placeholder="product nr" />
-    <a id="sub" href=""><img class="submitIcon" src="../images/search-26241.png" alt="search logo"></a>
+  <input type="text" id="zoekbalk" name="zoekbalk" placeholder="Zoek naar producten" class="inputZoekbalk1">
+    
   </div>
 
 

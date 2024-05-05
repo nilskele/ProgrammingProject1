@@ -11,6 +11,7 @@
   <div class="navbar-nav">
 
     <a class="nav-item nav-link" href="admin.inandout.php">In and Out</a>
+    <a class="nav-item nav-link" href="admin.laatingebracht.php">Te laat</a>
     <a class="nav-item nav-link" href="admin.blacklist.php">Blacklist</a>
     <a class="nav-item nav-link" href="logout.php"><img src="../images/logout-svgrepo-com.svg" alt="loagout"
         height="25px"></a>

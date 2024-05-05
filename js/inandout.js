@@ -9,6 +9,7 @@ $(function() {
         var today = moment().format('YYYY-MM-DD');
         fetchDataUitleendatum(today);
         fetchDataTerugbrengDatum(today);
+        
     };
     // IN AND OUT 
     function fetchDataUitleendatum(selectedDate) {
@@ -41,11 +42,11 @@ $(function() {
 
                         // Populate the product info
                         productInfo.innerHTML = `
-                            <div class="intButtons2">
+                            <div id="intButtons2">
                                 <a class="outBtn" href="">Out</a>
                             </div>
                             <div class="info">
-                                <h3>${item.voornaam} ${item.achternaam}</h3>
+                                <h3 class="Naam">${item.voornaam} ${item.achternaam}</h3>
                                 <p>${item.naam}, ${item.product_id}</p>
                             </div>
                             <div class="moreinfo">
@@ -109,7 +110,7 @@ $(function() {
                                 <a class="defectBtn defectButton" href="">Defect</a>
                             </div>
                             <div class="info">
-                                <h5>${item.voornaam} ${item.achternaam}</h5>
+                                <h5 class="Naam">${item.voornaam} ${item.achternaam}</h5>
                                 <p>User ID: ${item.user_id}</p>
                                 <p>Product ID: ${item.product_id}</p>
                             </div>
@@ -141,6 +142,7 @@ $(function() {
             }
         });
     }
+    
 
     // Initialize date picker
     $('input[name="selectedDate"]').daterangepicker({
@@ -162,6 +164,8 @@ $(function() {
 
         // Call fetchDataTerugbrengDatum function with the selected date
         fetchDataTerugbrengDatum(selectedDate);
+        
+        
     });
 
     // Event listener for accepting an item
@@ -192,11 +196,7 @@ $(function() {
                 console.error(error);
             }
         });
-        $('.popup').empty();
-        var popup = document.getElementById('popup');
-
-        // Clear previous content
-        popup.innerHTML = '';
+        
     });
 
     // Event listener for marking an item as returned
@@ -227,6 +227,8 @@ $(function() {
             }
         });
     });
+
+
     $(document).on('click', '.defectBtn', function(e) {
         e.preventDefault();
         var template = `
@@ -234,13 +236,67 @@ $(function() {
     <p>This is the content for the popup.</p>
     <button class="acceptPopup">Accept</button>
     <button class="close">Close</button>
-`;
-createPopup(template);
-        // Store the context of 'this' in a variable
-        
+                                            `;
+    createPopup(template);
     });
 
-    // Fetch data for today on window load
+    $('.inputZoekbalk1').on('keyup', function() {
+        let zoekterm = $(this).val().toLowerCase();
+
+        $('#InOut1 .inOutProduct').each(function() {
+            let naam = $(this).find('.Naam').text().toLowerCase();
+
+            if (naam.includes(zoekterm)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+
+    $('.inputZoekbalk2').on('keyup', function() {
+        let zoekterm = $(this).val().toLowerCase();
+
+        $('#smallInOut1 .inOutProduct').each(function() {
+            let naam = $(this).find('.Naam').text().toLowerCase();
+
+            if (naam.includes(zoekterm)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+
+    $('.inputZoekbalk3').on('keyup', function() {
+        let zoekterm = $(this).val().toLowerCase();
+
+        $('#smallInOut2 .inOutProduct').each(function() {
+            let naam = $(this).find('.Naam').text().toLowerCase();
+
+            if (naam.includes(zoekterm)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+
+    $('.inputZoekbalk4').on('keyup', function() {
+        let zoekterm = $(this).val().toLowerCase();
+
+        $('#InOut2 .inOutProduct').each(function() {
+            let naam = $(this).find('.Naam').text().toLowerCase();
+
+            if (naam.includes(zoekterm)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+
+
     
 });
 
