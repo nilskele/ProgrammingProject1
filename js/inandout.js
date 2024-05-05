@@ -9,6 +9,7 @@ $(function() {
         var today = moment().format('YYYY-MM-DD');
         fetchDataUitleendatum(today);
         fetchDataTerugbrengDatum(today);
+        
     };
     // IN AND OUT 
     function fetchDataUitleendatum(selectedDate) {
@@ -141,6 +142,7 @@ $(function() {
             }
         });
     }
+    
 
     // Initialize date picker
     $('input[name="selectedDate"]').daterangepicker({
@@ -162,6 +164,8 @@ $(function() {
 
         // Call fetchDataTerugbrengDatum function with the selected date
         fetchDataTerugbrengDatum(selectedDate);
+        
+        
     });
 
     // Event listener for accepting an item
@@ -192,11 +196,7 @@ $(function() {
                 console.error(error);
             }
         });
-        $('.popup').empty();
-        var popup = document.getElementById('popup');
-
-        // Clear previous content
-        popup.innerHTML = '';
+        
     });
 
     // Event listener for marking an item as returned
@@ -227,6 +227,8 @@ $(function() {
             }
         });
     });
+
+
     $(document).on('click', '.defectBtn', function(e) {
         e.preventDefault();
         var template = `
@@ -234,65 +236,65 @@ $(function() {
     <p>This is the content for the popup.</p>
     <button class="acceptPopup">Accept</button>
     <button class="close">Close</button>
-`;
-createPopup(template);
-});
-
-$('.inputZoekbalk1').on('keyup', function() {
-    let zoekterm = $(this).val().toLowerCase();
-
-    $('#InOut1 .inOutProduct').each(function() {
-        let naam = $(this).find('.Naam').text().toLowerCase();
-
-        if (naam.includes(zoekterm)) {
-            $(this).show();
-        } else {
-            $(this).hide();
-        }
+                                            `;
+    createPopup(template);
     });
-});
 
-$('.inputZoekbalk2').on('keyup', function() {
-    let zoekterm = $(this).val().toLowerCase();
+    $('.inputZoekbalk1').on('keyup', function() {
+        let zoekterm = $(this).val().toLowerCase();
 
-    $('#smallInOut1 .inOutProduct').each(function() {
-        let naam = $(this).find('.Naam').text().toLowerCase();
+        $('#InOut1 .inOutProduct').each(function() {
+            let naam = $(this).find('.Naam').text().toLowerCase();
 
-        if (naam.includes(zoekterm)) {
-            $(this).show();
-        } else {
-            $(this).hide();
-        }
+            if (naam.includes(zoekterm)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
     });
-});
 
-$('.inputZoekbalk3').on('keyup', function() {
-    let zoekterm = $(this).val().toLowerCase();
+    $('.inputZoekbalk2').on('keyup', function() {
+        let zoekterm = $(this).val().toLowerCase();
 
-    $('#smallInOut2 .inOutProduct').each(function() {
-        let naam = $(this).find('.Naam').text().toLowerCase();
+        $('#smallInOut1 .inOutProduct').each(function() {
+            let naam = $(this).find('.Naam').text().toLowerCase();
 
-        if (naam.includes(zoekterm)) {
-            $(this).show();
-        } else {
-            $(this).hide();
-        }
+            if (naam.includes(zoekterm)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
     });
-});
 
-$('.inputZoekbalk4').on('keyup', function() {
-    let zoekterm = $(this).val().toLowerCase();
+    $('.inputZoekbalk3').on('keyup', function() {
+        let zoekterm = $(this).val().toLowerCase();
 
-    $('#InOut2 .inOutProduct').each(function() {
-        let naam = $(this).find('.Naam').text().toLowerCase();
+        $('#smallInOut2 .inOutProduct').each(function() {
+            let naam = $(this).find('.Naam').text().toLowerCase();
 
-        if (naam.includes(zoekterm)) {
-            $(this).show();
-        } else {
-            $(this).hide();
-        }
+            if (naam.includes(zoekterm)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
     });
-});
+
+    $('.inputZoekbalk4').on('keyup', function() {
+        let zoekterm = $(this).val().toLowerCase();
+
+        $('#InOut2 .inOutProduct').each(function() {
+            let naam = $(this).find('.Naam').text().toLowerCase();
+
+            if (naam.includes(zoekterm)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
 
 
     
