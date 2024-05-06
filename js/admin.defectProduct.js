@@ -18,6 +18,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
         let formData = new FormData(defectForm);
 
+        Swal.fire({
+            title: 'Weet u zeker dat u dit wilt doen?',
+            text: "Het product zal als defect worden gemeld.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ja, meld het defect!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                meldDefect(formData);
+            }
+        });
+    });
+
+    // Functie om het defect te melden
+    function meldDefect(formData) {
         fetch('../php/admin.defectProductBackend.php', {
             method: 'POST',
             body: formData
@@ -25,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.text())
         .then(data => {
             if (data === "Defect succesvol gemeld.") {
-                    Swal.fire({
+                Swal.fire({
                     icon: 'success',
                     title: 'Product defect gemeld',
                     text: 'Het product is succesvol gemeld als defect',
@@ -36,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 Swal.fire({
                     icon: 'error',
                     title: 'Er is iets misgegaan',
-                    text: 'Het opgegeven e-mailadres bestaat niet.',
+                    text: data,
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -51,5 +68,110 @@ document.addEventListener("DOMContentLoaded", function() {
                 timer: 1500
             });
         });
-    });
+    }
+
+    // Event listener voor de knop "Uit catalogus halen"
+    let removeFromCatalogBtn = document.getElementById("removeFromCatalogBtn");
+    if (removeFromCatalogBtn) {
+        removeFromCatalogBtn.addEventListener("click", function() {
+            Swal.fire({
+                title: 'Weet u zeker dat u dit wilt doen?',
+                text: "Het product zal uit de catalogus worden gehaald.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ja, haal het uit de catalogus!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let productNr = productNrInput.value;
+                    let formData = new FormData();
+                    formData.append('productNr', productNr);
+
+                    fetch('../php/admin.defectProduct.Catalogus.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        data = data.trim();
+                        console.log(data);
+                        if (data === "Product is uit de catalogus gehaald.") {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Uit de catalogus gehaald!',
+                                text: 'Het product is uit de catalogus gehaald.',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Er is iets misgegaan',
+                                text: data,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+
+                }
+            });
+        });
+    }
+
+    // Event listener voor de knop "Persoon waarschuwen"
+    let blacklistPersonBtn = document.getElementById("blacklistPersonBtn");
+    if (blacklistPersonBtn) {
+        blacklistPersonBtn.addEventListener("click", function() {
+            Swal.fire({
+                title: 'Weet u zeker dat u dit wilt doen?',
+                text: "De persoon zal worden gewaarschuwd.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ja, waarschuw de persoon!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let email = document.getElementById("email").value;
+                    let formData = new FormData();
+                    formData.append('email', email);
+
+                    fetch('../php/admin.defectProduct.Blacklist.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        data = data.trim();
+                        console.log(data);
+                        if (data === "Persoon is toegevoegd aan de blacklist.") {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Persoon gewaarschuwd!',
+                                text: 'De persoon is succesvol gewaarschuwd.',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Er is iets misgegaan',
+                                text: data,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                }
+            });
+        });
+    }
 });

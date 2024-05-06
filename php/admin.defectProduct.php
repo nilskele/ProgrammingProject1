@@ -26,8 +26,9 @@
 
             <div class="allButtons">
                 <button type="submit" class="btn btn-primary">Opslaan</button>
-                <button type="button" class="btn btn-primary">Uit catalogus halen</button>
-                <button type="button" class="btn btn-primary">Persoon waarschuwen</button>
+                <button type="button" id="removeFromCatalogBtn" class="btn btn-primary">Uit catalogus halen</button>
+                <button type="button" id="blacklistPersonBtn" class="btn btn-primary">Persoon waarschuwen</button>
+
             </div>
         </form>
     </div>
