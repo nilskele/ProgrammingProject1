@@ -9,6 +9,44 @@ html, body {
     overflow-x: hidden;
 }
 
+.titelheader {
+    position: relative;
+}
+
+.waarschuwenBtn {
+    position: absolute;
+    right: 0px;
+    top: 10px;
+}
+
+.waarschuwenPersoonPopUP {
+    display: none;
+    transform: translateX(-25%);
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    border: 4px solid #FF0000;
+    border-radius: 10px;
+    z-index: 3;
+    box-shadow: 0 0 100px black;
+    width: 600px;
+    background-color: white;
+}
+
+.waarschuwenPersoonPopUP h1 {
+    margin-bottom: 20px;
+}
+
+.waarschuwenPersoonContainer {
+    padding: 30px;
+    width: 600px;
+}
+
+.waarschuwenPersoonContainer input[type=email] {
+    width: 100%;
+    margin: 5px 0 22px 0;
+  }
+
 .containerBlacklist {
     margin: 100px auto 30px auto;
     width: 70%;

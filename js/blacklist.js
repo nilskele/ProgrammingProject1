@@ -105,3 +105,12 @@ $(document).ready(function() {
         });
     });
 });
+
+
+function OpenPersoonWaarschuwen() {
+    document.getElementById("waarschuwenPersoonPopUPDiv").style.display = "block";
+  }
+  
+  function ClosePersoonWaarschuwen() {
+    document.getElementById("waarschuwenPersoonPopUPDiv").style.display = "none";
+  }
