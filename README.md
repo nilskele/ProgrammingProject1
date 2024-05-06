@@ -72,6 +72,7 @@ https://chat.openai.com/share/8e8c51f8-d417-48ab-bab4-abe07de601da <br>
 [https://www.youtube.com/watch?v=SgynWhEgvlw](https://www.youtube.com/watch?v=SgynWhEgvlw <br>
 https://stackoverflow.com/questions/24739126/scroll-to-a-specific-element-using-html <br>
 https://www.youtube.com/watch?v=v-y3B91Fhiw<br>
+https://chat.openai.com/share/f48b379f-73c4-4449-9596-b3476a4d8bf3<br>
 <br>
 <br>
 
