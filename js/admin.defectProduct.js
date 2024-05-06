@@ -24,10 +24,32 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(response => response.text())
         .then(data => {
-            console.log(data);
+            if (data === "Defect succesvol gemeld.") {
+                    Swal.fire({
+                    icon: 'success',
+                    title: 'Product defect gemeld',
+                    text: 'Het product is succesvol gemeld als defect',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Er is iets misgegaan',
+                    text: 'Het opgegeven e-mailadres bestaat niet.',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }            
         })
         .catch(error => {
-            console.error('Error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Er is iets misgegaan',
+                text: 'Er is iets misgegaan bij het melden van het defect',
+                showConfirmButton: false,
+                timer: 1500
+            });
         });
     });
 });

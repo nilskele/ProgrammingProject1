@@ -9,6 +9,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $redenDefect = mysqli_real_escape_string($conn, $_POST['reden']);
         $productNr = mysqli_real_escape_string($conn, $_POST['productNr']);
 
+
+        $checkEmailQuery = "SELECT COUNT(*) AS num FROM USER WHERE email = '$email'";
+        $result = $conn->query($checkEmailQuery);
+        $row = $result->fetch_assoc();
+        $emailExists = $row['num'] > 0;
+
+        if (!$emailExists) {
+            echo "Het opgegeven e-mailadres bestaat niet.";
+            exit;
+        }
+
+
         $query = "INSERT INTO DEFECT (watdefect, redenDefect, lening_id_fk)
         SELECT
             '$watdefect' AS watdefect,
@@ -25,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ml.lening_id DESC
         LIMIT 1";
 
-        // Execute query and handle errors
+
         if ($conn->query($query) === TRUE) {
             echo "Defect succesvol gemeld.";
         } else {
