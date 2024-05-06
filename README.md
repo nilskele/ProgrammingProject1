@@ -44,7 +44,7 @@ https://chat.openai.com/share/bc1fc5a1-6348-4e74-8387-4346ec50cfb9<br>
 https://chat.openai.com/share/40671b2c-bd71-4d43-a342-65fd363f31f0
 <br>
 <br>
-Jente:
+Jente: <br>
 Github Copilot <br>
 https://chat.openai.com/share/7e954263-4c5a-4ba2-ba28-d7a74d6596b5<br>
 https://chat.openai.com/share/7be44488-de03-4696-b952-572112f61830<br>
