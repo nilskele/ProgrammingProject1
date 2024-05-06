@@ -52,3 +52,37 @@ reserverenButtonProduct.addEventListener("click", function () {
                 });
         }    
 });
+
+let defectBtn = document.getElementById("defectBtn");
+
+defectBtn.addEventListener("click", function () {
+        let productNr = productNrInput.value;
+        
+        if (productNr === "") {
+                Swal.fire({
+                        icon: "error",
+                        title: "Oeps...",
+                        text: "Het productnummer mag niet leeg zijn!"
+                });
+        } else {
+                $.ajax({
+                        url: "checkProductNr.php",
+                        method: "POST",
+                        data: {
+                                productNr: productNr
+                        },
+                        success: function (data) {
+                                if (data === "true") {
+                                        localStorage.setItem("productNr", productNr);
+                                        window.location.href = "admin.defectProduct.php";
+                                } else {
+                                        Swal.fire({
+                                                icon: "error",
+                                                title: "Oeps...",
+                                                text: "Het productnummer bestaat niet!"
+                                        });
+                                }
+                        }
+                });
+        }    
+});

@@ -80,7 +80,7 @@ include('../database.php');
         <a href="accepteren.php" class="accepterenBtn">
           accepteren
         </a>
-        <a href="defect.php" class="defectBtn">
+        <a class="defectBtn" id="defectBtn">
           defect
         </a>
         <button class="reserverenBtn" id="reserverenButtonProduct">
@@ -98,7 +98,7 @@ include('../database.php');
         <a href="accepteren.php" class="accepterenBtn">
           accepteren
         </a>
-        <a href="defect.php" class="defectBtn">
+        <a href="defect.php" class="defectBtnAccepteren">
           defect
         </a>
         <a href="reserveren.php" class="reserverenBtn">

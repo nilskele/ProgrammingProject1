@@ -60,7 +60,7 @@ h1 {
     /* background-color: red;*/
 }
 
-.defectBtn {
+.defectBtn, .defectbtnAccepteren {
     background-color: black;
     color: white;
     margin-left: 1em !important;

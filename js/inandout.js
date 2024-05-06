@@ -229,16 +229,16 @@ $(function() {
     });
 
 
-    $(document).on('click', '.defectBtn', function(e) {
-        e.preventDefault();
-        var template = `
-    <h2>Are u Sure</h2>
-    <p>This is the content for the popup.</p>
-    <button class="acceptPopup">Accept</button>
-    <button class="close">Close</button>
-                                            `;
-    createPopup(template);
-    });
+    // $(document).on('click', '.defectBtn', function(e) {
+    //     e.preventDefault();
+    //     var template = `
+    // <h2>Are u Sure</h2>
+    // <p>This is the content for the popup.</p>
+    // <button class="acceptPopup">Accept</button>
+    // <button class="close">Close</button>
+    //                                         `;
+    // createPopup(template);
+    // });
 
     $('.inputZoekbalk1').on('keyup', function() {
         let zoekterm = $(this).val().toLowerCase();
