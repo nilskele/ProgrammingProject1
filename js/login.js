@@ -1,6 +1,4 @@
-document
-  .getElementById("loginForm")
-  .addEventListener("submit", function (event) {
+document.getElementById("loginForm").addEventListener("submit", function (event) {
     let email = document.getElementById("inputEmail3").value;
     let password = document.getElementById("inputPassword3").value;
 
@@ -36,9 +34,7 @@ function CloseAdminLogin() {
   document.getElementById("AdminLoginDiv").style.display = "none";
 }
 
-document
-  .getElementById("AdminLoginForm")
-  .addEventListener("submit", function (event) {
+document.getElementById("AdminLoginForm").addEventListener("submit", function (event) {
     let email = document.getElementById("inputAdminEmail3").value;
     let password = document.getElementById("inputAdminPassword3").value;
 

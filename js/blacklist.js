@@ -63,7 +63,7 @@ $(document).ready(function() {
                         console.log(response);
                         if (response === 'success') {
                             $this.closest('.Item').remove();
-
+                            location.reload();
                         } else {
                             console.error('Fout bij het verwijderen van de blacklist');
                         }
@@ -109,8 +109,53 @@ $(document).ready(function() {
 
 function OpenPersoonWaarschuwen() {
     document.getElementById("waarschuwenPersoonPopUPDiv").style.display = "block";
-  }
+}
   
   function ClosePersoonWaarschuwen() {
     document.getElementById("waarschuwenPersoonPopUPDiv").style.display = "none";
-  }
+}
+
+
+document.getElementById("waarschuwenBtnForm").addEventListener("click", function(e) {
+    e.preventDefault();
+
+    let email = document.getElementById("inputEmail3").value.trim();
+    if (!email) {
+        Swal.fire({
+            icon: "error",
+            title: "Vul een geldig e-mailadres in!"
+        });
+        return;
+    }
+
+    $.ajax({
+        url: '../php/admin.ToevoegenPersoonBlacklist.php',
+        type: 'POST',
+        data: { email: email },
+        success: function(response) {
+            console.log(response);
+            if (response === 'geupdate') {
+                Swal.fire({
+                    icon: "success",
+                    title: "Deze persoon is succesvol gewaarschuwd!"
+                }).then((result) => {
+                    location.reload();
+                });
+                document.getElementById("inputEmail3").value = "";
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Er is een probleem opgetreden. Deze persoon kon niet worden gewaarschuwd."
+                });
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Fout bij het ophalen van gegevens: ' + error);
+            Swal.fire({
+                icon: "error",
+                title: "Er is een serverfout opgetreden. Probeer het later opnieuw."
+            });
+        }
+    });
+});
+

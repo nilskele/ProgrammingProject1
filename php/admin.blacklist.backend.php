@@ -44,6 +44,6 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     $stmt1->close();
     $stmt2->close();
 } else {
-    echo "error";
+    echo "error5";
 }
 ?>

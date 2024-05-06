@@ -17,16 +17,16 @@ include("admin.blacklist.backend.php")
             Persoon waarschuwen
         </button>
         <div class="waarschuwenPersoonPopUP" id="waarschuwenPersoonPopUPDiv">
-            <form action="admin.ToevoegenPersoonBlacklist.php" class="waarschuwenPersoonContainer" id="waarschuwenPersoonForm" method="POST">
+            <form class="waarschuwenPersoonContainer" id="waarschuwenPersoonForm" method="POST">
                 <h1>Persoon waarschuwen</h1>
 
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Email:</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" name="inputEmail3" placeholder="Email">
+                        <input type="email" class="form-control" id="inputEmail3" name="inputEmail3" placeholder="Email" required>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary inloggen">Waarschuwen</button>
+                <button type="submit" class="btn btn-primary inloggen" id="waarschuwenBtnForm">Waarschuwen</button>
                 <button type="button" class="btn btn-light" class="btn" onclick="ClosePersoonWaarschuwen()">Terug</button>
             </form>
         </div>

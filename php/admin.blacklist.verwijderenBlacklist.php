@@ -17,10 +17,10 @@ if (isset($_POST['user_id'])) {
     if ($conn->query($query) === TRUE) {
         echo "success";
     } else {
-        echo "error";
+        echo "error3";
     }
 } else {
-    echo "error";
+    echo "erro4r";
 }
 
 $conn->close();
