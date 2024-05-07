@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="../css/styles.css" />
 <link rel="stylesheet" href="../css/admin.css">
-<link rel="stylesheet" href="../css/catalogus.css">
+<link rel="stylesheet" href="../css/admin.kalender.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -198,7 +198,7 @@ include('../database.php');
 <?php 
 
 // Your database query here
-$sql = "SELECT Uitleendatum, terugbrengDatum FROM `MIJN_LENINGEN` WHERE 1";
+$sql = "SELECT Uitleendatum, terugbrengDatum FROM `MIJN_LENINGEN` WHERE ";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
