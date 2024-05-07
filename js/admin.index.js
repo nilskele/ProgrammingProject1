@@ -87,17 +87,5 @@ defectBtn.addEventListener("click", function () {
         }    
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-        $(document).on('click', '.defectBtn', function(event) {
-            event.preventDefault();
-            let itemText = document.getElementById('accepterenProductID').textContent;
-            let itemValue = itemText.match(/\d+/);
-            if (itemValue) {
-                localStorage.setItem("productNr", itemValue[0]);
-            } else {
-                console.log("No numerical value found.");
-            }
-            window.location.href = "admin.defectProduct.php";
-        });
-    });
+    
     
