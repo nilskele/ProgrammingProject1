@@ -22,26 +22,6 @@ $(document).ready(function() {
     }
   });
 
-  function displaySuggestions(suggestions) {
-    var suggestionsList = $('#suggestionsList');
-    suggestionsList.empty();
-
-    if (suggestions.length > 0) {
-      suggestions.forEach(function(suggestion) {
-        var suggestionItem = $('<a class="dropdown-item" href="#">').text(suggestion);
-        suggestionItem.click(function() {
-          $('#productName').val(suggestion);
-          $('#suggestionsDropdown').removeClass('show');
-        });
-        suggestionsList.append(suggestionItem);
-      });
-
-      $('#suggestionsDropdown').addClass('show');
-    } else {
-      $('#suggestionsDropdown').removeClass('show');
-    }
-  }
-
   $(document).click(function(e) {
     if (!$(e.target).closest('.dropdown').length) {
       $('#suggestionsDropdown').removeClass('show');
