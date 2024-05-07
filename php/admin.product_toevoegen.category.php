@@ -1,4 +1,6 @@
 <?php
+include('../database.php');
+
 $sql = "SELECT naam FROM CATEGORY";
 $result = $conn->query($sql);
 
@@ -9,5 +11,4 @@ if ($result->num_rows > 0) {
         $options .= "<option value='" . $row['naam'] . "'>" . $row['naam'] . "</option>";
     }
 }
-
 ?>
