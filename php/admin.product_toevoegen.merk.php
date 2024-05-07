@@ -19,8 +19,6 @@ if (isset($_POST['merk'])) {
   } else {
     echo json_encode(array('exists' => false)); // Brand does not exist
   }
-} else {
-  echo 'Error: Brand not received.';
 }
 
 $conn->close();

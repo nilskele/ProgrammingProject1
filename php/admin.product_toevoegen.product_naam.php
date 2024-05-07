@@ -20,8 +20,6 @@ if(isset($_POST['productName'])) {
     } else {
         echo json_encode(array('exists' => false)); // Brand does not exist
     }
-} else {
-    echo 'Error: Product not received.';
 }
 
 $conn->close();
