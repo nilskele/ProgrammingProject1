@@ -176,11 +176,6 @@ $(function() {
         
     });
 
-    $(document).on('click', '.accepterenBtn', function(e) {
-        e.preventDefault();
-        // Show SweetAlert confirmation
-        
-    });
     
 
     // Event listener for accepting an item
@@ -209,6 +204,7 @@ $(function() {
                     method: 'POST',
                     data: { leningId: leningId },
                     success: function(response) {
+                        
                         // Upon successful deletion, remove the corresponding row from the HTML
                         if (response === 'success') {
                             // Remove the closest '.inOutProduct' element

@@ -101,3 +101,63 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
     
+    let acceptBtn= document.getElementById("acceptBtn");
+
+acceptBtn.addEventListener("click", function () {
+        let productNr = productNrInput.value;
+        
+        if (productNr === "") {
+                Swal.fire({
+                        icon: "error",
+                        title: "Oeps...",
+                        text: "Het productnummer mag niet leeg zijn!"
+                });
+        } else {
+                $.ajax({
+                        url: "checkProductNr.php",
+                        method: "POST",
+                        data: {
+                                productNr: productNr
+                        },
+                        success: function (data) {
+                                if (data === "true") {
+                                        Swal.fire({
+                                                title: 'Are you sure?',
+                                                text: "You are about to perform an action. Do you want to proceed?",
+                                                icon: 'warning',
+                                                showCancelButton: true,
+                                                confirmButtonColor: '#3085d6',
+                                                cancelButtonColor: '#d33',
+                                                confirmButtonText: 'Yes, proceed!'
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    $.ajax({
+                                                        url: '../php/delete_row2.php',
+                                                        method: 'POST',
+                                                        data: { productNr: productNr },
+                                                        success: function(response) {
+                                                            if (response === 'success') {
+                                                                console.log("checkcheck")
+                                                                
+                                                            } else {
+                                                                console.error('Failed to delete row');
+                                                                
+                                                            }
+                                                        },
+                                                        error: function(xhr, status, error) {
+                                                            console.error(error);
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                } else {
+                                        Swal.fire({
+                                                icon: "error",
+                                                title: "Oeps...",
+                                                text: "Het productnummer bestaat niet!"
+                                        });
+                                }
+                        }
+                });
+        }    
+});
