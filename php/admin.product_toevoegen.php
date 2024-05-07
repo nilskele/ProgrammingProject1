@@ -41,7 +41,7 @@
       <input type="text" id="opmerkingen" name="opmerkingen">
       <br>
       <br>
-      
+
       <!-- <label for="fotos">Upload foto's:</label>
       <input type="file" id="fotos" name="fotos" accept="image/*" multiple>
       <button type="submit">Submit</button>  -->
@@ -52,76 +52,7 @@
 </form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="../js/admin.product_toevoegen.category.js"></script>
 <script src="../js/admin.product_toevoegen.merk.js"></script>
-<!-- <script src="../js/admin.product_toevoegen.product_naam.js"></script> -->
-
-<script>
-$(document).ready(function() {
-  var hasSubmitted = false; // Declare the variable here
-
-  // Function to check if the product name already exists
-  function checkProductName(productName) {
-    $.ajax({
-      url: 'admin.product_toevoegen.product_naam.php',
-      method: 'POST',
-      data: {
-        productName: productName
-      },
-      success: function(response) {
-        console.log(response); // Log the response to see what it contains
-        if (!hasSubmitted) { // Check if the form has not already been submitted
-          if (response === 'exists') {
-            // Log a message to the console
-            console.log('The product name already exists.');
-            // Show popup asking user if they want to use the existing name
-            var confirmUseExisting = confirm('The product name already exists. Do you want to use it again?');
-            if (confirmUseExisting) {
-              // If user wants to use existing name, submit the form
-              $('form').submit();
-              hasSubmitted = true; // Set the flag to true
-            } else {
-              // If user doesn't want to use existing name, do nothing
-            }
-          } else {
-            // Log a message to the console
-            console.log('The product name does not exist.');
-            // If the product name doesn't exist, submit the form
-            $('form').submit();
-            hasSubmitted = true; // Set the flag to true
-          }
-        }
-      },
-      error: function(xhr, status, error) {
-        // Log error message to the console
-        console.error('Error:', error);
-      }
-    });
-  }
-
-  // Event listener for form submission
-  $('form').submit(function(e) {
-    e.preventDefault(); // Prevent default form submission
-
-    // Get the product name from the form input
-    var productName = $('#productName').val();
-
-    // Check if the product name is empty
-    if (productName === undefined && productName.trim() ==='') {
-      alert('Please enter a product name.');
-      return;
-    }
-
-    // Call the function to check if the product name already exists
-    checkProductName(productName);
-  });
-
-  // Event listener for keydown event on input field
-  $('#productName').on('keydown', function(e) {
-    if (e.keyCode === 13) { // Check if the key pressed is Enter
-      e.preventDefault(); // Prevent default behavior of Enter key
-      $('form').submit(); // Submit the form
-    }
-  });
-});
-</script>
+<script src="../js/admin.product_toevoegen.checkProductNaam.js"></script>
