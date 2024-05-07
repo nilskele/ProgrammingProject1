@@ -38,15 +38,17 @@ const items = [
   "",
   "",
   "",
-  "",             // Placeholder for 8/5
-  "MSI 5/5",     // Item for 5/5
-  "",             // Placeholder for 6/5
-  "",             // Placeholder for 7/5
-  "",             // Placeholder for 7/5
-  "",             // Placeholder for 7/5
-  "",             // Placeholder for 7/5
-  ""              // Placeholder for 8/5
+  "",             
+  "MSI 5/5",     
+  "",             
+  "",             
+  "",             
+  "",            
+  "",             
+  ""              
 ];
+
+
 
 const daysList = document.querySelector(".days");
 
