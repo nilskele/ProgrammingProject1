@@ -182,7 +182,7 @@ $conn->close();
 
 // Output the array contents
 echo "<pre>";
-print_r($loanDetails);
+//print_r($loanDetails);
 echo "</pre>";
 
 // Convert loanDetails to JSON
