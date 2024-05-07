@@ -12,6 +12,21 @@
   justify-content: space-around;
 }
 
+.waarshcuwingenDiv {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  border: 1px solid #ff0000;
+  width: 220px;
+  margin: 0;
+  box-shadow: 5px 5px 5px rgb(139, 139, 139);
+}
+
+.waarschuwingen {
+  margin: 0;
+  padding: 10px;
+}
+
 .meldenPopUp {
   display: none;
   position: fixed;
