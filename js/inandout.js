@@ -111,7 +111,7 @@ $(function() {
                         productInfo.innerHTML = `
                             <div id="vandaagInButtons">
                                 <a class="accepterenBtn" href="">Accepteren</a>
-                                <a class="defectBtn defectButton" id="defectBtn2">Defect</a>
+                                <a class="defectBtn defectButton" id="defectBtn90">Defect</a>
                             </div>
                             <div class="info">
                                 <h5 class="Naam">${item.voornaam} ${item.achternaam}</h5>
@@ -181,6 +181,20 @@ $(function() {
         // Show SweetAlert confirmation
         
     });
+
+    $(document).off('click', '#defectBtn90').on('click', '#defectBtn90', function(event) {
+        event.preventDefault();
+        let productnr = $(this).closest('.inOutProduct').find('#accepterenProductID').attr('value');
+    
+        if (productnr) {
+            localStorage.setItem("productNr", productnr);
+        } else {
+            console.log("No numerical value found.");
+        }
+        window.location.href = "admin.defectProduct.php";
+    });
+    
+    
     
 
     // Event listener for accepting an item
