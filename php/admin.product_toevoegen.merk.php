@@ -1,42 +1,27 @@
 <?php
-// Include the database connection file and other necessary includes
 include('../database.php');
 include('validation_functions.php');
 
-// Check if the merk is received via POST request
 if(isset($_POST['merk'])) {
-    // Sanitize the merk input using valideren function
     $merk = valideren($_POST['merk']);
 
-    // Query to select distinct brand names from the database
-    $sql = "SELECT DISTINCT naam FROM MERK WHERE naam = ?";
-
-    // Prepare the query
-    $stmt = $conn->prepare($sql);
-
-    // Bind parameters
-    $stmt->bind_param('s', $merk);
-
-    // Execute the query
-    $stmt->execute();
+    $sql = "SELECT merk_id FROM MERK WHERE naam = ?";
     
-    // Bind the result variable
-    $stmt->bind_result($brand);
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('s', $merk);
+    $stmt->execute();
 
-    // Initialize an array to store brand names
-    $brands = array();
+    $result = $stmt->get_result();
 
-    // Fetch results and store them in the array
-    while ($stmt->fetch()) {
-        $brands[] = $brand;
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        echo json_encode(array('merk_id' => $row['merk_id'])); // Brand exists, return ID
+    } else {
+        echo json_encode(array('exists' => false)); // Brand does not exist
     }
-
-    // Return the array as JSON
-    echo json_encode($brands);
 } else {
     echo 'Error: Brand not received.';
 }
 
-// Close database connection
 $conn->close();
 ?>
