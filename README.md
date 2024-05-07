@@ -21,6 +21,7 @@ Gebruikt gemaakt van:<br>
 <br>
 <br>
 Gust:
+Github Copilot <br>
 https://chat.openai.com/share/7bf0bb43-e63d-4799-be61-42fc6aa0cf1f<br>
 https://chat.openai.com/share/c7cb2562-9d44-47f3-84b2-6a55218c64e2<br>
 https://chat.openai.com/share/db0e0f7d-ced5-44fe-84aa-fe79c74bf841<br>
