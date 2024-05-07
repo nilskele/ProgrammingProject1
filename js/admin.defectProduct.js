@@ -174,4 +174,43 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
     }
+
+    let accepterenBtn = document.getElementById("accepterenBtn");
+    if (accepterenBtn) {
+        accepterenBtn.addEventListener("click", function(event) {
+            event.preventDefault();
+    
+            Swal.fire({
+                title: "Weet je zeker dat je het product wilt accepteren?",
+                text: "Dit product zal worden geaccepteerd",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ja, accepteren",
+                cancelButtonText: "Annuleren"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '../php/delete_row2.php',
+                        method: 'POST',
+                        data: { productNr: productNr },
+                        success: function(response) {
+                            if (response === 'success') {
+                                console.log("checkcheck")
+                                
+                            } else {
+                                console.error('Failed to delete row');
+                                
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error);
+                        }
+                    });
+                }
+            });
+        });
+    }
 });
+

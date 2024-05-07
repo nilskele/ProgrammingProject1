@@ -50,8 +50,19 @@ input {
     margin-top: 30px;
 }
 
+button {
+    width: 150px;
+}
+
 .allButtons {
     display: flex;
     justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+.accepterenLink {
+    display: flex;
+    width: 100%;
+    justify-content: center;
     margin-top: 50px;
 }
