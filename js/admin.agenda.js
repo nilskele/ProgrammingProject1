@@ -88,7 +88,7 @@ function renderCalendar() {
   for (let index = 0; index < items.length; index++) {
 
     html += `<li class="inactive">${items[index]}</li>`; // Index is used to match with the items
-    console.log(html + "/" + index);
+    //console.log(html + "/" + index);
   }
   // Update the HTML of the dates
   dates.innerHTML = html;
