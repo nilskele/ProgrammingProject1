@@ -226,6 +226,23 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
+
+
+  let waarschuwingenCount = document.querySelector(".waarschuwingenCount");
+  let waarshcuwingenDiv = document.querySelector(".waarschuwingenDiv");
+
+  if (waarschuwingenCount) {
+      fetch("waarschuwingenCount.php")
+          .then((response) => response.json())
+          .then((data) => {
+              let waarschuwingenCountPhp = data;
+              waarschuwingenCount.textContent = waarschuwingenCountPhp - 1;
+          })
+          .catch((error) => console.error("Error fetching data:", error));
+  } else {
+      console.error("Element with class 'waarschuwingenCount' not found.");
+  }
+  
 });
 
 function toonMMeldenPopUp() {
@@ -235,3 +252,4 @@ function toonMMeldenPopUp() {
 function sluitMMeldenPopUp() {
   document.getElementById("meldenPopUp").style.display = "none";
 }
+

@@ -17,6 +17,10 @@
   include('defectMelden.php');
   ?>
 
+  <div class="waarshcuwingenDiv">
+    <p class="waarschuwingen">Aantal waarschuwingen: <span class="waarschuwingenCount"></span></p>
+  </div>
+
   <div class='uitleningenTitle'>
     <div class="uitleningenTitle-col-1"><a href="javascript:history.back()" class="terugLink">&#8592 Terug</a></div>
     <div class="uitleningenTitle-col-2">
