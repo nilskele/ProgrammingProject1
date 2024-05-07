@@ -111,12 +111,12 @@ $(function() {
                         productInfo.innerHTML = `
                             <div id="vandaagInButtons">
                                 <a class="accepterenBtn" href="">Accepteren</a>
-                                <a class="defectBtn defectButton" href="">Defect</a>
+                                <a class="defectBtn defectButton" id="defectBtn2">Defect</a>
                             </div>
                             <div class="info">
                                 <h5 class="Naam">${item.voornaam} ${item.achternaam}</h5>
                                 <p>User ID: ${item.user_id}</p>
-                                <p>Product ID: ${item.product_id}</p>
+                                <p id="accepterenProductID" value="${item.product_id}">Product ID: ${item.product_id}</p>
                             </div>
                             <div class="moreinfo">
                                 <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
