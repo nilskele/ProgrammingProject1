@@ -194,3 +194,24 @@ include('../database.php');
 </body>
 </html>
 <script src="../js/admin.agenda.js"></script>
+
+<?php 
+
+// Your database query here
+$sql = "SELECT Uitleendatum, terugbrengDatum FROM `MIJN_LENINGEN` WHERE 1";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Output data of each row as JSON
+    $data = array();
+    while($row = $result->fetch_assoc()) {
+        $data[] = $row;
+    }
+    echo json_encode($data);
+} else {
+    echo "0 results";
+}
+
+$conn->close();
+?>
+
