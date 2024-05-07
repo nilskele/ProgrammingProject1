@@ -176,6 +176,13 @@ $(function() {
         
     });
 
+    $(document).on('click', '.accepterenBtn', function(e) {
+        e.preventDefault();
+        // Show SweetAlert confirmation
+        
+    });
+    
+
     // Event listener for accepting an item
     $(document).on('click', '.accepterenBtn', function(e) {
         e.preventDefault();
@@ -187,23 +194,36 @@ $(function() {
         var leningId = $this.closest('.inOutProduct').data('lening-id');
 
         // Send AJAX request to delete the row from the database
-        $.ajax({
-            url: '../php/delete_row.php',
-            method: 'POST',
-            data: { leningId: leningId },
-            success: function(response) {
-                // Upon successful deletion, remove the corresponding row from the HTML
-                if (response === 'success') {
-                    // Remove the closest '.inOutProduct' element
-                    $this.closest('.inOutProduct').remove();
-                } else {
-                    console.error('Failed to delete row');
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You are about to perform an action. Do you want to proceed?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, proceed!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '../php/delete_row.php',
+                    method: 'POST',
+                    data: { leningId: leningId },
+                    success: function(response) {
+                        // Upon successful deletion, remove the corresponding row from the HTML
+                        if (response === 'success') {
+                            // Remove the closest '.inOutProduct' element
+                            $this.closest('.inOutProduct').remove();
+                        } else {
+                            console.error('Failed to delete row');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
             }
         });
+        
         
     });
 
@@ -262,7 +282,7 @@ $(function() {
         });
     });
 
-    $('.inputZoekbalk2').on('keyup', function() {
+    $('.inputZoekbalk3').on('keyup', function() {
         let zoekterm = $(this).val().toLowerCase();
 
         $('#smallInOut1 .inOutProduct').each(function() {
@@ -276,7 +296,7 @@ $(function() {
         });
     });
 
-    $('.inputZoekbalk3').on('keyup', function() {
+    $('.inputZoekbalk4').on('keyup', function() {
         let zoekterm = $(this).val().toLowerCase();
 
         $('#smallInOut2 .inOutProduct').each(function() {
@@ -290,7 +310,7 @@ $(function() {
         });
     });
 
-    $('.inputZoekbalk4').on('keyup', function() {
+    $('.inputZoekbalk2').on('keyup', function() {
         let zoekterm = $(this).val().toLowerCase();
 
         $('#InOut2 .inOutProduct').each(function() {
