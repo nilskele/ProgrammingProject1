@@ -3,22 +3,25 @@
 include('../database.php');
 
 // Check if leningId is provided
-if (isset($_POST['leningId'])) {
+if (isset($_POST['productNr'])) {
     // Sanitize the input to prevent SQL injection
-    $leningId = mysqli_real_escape_string($conn, $_POST['leningId']);
+    $productNr = mysqli_real_escape_string($conn, $_POST['productNr']);
 
-    // Query to delete the row from MIJN_LENINGEN table
-    $query = "UPDATE MIJN_LENINGEN SET isTerugGebracht = True WHERE lening_id = '$leningId'";
-
-
-        $query2 = "UPDATE PRODUCT
-        JOIN MIJN_LENINGEN ON MIJN_LENINGEN.product_id_fk = PRODUCT.product_id
-        SET PRODUCT.isUitgeleend = False
-        WHERE PRODUCT.product_id = MIJN_LENINGEN.product_id_fk AND MIJN_LENINGEN.lening_id = '$leningId'";
-
+    $query = "UPDATE MIJN_LENINGEN 
+    JOIN PRODUCT ON MIJN_LENINGEN.product_id_fk = PRODUCT.product_id
+    SET MIJN_LENINGEN.isTerugGebracht = True
+    WHERE PRODUCT.product_id = '$productNr'";
+    $query2 = "UPDATE PRODUCT
+    SET PRODUCT.isUitgeleend = False
+    WHERE PRODUCT.product_id = '$productNr'";
 
     
 
+
+
+
+    
+    
 
 
 
@@ -26,8 +29,6 @@ if (isset($_POST['leningId'])) {
     if ($conn->query($query) === TRUE) {
         // If deletion is successful, return success message
         echo "success";
-        
-
     } else {
         // If deletion fails, return error message
         echo "error";
@@ -35,6 +36,8 @@ if (isset($_POST['leningId'])) {
     if ($conn->query($query2) === TRUE) {
         // If deletion is successful, return success message
         echo "success";
+        
+
     } else {
         // If deletion fails, return error message
         echo "error";
@@ -47,3 +50,5 @@ if (isset($_POST['leningId'])) {
 // Close the database connection
 $conn->close();
 ?>
+
+

@@ -176,11 +176,7 @@ $(function() {
         
     });
 
-    $(document).on('click', '.accepterenBtn', function(e) {
-        e.preventDefault();
-        // Show SweetAlert confirmation
-        
-    });
+    
 
     $(document).off('click', '#defectBtn90').on('click', '#defectBtn90', function(event) {
         event.preventDefault();
@@ -223,6 +219,7 @@ $(function() {
                     method: 'POST',
                     data: { leningId: leningId },
                     success: function(response) {
+                        
                         // Upon successful deletion, remove the corresponding row from the HTML
                         if (response === 'success') {
                             // Remove the closest '.inOutProduct' element
