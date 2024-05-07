@@ -15,13 +15,6 @@ if (isset($_POST['leningId'])) {
         JOIN MIJN_LENINGEN ON MIJN_LENINGEN.product_id_fk = PRODUCT.product_id
         SET PRODUCT.isUitgeleend = False
         WHERE PRODUCT.product_id = MIJN_LENINGEN.product_id_fk AND MIJN_LENINGEN.lening_id = '$leningId'";
-
-
-    
-
-
-
-
     
     if ($conn->query($query) === TRUE) {
         // If deletion is successful, return success message

@@ -15,17 +15,6 @@ if (isset($_POST['productNr'])) {
     SET PRODUCT.isUitgeleend = False
     WHERE PRODUCT.product_id = '$productNr'";
 
-    
-
-
-
-
-    
-    
-
-
-
-    
     if ($conn->query($query) === TRUE) {
         // If deletion is successful, return success message
         echo "success";
@@ -50,5 +39,3 @@ if (isset($_POST['productNr'])) {
 // Close the database connection
 $conn->close();
 ?>
-
-
