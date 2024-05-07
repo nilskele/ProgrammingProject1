@@ -7,58 +7,12 @@
 <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
 
 <!-- Include your custom JavaScript file -->
 <script src="../js/inandout.js"></script>
-<style>
-    /* Style the overlay */
-    .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 9999;
-    }
 
-    /* Style the popup */
-    .popup {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 300px;
-        padding: 20px;
-        background-color: white;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        text-align: center;
-        z-index: 10000;
-    }
-
-    /* Style the close button */
-    .close {
-        position: absolute;
-        top: 5px;
-        right: 10px;
-        cursor: pointer;
-        
-    }
-    .acceptPopup{
-      
-        
-        cursor: pointer;
-        background-color: red;
-        color: white;
-        padding: 0.5em 2em 0.5em 2em;
-        border-radius: 1em;
-        text-decoration: none;
-        border: 2px solid red;
-    }
-</style>
 
 
 <?php include("admin.header.php");
@@ -192,9 +146,7 @@ include('../database.php');
   </div>
   <script src="script.js" defer></script>
 </body>
-</html>
 <script src="../js/admin.agenda.js"></script>
-
 <?php 
 
 // SQL-query
@@ -247,3 +199,4 @@ $loanDetailsJSON = json_encode($loanDetails);
 // Pass PHP array to JavaScript
 const loanDetails = <?php echo $loanDetailsJSON; ?>;
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

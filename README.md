@@ -36,7 +36,8 @@ https://chat.openai.com/c/aedb86a1-1bed-40f8-b5b5-dfdfcd884d38<br>
 https://chat.openai.com/c/3f9ded50-4bd0-4b5f-bedf-b7c09eb6e190<br>
 <br>
 <br>
-Nils: 
+Nils: <br>
+Github Copilot <br>
 https://chat.openai.com/share/73994dc4-b488-40a5-aac4-ee6dcb2238f9<br>
 https://www.youtube.com/watch?v=gy6LY0Xy2zU&t=388s<br>
 https://stackoverflow.com/questions/982919/sql-update-query-using-joins<br>

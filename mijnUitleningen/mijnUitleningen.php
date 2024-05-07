@@ -30,8 +30,8 @@
             <input type="field" id="watDefect" name="watDefect" required> <br>
             <label for="defectReden">Reden Defect:</label>
             <input type="hidden" id="lening_id" name="lening_id" value="">
-            <textarea name="redenDefect" id="redenDefect" cols="30" rows="3" required></textarea> <br>
-            <input type="submit" value="Melden" class="submitButton">
+            <textarea name="redenDefect" id="redenDefect" cols="70" rows="4" required></textarea> <br>
+            <input type="submit" value="Melden" class="btn btn-primary submitButton">
           </form>
         </div>
       </div>
