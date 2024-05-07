@@ -149,23 +149,54 @@ include('../database.php');
 <script src="../js/admin.agenda.js"></script>
 <?php 
 
-// Your database query here
-$sql = "SELECT Uitleendatum, terugbrengDatum FROM `MIJN_LENINGEN` WHERE ";
+// SQL-query
+$sql = "SELECT ML.Uitleendatum, ML.terugbrengDatum, G.naam AS product_naam
+        FROM MIJN_LENINGEN ML
+        JOIN PRODUCT P ON ML.product_id_fk = P.product_id
+        JOIN GROEP G ON P.groep_id = G.groep_id
+        WHERE G.naam = 'CANON M50'";
+
+// Voer de query uit
 $result = $conn->query($sql);
 
+// Array om de resultaten op te slaan
+$loanDetails = array();
+
+// Controleer of er resultaten zijn
 if ($result->num_rows > 0) {
-    // Output data of each row as JSON
-    $data = array();
+    // Output gegevens van elke rij
     while($row = $result->fetch_assoc()) {
-        $data[] = $row;
+        // Sla de resultaten op in een array
+        $loanDetails[] = array(
+            "product_naam" => $row["product_naam"],
+            "Uitleendatum" => $row["Uitleendatum"],
+            "terugbrengDatum" => $row["terugbrengDatum"]
+        );
     }
-    echo json_encode($data);
 } else {
-    echo "0 results";
+    echo "Geen resultaten gevonden";
 }
 
+// Sluit de verbinding
 $conn->close();
+
+// Output the array contents
+echo "<pre>";
+//print_r($loanDetails);
+echo "</pre>";
+
+// Convert loanDetails to JSON
+$loanDetailsJSON = json_encode($loanDetails);
+
+
 ?>
-
-
+<script>
+    // Pass PHP array to JavaScript
+    const loanDetails = <?php echo json_encode($loanDetails); ?>;
+  </script>
+  <script src="../js/admin.agenda.js"></script>
+<script>
+// Pass PHP array to JavaScript
+const loanDetails = <?php echo $loanDetailsJSON; ?>;
+</script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
