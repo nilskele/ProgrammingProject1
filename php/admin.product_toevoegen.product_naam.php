@@ -1,12 +1,7 @@
 <?php
 include('../database.php');
 
-function valideren($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+include('validation_functions.php');
 
 if(isset($_POST['productName'])) {
     $productName = valideren($_POST['productName']);
