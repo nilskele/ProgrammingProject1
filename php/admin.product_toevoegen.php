@@ -7,7 +7,8 @@
 <?php include("admin.product_toevoegen.category.php")?>
 <?php include("admin.product_toevoegen.product_naam.php")?>
 
-<h1>Add product</h1>
+<br>
+<br>
 <form action="../add_product">
   <div class="container">
     <h1>Product Toevoegen</h1>
