@@ -1,18 +1,20 @@
-// Declare hasSubmitted globally or within the document.ready function if not already declared
+var hasSubmitted = false; // Declare hasSubmitted globally
 
-// Event listener for form submission
-$('form').submit(function(e) {
-  e.preventDefault();
-  var merk = $('#merk').val();
-  checkMerk(merk);
-});
-
-// Event listener for keydown event on input fields
-$('#productName, #merk').on('keydown', function(e) {
-  if (e.keyCode === 13) {
+$(document).ready(function() {
+  // Event listener for form submission
+  $('form').submit(function(e) {
     e.preventDefault();
-    $('#productForm').submit();
-  }
+    var merk = $('#merk').val();
+    checkMerk(merk);
+  });
+
+  // Event listener for keydown event on input fields
+  $('#productName, #merk').on('keydown', function(e) {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      $('#productForm').submit();
+    }
+  });
 });
 
 // JavaScript Functionality for Merk Check
