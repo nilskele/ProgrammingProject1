@@ -20,7 +20,7 @@ Gebruikt gemaakt van:<br>
 ![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white) ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white) ![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)
 <br>
 <br>
-Gust:
+Gust: <br>
 Github Copilot <br>
 https://chat.openai.com/share/7bf0bb43-e63d-4799-be61-42fc6aa0cf1f<br>
 https://chat.openai.com/share/c7cb2562-9d44-47f3-84b2-6a55218c64e2<br>
