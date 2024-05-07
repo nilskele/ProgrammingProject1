@@ -113,8 +113,6 @@ $(function() {
     createPopup(template);
     });
 
-
-
     $('.inputZoekbalk5').on('keyup', function() {
         let zoekterm = $(this).val().toLowerCase();
 
