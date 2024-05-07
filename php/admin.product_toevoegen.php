@@ -4,6 +4,8 @@
 
 
 <?php include("admin.header.php")?>
+<?php include("admin.product_toevoegen.category.php")?>
+<?php include("admin.product_toevoegen.product_naam.php")?>
 
 <h1>Add product</h1>
 <form action="../add_product">
@@ -12,6 +14,12 @@
     <div class="product_toevoegen">
       <label for="productNaam">Product naam:</label>
       <input type="text" id="productName" name="productName">
+      <br>
+      <select name="categorie" id="categorie" class="categorieZoekbalk">
+        <option value="All" id="categoryOptions">Categorie</option>
+        <?php echo $options; ?>
+      </select>
+
 
       <!-- 
       <label for="aantalAanwezig">Aantal aanwezig:</label>
@@ -36,6 +44,7 @@
 </form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../js/admin.product_toevoegen.category.js"></script>
 
 <script>
 $(document).ready(function() {
@@ -44,12 +53,13 @@ $(document).ready(function() {
   // Function to check if the product name already exists
   function checkProductName(productName) {
     $.ajax({
-      url: 'admin.product_toevoegen.backend.php',
+      url: 'admin.product_toevoegen.product_naam.php', // Check if this path is correct
       method: 'POST',
       data: {
         productName: productName
       },
       success: function(response) {
+        console.log(response); // Log the response to see what it contains
         if (!hasSubmitted) { // Check if the form has not already been submitted
           if (response === 'exists') {
             // Log a message to the console
