@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="../css/styles.css" />
 <link rel="stylesheet" href="../css/admin.css">
-<link rel="stylesheet" href="../css/catalogus.css">
+<link rel="stylesheet" href="../css/admin.kalender.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -146,6 +146,26 @@ include('../database.php');
   </div>
   <script src="script.js" defer></script>
 </body>
-</html>
 <script src="../js/admin.agenda.js"></script>
+<?php 
+
+// Your database query here
+$sql = "SELECT Uitleendatum, terugbrengDatum FROM `MIJN_LENINGEN` WHERE ";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Output data of each row as JSON
+    $data = array();
+    while($row = $result->fetch_assoc()) {
+        $data[] = $row;
+    }
+    echo json_encode($data);
+} else {
+    echo "0 results";
+}
+
+$conn->close();
+?>
+
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
