@@ -58,13 +58,17 @@ $(function() {
                         card.appendChild(productInfo);
 
                         // Append the card to the appropriate container
-                        
-                        
-                        if (window.location.pathname === '/programmingProject1/php/admin.index.php') {
+                        try {
                             document.getElementById('smallInOut1').appendChild(card);
-                        } else if(window.location.pathname === '/programmingProject1/php/admin.inandout.php'){
+
+                          
+                          } catch (error) {
                             document.getElementById('InOut1').appendChild(card);
-                        }
+
+                            console.error("An error occurred:", error);
+                          }
+                        
+                        
                     }
                 });
             },
@@ -125,15 +129,19 @@ $(function() {
                         // Append the card to the appropriate container
                         
                         
-
-                        if (window.location.pathname === '/programmingProject1/php/admin.index.php') {
-                            console.log("checkcheck")
+                        try {
                             document.getElementById('smallInOut2').appendChild(card);
-                            
-                        } else if (window.location.pathname === '/programmingProject1/php/admin.inandout.php'){
-                            console.log("checkcheck")
+                          
+                          } catch (error) {
                             document.getElementById('InOut2').appendChild(card);
-                        }
+                            console.error("An error occurred:", error);
+                          }
+                        
+                            
+                            
+                        
+                            
+                        
                     }
                 });
             },
