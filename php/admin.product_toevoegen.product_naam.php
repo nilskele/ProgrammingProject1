@@ -2,21 +2,19 @@
 include('../database.php');
 
 function valideren($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
 
 if(isset($_POST['productName'])) {
     $productName = valideren($_POST['productName']);
 
-    $sql = "SELECT DISTINCT naam FROM GROEP WHERE naam LIKE ?"; // Modified SQL query to use LIKE for partial matches
+    $sql = "SELECT DISTINCT naam FROM GROEP WHERE naam = ?"; // Using = for exact match
     
     $stmt = $conn->prepare($sql);
-
-    $productNameParam = "%$productName%"; // Add wildcards to search for partial matches
-    $stmt->bind_param('s', $productNameParam);
+    $stmt->bind_param('s', $productName); // Bind the parameter directly without wildcards
 
     $stmt->execute();
 

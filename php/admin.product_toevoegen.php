@@ -45,15 +45,16 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="../js/admin.product_toevoegen.category.js"></script>
+<!-- <script src="../js/admin.product_toevoegen.product_naam.js"></script> -->
 
 <script>
 $(document).ready(function() {
-  var hasSubmitted = false; // Flag to track if the form has already been submitted
+  var hasSubmitted = false; // Declare the variable here
 
   // Function to check if the product name already exists
   function checkProductName(productName) {
     $.ajax({
-      url: 'admin.product_toevoegen.product_naam.php', // Check if this path is correct
+      url: 'admin.product_toevoegen.product_naam.php',
       method: 'POST',
       data: {
         productName: productName
