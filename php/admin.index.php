@@ -32,7 +32,7 @@ include('../database.php');
         <input type="text" class="form-control grey-input" id="productNrInput" placeholder="product nr" />
       </div>
       <div class="knoppen">
-        <a href="accepteren.php" class="accepterenBtn">
+        <a id="acceptBtn" href="accepteren.php" class="accepterenBtn">
           accepteren
         </a>
         <a class="defectBtn" id="defectBtn">
