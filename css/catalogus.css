@@ -18,10 +18,11 @@
 }
 
 .img-container img {
-  width: 80%;
+  width: auto;
   height: auto;
   max-width: 90%;
   padding: 10px;
+  max-height: 240px;
 }
 
 .img-fluid {

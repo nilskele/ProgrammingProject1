@@ -18,7 +18,7 @@ $(document).ready(function () {
             <div class="card mb-3">
               <div class="row">
                 <div class="col-md-4 img-container">
-                  <img src="../images/img1.jpg" class="img-fluid">
+                  <img src="data:image/jpeg;base64,${item.image_data}" class="img-fluid">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
