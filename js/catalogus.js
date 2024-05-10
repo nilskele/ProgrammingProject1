@@ -52,8 +52,7 @@ $(document).ready(function () {
                       return optionsHtml;
                     })()}
                     </select>
-                    <a class="btn btn-secondary" href="reserveren.php">+<i class="fas fa-shopping-cart"></i></a>
-                  </div>
+                    <a class="btn btn-secondary reserveren-btn" href="reserveren.php" data-groep_id="${item.groep_id}">+<i class="fas fa-shopping-cart"></i></a>
                 </div>
               </div>
             </div>
@@ -67,6 +66,14 @@ $(document).ready(function () {
     resultatenDiv.innerHTML = resultHtml;
     $(".aantalResultaten").text(aantalResultaten);
   }
+  $(document).on('click', '.reserveren-btn', function (e) {
+    e.preventDefault(); // Stop the default link behavior
+    var groepID = $(this).data('groep_id');
+    var baseUrl = $(this).attr('href');
+    var newUrl = baseUrl + '?groep_id=' + groepID;
+    // Redirect to the newly constructed URL
+    window.location.href = newUrl;
+  });
 
   $.ajax({
     url: "../php/zoek.php",
