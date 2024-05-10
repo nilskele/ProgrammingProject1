@@ -3,12 +3,7 @@ session_start();
 
 include '../database.php';
 
-function valideren($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+include('validation_functions.php');
 
 if (isset($_POST['inputEmail3']) && isset($_POST['inputPassword3'])) {
     $email = valideren($_POST['inputEmail3']);

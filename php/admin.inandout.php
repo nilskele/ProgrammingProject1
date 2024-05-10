@@ -35,44 +35,27 @@
 <?php include("admin.header.php")?>
 
 <div class="terug">
-        <a href="javascript:history.back()" class="terugLink">&#8592 Terug</a>
-        
+  <a href="javascript:history.back()" class="terugLink">&#8592 Terug</a>
 </div>
 <div id="title-kalender-In-Out">
-    <h1>In and Out</h1>
-    <input type="text" name="selectedDate" id="selectedDate" readonly />
-  </div>
-
+  <h1>In and Out</h1>
+  <input type="text" name="selectedDate" id="selectedDate" readonly />
+</div>
 <div class="inAndOut">
-
   <h1>vandaag Out </h1>
   <div class="searchbar">
-  <input type="text" id="zoekbalk" name="zoekbalk" placeholder="Zoek naar producten" class="inputZoekbalk1">
-    
+    <input type="text" id="zoekbalk" name="zoekbalk" placeholder="Zoek naar producten" class="inputZoekbalk1">
   </div>
-
-
-
   <div id="InOut1" class="inOutCatalagus overflow-auto">
   </div>
-
-
-
 </div>
 
 <div class="inAndOut">
   <h1>vandaag In</h1>
   <div class="searchbar">
-  <input type="text" id="zoekbalk" name="zoekbalk" placeholder="Zoek naar producten" class="inputZoekbalk1">
-    
+    <input type="text" id="zoekbalk" name="zoekbalk" placeholder="Zoek naar producten" class="inputZoekbalk1">
   </div>
-
-
-
-    <div id="InOut2" class="inOutCatalagus overflow-auto">    
-    </div>
-
-
-    
+  <div id="InOut2" class="inOutCatalagus overflow-auto">
+  </div>
 </div>
 <script src="../js/inandout.js"></script>

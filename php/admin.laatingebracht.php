@@ -4,7 +4,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-<?php include("admin.header.php");
+<?php 
+include("admin.header.php");
 include('../database.php');
 ?>
 <div class="terug">
