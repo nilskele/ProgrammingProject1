@@ -32,7 +32,7 @@ reserverenButtonProduct.addEventListener("click", function () {
                 });
         } else {
                 $.ajax({
-                        url: "checkProductNr.php",
+                        url: "../checkProductNr.php",
                         method: "POST",
                         data: {
                                 productNr: productNr
@@ -40,7 +40,7 @@ reserverenButtonProduct.addEventListener("click", function () {
                         success: function (data) {
                                 if (data === "true") {
                                         localStorage.setItem("productNr", productNr);
-                                        window.location.href = "admin.reserveren.php";
+                                        window.location.href = "../reserveren.php";
                                 } else {
                                         Swal.fire({
                                                 icon: "error",
@@ -66,7 +66,7 @@ defectBtn.addEventListener("click", function () {
                 });
         } else {
                 $.ajax({
-                        url: "checkProductNr.php",
+                        url: "../checkProductNr.php",
                         method: "POST",
                         data: {
                                 productNr: productNr
@@ -74,7 +74,7 @@ defectBtn.addEventListener("click", function () {
                         success: function (data) {
                                 if (data === "true") {
                                         localStorage.setItem("productNr", productNr);
-                                        window.location.href = "admin.defectProduct.php";
+                                        window.location.href = "defectProduct.php";
                                 } else {
                                         Swal.fire({
                                                 icon: "error",
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 console.log("No numerical value found.");
             }
-            window.location.href = "admin.defectProduct.php";
+            window.location.href = "defectProduct.php";
         });
     });
     
@@ -114,7 +114,7 @@ acceptBtn.addEventListener("click", function () {
                 });
         } else {
                 $.ajax({
-                        url: "checkProductNr.php",
+                        url: "../checkProductNr.php",
                         method: "POST",
                         data: {
                                 productNr: productNr

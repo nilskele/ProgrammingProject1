@@ -18,7 +18,7 @@ $(document).ready(function() {
     }
 
     $.ajax({
-        url: '../php/admin.blacklist.backend.php',
+        url: '../admin/blacklist.backend.php',
         type: 'POST',
         dataType: 'json',
         success: function(data) {
@@ -56,7 +56,7 @@ $(document).ready(function() {
                 let $this = $(this); 
 
                 $.ajax({
-                    url: '../php/admin.blacklist.verwijderenBlacklist.php',
+                    url: '../admin/blacklist.verwijderenBlacklist.php',
                     type: 'POST',
                     data: { user_id: user_id },
                     success: function(response) {
@@ -129,7 +129,7 @@ document.getElementById("waarschuwenBtnForm").addEventListener("click", function
     }
 
     $.ajax({
-        url: '../php/admin.ToevoegenPersoonBlacklist.php',
+        url: '../admin/toevoegenPersoonBlacklist.php',
         type: 'POST',
         data: { email: email },
         success: function(response) {

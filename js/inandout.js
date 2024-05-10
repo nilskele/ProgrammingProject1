@@ -1,15 +1,10 @@
 $(function() {
-
-
-
-
     //ON WINDOW LOAD 
     window.onload = function() {
 
         var today = moment().format('YYYY-MM-DD');
         fetchDataUitleendatum(today);
         fetchDataTerugbrengDatum(today);
-        
     };
     // IN AND OUT 
     function fetchDataUitleendatum(selectedDate) {
@@ -20,7 +15,7 @@ $(function() {
 
         // Send the selected date to a PHP script using AJAX
         $.ajax({
-            url: '../php/admin.inAndOutBackend.php',
+            url: '../admin/inAndOutBackend.php',
             method: 'POST',
             data: { selectedDate: selectedDate, type: 'uitleendatum' },
             success: function(response) {
@@ -50,7 +45,7 @@ $(function() {
                                 <p>${item.naam}, ${item.product_id}</p>
                             </div>
                             <div class="moreinfo">
-                                <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
+                                <img class="dots" src="../../images/9025404_dots_three_icon.png" alt="More info image">
                             </div>
                         `;
 
@@ -87,7 +82,7 @@ $(function() {
 
         // Send the selected date to a PHP script using AJAX
         $.ajax({
-            url: '../php/admin.inAndOutBackend.php',
+            url: '../admin/inAndOutBackend.php',
             method: 'POST',
             data: { selectedDate: selectedDate, type: 'terugbrengDatum' },
             success: function(response) {
@@ -119,7 +114,7 @@ $(function() {
                                 <p id="accepterenProductID" value="${item.product_id}">Product ID: ${item.product_id}</p>
                             </div>
                             <div class="moreinfo">
-                                <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
+                                <img class="dots" src="../../images/9025404_dots_three_icon.png" alt="More info image">
                             </div>
                         `;
 
@@ -136,12 +131,6 @@ $(function() {
                             document.getElementById('InOut2').appendChild(card);
                             console.error("An error occurred:", error);
                           }
-                        
-                            
-                            
-                        
-                            
-                        
                     }
                 });
             },
@@ -187,7 +176,7 @@ $(function() {
         } else {
             console.log("No numerical value found.");
         }
-        window.location.href = "admin.defectProduct.php";
+        window.location.href = "admin/defectProduct.php";
     });
     
     

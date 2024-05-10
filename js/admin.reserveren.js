@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (aantalProductenAanwezig) {
         $.ajax({
-            url: "../php/admin.reserveren.backend.php",
+            url: "../php/admin/reserveren.backend.php",
             method: "POST",
             data: {
                 productNr: productNr

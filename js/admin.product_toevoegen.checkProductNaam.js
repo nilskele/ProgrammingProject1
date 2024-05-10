@@ -4,7 +4,7 @@ $(document).ready(function() {
   // Function to check if the product name already exists
   function checkProductName(productName) {
     $.ajax({
-      url: 'admin.product_toevoegen.product_naam.php',
+      url: 'product_toevoegen.product_naam.php',
       method: 'POST',
       data: {
         productName: productName

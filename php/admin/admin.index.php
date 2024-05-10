@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../css/styles.css" />
-<link rel="stylesheet" href="../css/admin.css">
-<link rel="stylesheet" href="../css/admin.kalender.css">
+<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="../../css/styles.css" />
+<link rel="stylesheet" href="../../css/admin.css">
+<link rel="stylesheet" href="../../css/admin.kalender.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -11,12 +11,13 @@
 
 
 <!-- Include your custom JavaScript file -->
-<script src="../js/inandout.js"></script>
+<script src="../../js/inandout.js"></script>
 
 
 
-<?php include("admin.header.php");
-include('../database.php');
+<?php 
+include("admin.header.php");
+include('../../database.php');
 ?>
 <div id="overlay" class="overlay"></div>
 
@@ -92,14 +93,14 @@ include('../database.php');
 
 
 
-<script src="../js/inandout.js"></script>
+<script src="../../js/inandout.js"></script>
 
 </div>
 <div class="toTopAnker">
   <button onclick="topFunction()" id="topBtn">Top &#8593;</button>
 </div>
-<script src="../js/inandout.js"></script>
-<script src="../js/admin.index.js"></script>
+<script src="../../js/inandout.js"></script>
+<script src="../../js/admin.index.js"></script>
 
 
 
@@ -118,8 +119,8 @@ include('../database.php');
       <input type="text" name="Zoeken" placeholder="Zoeken...">
     </form>
     <div class="buttons-container">
-      <a href="admin.kit_toevoegen.php"><button>Kit toevoegen</button></a>
-      <a href="admin.product_toevoegen.php"><button>Product toevoegen</button></a>
+      <a href="kit_toevoegen.php"><button>Kit toevoegen</button></a>
+      <a href="product_toevoegen.php"><button>Product toevoegen</button></a>
     </div>
   </div>
   <h1 class="titel">Calendar</h1>
@@ -146,7 +147,7 @@ include('../database.php');
     </section>
   </div>
 </body>
-<script src="../js/admin.agenda.js"></script>
+<script src="../../js/admin.agenda.js"></script>
 <?php 
 
 // SQL-query
@@ -193,7 +194,7 @@ $loanDetailsJSON = json_encode($loanDetails);
 <script>
 
 </script>
-<script src="../js/admin.agenda.js"></script>
+<script src="../../js/admin.agenda.js"></script>
 <script>
 // Pass PHP array to JavaScript
 const loanDetails = <?php echo $loanDetailsJSON; ?>;

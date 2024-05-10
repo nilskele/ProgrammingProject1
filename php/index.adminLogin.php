@@ -20,7 +20,7 @@ if (isset($_POST['inputEmail3']) && isset($_POST['inputPassword3'])) {
             $_SESSION['isIngelogd'] = true;
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['user_type'] = $row['userType_fk'];
-            header("Location: admin.index.php");
+            header("Location: admin/admin.index.php");
             exit();
         } else {
             header("Location: index.php?error=Invalide email of wachtwoord");

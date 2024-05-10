@@ -13,7 +13,7 @@ $(function() {
     
         // Send the selected date to a PHP script using AJAX
         $.ajax({
-            url: '../php/admin.telaatingebracht.backend.php', 
+            url: '../admin/teLaatIngebracht.backend.php', 
             method: 'POST',
             
             success: function(response) {
@@ -45,7 +45,7 @@ $(function() {
                                 <p>Product ID: ${item.product_id}</p>
                             </div>
                             <div class="moreinfo">
-                                <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
+                                <img class="dots" src="../../images/9025404_dots_three_icon.png" alt="More info image">
                             </div>
                         `;
     

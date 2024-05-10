@@ -1,6 +1,6 @@
 <?php
 // Include database connection file
-include('../database.php');
+include('../../database.php');
 
 // Check if the selected date is provided
 if (isset($_POST['selectedDate'])) {

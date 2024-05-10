@@ -1,12 +1,13 @@
-<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../css/styles.css" />
-<link rel="stylesheet" href="../css/blacklist.css">
+<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="../../css/styles.css" />
+<link rel="stylesheet" href="../../css/blacklist.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
-<?php include("admin.header.php");
-include("admin.blacklist.backend.php")
+<?php 
+include("admin.header.php");
+include("blacklist.backend.php")
 ?>
 
 <div class="containerBlacklist">
@@ -53,4 +54,4 @@ include("admin.blacklist.backend.php")
   </div>
 </div>
 
-<script src="../js/blacklist.js"></script>
+<script src="../../js/blacklist.js"></script>

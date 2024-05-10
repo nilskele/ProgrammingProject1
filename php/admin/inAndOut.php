@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../css/styles.css" />
-<link rel="stylesheet" href="../css/inandout.css">
+<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="../../css/styles.css" />
+<link rel="stylesheet" href="../../css/inandout.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -58,4 +58,4 @@
   <div id="InOut2" class="inOutCatalagus overflow-auto">
   </div>
 </div>
-<script src="../js/inandout.js"></script>
+<script src="../../js/inandout.js"></script>
