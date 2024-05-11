@@ -1,5 +1,5 @@
 <?php
-include("../../database.php");
+include("/ProgrammingProject1/database.php");
 
 if (isset($_POST['email'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);

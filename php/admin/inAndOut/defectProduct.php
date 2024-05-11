@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="../../css/admin.defectProduct.css" />
+<link rel="stylesheet" href="css/admin.defectProduct.css" />
 
-<?php include("admin.header.php");?>
+<?php include("../admin.header.php");?>
 
 <div class="container">
   <div class="defectHeader">
@@ -38,4 +38,4 @@
   </div>
 </div>
 
-<script src="../../js/admin.defectProduct.js"></script>
+<script src="js/defectProduct.js"></script>

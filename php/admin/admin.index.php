@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../../css/styles.css" />
-<link rel="stylesheet" href="../../css/admin.css">
-<link rel="stylesheet" href="../../css/admin.kalender.css">
+<link rel="stylesheet" href="/ProgrammingProject1/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/ProgrammingProject1/css/styles.css" />
+<link rel="stylesheet" href="/ProgrammingProject1/css/admin.css">
+<link rel="stylesheet" href="/ProgrammingProject1/css/admin.kalender.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -11,13 +11,11 @@
 
 
 <!-- Include your custom JavaScript file -->
-<script src="../../js/inandout.js"></script>
-
-
+<script src="inAndOut/js/inandout.js"></script>
 
 <?php 
 include("admin.header.php");
-include('../../database.php');
+include('/ProgrammingProject1/database.php');
 ?>
 <div id="overlay" class="overlay"></div>
 
@@ -93,13 +91,13 @@ include('../../database.php');
 
 
 
-<script src="../../js/inandout.js"></script>
+<script src="inAndOut/js/inandout.js"></script>
 
 </div>
 <div class="toTopAnker">
   <button onclick="topFunction()" id="topBtn">Top &#8593;</button>
 </div>
-<script src="../../js/inandout.js"></script>
+<script src="inAndOut/js/inandout.js"></script>
 <script src="../../js/admin.index.js"></script>
 
 

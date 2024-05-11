@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../../css/styles.css" />
-<link rel="stylesheet" href="../../css/admin.css">
+<link rel="stylesheet" href="/ProgrammingProject1/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/ProgrammingProject1/css/styles.css" />
+<link rel="stylesheet" href="/ProgrammingProject1/css/admin.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -10,8 +10,8 @@
 <?php include 'checkIngelogd.php'; ?>
 
 <nav class="navbar fixed-top navbar-light nav_shadow">
-  <a class="navbar-brand mb-0 h1 medialab" href="admin.index.php">
-    <img src="../../images/EhB-logo-transparant.png" width="60" class="d-inline-block align-top"
+  <a class="navbar-brand mb-0 h1 medialab" href="/ProgrammingProject1/php/admin/admin.index.php">
+    <img src="/ProgrammingProject1/images/EhB-logo-transparant.png" width="60" class="d-inline-block align-top"
       alt="ehb EhB-logo-transparant" />
     <span class="medialabTitleNav">
       Medialab
@@ -19,10 +19,10 @@
   </a>
   <div class="navbar-nav">
 
-    <a class="nav-item nav-link" href="inAndOut.php">In and Out</a>
+    <a class="nav-item nav-link" href="inAndOut/inAndOut.php">In and Out</a>
     <a class="nav-item nav-link" href="teLaatIngebracht.php">Te laat</a>
-    <a class="nav-item nav-link" href="blacklist.php">Blacklist</a>
-    <a class="nav-item nav-link" href="../logout.php"><img src="../../images/logout-svgrepo-com.svg" alt="loagout"
+    <a class="nav-item nav-link" href="blacklist/blacklist.php">Blacklist</a>
+    <a class="nav-item nav-link" href="php/logout.php"><img src="/ProgrammingProject1/images/logout-svgrepo-com.svg" alt="loagout"
         height="25px"></a>
   </div>
 </nav>

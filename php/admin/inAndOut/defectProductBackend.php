@@ -1,5 +1,5 @@
 <?php
-include("../../database.php");
+include("/ProgrammingProject1/database.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST['email']) && isset($_POST['wat']) && isset($_POST['reden']) && isset($_POST['productNr'])) {

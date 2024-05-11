@@ -1,6 +1,6 @@
 <?php
 
-include('../../database.php');
+include('/ProgrammingProject1/database.php');
 
 if (isset($_POST['user_id'])) {
 
