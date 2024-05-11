@@ -15,7 +15,7 @@
 
 <?php 
 include("admin.header.php");
-include('/ProgrammingProject1/database.php');
+include('../../database.php');
 ?>
 <div id="overlay" class="overlay"></div>
 
