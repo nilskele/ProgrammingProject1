@@ -1,10 +1,4 @@
-
-
 $(function() {
-    
-
-        
-
     // IN AND OUT
     function teLaatTerugGebracht() {
         // Clear existing data
@@ -99,18 +93,15 @@ $(function() {
         
     });
 
-
-
-
     $(document).on('click', '.defectBtn', function(e) {
-        e.preventDefault();
-        var template = `
-    <h2>Are u Sure</h2>
-    <p>This is the content for the popup.</p>
-    <button class="acceptPopup">Accept</button>
-    <button class="close">Close</button>
-                                            `;
-    createPopup(template);
+      e.preventDefault();
+      var template = `
+        <h2>Are u Sure</h2>
+        <p>This is the content for the popup.</p>
+        <button class="acceptPopup">Accept</button>
+        <button class="close">Close</button>
+      `;
+      createPopup(template);
     });
 
     $('.inputZoekbalk5').on('keyup', function() {
@@ -128,7 +119,4 @@ $(function() {
     });
     
     teLaatTerugGebracht();
-
-    
 });
-
