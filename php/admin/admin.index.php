@@ -34,10 +34,10 @@ include('../../database.php');
         <a id="acceptBtn" href="accepteren.php" class="accepterenBtn">
           accepteren
         </a>
-        <a href="inAndOut/defectProduct.php" class="defectBtn" id="defectBtn">
+        <a class="defectBtn" id="defectBtn">
           defect
         </a>
-        <a href="reserveren/reserveren.php">
+        <a>
           <button class="reserverenBtn" id="reserverenButtonProduct">
             reserveren
           </button>
@@ -97,7 +97,7 @@ include('../../database.php');
 <div class="toTopAnker">
   <button onclick="topFunction()" id="topBtn">Top &#8593;</button>
 </div>
-<script src="/ProgrammingProject1/admin/inAndOut/js/inandout.js"></script>
+<script src="\ProgrammingProject1\php\admin\inAndOut\js\inandout.js"></script>
 <script src="/ProgrammingProject1/js/admin.index.js"></script>
 
 
