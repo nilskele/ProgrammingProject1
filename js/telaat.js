@@ -42,6 +42,7 @@ $(function() {
                             <div class="info">
                                 <h5 class="Naam">${item.voornaam} ${item.achternaam}</h5>
                                 <p>User ID: ${item.user_id}</p>
+                                <p id="accepterenProductID" style="display: none;" value="${item.product_id}">Product ID: ${item.product_id}</p>
                                 <p>Product ID: ${item.product_id}</p>
                             </div>
                             <div class="moreinfo">
