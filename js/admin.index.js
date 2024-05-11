@@ -101,8 +101,9 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
     
-    let acceptBtn= document.getElementById("acceptBtn");
+    
 
+<<<<<<< Updated upstream
 acceptBtn.addEventListener("click", function () {
         let productNr = productNrInput.value;
         
@@ -161,3 +162,5 @@ acceptBtn.addEventListener("click", function () {
                 });
         }    
 });
+=======
+>>>>>>> Stashed changes
