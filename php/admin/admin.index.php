@@ -97,8 +97,8 @@ include('../../database.php');
 <div class="toTopAnker">
   <button onclick="topFunction()" id="topBtn">Top &#8593;</button>
 </div>
-<script src="inAndOut/js/inandout.js"></script>
-<script src="../../js/admin.index.js"></script>
+<script src="/ProgrammingProject1/admin/inAndOut/js/inandout.js"></script>
+<script src="/ProgrammingProject1/js/admin.index.js"></script>
 
 
 
