@@ -74,7 +74,7 @@ defectBtn.addEventListener("click", function () {
                         success: function (data) {
                                 if (data === "true") {
                                         localStorage.setItem("productNr", productNr);
-                                        window.location.href = "defectProduct.php";
+                                        window.location.href = "inAndOut/defectProduct.php";
                                 } else {
                                         Swal.fire({
                                                 icon: "error",
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 console.log("No numerical value found.");
             }
-            window.location.href = "defectProduct.php";
+            window.location.href = "inAndOut/defectProduct.php";
         });
     });
     
