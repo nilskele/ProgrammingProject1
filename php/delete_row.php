@@ -12,24 +12,10 @@ if (isset($_POST['leningId']) && isset($_POST['productNr'])) {
     $query = "UPDATE MIJN_LENINGEN SET isTerugGebracht = True WHERE lening_id = '$leningId'";
 
 
-<<<<<<< Updated upstream
-        $query2 = "UPDATE PRODUCT
-        JOIN MIJN_LENINGEN ON MIJN_LENINGEN.product_id_fk = PRODUCT.product_id
-        SET PRODUCT.isUitgeleend = False
-        WHERE PRODUCT.product_id = MIJN_LENINGEN.product_id_fk AND MIJN_LENINGEN.lening_id = '$leningId'";
-=======
     $query2 = "UPDATE PRODUCT
     SET PRODUCT.isUitgeleend = False
     WHERE PRODUCT.product_id = '$productNr'";
 
-
-    
-
-
-
-
->>>>>>> Stashed changes
-    
 if ($conn->query($query) === TRUE && $conn->query($query2) === TRUE) {
     // If both queries are successful, return success message
     echo "success";

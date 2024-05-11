@@ -16,32 +16,6 @@ if (isset($_POST['productNr'])) {
     SET PRODUCT.isUitgeleend = False
     WHERE PRODUCT.product_id = '$productNr'";
 
-<<<<<<< Updated upstream
-    if ($conn->query($query) === TRUE) {
-        // If deletion is successful, return success message
-        echo "success";
-    } else {
-        // If deletion fails, return error message
-        echo "error";
-    }
-    if ($conn->query($query2) === TRUE) {
-        // If deletion is successful, return success message
-        echo "success";
-        
-
-    } else {
-        // If deletion fails, return error message
-        echo "error";
-    }
-=======
-    
-
-
-
-
-    
-    
-
 
 
 if ($conn->query($query) == TRUE && $conn->query($query2) == TRUE) {
@@ -51,7 +25,6 @@ if ($conn->query($query) == TRUE && $conn->query($query2) == TRUE) {
     // If either query fails, return error message
     echo "error";
 }
->>>>>>> Stashed changes
 } else {
     // If leningId is not provided, return error message
     echo "Lening ID not provided";
