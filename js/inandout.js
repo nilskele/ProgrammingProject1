@@ -1,18 +1,10 @@
 $(function() {
 
-      
-
-
-    
-
-
     //ON WINDOW LOAD 
     window.onload = function() {
-
         var today = moment().format('YYYY-MM-DD');
         fetchDataUitleendatum(today);
         fetchDataTerugbrengDatum(today);
-        
     };
     // IN AND OUT 
     function fetchDataUitleendatum(selectedDate) {
@@ -20,11 +12,9 @@ $(function() {
         $('#smallInOut1').empty();
         $('#InOut1').empty();
         
-        
-
         // Send the selected date to a PHP script using AJAX
         $.ajax({
-            url: '../php/admin.inAndOutBackend.php',
+            url: 'inAndOutBackend.php',
             method: 'POST',
             data: { selectedDate: selectedDate, type: 'uitleendatum' },
             success: function(response) {
@@ -72,7 +62,6 @@ $(function() {
                             console.error("An error occurred:", error);
                           }
                         
-                        
                     }
                 });
             },
@@ -91,7 +80,7 @@ $(function() {
 
         // Send the selected date to a PHP script using AJAX
         $.ajax({
-            url: '../php/admin.inAndOutBackend.php',
+            url: 'inAndOutBackend.php',
             method: 'POST',
             data: { selectedDate: selectedDate, type: 'terugbrengDatum' },
             success: function(response) {
@@ -124,11 +113,9 @@ $(function() {
                             <div class="info">
                                 <h5 class="Naam" value="${item.voornaam} ${item.achternaam}">${item.voornaam} ${item.achternaam}</h5>
                                 <p class="accepterenProductID"  value="${item.naam} ${item.product_id}">${item.naam}, ${item.product_id}</p>
-                                
-                                
                             </div>
                             <div class="moreinfo">
-                                <img class="dots"  src="../images/9025404_dots_three_icon.png" alt="More info image">
+                                <img class="dots"  src="/ProgrammingProject1/images/9025404_dots_three_icon.png" alt="More info image">
                             </div>
                         `;
 
@@ -140,17 +127,11 @@ $(function() {
                         
                         try {
                             document.getElementById('smallInOut2').appendChild(card);
-                          
-                          } catch (error) {
-                            document.getElementById('InOut2').appendChild(card);
-                            console.error("An error occurred:", error);
-                          }
-                        
-                            
-                            
-                        
-                            
-                        
+                        } catch (error) {
+                          document.getElementById('InOut2').appendChild(card);
+                          console.error("An error occurred:", error);
+                        }
+  
                     }
                 });
             },
@@ -196,7 +177,7 @@ $(function() {
         } else {
             console.log("No numerical value found.");
         }
-        window.location.href = "admin.defectProduct.php";
+        window.location.href = "/ProgrammingProject1/php/admin/inAndOut/defectProduct.php";
     });
     
     
@@ -223,7 +204,7 @@ $(function() {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: '../php/delete_row.php',
+                    url: '/ProgrammingProject1/php/delete_row.php',
                     method: 'POST',
                     data: { leningId: leningId, productNr: productNr},
                     success: function(response) {

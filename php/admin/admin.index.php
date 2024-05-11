@@ -11,7 +11,7 @@
 
 
 <!-- Include your custom JavaScript file -->
-<script src="inAndOut/js/inandout.js"></script>
+<script src="/ProgrammingProject1/js/inandout.js"></script>
 
 <?php 
 include("admin.header.php");
@@ -42,7 +42,6 @@ include('../../database.php');
             reserveren
           </button>
         </a>
-
       </div>
     </div>
     <div class="adminAccepteren">
@@ -60,7 +59,6 @@ include('../../database.php');
         <a class="reserverenBtn">
           reserveren
         </a>
-
       </div>
     </div>
   </div>
