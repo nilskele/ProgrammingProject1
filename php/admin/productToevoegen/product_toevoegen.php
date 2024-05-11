@@ -1,8 +1,8 @@
-<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../../css/styles.css" />
-<link rel="stylesheet" href="../../css/product_toevoegen.css">
+<link rel="stylesheet" href="/ProgrammingProject1/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/ProgrammingProject1/css/styles.css" />
+<link rel="stylesheet" href="css/product_toevoegen.css">
 
-<?php include("admin.header.php")?>
+<?php include("../admin.header.php")?>
 <?php include("product_toevoegen.category.php")?>
 <?php include("product_toevoegen.product_naam.php")?>
 <?php include("product_toevoegen.merk.php")?>
@@ -53,7 +53,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="../../js/admin.product_toevoegen.category.js"></script>
-<script src="../../js/admin.product_toevoegen.merk.js"></script>
-<script src="../../js/admin.product_toevoegen.checkProductNaam.js"></script>
-<script src="../../js/admin.product_toevoegen.checkBeschrijving.js"></script>
+<script src="js/product_toevoegen.category.js"></script>
+<script src="js/product_toevoegen.merk.js"></script>
+<script src="js/product_toevoegen.checkProductNaam.js"></script>
+<script src="js/product_toevoegen.checkBeschrijving.js"></script>

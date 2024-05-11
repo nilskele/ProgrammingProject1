@@ -1,6 +1,6 @@
 <?php
-include ('../../database.php');
-include ('../validation_functions.php');
+include ('../../../database.php');
+include ('../../validation_functions.php');
 
 if (isset($_POST['merk'])) {
   $merk = valideren($_POST['merk']);

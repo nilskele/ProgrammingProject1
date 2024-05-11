@@ -1,7 +1,7 @@
 <?php
-include('../../database.php');
+include('../../../database.php');
 
-include('../validation_functions.php');
+include('../../validation_functions.php');
 
 if(isset($_POST['productName'])) {
     $productName = valideren($_POST['productName']);

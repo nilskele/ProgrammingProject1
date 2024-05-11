@@ -117,8 +117,8 @@ include('../../database.php');
       <input type="text" name="Zoeken" placeholder="Zoeken...">
     </form>
     <div class="buttons-container">
-      <a href="kit_toevoegen.php"><button>Kit toevoegen</button></a>
-      <a href="product_toevoegen.php"><button>Product toevoegen</button></a>
+      <a href="kitToevoegen/kit_toevoegen.php"><button>Kit toevoegen</button></a>
+      <a href="productToevoegen/product_toevoegen.php"><button>Product toevoegen</button></a>
     </div>
   </div>
   <h1 class="titel">Calendar</h1>

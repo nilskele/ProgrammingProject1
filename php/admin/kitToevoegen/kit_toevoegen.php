@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../../css/styles.css" />
-<link rel="stylesheet" href="../../css/kit_toevoegen.css">
+<link rel="stylesheet" href="/ProgrammingProject1/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/ProgrammingProject1/css/styles.css" />
+<link rel="stylesheet" href="css/kit_toevoegen.css">
 
 
-<?php include("admin.header.php")?>
+<?php include("../admin.header.php")?>
 
 <h1>Add kit</h1>
 <form action="../add_kit">

@@ -1,6 +1,6 @@
 <?php
-include('../../database.php');
-include('../validation_functions.php');
+include('../../../database.php');
+include('../../validation_functions.php');
 
 // Check if the Beschrijving field is received via POST request
 if(isset($_POST['beschrijving'])) {

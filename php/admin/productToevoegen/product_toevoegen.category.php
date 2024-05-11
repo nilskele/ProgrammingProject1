@@ -1,5 +1,5 @@
 <?php
-include('../../database.php');
+include('../../../database.php');
 
 $sql = "SELECT naam FROM CATEGORY";
 $result = $conn->query($sql);
