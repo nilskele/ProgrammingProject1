@@ -13,7 +13,7 @@ if (isset($_POST['email'])) {
     $checkStmt->close();
 
     if ($checkResult->num_rows > 0) {
-        $query = "UPDATE USER SET blacklist_fk = blacklist_fk + 1, blacklistDatum = NOW() WHERE email = ?";
+        $query = "UPDATE USER SET blacklist_fk = blacklist_fk + 1, blacklistDatum = DATE_ADD(NOW(), INTERVAL 3 MONTH) WHERE email = ?";
         
         if ($stmt = $conn->prepare($query)) {
             $stmt->bind_param("s", $email);
