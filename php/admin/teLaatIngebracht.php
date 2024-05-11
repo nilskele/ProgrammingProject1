@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" href="../../css/styles.css" />
-<link rel="stylesheet" href="../../css/inandout.css">
+<link rel="stylesheet" href="inAndOut/css/inandout.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
