@@ -10,8 +10,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 
-<!-- Include your custom JavaScript file -->
-<script src="../js/inandout.js"></script>
+
+
+
+
 
 
 
@@ -74,9 +76,9 @@ include('../database.php');
     <h1>Vandaag Terug</h1>
   </div>
   <div class="inOutTitels">
-    <input type="text" id="zoekbalka" name="zoekbalk" placeholder="Zoek naar studenten" class="inputZoekbalk3">
+  <input type="text" id="zoekbalka" name="zoekbalk" placeholder="Zoek naar studenten" class="inputZoekbalk3">
 
-    <input type="text" id="zoekbalkb" name="zoekbalk" placeholder="Zoek naar studenten" class="inputZoekbalk4">
+  <input type="text" id="zoekbalkb" name="zoekbalk" placeholder="Zoek naar studenten" class="inputZoekbalk4">
 
   </div>
 
@@ -92,28 +94,26 @@ include('../database.php');
 
 
 
-<script src="../js/inandout.js"></script>
+      <script src="../js/inandout.js"></script>
 
-</div>
-<div class="toTopAnker">
-  <button onclick="topFunction()" id="topBtn">Top &#8593;</button>
-</div>
-<script src="../js/inandout.js"></script>
-<script src="../js/admin.index.js"></script>
+    </div>
+    <div class="toTopAnker">
+      <button onclick="topFunction()" id="topBtn">Top &#8593;</button>
+    </div>
+    <script src="../js/inandout.js"></script>
+    <script src="../js/admin.index.js"></script>
 
+   
 
-
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-
 <body>
-  <div class="buttons_kalender">
+<div class="buttons_kalender">
     <form action="/zoeken" method="GET">
       <input type="text" name="Zoeken" placeholder="Zoeken...">
     </form>
@@ -140,7 +140,7 @@ include('../database.php');
         <li>Wo <span class="date"></span></li>
         <li>Do <span class="date"></span></li>
         <li>Vr <span class="date"></span></li>
-        <li class="new-row"><span class="date"></span></li>
+        <li class="new-row"><span class="date"></span></li> 
       </ul>
       <ul class="dates"></ul>
     </section>
@@ -191,15 +191,18 @@ $loanDetailsJSON = json_encode($loanDetails);
 
 ?>
 <script>
-
-</script>
-<script src="../js/admin.agenda.js"></script>
+    
+  </script>
+  <script src="../js/admin.agenda.js"></script>
 <script>
 // Pass PHP array to JavaScript
 const loanDetails = <?php echo $loanDetailsJSON; ?>;
 
 var data = <?php echo json_encode($loanDetails); ?>;
-// alert(JSON.stringify(data))
+   // alert(JSON.stringify(data))
+
+
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -219,13 +222,13 @@ const terugbrengDatums = data.map(item => item.terugbrengDatum);
 // Print product names along with Uitleendatum and terugbrengDatum
 //console.log("Product Details:");
 data.forEach(item => {
-  //console.log(`Product: ${item.product_naam}`);
-  //console.log(`Uitleendatum: ${item.Uitleendatum}`);
-  //console.log(`TerugbrengDatum: ${item.terugbrengDatum}`);
-  //console.log(""); // Empty line for separation
+    //console.log(`Product: ${item.product_naam}`);
+    //console.log(`Uitleendatum: ${item.Uitleendatum}`);
+    //console.log(`TerugbrengDatum: ${item.terugbrengDatum}`);
+    //console.log(""); // Empty line for separation
 });
 
-
+  
 
 const months = [
   "Januari",
@@ -255,21 +258,21 @@ const daysOfWeek = [
 
 // Updated items array with placeholders for each day
 const items = [
-  "CANON 5/5", // Item for 5/5
-  "booked", // Placeholder for 6/5
-  "booked", // Placeholder for 7/5
+  "CANON 5/5",   // Item for 5/5
+  "booked",             // Placeholder for 6/5
+  "booked",             // Placeholder for 7/5
   "booked",
   "",
   "",
   "",
-  "",
-  "MSI 5/5",
-  "",
-  "",
-  "",
-  "",
-  "",
-  ""
+  "",             
+  "MSI 5/5",     
+  "",             
+  "",             
+  "",             
+  "",            
+  "",             
+  ""              
 ];
 
 
@@ -371,5 +374,7 @@ nextButton.addEventListener("click", () => {
 
 // Initial rendering
 renderCalendar();
+ 
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

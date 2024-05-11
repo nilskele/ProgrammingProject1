@@ -1,6 +1,9 @@
 $(function() {
 
+      
 
+
+    
 
 
     //ON WINDOW LOAD 
@@ -16,6 +19,7 @@ $(function() {
         // Clear existing data
         $('#smallInOut1').empty();
         $('#InOut1').empty();
+        
         
 
         // Send the selected date to a PHP script using AJAX
@@ -50,7 +54,7 @@ $(function() {
                                 <p>${item.naam}, ${item.product_id}</p>
                             </div>
                             <div class="moreinfo">
-                                <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
+                                <img class="dots"  src="../images/9025404_dots_three_icon.png" alt="More info image">
                             </div>
                         `;
 
@@ -102,6 +106,10 @@ $(function() {
                         var card = document.createElement('div');
                         card.className = 'inOutProduct';
                         card.setAttribute('data-lening-id', item.lening_id); // Set data-lening-id attribute
+                        card.setAttribute('data-terugbrengdatum', item.terugbrengDatum); // Set data-lening-id attribute
+                        card.setAttribute('data-uitleendatum', item.Uitleendatum); // Set data-lening-id attribute
+
+
 
                         // Create the product info div
                         var productInfo = document.createElement('div');
@@ -114,12 +122,13 @@ $(function() {
                                 <a class="defectBtn defectButton" id="defectBtn90">Defect</a>
                             </div>
                             <div class="info">
-                                <h5 class="Naam">${item.voornaam} ${item.achternaam}</h5>
-                                <p>User ID: ${item.user_id}</p>
-                                <p id="accepterenProductID" value="${item.product_id}">Product ID: ${item.product_id}</p>
+                                <h5 class="Naam" value="${item.voornaam} ${item.achternaam}">${item.voornaam} ${item.achternaam}</h5>
+                                <p class="accepterenProductID"  value="${item.naam} ${item.product_id}">${item.naam}, ${item.product_id}</p>
+                                
+                                
                             </div>
                             <div class="moreinfo">
-                                <img class="dots" src="../images/9025404_dots_three_icon.png" alt="More info image">
+                                <img class="dots"  src="../images/9025404_dots_three_icon.png" alt="More info image">
                             </div>
                         `;
 
@@ -180,7 +189,7 @@ $(function() {
 
     $(document).off('click', '#defectBtn90').on('click', '#defectBtn90', function(event) {
         event.preventDefault();
-        let productnr = $(this).closest('.inOutProduct').find('#accepterenProductID').attr('value');
+        let productnr = $(this).closest('.inOutProduct').find('.accepterenProductID').attr('value');
     
         if (productnr) {
             localStorage.setItem("productNr", productnr);
@@ -197,11 +206,10 @@ $(function() {
     $(document).on('click', '.accepterenBtn', function(e) {
         e.preventDefault();
 
-        // Store the context of 'this' in a variable
         var $this = $(this);
 
-        // Retrieve the lening_id associated with the clicked row
         var leningId = $this.closest('.inOutProduct').data('lening-id');
+        var productNr = $this.closest('.inOutProduct').find('.accepterenProductID').attr('value');
 
         // Send AJAX request to delete the row from the database
         Swal.fire({
@@ -217,13 +225,13 @@ $(function() {
                 $.ajax({
                     url: '../php/delete_row.php',
                     method: 'POST',
-                    data: { leningId: leningId },
+                    data: { leningId: leningId, productNr: productNr},
                     success: function(response) {
                         
                         // Upon successful deletion, remove the corresponding row from the HTML
                         if (response === 'success') {
-                            // Remove the closest '.inOutProduct' element
                             $this.closest('.inOutProduct').remove();
+                            
                         } else {
                             console.error('Failed to delete row');
                         }
@@ -335,6 +343,125 @@ $(function() {
         });
     });
 
+    let acceptBtn= document.getElementById("acceptBtn");
+    let productNrInput = document.getElementById("productNrInput");
+
+
+acceptBtn.addEventListener("click", function () {
+        let productNr = productNrInput.value;
+        var $this = $(this);
+        
+        if (productNr === "") {
+                Swal.fire({
+                        icon: "error",
+                        title: "Oeps...",
+                        text: "Het productnummer mag niet leeg zijn!"
+                });
+        } else {
+                $.ajax({
+                        url: "../php/checkProductNr.php",
+                        method: "POST",
+                        data: {
+                                productNr: productNr
+                        },
+                        success: function (data) {
+                                if (data === "true") {
+                                        Swal.fire({
+                                                title: 'Are you sure?',
+                                                text: "You are about to perform an action. Do you want to proceed?",
+                                                icon: 'warning',
+                                                showCancelButton: true,
+                                                confirmButtonColor: '#3085d6',
+                                                cancelButtonColor: '#d33',
+                                                confirmButtonText: 'Yes, proceed!'
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    $.ajax({
+                                                        url: '../php/delete_row2.php',
+                                                        method: 'POST',
+                                                        data: { productNr: productNr },
+                                                        success: function(responsee) {
+                                                                if (responsee === 'success') {
+                                                                    console.log("success");
+                                                                    $this.closest('.inOutProduct').remove();
+
+                                                                } else {
+                                                                    console.error('Failed to delete row');
+                                                                }
+                                                            },
+                                                        error: function(xhr, status, error) {
+                                                            console.error(error);
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                } else {
+                                        Swal.fire({
+                                                icon: "error",
+                                                title: "Oeps...",
+                                                text: "Het productnummer bestaat niet!"
+                                        });
+                                }
+                        }
+                });
+        }    
+});
+
+function openPopup() {
+    var overlay = document.getElementById("overlay");
+    overlay.style.display = "block";
+    var popup = document.getElementById("popup");
+    var $this = $(this);
+
+        // Retrieve the lening_id associated with the clicked row
+    var leningId = $this.closest('.inOutProduct').data('lening-id');
+    var naam = $this.closest('.inOutProduct').find('.Naam').attr('value');
+    var productNr = $this.closest('.inOutProduct').find('.accepterenProductID').attr('value');
+    var terugbrengdatum = $this.closest('.inOutProduct').data('terugbrengdatum');
+    var uitleendatum = $this.closest('.inOutProduct').data('uitleendatum');
+
+
+
+    
+
+  
+    // Construct the popup content with the retrieved data
+    popup.innerHTML = `
+      <div class="popup-content">
+        <span class="closePopup" onclick="closePopup()">&times;</span>
+        <div class="popup_info">
+        <div class="contents">
+        <h5 class="Naam">${naam}</h5>
+          <p class="accepterenProductID">Product: ${productNr}</p>
+          <p>Lening ID: ${leningId}</p>
+        </div>
+          
+          <div class="dates">
+            <h6>Uitleendatum: ${uitleendatum}</h6>
+            
+            <h6>Terugbrengdatum: ${terugbrengdatum}</h6>
+          
+          </div>
+        </div>
+        
+      </div>
+    `;
+  
+    
+    popup.style.display = "block";
+  }
+  $(document).on('click', '.moreinfo', openPopup);
+
+  
+  function closePopup() {
+    var overlay = document.getElementById("overlay");
+    overlay.style.display = "none";
+    
+    var popup = document.getElementById("popup");
+    popup.style.display = "none";
+    popup.innerHTML = ""; // Clear popup content
+  }
+  $(document).on('click', '.closePopup', closePopup);
 
     
 });
