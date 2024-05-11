@@ -104,7 +104,7 @@ $(function() {
 
     $(document).off('click', '#defectBtn90').on('click', '#defectBtn90', function(event) {
         event.preventDefault();
-        let productnr = $(this).closest('.inOutProduct').find('.accepterenProductID').attr('value');
+        let productnr = $(this).closest('.inOutProduct').find('#accepterenProductID').attr('value');
     
         if (productnr) {
             localStorage.setItem("productNr", productnr);

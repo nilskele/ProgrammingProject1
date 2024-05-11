@@ -25,7 +25,7 @@
       <input type="hidden" id="productNr" name="productNr">
 
       <div class="allButtons">
-        <button type="submit" class="btn btn-primary">Defect pslaan</button>
+        <button type="submit" class="btn btn-primary">Defect opslaan</button>
         <button type="button" id="removeFromCatalogBtn" class="btn btn-primary">Uit catalogus halen</button>
         <button type="button" id="blacklistPersonBtn" class="btn btn-primary">Persoon waarschuwen</button>
       </div>
