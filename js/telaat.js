@@ -111,7 +111,7 @@ $(function() {
         } else {
             console.log("No numerical value found.");
         }
-        window.location.href = "../php/defectProduct.php";
+        window.location.href = "../php/admin.defectProduct.php";
     });
 
     $('.inputZoekbalk5').on('keyup', function() {
