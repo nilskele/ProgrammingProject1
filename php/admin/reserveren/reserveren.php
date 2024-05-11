@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../../css/styles.css" />
-<link rel="stylesheet" href="../../css/admin.css">
-<link rel="stylesheet" href="../../css/admin.reserveren.css">
+<link rel="stylesheet" href="/ProgrammingProject1/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/ProgrammingProject1/css/styles.css" />
+<link rel="stylesheet" href="/ProgrammingProject1/css/admin.css">
+<link rel="stylesheet" href="css/admin.reserveren.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
@@ -10,7 +10,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-<?php include("admin.header.php");?>
+<?php include("../admin.header.php");?>
 
 <div class="container">
     <div class="reserverenHeader">
@@ -49,4 +49,4 @@
 </div>
 
 
-<script src="../../js/admin.reserveren.js"></script>
+<script src="js/admin.reserveren.js"></script>

@@ -20,7 +20,7 @@
   <div class="navbar-nav">
 
     <a class="nav-item nav-link" href="inAndOut/inAndOut.php">In and Out</a>
-    <a class="nav-item nav-link" href="teLaatIngebracht.php">Te laat</a>
+    <a class="nav-item nav-link" href="teLaat/teLaatIngebracht.php">Te laat</a>
     <a class="nav-item nav-link" href="blacklist/blacklist.php">Blacklist</a>
     <a class="nav-item nav-link" href="php/logout.php"><img src="/ProgrammingProject1/images/logout-svgrepo-com.svg" alt="loagout"
         height="25px"></a>

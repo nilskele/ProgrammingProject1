@@ -34,28 +34,30 @@ include('../../database.php');
         <a id="acceptBtn" href="accepteren.php" class="accepterenBtn">
           accepteren
         </a>
-        <a class="defectBtn" id="defectBtn">
+        <a href="inAndOut/defectProduct.php" class="defectBtn" id="defectBtn">
           defect
         </a>
-        <button class="reserverenBtn" id="reserverenButtonProduct">
-          reserveren
-        </button>
+        <a href="reserveren/reserveren.php">
+          <button class="reserverenBtn" id="reserverenButtonProduct">
+            reserveren
+          </button>
+        </a>
 
       </div>
     </div>
     <div class="adminAccepteren">
       <div class="productNr">
         <h1>Kit Nr.</h1>
-        <input type="text" class="form-control" id="inputName3" placeholder="product nr" />
+        <input type="text" class="form-control" id="inputName3" placeholder="kit nr" />
       </div>
       <div class="knoppen">
         <a id="acceptBtn" href="accepteren.php" class="accepterenBtn">
           accepteren
         </a>
-        <a href="defect.php" class="defectBtnAccepteren">
+        <a href="inAndOut/defectProduct.php" class="defectBtnAccepteren">
           defect
         </a>
-        <a href="reserveren.php" class="reserverenBtn">
+        <a class="reserverenBtn">
           reserveren
         </a>
 

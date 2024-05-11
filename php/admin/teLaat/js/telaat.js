@@ -7,7 +7,7 @@ $(function() {
     
         // Send the selected date to a PHP script using AJAX
         $.ajax({
-            url: '../admin/teLaatIngebracht.backend.php', 
+            url: '../teLaat/teLaatIngebracht.backend.php', 
             method: 'POST',
             
             success: function(response) {
@@ -39,7 +39,7 @@ $(function() {
                                 <p>Product ID: ${item.product_id}</p>
                             </div>
                             <div class="moreinfo">
-                                <img class="dots" src="../../images/9025404_dots_three_icon.png" alt="More info image">
+                                <img class="dots" src="/ProgrammingProject1/images/9025404_dots_three_icon.png" alt="More info image">
                             </div>
                         `;
     
@@ -74,7 +74,7 @@ $(function() {
 
         // Send AJAX request to delete the row from the database
         $.ajax({
-            url: '../php/delete_row.php',
+            url: '/ProgrammingProject1/php/delete_row.php',
             method: 'POST',
             data: { leningId: leningId },
             success: function(response) {

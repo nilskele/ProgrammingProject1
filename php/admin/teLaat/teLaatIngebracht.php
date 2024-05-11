@@ -1,12 +1,12 @@
-<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../../css/styles.css" />
-<link rel="stylesheet" href="inAndOut/css/inandout.css">
+<link rel="stylesheet" href="/ProgrammingProject1/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/ProgrammingProject1/css/styles.css" />
+<link rel="stylesheet" href="/ProgrammingProject1/php/admin/inAndOut/css/inandout.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
 <?php 
-include("admin.header.php");
-include('../../database.php');
+include("../admin.header.php");
+include('../../../database.php');
 ?>
 <div class="terug">
         <a href="javascript:history.back()" class="terugLink">&#8592 Terug</a>
@@ -23,4 +23,4 @@ include('../../database.php');
     </div>
 </div>
 
-<script src="../../js/telaat.js"></script>
+<script src="js/telaat.js"></script>
