@@ -31,7 +31,7 @@ $(function() {
                         productInfo.innerHTML = `
                             <div id="vandaagInButtons">
                                 <a class="accepterenBtn" href="">Accepteren</a>
-                                <a class="defectBtn defectButton" href="">Defect</a>
+                                <a class="defectBtn defectButton" id="defectBtn90" href="">Defect</a>
                             </div>
                             <div class="info">
                                 <h5 class="Naam">${item.voornaam} ${item.achternaam}</h5>
@@ -93,15 +93,16 @@ $(function() {
         
     });
 
-    $(document).on('click', '.defectBtn', function(e) {
-      e.preventDefault();
-      var template = `
-        <h2>Are u Sure</h2>
-        <p>This is the content for the popup.</p>
-        <button class="acceptPopup">Accept</button>
-        <button class="close">Close</button>
-      `;
-      createPopup(template);
+    $(document).off('click', '#defectBtn90').on('click', '#defectBtn90', function(event) {
+        event.preventDefault();
+        let productnr = $(this).closest('.inOutProduct').find('.accepterenProductID').attr('value');
+    
+        if (productnr) {
+            localStorage.setItem("productNr", productnr);
+        } else {
+            console.log("No numerical value found.");
+        }
+        window.location.href = "/ProgrammingProject1/php/admin/inAndOut/defectProduct.php";
     });
 
     $('.inputZoekbalk5').on('keyup', function() {
