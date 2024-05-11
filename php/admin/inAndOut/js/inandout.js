@@ -98,6 +98,10 @@ $(function() {
                         card.setAttribute('data-uitleendatum', item.Uitleendatum); // Set data-lening-id attribute
 
 
+                        card.setAttribute('data-terugbrengdatum', item.terugbrengDatum); // Set data-lening-id attribute
+                        card.setAttribute('data-uitleendatum', item.Uitleendatum); // Set data-lening-id attribute
+
+
 
                         // Create the product info div
                         var productInfo = document.createElement('div');
@@ -170,6 +174,7 @@ $(function() {
     $(document).off('click', '#defectBtn90').on('click', '#defectBtn90', function(event) {
         event.preventDefault();
         let productnr = $(this).closest('.inOutProduct').find('.accepterenProductID').attr('value');
+        // let productnr = $(this).closest('.inOutProduct').find('.accepterenProductID').attr('value');
     
         if (productnr) {
             localStorage.setItem("productNr", productnr);
@@ -190,6 +195,7 @@ $(function() {
 
         var leningId = $this.closest('.inOutProduct').data('lening-id');
         var productNr = $this.closest('.inOutProduct').find('.accepterenProductID').attr('value');
+        var productNr = $this.closest('.inOutProduct').find('.accepterenProductID').attr('value');
 
         // Send AJAX request to delete the row from the database
         Swal.fire({
@@ -206,11 +212,13 @@ $(function() {
                     url: '/ProgrammingProject1/php/delete_row.php',
                     method: 'POST',
                     data: { leningId: leningId, productNr: productNr},
+                    data: { leningId: leningId, productNr: productNr},
                     success: function(response) {
                         
                         // Upon successful deletion, remove the corresponding row from the HTML
                         if (response === 'success') {
                             $this.closest('.inOutProduct').remove();
+                            
                             
                         } else {
                             console.error('Failed to delete row');
@@ -339,7 +347,7 @@ acceptBtn.addEventListener("click", function () {
                 });
         } else {
                 $.ajax({
-                        url: "/ProgrammingProject1/php/checkProductNr.php",
+                        url: "../php/checkProductNr.php",
                         method: "POST",
                         data: {
                                 productNr: productNr
@@ -357,7 +365,7 @@ acceptBtn.addEventListener("click", function () {
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
                                                     $.ajax({
-                                                        url: '/ProgrammingProject1/php/delete_row2.php',
+                                                        url: '../php/delete_row2.php',
                                                         method: 'POST',
                                                         data: { productNr: productNr },
                                                         success: function(responsee) {
@@ -445,3 +453,4 @@ function openPopup() {
 
     
 });
+
