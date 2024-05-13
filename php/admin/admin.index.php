@@ -11,7 +11,7 @@
 
 
 <!-- Include your custom JavaScript file -->
-<script src="/ProgrammingProject1/js/inandout.js"></script>
+<script src="/ProgrammingProject1/php/admin/inAndOut/js/inandout.js"></script>
 
 <?php 
 include("admin.header.php");
@@ -31,7 +31,7 @@ include('../../database.php');
         <input type="text" class="form-control grey-input" id="productNrInput" placeholder="product nr" />
       </div>
       <div class="knoppen">
-        <a id="acceptBtn" href="accepteren.php" class="accepterenBtn">
+        <a id="acceptBtn" class="accepterenBtn">
           accepteren
         </a>
         <a class="defectBtn" id="defectBtn">
@@ -50,7 +50,7 @@ include('../../database.php');
         <input type="text" class="form-control" id="inputName3" placeholder="kit nr" />
       </div>
       <div class="knoppen">
-        <a id="acceptBtn" href="accepteren.php" class="accepterenBtn">
+        <a id="acceptBtn" class="accepterenBtn">
           accepteren
         </a>
         <a href="inAndOut/defectProduct.php" class="defectBtnAccepteren">
@@ -87,20 +87,14 @@ include('../../database.php');
   </div>
 </div>
 
-
-
-
-
-<script src="inAndOut/js/inandout.js"></script>
+<script src="/ProgrammingProject1/php/admin/inAndOut/js/inandout.js"></script>
 
 </div>
 <div class="toTopAnker">
   <button onclick="topFunction()" id="topBtn">Top &#8593;</button>
 </div>
-<script src="\ProgrammingProject1\php\admin\inAndOut\js\inandout.js"></script>
+<script src="/ProgrammingProject1/php/admin/inAndOut/js/inandout.js"></script>
 <script src="/ProgrammingProject1/js/admin.index.js"></script>
-
-
 
 <!DOCTYPE html>
 <html lang="en">

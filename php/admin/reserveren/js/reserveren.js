@@ -30,9 +30,6 @@ $(function () {
     )
 })
 
-
-
-
 document.addEventListener("DOMContentLoaded", function() {
     let productNrSpan = document.getElementById("productNrSpan");
     let productNr = localStorage.getItem("productNr");

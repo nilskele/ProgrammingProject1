@@ -49,4 +49,4 @@
 </div>
 
 
-<script src="js/admin.reserveren.js"></script>
+<script src="js/reserveren.js"></script>

@@ -58,4 +58,4 @@
   <div id="InOut2" class="inOutCatalagus overflow-auto">
   </div>
 </div>
-<script src="/ProgrammingProject1/js/inandout.js"></script>
+<script src="/ProgrammingProject1/php/admin/inAndOut/js/inandout.js"></script>

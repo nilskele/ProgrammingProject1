@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Functie om het defect te melden
     function meldDefect(formData) {
-        fetch('../php/admin/defectProductBackend.php', {
+        fetch('../inAndOut/defectProductBackend.php', {
             method: 'POST',
             body: formData
         })
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     let formData = new FormData();
                     formData.append('productNr', productNr);
 
-                    fetch('../php/admin/defectProduct.Catalogus.php', {
+                    fetch('../inAndOut/defectProduct.Catalogus.php', {
                         method: 'POST',
                         body: formData
                     })
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     let formData = new FormData();
                     formData.append('email', email);
 
-                    fetch('../php/admin/defectProduct.Blacklist.php', {
+                    fetch('../inAndOut/defectProduct.Blacklist.php', {
                         method: 'POST',
                         body: formData
                     })
@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '../php/delete_row2.php',
+                        url: '/ProgrammingProject1/php/delete_row2.php',
                         method: 'POST',
                         data: { productNr: productNr },
                         success: function(response) {

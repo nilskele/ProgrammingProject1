@@ -20,7 +20,7 @@ $(document).ready(function() {
 // JavaScript Functionality for Merk Check
 function checkMerk(merk) {
   $.ajax({
-    url: 'admin.product_toevoegen.merk.php',
+    url: '../product_toevoegen.merk.php',
     method: 'POST',
     data: {
       merk: merk

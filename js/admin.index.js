@@ -32,7 +32,7 @@ reserverenButtonProduct.addEventListener("click", function () {
                 });
         } else {
                 $.ajax({
-                        url: "../checkProductNr.php",
+                        url: "/ProgrammingProject1/php/checkProductNr.php",
                         method: "POST",
                         data: {
                                 productNr: productNr
@@ -40,7 +40,7 @@ reserverenButtonProduct.addEventListener("click", function () {
                         success: function (data) {
                                 if (data === "true") {
                                         localStorage.setItem("productNr", productNr);
-                                        window.location.href = "../reserveren.php";
+                                        window.location.href = "/ProgrammingProject1/php/admin/reserveren/reserveren.php";
                                 } else {
                                         Swal.fire({
                                                 icon: "error",
@@ -66,7 +66,7 @@ defectBtn.addEventListener("click", function () {
                 });
         } else {
                 $.ajax({
-                        url: "../checkProductNr.php",
+                        url: "/ProgrammingProject1/php/checkProductNr.php",
                         method: "POST",
                         data: {
                                 productNr: productNr
@@ -74,7 +74,7 @@ defectBtn.addEventListener("click", function () {
                         success: function (data) {
                                 if (data === "true") {
                                         localStorage.setItem("productNr", productNr);
-                                        window.location.href = "inAndOut/defectProduct.php";
+                                        window.location.href = "/ProgrammingProject1/php/admin/inAndOut/defectProduct.php";
                                 } else {
                                         Swal.fire({
                                                 icon: "error",
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
             let itemValue = itemText.match(/\d+/);
             if (itemValue) {
                 localStorage.setItem("productNr", itemValue[0]);
-                window.location.href = "inAndOut/defectProduct.php";
+                window.location.href = "/ProgrammingProject1/php/admin/inAndOut/defectProduct.php";
             } else {
                 console.log("Geen productnr gevonden");
             }
