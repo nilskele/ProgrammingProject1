@@ -109,8 +109,8 @@ include('../../database.php');
       <input type="text" name="Zoeken" placeholder="Zoeken...">
     </form>
     <div class="buttons-container">
-      <a href="kitToevoegen/kit_toevoegen.php"><button>Kit toevoegen</button></a>
-      <a href="productToevoegen/product_toevoegen.php"><button>Product toevoegen</button></a>
+      <a href="kit_toevoegen.php"><button>Kit toevoegen</button></a>
+      <a href="product_toevoegen.php"><button>Product toevoegen</button></a>
     </div>
   </div>
   <h1 class="titel">Calendar</h1>
@@ -159,9 +159,9 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         // Sla de resultaten op in een array
         $loanDetails[] = array(
-            "product_naam" => $row["product_naam"],
-            "Uitleendatum" => $row["Uitleendatum"],
-            "terugbrengDatum" => $row["terugbrengDatum"]
+          //  "product_naam" => $row["product_naam"],
+          //  "Uitleendatum" => $row["Uitleendatum"],
+           // "terugbrengDatum" => $row["terugbrengDatum"]
         );
     }
 } else {
@@ -210,16 +210,44 @@ const productNames = data.map(item => item.product_naam);
 const uitleendatums = data.map(item => item.Uitleendatum);
 const terugbrengDatums = data.map(item => item.terugbrengDatum);
 
+// Function to format date to day/month format
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const day = date.getDate(); 
+  const month = date.getMonth() + 1; // January is 0, so add 1 to get the correct month number
+  return `${day}-${month}`;
+}
+
+// Function to get dates between two dates
+function getDatesBetween(uitleendatum, terugbrengDatum) {
+  const dates = [];
+  let currentDate = new Date(uitleendatum);
+  const endDate = new Date(terugbrengDatum);
+  
+  while (currentDate <= endDate) {
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth() + 1;
+    dates.push(`${day < 10 ? '0' + day : day}-${month < 10 ? '0' + month : month}`);
+    currentDate.setDate(currentDate.getDate() + 1); // Move to the next day
+  }
+
+  return dates;
+}
+
+
 // Print product names along with Uitleendatum and terugbrengDatum
+let index = 0;
 //console.log("Product Details:");
 data.forEach(item => {
-    //console.log(`Product: ${item.product_naam}`);
-    //console.log(`Uitleendatum: ${item.Uitleendatum}`);
-    //console.log(`TerugbrengDatum: ${item.terugbrengDatum}`);
-    //console.log(""); // Empty line for separation
+   // console.log(`Product: ${productNames[index]}`);
+    //console.log(`Uitleendatum: ${uitleendatums[index]}`);
+    //console.log(`TerugbrengDatum: ${terugbrengDatums[index]}`);
+    index++;
+    //console.log("Index:" + index); // Empty line for separation
+
 });
 
-  
+
 
 const months = [
   "Januari",
@@ -249,21 +277,21 @@ const daysOfWeek = [
 
 // Updated items array with placeholders for each day
 const items = [
-  "CANON 5/5",   // Item for 5/5
-  "booked",             // Placeholder for 6/5
-  "booked",             // Placeholder for 7/5
+  "CANON 5/5", // Item for 5/5
+  "booked", // Placeholder for 6/5
+  "booked", // Placeholder for 7/5
   "booked",
   "",
   "",
   "",
-  "",             
-  "MSI 5/5",     
-  "",             
-  "",             
-  "",             
-  "",            
-  "",             
-  ""              
+  "",
+  "MSI 5/5",
+  "",
+  "",
+  "",
+  "",
+  "",
+  ""
 ];
 
 
@@ -282,35 +310,60 @@ let currentDate = new Date();
 let currentMonth = currentDate.getMonth();
 let currentYear = currentDate.getFullYear();
 
-
+let dagenWeek = []; // Initialize an empty array to hold the days
+dagenWeek[0] = "";
 // Render the current week
 // Render the current week
 function renderCalendar() {
-  const startDate = getStartDate(currentDate);
-  const weekDates = getWeekDates(startDate);
+    const startDate = getStartDate(currentDate);
+    const weekDates = getWeekDates(startDate);
 
-  let html = "";
+    // Clear the dagenWeek array
+    dagenWeek = [];
 
-  // Iterate through each day in the week
-  weekDates.forEach((date, index) => {
-    const day = date.getDate();
-    const classNames = getDayClassNames(date);
-    dateSpans[index + 1].textContent = `${day}/${date.getMonth() + 1}`; // Index + 1 to match the index in the HTML
-    dateSpans[index + 1].parentNode.classList = classNames; // Setting class for the parent li
+    // Iterate through each day in the week
+    weekDates.forEach((date, index) => {
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const formattedDay = day < 10 ? '0' + day : day; // Add leading zero if day is less than 10
+        const formattedMonth = month < 10 ? '0' + month : month; // Add leading zero if month is less than 10
+        const dateKey = `${formattedDay}-${formattedMonth}`; // Format day-month
+
+        const classNames = getDayClassNames(date);
+        dateSpans[index + 1].textContent = `${day}/${date.getMonth() + 1}`; // Index + 1 to match the index in the HTML
+        dateSpans[index + 1].parentNode.classList = classNames; // Setting class for the parent li
+
+        // Populate dagenWeek array
+        dagenWeek.push(dateKey);
+    });
 
     header.textContent = `${months[currentMonth]} ${currentYear}`;
 
+    
+    
+    // Log the updated dagenWeek
+    console.log("dagen:" + dagenWeek);
 
-  });
+    // Update the HTML of the dates
+    let html = "";
+    for (let indexLength = 0; indexLength < productNames.length; indexLength++) {
+        let maxAantallen = 8;
+        for (let index = 0; index < maxAantallen; index++) {
+            const datesBetween = getDatesBetween(uitleendatums[indexLength], terugbrengDatums[indexLength]);
+            if (index === 0) {
+                html += `<li class="inactive">${productNames[indexLength]}</li>`;
+            } else if (datesBetween.some(r => dagenWeek[index - 1].includes(r))) {
+                html += `<li class="inactive">${"Booked"}</li>`;
+            } else {
+                html += `<li class="inactive">${"/"}</li>`;
+            }
+        }
+    }
 
-  for (let index = 0; index < items.length; index++) {
-
-    html += `<li class="inactive">${items[index]}</li>`; // Index is used to match with the items
-    //console.log(html + "/" + index);
-  }
-  // Update the HTML of the dates
-  dates.innerHTML = html;
+    // Update the HTML of the dates
+    dates.innerHTML = html;
 }
+
 
 
 // Get the start date of the week
@@ -365,7 +418,5 @@ nextButton.addEventListener("click", () => {
 
 // Initial rendering
 renderCalendar();
- 
-
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
