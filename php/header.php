@@ -1,4 +1,4 @@
-<?php include('/ProgrammingProject1/php/checkIngelogd.php'); ?>
+<?php include('checkIngelogd.php'); ?>
 <nav class="navbar fixed-top navbar-light nav_shadow">
   <a class="navbar-brand mb-0 h1 medialab" href="../php/catalogus.php">
     <img src="../images/EhB-logo-transparant.png" width="60" class="d-inline-block align-top"
