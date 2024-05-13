@@ -39,7 +39,8 @@ FROM KIT
       LEFT JOIN KIT_PRODUCT ON KIT.kit_id = KIT_PRODUCT.kit_id_fk
       LEFT JOIN GROEP ON KIT_PRODUCT.groep_id_fk = GROEP.groep_id
       LEFT JOIN IMAGE ON KIT.image_id_fk = IMAGE.image_id
-WHERE KIT.isUitgeleend = false
+WHERE kit_naam LIKE ? 
+AND KIT.isUitgeleend = false
 AND KIT.zichtbaar = true
 AND EXISTS (
  SELECT 1 FROM PRODUCT
@@ -53,7 +54,7 @@ HAVING COUNT(DISTINCT KIT_PRODUCT.groep_id_fk) >= (
  FROM KIT_PRODUCT
  WHERE KIT_PRODUCT.kit_id_fk = KIT.kit_id
 );");
-    $stmt->bind_param("s", $zoekterm);
+    $stmt->bind_param("ss", $zoekterm, $zoekterm);
 
     $stmt->execute();
 
