@@ -159,9 +159,9 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         // Sla de resultaten op in een array
         $loanDetails[] = array(
-            "product_naam" => $row["product_naam"],
-            "Uitleendatum" => $row["Uitleendatum"],
-            "terugbrengDatum" => $row["terugbrengDatum"]
+          //  "product_naam" => $row["product_naam"],
+          //  "Uitleendatum" => $row["Uitleendatum"],
+           // "terugbrengDatum" => $row["terugbrengDatum"]
         );
     }
 } else {
