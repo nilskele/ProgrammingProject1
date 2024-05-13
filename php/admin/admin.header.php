@@ -7,7 +7,7 @@
 <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-<?php include 'checkIngelogd.php'; ?>
+<?php include '/ProgrammingProject1/php/checkIngelogd.php'; ?>
 
 <nav class="navbar fixed-top navbar-light nav_shadow">
   <a class="navbar-brand mb-0 h1 medialab" href="/ProgrammingProject1/php/admin/admin.index.php">
