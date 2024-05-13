@@ -61,7 +61,6 @@ $(function () {
           } else {
             $.each(data, function (index, item) {
               resultHtml += `
-                            <?php  include '../php/countAantalBeschikbaar.php' ?>
                             <div class="product">
                                 <div class="container">
                                     <div class="card mb-3">
