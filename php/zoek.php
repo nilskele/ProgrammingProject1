@@ -25,7 +25,13 @@ GROUP BY GROEP.groep_id, GROEP.naam, MERK.naam, PRODUCT.opmerkingen, BESCHRIJVIN
 UNION
 
 SELECT KIT.kit_id, KIT.kit_naam, MERK.naam AS merk_naam, KIT.opmerkingen, GROUP_CONCAT(GROEP.naam) AS beschrijving_naam, MIN(KIT.datumBeschikbaar) AS datumBeschikbaar ,
-    (SELECT COUNT(*) FROM PRODUCT JOIN GROEP ON PRODUCT.groep_id = GROEP.groep_id where PRODUCT.isUitgeleend = false and PRODUCT.zichtbaar AND PRODUCT.groep_id = GROEP.groep_id GROUP BY product_id limit 1) AS aantal_beschikbare_producten,
+    (SELECT COUNT(*)
+     FROM GROEP
+              JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id
+     WHERE PRODUCT.isUitgeleend = false and PRODUCT.zichtbaar = true
+     GROUP BY GROEP.groep_id
+     ORDER BY COUNT(*) asc
+     limit 1) AS aantal_beschikbare_producten,
     IMAGE.image_data
 FROM KIT
       JOIN CATEGORY ON KIT.category_fk = CATEGORY.cat_id
@@ -78,7 +84,13 @@ GROUP BY GROEP.groep_id, GROEP.naam, MERK.naam, PRODUCT.opmerkingen, BESCHRIJVIN
 UNION
 
 SELECT KIT.kit_id, KIT.kit_naam, MERK.naam AS merk_naam, KIT.opmerkingen, GROUP_CONCAT(GROEP.naam) AS beschrijving_naam, MIN(KIT.datumBeschikbaar) AS datumBeschikbaar ,
-    (SELECT COUNT(*) FROM PRODUCT JOIN GROEP ON PRODUCT.groep_id = GROEP.groep_id where PRODUCT.isUitgeleend = false and PRODUCT.zichtbaar AND PRODUCT.groep_id = GROEP.groep_id GROUP BY product_id limit 1) AS aantal_beschikbare_producten,
+    (SELECT COUNT(*)
+     FROM GROEP
+              JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id
+     WHERE PRODUCT.isUitgeleend = false and PRODUCT.zichtbaar = true
+     GROUP BY GROEP.groep_id
+     ORDER BY COUNT(*) asc
+     limit 1) AS aantal_beschikbare_producten,
     IMAGE.image_data
 FROM KIT
       JOIN CATEGORY ON KIT.category_fk = CATEGORY.cat_id
