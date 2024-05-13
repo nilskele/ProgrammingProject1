@@ -63,6 +63,7 @@ https://chat.openai.com/share/e9504910-7d1e-4b92-b1bd-3ae478722f70<br>
 https://chat.openai.com/share/ccb79adb-dbec-4741-b928-af3857773999<br>
 https://chat.openai.com/share/d75f4f04-354f-4fec-87db-10dd16c74b06<br>
 https://chat.openai.com/share/177a52d4-9228-44f0-b2c3-47206c333ad9<br>
+https://chat.openai.com/share/38f169be-05d0-4d2a-aa42-e738f5ce4084<br>
 https://www.linkedin.com/learning/php-with-mysql-essential-training-1-the-basics/php-with-mysql-essential-training-the-basics?u=121303466<br>
 https://stackoverflow.com/questions/41391862/how-to-access-php-session-variable-in-javascript<br>
 https://stackoverflow.com/questions/23740548/how-do-i-pass-variables-and-data-from-php-to-javascript<br>
