@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reserveren</title>
   <!-- External CSS -->
+  <link rel="stylesheet" href="../css/catalogus.css">
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/reserveren.css">
@@ -59,8 +60,7 @@
     .maxAantal {
       margin-top: 5px; 
     }
-  </style>
-  <style>
+  
     /* Added custom CSS */
     .main-container {
       padding-left: 50px;
@@ -106,8 +106,7 @@
     .maxAantal {
       margin-top: 5px; 
     }
-  </style>
-  <style>
+  
     /* Added custom CSS */
     .main-container {
       padding-left: 50px;
@@ -160,12 +159,10 @@
 <?php
     // Include PHP files
     include("filter_productReserveren.php");
-    include("zoek.php");
     include("header.php"); // Assuming header.php contains the header content
   ?>
 
 <div id="container">
-  <?php include ('header.php'); ?>
   <section class="up row mb-5">
     <div class="col-md-1">
       <a href="javascript:history.back()" class="terug">&#8592 Terug</a>
@@ -174,27 +171,7 @@
       <h1 id="title" class="text-center">Reserveren</h1>
     </div>
   </section>
-    </div>
-    <div class="col-md-11">
-      <h1 id="title" class="text-center">Reserveren</h1>
-    </div>
-  </section>
-    </div>
-    <div class="col-md-11">
-      <h1 id="title" class="text-center">Reserveren</h1>
-    </div>
-  </section>
 
-  <div class="container main-container">
-    <div class="card">
-      <div class="row">
-        <div class="col-md-4">
-          <img src="data:image/jpg;base64,<?php echo($product['image_data']); ?>" class="card-img-top img-fluid" alt="Main Image">
-  <div class="container main-container">
-    <div class="card">
-      <div class="row">
-        <div class="col-md-4">
-          <img src="data:image/jpg;base64,<?php echo($product['image_data']); ?>" class="card-img-top img-fluid" alt="Main Image">
   <div class="container main-container">
     <div class="card">
       <div class="row">
@@ -203,30 +180,18 @@
           <div class="small-img-group">
             <div class="small-img-col">
               <img src="../images/small1.jpeg" class="small-img img-fluid" alt="Small Image 1">
-              <img src="../images/small1.jpeg" class="small-img img-fluid" alt="Small Image 1">
-              <img src="../images/small1.jpeg" class="small-img img-fluid" alt="Small Image 1">
             </div>
             <div class="small-img-col">
-              <img src="../images/small2.jpeg" class="small-img img-fluid" alt="Small Image 2">
-              <img src="../images/small2.jpeg" class="small-img img-fluid" alt="Small Image 2">
               <img src="../images/small2.jpeg" class="small-img img-fluid" alt="Small Image 2">
             </div>
             <div class="small-img-col">
               <img src="../images/small3.jpeg" class="small-img img-fluid" alt="Small Image 3">
-              <img src="../images/small3.jpeg" class="small-img img-fluid" alt="Small Image 3">
-              <img src="../images/small3.jpeg" class="small-img img-fluid" alt="Small Image 3">
             </div>
             <div class="small-img-col">
-              <img src="../images/small4.jpeg" class="small-img img-fluid" alt="Small Image 4">
-              <img src="../images/small4.jpeg" class="small-img img-fluid" alt="Small Image 4">
               <img src="../images/small4.jpeg" class="small-img img-fluid" alt="Small Image 4">
             </div>
           </div>
         </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h3 class="card-title"><?php echo htmlspecialchars($product['groep_naam']); ?></h3>
-            <p class="card-text"><?php echo htmlspecialchars($product['merk_naam']); ?>></p>
         <div class="col-md-8">
           <div class="card-body">
             <h3 class="card-title"><?php echo htmlspecialchars($product['groep_naam']); ?></h3>
@@ -264,48 +229,6 @@
   </div>
   <h5 class="maxAantal">Max aantal: <?php echo htmlspecialchars($product['aantal_beschikbare_producten']); ?></h5>
 </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h3 class="card-title"><?php echo htmlspecialchars($product['groep_naam']); ?></h3>
-            <p class="card-text"><?php echo htmlspecialchars($product['merk_naam']); ?>></p>
-
-            <select class="reden form-control mb-2">
-              <option>Reden</option>
-              <option>Project</option>
-              <option>Eindproject</option>
-              <option>School</option>
-              <option>Vrije tijd</option>
-              <option>Andere</option>
-            </select>
-            <!-- Available date display -->
-            <div class="beschikbaar">
-              <h6>Beschikbaar vanaf: <?php echo htmlspecialchars($product['datumBeschikbaar']); ?></h6>
-            </div>
-            <!-- Date range input for reservation -->
-            <div id="calendarContainer">
-              <input type="text" name="daterange" class="datumZoekbalk inputZoekbalk"/>
-            </div>
-
-            <!-- Quantity selection -->
-            <div class="num mb-2">
-  <div class="input-group">
-    <p class="aantal">Aantal:</p>
-    <select class="custom-input available">
-      <?php
-       // Create options dynamically based on available quantity
-      for ($i = 1; $i <= $product['aantal_beschikbare_producten']; $i++) {
-        echo '<option value="' . $i . '">' . $i . '</option>';
-      }
-      ?>
-    </select>
-  </div>
-  <h5 class="maxAantal">Max aantal: <?php echo htmlspecialchars($product['aantal_beschikbare_producten']); ?></h5>
-</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 <!-- Action buttons section -->
   <div class="container-fluid">
     <div class="row justify-content-center mt-3">
