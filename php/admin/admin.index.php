@@ -73,9 +73,9 @@ include('../../database.php');
     <h1>Vandaag Terug</h1>
   </div>
   <div class="inOutTitels">
-    <input type="text" id="zoekbalka" name="zoekbalk" placeholder="Zoek naar studenten" class="inputZoekbalk3">
+  <input type="text" id="zoekbalka" name="zoekbalk" placeholder="Zoek naar studenten" class="inputZoekbalk3">
 
-    <input type="text" id="zoekbalkb" name="zoekbalk" placeholder="Zoek naar studenten" class="inputZoekbalk4">
+  <input type="text" id="zoekbalkb" name="zoekbalk" placeholder="Zoek naar studenten" class="inputZoekbalk4">
 
   </div>
 
@@ -96,17 +96,15 @@ include('../../database.php');
 <script src="/ProgrammingProject1/php/admin/inAndOut/js/inandout.js"></script>
 <script src="/ProgrammingProject1/js/admin.index.js"></script>
 
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-
 <body>
-  <div class="buttons_kalender">
+<div class="buttons_kalender">
     <form action="/zoeken" method="GET">
       <input type="text" name="Zoeken" placeholder="Zoeken...">
     </form>
@@ -133,7 +131,7 @@ include('../../database.php');
         <li>Wo <span class="date"></span></li>
         <li>Do <span class="date"></span></li>
         <li>Vr <span class="date"></span></li>
-        <li class="new-row"><span class="date"></span></li>
+        <li class="new-row"><span class="date"></span></li> 
       </ul>
       <ul class="dates"></ul>
     </section>
@@ -192,7 +190,10 @@ $loanDetailsJSON = json_encode($loanDetails);
 const loanDetails = <?php echo $loanDetailsJSON; ?>;
 
 var data = <?php echo json_encode($loanDetails); ?>;
-// alert(JSON.stringify(data))
+   // alert(JSON.stringify(data))
+
+
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -246,6 +247,8 @@ data.forEach(item => {
 
 });
 
+
+
 const months = [
   "Januari",
   "Februari",
@@ -273,22 +276,25 @@ const daysOfWeek = [
 ];
 
 // Updated items array with placeholders for each day
-const items = [];
+const items = [
+  "CANON 5/5", // Item for 5/5
+  "booked", // Placeholder for 6/5
+  "booked", // Placeholder for 7/5
+  "booked",
+  "",
+  "",
+  "",
+  "",
+  "MSI 5/5",
+  "",
+  "",
+  "",
+  "",
+  "",
+  ""
+];
 
-// Loop through productNames and populate items array
-for (let i = 0; i < productNames.length; i++) {
-  if (i == 0) {
-    //items.push(productNames[i]);
-  }
-  else {
-  // Add "booked" to the next 6 positions
-  for (let j = 0; j < 6; j++) {
-   // items.push(productNames);
-  }}  
-}
 
-// Print items array
-console.log(items);
 
 const daysList = document.querySelector(".days");
 
@@ -412,28 +418,5 @@ nextButton.addEventListener("click", () => {
 
 // Initial rendering
 renderCalendar();
-
-let html = "";
-console.log("dagen:" + dagenWeek);
-for (let indexLength = 0; indexLength < productNames.length; indexLength++) {
-      let maxAantallen = 8;
-        for (let index = 0; maxAantallen > index; index++) {
-          //console.log('uitleend: ' + uitleendatums[indexLength] + " terugbreng: " + terugbrengDatums[indexLength]);
-          const datesBetween = getDatesBetween(uitleendatums[indexLength], terugbrengDatums[indexLength]);
-          //console.log("tt: " + datesBetween);
-          if (index === 0) {
-            html += `<li class="inactive">${productNames[indexLength]}</li>`;
-        } else if (datesBetween.some(r => dagenWeek[index].includes(r))) {
-            html += `<li class="inactive">${"Booked"}</li>`;
-        } else {
-          html += `<li class="inactive">${"/"}</li>`;
-        }
-   }
-    }
-
-     
-// Update the HTML of the dates
-dates.innerHTML = html;
-
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

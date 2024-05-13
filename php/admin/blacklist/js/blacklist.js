@@ -11,7 +11,7 @@ $(document).ready(function() {
     function addToWaarschuwingen(naam, datum, user_id) {
         let item = '<div class="Item">' +
             '<h4 class="Naam">' + naam + '</h4>' +
-            '<p class="Datum">Tot: <span class="datumTekst">' + datum + '</span></p>' +
+            '<p class="Datum">Gekregen op: <span class="datumTekst">' + datum + '</span></p>' +
             '<button class="btn btn-primary Verwijderen" value="' + user_id +'">Uit waarschuwingen halen</button>' +
             '</div>';
         $('.waarschuwingLijst').append(item);

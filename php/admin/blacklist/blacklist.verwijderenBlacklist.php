@@ -12,7 +12,7 @@ if (isset($_POST['user_id'])) {
                             WHEN blacklist_fk = 3 THEN 2 
                             END,
             blacklistDatum = CASE 
-                                WHEN blacklist_fk = 2 THEN NULL 
+                                WHEN blacklist_fk = 2 THEN NOW()
                                 ELSE blacklistDatum 
                             END
         WHERE user_id = '$user_id'";

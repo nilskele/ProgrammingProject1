@@ -12,6 +12,7 @@ $(document).ready(function () {
     aantalResultaten = 0;
 
     $.each(data, function (index, item) {
+      console.log("Item:", item);
       resultHtml += `
         <div class="product">
           <div class="container">
