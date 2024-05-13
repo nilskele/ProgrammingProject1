@@ -97,5 +97,6 @@ https://www.w3schools.com/css/default.asp<br>
 https://getbootstrap.com/docs/4.0/components/card/<br>
 https://www.w3schools.com/bootstrap4/bootstrap_cards.asp<br>
 https://www.youtube.com/watch?v=wRNinF7YQqQ<br>
+https://chat.openai.com/share/24027565-42ed-4bf3-8ffc-d580c5fce01f<br>
 https://www.youtube.com/watch?v=oYRda7UtuhA<br>
 https://chat.openai.com/share/2df5f9f8-3398-4e20-a1c3-57113d8cd182<br>
