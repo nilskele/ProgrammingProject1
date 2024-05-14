@@ -24,7 +24,7 @@ $(document).ready(function () {
                   <div class="card-body">
                     <p class="merk">${item.merk_naam}></p>
                     <div class="card-title">
-                      <h2>${item.groep_naam}</h2>
+                      <h2>${item.groep_naam || item.kit_naam}</h2>
                       <p> Beschikbaar vanaf: ${item.datumBeschikbaar}</p>
                     </div>
                     <p class="card-text">
@@ -234,6 +234,39 @@ $(document).ready(function () {
         },
       });
     }
+  );
+
+  $("#kit").change(function () {
+    if ($(this).is(":checked")) {
+      
+      aantalResultaten = 0;
+      $.ajax({
+        url: "../php/filter_kits.php",
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+          toonResultaten(data);
+        },
+        error: function () {
+          alert("Er is een fout opgetreden bij het zoeken naar kits.");
+        },
+      });
+    } else {
+      // Als de checkbox niet is aangevinkt, voer dan een standaard AJAX-oproep uit om alle producten te tonen
+      aantalResultaten = 0;
+      $.ajax({
+        url: "../php/zoek.php",
+        type: "GET",
+        dataType: "json",
+        data: {
+          zoekbalk: "",
+        },
+        success: toonResultaten,
+        error: function () {
+          alert("Er is een fout opgetreden bij het ophalen van de producten.");
+        },
+      });
+    }}
   );
 });
 
