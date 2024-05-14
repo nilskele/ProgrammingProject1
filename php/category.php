@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT naam FROM CATEGORY";
+$sql = "SELECT cat_id, naam FROM CATEGORY ORDER BY naam";
 $result = $conn->query($sql);
 
 $options = '';
