@@ -44,7 +44,7 @@
 <div class="inAndOut">
   <h1>vandaag Out </h1>
   <div class="searchbar">
-    <input type="text" id="zoekbalk" name="zoekbalk" placeholder="Zoek naar producten" class="inputZoekbalk1">
+    <input type="text" id="zoekbalk" name="zoekbalk" placeholder="Zoek naar studenten" class="inputZoekbalk1">
   </div>
   <div id="InOut1" class="inOutCatalagus overflow-auto">
   </div>
@@ -53,7 +53,7 @@
 <div class="inAndOut">
   <h1>vandaag In</h1>
   <div class="searchbar">
-    <input type="text" id="zoekbalk" name="zoekbalk" placeholder="Zoek naar producten" class="inputZoekbalk1">
+    <input type="text" id="zoekbalk" name="zoekbalk" placeholder="Zoek naar studenten" class="inputZoekbalk2">
   </div>
   <div id="InOut2" class="inOutCatalagus overflow-auto">
   </div>
