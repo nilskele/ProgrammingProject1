@@ -12,7 +12,7 @@ if (isset($_POST['selectedDate'])) {
 
     // Query to retrieve rows from MIJN_LENINGEN table with user information
     // Filter by Uitleendatum and in_bezit
-    $query1 = "SELECT l.*, 'Uitleendatum' AS queryType, u.voornaam, u.achternaam, p.product_id, g.naam
+    $query1 = "SELECT l.*, 'Uitleendatum' AS queryType, u.voornaam, u.achternaam, p.product_id, g.naam, u.email
                FROM MIJN_LENINGEN l 
                INNER JOIN USER u ON l.user_id_fk = u.user_id
                INNER JOIN PRODUCT p ON l.product_id_fk = p.product_id
@@ -21,7 +21,7 @@ if (isset($_POST['selectedDate'])) {
 
     // Query to retrieve rows from MIJN_LENINGEN table with user information
     // Filter by terugbrengDatum and isTerugGebracht
-    $query2 = "SELECT l.*, 'terugbrengDatum' AS queryType, u.voornaam, u.achternaam, p.product_id, g.naam
+    $query2 = "SELECT l.*, 'terugbrengDatum' AS queryType, u.voornaam, u.achternaam, p.product_id, g.naam, u.email
                FROM MIJN_LENINGEN l 
                INNER JOIN USER u ON l.user_id_fk = u.user_id
                INNER JOIN PRODUCT p ON l.product_id_fk = p.product_id

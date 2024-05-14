@@ -114,7 +114,8 @@ $(function() {
                                 <a class="defectBtn defectButton" id="defectBtn90">Defect</a>
                             </div>
                             <div class="info">
-                                <p id="accepterenProductID" style="display: none;" value="${item.product_id}">Product ID: ${item.product_id}</p>
+                                <p id="accepterenProductID" style="display: none;" value="${item.product_id}"></p>
+                                <p id="emailDefect" style="display: none;" value="${item.email}"></p>
                                 <h5 class="Naam" value="${item.voornaam} ${item.achternaam}">${item.voornaam} ${item.achternaam}</h5>
                                 <p class="accepterenProductID"  value="${item.naam} ${item.product_id}">${item.naam}, ${item.product_id}</p>
                             </div>
@@ -175,9 +176,11 @@ $(function() {
     $(document).off('click', '#defectBtn90').on('click', '#defectBtn90', function(event) {
         event.preventDefault();
         let productnr = $(this).closest('.inOutProduct').find('#accepterenProductID').attr('value');
+        let email = $(this).closest('.inOutProduct').find('#emailDefect').attr('value');
     
         if (productnr) {
             localStorage.setItem("productNr", productnr);
+            localStorage.setItem("email", email);
         } else {
             console.log("No numerical value found.");
         }
@@ -262,18 +265,6 @@ $(function() {
             }
         });
     });
-
-
-    // $(document).on('click', '.defectBtn', function(e) {
-    //     e.preventDefault();
-    //     var template = `
-    // <h2>Are u Sure</h2>
-    // <p>This is the content for the popup.</p>
-    // <button class="acceptPopup">Accept</button>
-    // <button class="close">Close</button>
-    //                                         `;
-    // createPopup(template);
-    // });
 
     $('.inputZoekbalk1').on('keyup', function() {
         let zoekterm = $(this).val().toLowerCase();

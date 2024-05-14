@@ -1,6 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
     let productNrSpan = document.getElementById("productNrSpan");
     let productNr = localStorage.getItem("productNr");
+    let email = localStorage.getItem("email");
+
+    let emailInput = document.getElementById("email");
+
+    if (emailInput) {
+        emailInput.value = email;
+    }
 
     if (productNrSpan) {
         productNrSpan.innerHTML = "&nbsp;" + productNr;
