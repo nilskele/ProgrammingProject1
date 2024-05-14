@@ -12,7 +12,6 @@ $(document).ready(function () {
     aantalResultaten = 0;
 
     $.each(data, function (index, item) {
-      console.log("Item:", item);
       resultHtml += `
         <div class="product">
           <div class="container">
@@ -231,7 +230,7 @@ $(document).ready(function () {
           toonResultaten(data);
         },
         error: function () {
-          alert("Er is een fout opgetreden bij het zoeken.(categorie1)");
+          alert("Er is een fout opgetreden bij het zoeken.(date)");
         },
       });
     }
