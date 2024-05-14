@@ -35,7 +35,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   width: 50%; 
-  height: 50%;
+  height: 600px;
   overflow: auto;
   background-color: white;
   border: 2px solid #ff0000;
@@ -45,7 +45,7 @@
 }
 
 .meldenPopUp-content h2 {
-  margin: 20px 0 20px 0;
+  margin: 10px 0 10px 0;
   text-align: center;
 }
 
@@ -54,6 +54,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
 .meldenPopUp-content label {
@@ -72,10 +73,6 @@ input#watDefect{
 
 textarea#redenDefect {
   font-size: 16px;
-}
-
-.meldenPopUp-content .submitButton {
-  font-size: 25px;
 }
 
 .close {

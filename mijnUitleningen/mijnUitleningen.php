@@ -31,11 +31,12 @@
           <h2>Defect melden</h2>
           <form id="defectMeldenForm" action="defectMelden.php" method="post">
             <label for="watDefect">Wat is er defect?</label>
-            <input type="field" id="watDefect" name="watDefect" required> <br>
+            <input type="field" id="watDefect" name="watDefect" class="form-control" required> <br>
             <label for="defectReden">Reden Defect:</label>
             <input type="hidden" id="lening_id" name="lening_id" value="">
-            <textarea name="redenDefect" id="redenDefect" cols="70" rows="4" required></textarea> <br>
+            <textarea name="redenDefect" id="redenDefect" cols="70" rows="4" class="form-control" required></textarea> <br>
             <input type="submit" value="Melden" class="btn btn-primary submitButton">
+            <br>
           </form>
         </div>
       </div>
