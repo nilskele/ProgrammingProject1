@@ -53,6 +53,5 @@
   <script type="text/javascript">
   let usertype = '<?php echo $user_type; ?>';
   </script>
-  <script src="../js/zoekbalkScript.js"></script>
   <script src="../js/changeLayout.js"></script>
 </body>
