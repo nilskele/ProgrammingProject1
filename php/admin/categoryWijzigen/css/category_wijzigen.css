@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.titel {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.formContainer {
+    margin-top: 100px;
+    margin-bottom: 30px;
+    background-color: #D9D9D9;
+    height: 600px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px #888888;
+}
+
+.formContainer form {
+    width: 60%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+label {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+select#categoryName {
+    width: 50%;
+    height: 40px;
+    border-radius: 5px;
+    margin: 30px auto;
+}
+
+input#nieuweNaam {
+    width: 50%;
+    height: 40px;
+    margin: 30px auto;
+    border-radius: 5px;
+}
+
+input#categoryNameInput {
+    width: 50%;
+    height: 40px;
+    margin: 30px auto;
+    border-radius: 5px;
+}
+
+.terugLink {
+    position: absolute;
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    justify-content: left;
+    height: 44px;
+    text-align: center;
+    margin: 10px 0px 10px 0px;
+  }
