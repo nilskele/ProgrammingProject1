@@ -96,17 +96,11 @@ include('../../database.php');
 <script src="/ProgrammingProject1/php/admin/inAndOut/js/inandout.js"></script>
 <script src="/ProgrammingProject1/js/admin.index.js"></script>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.3/popup.min.js"></script>
   <script src="catalogus/getData.php"></script> 
     <script src="catalogus/kalender.backend.js"></script> 
-</head>
-<body>
+
 <div class="buttons_kalender">
     <form action="" method="GET">
         <input type="text" name="Zoeken" placeholder="Zoeken...">
@@ -143,7 +137,7 @@ include('../../database.php');
     </section>
   </div>
   <div> 
-</body>
+
 <script src="../../js/admin.agenda.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
