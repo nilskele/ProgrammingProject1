@@ -57,6 +57,7 @@ let defectBtn = document.getElementById("defectBtn");
 
 defectBtn.addEventListener("click", function () {
         let productNr = productNrInput.value;
+        localStorage.removeItem("email");
         
         if (productNr === "") {
                 Swal.fire({

@@ -105,8 +105,9 @@ include('../../database.php');
 </head>
 <body>
 <div class="buttons_kalender">
-    <form action="/zoeken" method="GET">
-      <input type="text" name="Zoeken" placeholder="Zoeken...">
+    <form action="" method="GET">
+        <input type="text" name="Zoeken" placeholder="Zoeken...">
+        <button class="button_zoeken" type="submit">Zoek</button>
     </form>
     <div class="buttons-container">
       <a href="/ProgrammingProject1/php/admin/kitToevoegen/kit_toevoegen.php"><button>Kit toevoegen</button></a>
@@ -139,39 +140,67 @@ include('../../database.php');
   </div>
 </body>
 <script src="../../js/admin.agenda.js"></script>
+
 <?php 
 
-// SQL-query
-$sql = "SELECT ML.Uitleendatum, ML.terugbrengDatum, G.naam AS product_naam
-        FROM MIJN_LENINGEN ML
-        JOIN PRODUCT P ON ML.product_id_fk = P.product_id
-        JOIN GROEP G ON P.groep_id = G.groep_id
-        WHERE G.naam = 'CANON M50'";
-
-// Voer de query uit
-$result = $conn->query($sql);
-
-// Array om de resultaten op te slaan
-$loanDetails = array();
-
-// Controleer of er resultaten zijn
-if ($result->num_rows > 0) {
-    // Output gegevens van elke rij
-    while($row = $result->fetch_assoc()) {
-        // Sla de resultaten op in een array
-        $loanDetails[] = array(
-          //  "product_naam" => $row["product_naam"],
-          //  "Uitleendatum" => $row["Uitleendatum"],
-           // "terugbrengDatum" => $row["terugbrengDatum"]
-        );
-    }
-} else {
-    echo "Geen resultaten gevonden";
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
 }
 
-// Sluit de verbinding
-$conn->close();
+if (isset($_GET['Zoeken'])) {
+  $naamItem = $_GET['Zoeken'];
 
+  // Sanitize the input to prevent XSS
+  $naamItem = htmlspecialchars($naamItem);
+
+  // SQL query using a placeholder
+  $sql = "SELECT ML.Uitleendatum, ML.terugbrengDatum, G.naam AS product_naam, P.product_id
+  FROM MIJN_LENINGEN ML
+  JOIN PRODUCT P ON ML.product_id_fk = P.product_id
+  JOIN GROEP G ON P.groep_id = G.groep_id
+  WHERE G.naam = ?";
+
+  // Prepare the statement
+  $stmt = $conn->prepare($sql);
+  if ($stmt === false) {
+      die("Prepare failed: " . $conn->error);
+  }
+
+  // Bind the parameter
+  $stmt->bind_param("s", $naamItem);
+
+  // Execute the statement
+  $stmt->execute();
+
+  // Get the result
+  $result = $stmt->get_result();
+
+  // Array to store the results
+  $loanDetails = array();
+
+  // Check if there are results
+  if ($result->num_rows > 0) {
+      // Output data of each row
+      while ($row = $result->fetch_assoc()) {
+          // Store the results in an array
+          $loanDetails[] = array(
+              "product_id" => $row["product_id"],
+              "product_naam" => $row["product_naam"],
+              "Uitleendatum" => $row["Uitleendatum"],
+              "terugbrengDatum" => $row["terugbrengDatum"]
+          );
+      }
+  } else {
+      echo "Geen resultaten gevonden";
+  }
+
+  // Close the statement
+  $stmt->close();
+}
+
+// Close the connection
+$conn->close();
 // Output the array contents
 echo "<pre>";
 //print_r($loanDetails);
@@ -179,7 +208,6 @@ echo "</pre>";
 
 // Convert loanDetails to JSON
 $loanDetailsJSON = json_encode($loanDetails);
-
 
 ?>
 <script>
@@ -210,6 +238,7 @@ const nextButton = document.getElementById("next");
 const productNames = data.map(item => item.product_naam);
 const uitleendatums = data.map(item => item.Uitleendatum);
 const terugbrengDatums = data.map(item => item.terugbrengDatum);
+const productID = data.map(item => item.product_id);
 
 // Function to format date to day/month format
 function formatDate(dateString) {
@@ -240,7 +269,7 @@ function getDatesBetween(uitleendatum, terugbrengDatum) {
 let index = 0;
 //console.log("Product Details:");
 data.forEach(item => {
-   // console.log(`Product: ${productNames[index]}`);
+    //console.log(`Product: ${productNames[index]}`);
     //console.log(`Uitleendatum: ${uitleendatums[index]}`);
     //console.log(`TerugbrengDatum: ${terugbrengDatums[index]}`);
     index++;
@@ -275,27 +304,6 @@ const daysOfWeek = [
   "Vr",
   "Za"
 ];
-
-// Updated items array with placeholders for each day
-const items = [
-  "CANON 5/5", // Item for 5/5
-  "booked", // Placeholder for 6/5
-  "booked", // Placeholder for 7/5
-  "booked",
-  "",
-  "",
-  "",
-  "",
-  "MSI 5/5",
-  "",
-  "",
-  "",
-  "",
-  "",
-  ""
-];
-
-
 
 const daysList = document.querySelector(".days");
 
@@ -352,9 +360,9 @@ function renderCalendar() {
         for (let index = 0; index < maxAantallen; index++) {
             const datesBetween = getDatesBetween(uitleendatums[indexLength], terugbrengDatums[indexLength]);
             if (index === 0) {
-                html += `<li class="inactive">${productNames[indexLength]}</li>`;
+                html += `<li class="inactive">${productNames[indexLength] + ", " + productID[indexLength]}</li>`;
             } else if (datesBetween.some(r => dagenWeek[index - 1].includes(r))) {
-                html += `<li class="inactive">${"Booked"}</li>`;
+                html += `<li class="inactive">${"Uitgeleend"}</li>`;
             } else {
                 html += `<li class="inactive">${"/"}</li>`;
             }
