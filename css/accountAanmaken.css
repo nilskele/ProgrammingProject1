@@ -1,0 +1,51 @@
+.container {
+  padding: 70px;
+}
+
+.card-container {
+  background-color: #d3d7dada;
+  /* لون خلفية الكارد رمادي */
+  padding: 20px;
+  text-align: center;
+  /* محتوى الكارد منظم إلى اليمين */
+}
+
+.form-control {
+  color: white;
+}
+
+.btn-primary {
+  background-color: #FF0000;
+  color: white;
+  margin: 20px;
+}
+
+.justify-content-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.login-message {
+  color: black;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d3d7dada;
+  border-radius: 1rem;
+
+}
+
+.login-link {
+  margin-right: 10px;
+}
+
+label {
+
+  font-size: 20px;
+  /* حجم الخط */
+  color: black;
+  /* لون الخط */
+  /* يمكنك إضافة خصائص أخرى حسب احتياجاتك */
+}
