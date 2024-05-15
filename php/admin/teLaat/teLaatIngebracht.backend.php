@@ -9,7 +9,7 @@ include('../../../database.php');
 
     // Query to retrieve rows from MIJN_LENINGEN table with user information
     // First query: filter by Uitleendatum and in_bezit
-    $query1 = "SELECT l.*, 'Uitleendatum' AS queryType, u.voornaam, u.achternaam, p.product_id, g.naam, u.email
+    $query1 = "SELECT l.*, ABS(DATEDIFF(l.terugbrengDatum, CURDATE())) AS daysDifference, 'Uitleendatum' AS queryType, u.voornaam, u.achternaam, p.product_id, g.naam, u.email
                FROM MIJN_LENINGEN l 
                INNER JOIN USER u ON l.user_id_fk = u.user_id
                INNER JOIN PRODUCT p ON l.product_id_fk = p.product_id

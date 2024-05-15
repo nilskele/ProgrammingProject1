@@ -13,6 +13,7 @@ $(function() {
             success: function(response) {
                 // Parse the JSON response
                 var data = JSON.parse(response);
+                
     
                 // Loop through the data and create HTML elements
                 data.forEach(function(item) {
@@ -22,7 +23,9 @@ $(function() {
                         var card = document.createElement('div');
                         card.className = 'inOutProduct';
                         card.setAttribute('data-lening-id', item.lening_id); // Set data-lening-id attribute
-    
+                        
+
+                        
                         // Create the product info div
                         var productInfo = document.createElement('div');
                         productInfo.className = 'productInfo';
@@ -39,6 +42,9 @@ $(function() {
                                 <p id="accepterenProductID" style="display: none;" value="${item.product_id}"></p>
                                 <p id="emailDefect" style="display: none;" value="${item.email}"></p>
                                 <p>Product ID: ${item.product_id}</p>
+                            </div>
+                            <div class="aantalDagenTelaat">
+                            <p id="aantalDagenTelaat">Aantal dagen te laat: ${item.daysDifference}</p>
                             </div>
                             <div class="moreinfo">
                                 <img class="dots" src="/ProgrammingProject1/images/9025404_dots_three_icon.png" alt="More info image">

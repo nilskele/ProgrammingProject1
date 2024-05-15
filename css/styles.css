@@ -241,3 +241,13 @@ button.btn.btn-primary.inloggen {
     text-decoration: none;
     cursor: pointer;
   }
+
+  .aantalDagenTelaat{
+    width: 150%;
+    
+    
+  }
+  #aantalDagenTelaat{
+    color: red;
+    font-weight: bold;
+  }
