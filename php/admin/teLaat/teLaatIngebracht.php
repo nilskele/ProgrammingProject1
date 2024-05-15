@@ -8,10 +8,16 @@
 include("../admin.header.php");
 include('../../../database.php');
 ?>
+<div id="overlay" class="overlay"></div>
+
+<!-- Popup -->
+<div id="popup" class="popup"></div>
+
 <div class="terug">
         <a href="javascript:history.back()" class="terugLink">&#8592 Terug</a>
         
 </div>
+
 
 <div class="inAndOut">
 

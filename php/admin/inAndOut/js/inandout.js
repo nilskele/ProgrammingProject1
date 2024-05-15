@@ -29,6 +29,12 @@ $(function() {
                         var card = document.createElement('div');
                         card.className = 'inOutProduct';
                         card.setAttribute('data-lening-id', item.lening_id); // Set data-lening-id attribute
+                        card.setAttribute('data-terugbrengdatum', item.terugbrengDatum); // Set data-lening-id attribute
+                        card.setAttribute('data-uitleendatum', item.Uitleendatum); // Set data-lening-id attribute
+                        card.setAttribute('data-watdefect', item.watDefect); // Set data-lening-id attribute
+                        card.setAttribute('data-redenDefect', item.redenDefect); // Set data-lening-id attribute
+
+
 
                         // Create the product info div
                         var productInfo = document.createElement('div');
@@ -41,9 +47,11 @@ $(function() {
                             </div>
                             <div class="info">
                                 <h3 class="Naam">${item.voornaam} ${item.achternaam}</h3>
-                                <p>${item.naam}, ${item.product_id}</p>
+                                <p class="accepterenProductID"  value="${item.naam} ${item.product_id}">${item.naam}, ${item.product_id}</p>
                             </div>
-                            <div class="moreinfo">
+                            <p value=""></p>
+                            <p></p>
+                            <div class="moreinfo" onclick="openPopup()">
                                 <img class="dots"  src="/ProgrammingProject1/images/9025404_dots_three_icon.png" alt="More info image">
                             </div>
                         `;
@@ -96,10 +104,13 @@ $(function() {
                         card.setAttribute('data-lening-id', item.lening_id); // Set data-lening-id attribute
                         card.setAttribute('data-terugbrengdatum', item.terugbrengDatum); // Set data-lening-id attribute
                         card.setAttribute('data-uitleendatum', item.Uitleendatum); // Set data-lening-id attribute
+                        card.setAttribute('data-watdefect', item.watDefect); 
+                        card.setAttribute('data-redenDefect', item.redenDefect); 
 
 
-                        card.setAttribute('data-terugbrengdatum', item.terugbrengDatum); // Set data-lening-id attribute
-                        card.setAttribute('data-uitleendatum', item.Uitleendatum); // Set data-lening-id attribute
+
+
+                        
 
 
 
@@ -119,7 +130,7 @@ $(function() {
                                 <h5 class="Naam" value="${item.voornaam} ${item.achternaam}">${item.voornaam} ${item.achternaam}</h5>
                                 <p class="accepterenProductID"  value="${item.naam} ${item.product_id}">${item.naam}, ${item.product_id}</p>
                             </div>
-                            <div class="moreinfo">
+                            <div class="moreinfo" onclick="openPopup()">
                                 <img class="dots"  src="/ProgrammingProject1/images/9025404_dots_three_icon.png" alt="More info image">
                             </div>
                         `;
@@ -385,7 +396,6 @@ acceptBtn.addEventListener("click", function () {
                 });
         }    
 });
-
 function openPopup() {
     var overlay = document.getElementById("overlay");
     overlay.style.display = "block";
@@ -398,6 +408,8 @@ function openPopup() {
     var productNr = $this.closest('.inOutProduct').find('.accepterenProductID').attr('value');
     var terugbrengdatum = $this.closest('.inOutProduct').data('terugbrengdatum');
     var uitleendatum = $this.closest('.inOutProduct').data('uitleendatum');
+    var watdefect = $this.closest('.inOutProduct').data('watdefect');
+    var redenDefect = $this.closest('.inOutProduct').data('redenDefect');
 
 
 
@@ -409,18 +421,27 @@ function openPopup() {
       <div class="popup-content">
         <span class="closePopup" onclick="closePopup()">&times;</span>
         <div class="popup_info">
-        <div class="contents">
-        <h5 class="Naam">${naam}</h5>
-          <p class="accepterenProductID">Product: ${productNr}</p>
-          <p>Lening ID: ${leningId}</p>
-        </div>
-          
-          <div class="dates">
-            <h6>Uitleendatum: ${uitleendatum}</h6>
+            <div class="contents">
+                <h5 class="Naam">${naam}</h5>
+                <p class="accepterenProductID">Product: ${productNr}</p>
+                <p>Lening ID: ${leningId}</p>
+            </div>
+          <div>
+            <div class="dates">
+                <h6 class="aantalDagenTelaat">Uitleendatum: ${uitleendatum}</h6>
+                
+                <h6 class="aantalDagenTelaat">Terugbrengdatum: ${terugbrengdatum}</h6>
             
-            <h6>Terugbrengdatum: ${terugbrengdatum}</h6>
-          
+            </div>
+            <div class="dates">
+                <h6>Wat is er defect?</h6>
+                <p>${watdefect}</p>
+                <h6>Hoe is het defect ontstaan?</h6>
+                <p>${redenDefect}</p>
+            </div>
           </div>
+            
+          
         </div>
         
       </div>

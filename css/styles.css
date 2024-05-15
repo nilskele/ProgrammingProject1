@@ -242,12 +242,20 @@ button.btn.btn-primary.inloggen {
     cursor: pointer;
   }
 
-  .aantalDagenTelaat{
+  .aantalDagenTelaat2{
     width: 150%;
     
     
   }
-  #aantalDagenTelaat{
+  .aantalDagenTelaat{
     color: red;
     font-weight: bold;
+  }
+
+  .popupdisplayflex{
+    display: flex;
+    flex-direction: column;
+  }
+  .dates{
+    margin: 2em;
   }
