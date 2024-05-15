@@ -1,22 +1,17 @@
 <?php
+// updateDatabase.php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Log errors to a file (optional)
+ini_set('log_errors', 1);
+ini_set('error_log', '/path/to/error.log');
+// Include the database connection file
 include('../database.php');
 
-// Get data from the request
-$data = json_decode(file_get_contents("php://input"));
+// Fetch the current date
+$currentDate = date("Y-m-d");
 
-// Sanitize and validate data (you should implement proper validation)
-
-$productId = mysqli_real_escape_string($connection, $data->productId);
-$newReturnDate = mysqli_real_escape_string($connection, $data->newReturnDate);
-
-// Update the database
-$query = "UPDATE MIJN_LENINGEN SET terugbrengDatum = '$newReturnDate' WHERE product_id_fk = '$productId'";
-
-if (mysqli_query($connection, $query)) {
-    http_response_code(200);
-    echo json_encode(array("message" => "Database updated successfully."));
-} else {
-    http_response_code(500);
-    echo json_encode(array("message" => "Failed to update database."));
-}
+// Return the current date as JSON
+echo json_encode(array("currentDate" => $currentDate));
 ?>

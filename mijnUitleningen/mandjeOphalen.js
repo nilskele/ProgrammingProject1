@@ -99,12 +99,12 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch((error) => {
               console.error("Error:", error);
-                Swal.fire({
-                  title: "Er is iets fout gegaan",
-                  text: "Probeer het later opnieuw.",
-                  icon: "error",
-                  confirmButtonText: "Ok",
-                });
+              Swal.fire({
+                title: "Er is iets fout gegaan",
+                text: "Probeer het later opnieuw.",
+                icon: "error",
+                confirmButtonText: "Ok",
+              });
             });
         });
       } else if (target.classList.contains("reserveren-button")) {
@@ -187,57 +187,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     }
-    
+
     // Handle Verlengen button click
     if (target.textContent === "Verlengen") {
       const productId = target.getAttribute("data-id");
 
       // Fetch current date from server to calculate new terugbrengDatum
-      fetch("updateDatabase.php")
-        .then((response) => response.json())
-        .then((data) => {
-          const currentDate = new Date(data.currentDate);
-          currentDate.setDate(currentDate.getDate() + 7); // Add 7 days
-
-          const newReturnDate = currentDate.toISOString().split("T")[0]; // Format date as yyyy-mm-dd
-
-          // Update database with new terugbrengDatum
-          fetch("verlengen.php", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              productId: productId,
-              newReturnDate: newReturnDate,
-            }),
-          })
-            .then((response) => {
-              if (response.ok) {
-                Swal.fire(
-                  "Verlengd!",
-                  "De terugbrengdatum is met 7 dagen verlengd.",
-                  "success"
-                );
-                // Update UI to reflect new terugbrengDatum
-                target.parentNode.previousElementSibling.textContent = newReturnDate;
-                target.textContent = "Annuleren";
-                target.style.backgroundColor = "red";
-              } else {
-                throw new Error("Failed to update database.");
-              }
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-              Swal.fire({
-                title: "Er is iets fout gegaan",
-                text: "Probeer het later opnieuw.",
-                icon: "error",
-                confirmButtonText: "Ok",
-              });
-            });
-        })
-        .catch((error) => console.error("Error fetching current date:", error));
+      fetchCurrentDateAndExtend(productId);
     }
   });
 
@@ -245,23 +201,93 @@ document.addEventListener("DOMContentLoaded", function () {
   let waarshcuwingenDiv = document.querySelector(".waarschuwingenDiv");
 
   if (waarschuwingenCount) {
-      fetch("waarschuwingenCount.php")
-          .then((response) => response.json())
-          .then((data) => {
-              let waarschuwingenCountPhp = data;
-              waarschuwingenCount.textContent = waarschuwingenCountPhp - 1;
-          })
-          .catch((error) => console.error("Error fetching data:", error));
+    fetch("waarschuwingenCount.php")
+      .then((response) => response.json())
+      .then((data) => {
+        let waarschuwingenCountPhp = data;
+        waarschuwingenCount.textContent = waarschuwingenCountPhp - 1;
+      })
+      .catch((error) => console.error("Error fetching data:", error));
   } else {
-      console.error("Element with class 'waarschuwingenCount' not found.");
+    console.error("Element with class 'waarschuwingenCount' not found.");
   }
-  
+
+  // Function to fetch current date from server and extend product return date
+  function fetchCurrentDateAndExtend(productId) {
+    // AJAX request to fetch current date from server
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText);
+          const currentDate = response.currentDate;
+
+          // Calculate new terugbrengDatum (7 days from current date)
+          const newReturnDate = new Date(currentDate);
+          newReturnDate.setDate(newReturnDate.getDate() + 7);
+          const formattedReturnDate = formatDate(newReturnDate);
+
+          // Update database with new terugbrengDatum
+          const updateData = {
+            productId: productId,
+            newReturnDate: formattedReturnDate,
+          };
+
+          // AJAX request to update database with new terugbrengDatum
+          const xhrUpdate = new XMLHttpRequest();
+          xhrUpdate.onreadystatechange = function () {
+            if (xhrUpdate.readyState === XMLHttpRequest.DONE) {
+              if (xhrUpdate.status === 200) {
+                Swal.fire(
+                  "Verlengd!",
+                  "De terugbrengdatum is met 7 dagen verlengd.",
+                  "success"
+                );
+                // Update UI to reflect new terugbrengDatum
+                const verlengenButton = document.querySelector(
+                  `[data-id="${productId}"]`
+                );
+                const returnDateCell =
+                  verlengenButton.parentNode.previousElementSibling;
+                returnDateCell.textContent = formattedReturnDate;
+                verlengenButton.textContent = "Annuleren";
+                verlengenButton.style.backgroundColor = "red";
+              } else {
+                console.error("Failed to update database.");
+                Swal.fire({
+                  title: "Er is iets fout gegaan",
+                  text: "Probeer het later opnieuw.",
+                  icon: "error",
+                  confirmButtonText: "Ok",
+                });
+              }
+            }
+          };
+          xhrUpdate.open("POST", "verlengen.php");
+          xhrUpdate.setRequestHeader("Content-Type", "application/json");
+          xhrUpdate.send(JSON.stringify(updateData));
+        } else {
+          console.error("Failed to fetch current date.");
+          Swal.fire({
+            title: "Er is iets fout gegaan",
+            text: "Probeer het later opnieuw.",
+            icon: "error",
+            confirmButtonText: "Ok",
+          });
+        }
+      }
+    };
+    xhr.open("GET", "updateDatabase.php");
+    xhr.send();
+  }
+
+  // Function to display defect report popup
+  function toonMMeldenPopUp() {
+    document.getElementById("meldenPopUp").style.display = "block";
+  }
+
+  // Function to close defect report popup
+  function sluitMMeldenPopUp() {
+    document.getElementById("meldenPopUp").style.display = "none";
+  }
 });
-
-function toonMMeldenPopUp() {
-  document.getElementById("meldenPopUp").style.display = "block";
-}
-
-function sluitMMeldenPopUp() {
-  document.getElementById("meldenPopUp").style.display = "none";
-}
