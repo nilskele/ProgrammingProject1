@@ -4,8 +4,6 @@
   margin-top: 50px;
 }
 
-
-
 .titel {
   font-weight: 600;
   text-align: center;
@@ -122,6 +120,14 @@
   margin-top: 3px;
 }
 
+.buttons_item button.glyphicon-eye-open {
+  border: none;
+  background: none;
+  outline: none;
+  margin-top: 3px;
+}
+
+
 .buttons_item button.fa-trash-o {
   border: none;
   background: none;
@@ -135,3 +141,4 @@
   outline: none;
   background: none;
 }
+

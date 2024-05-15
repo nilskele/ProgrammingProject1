@@ -119,6 +119,7 @@ include('../../database.php');
     </div>
   </div>
   <h1 class="titel">Calendar</h1>
+</div>
   <div class="calendar">
     <header>
       <h3>Catalogus</h3>
@@ -142,12 +143,6 @@ include('../../database.php');
     </section>
   </div>
   <div> 
-  <div class="popup">
-    <h1>Bent u zeker dat u het item wilt verwijderen?</h1>
-    <button> Ja </button>
-    <button> Nee </button>
-  </div>
-</div>
 </body>
 <script src="../../js/admin.agenda.js"></script>
 
@@ -165,7 +160,7 @@ if (isset($_GET['Zoeken'])) {
   $naamItem = htmlspecialchars($naamItem);
 
   // SQL query using a placeholder
-  $sql = "SELECT ML.Uitleendatum, ML.terugbrengDatum, G.naam AS product_naam, P.product_id
+  $sql = "SELECT ML.Uitleendatum, ML.terugbrengDatum, G.naam AS product_naam, P.product_id, P.zichtbaar
   FROM MIJN_LENINGEN ML
   JOIN PRODUCT P ON ML.product_id_fk = P.product_id
   JOIN GROEP G ON P.groep_id = G.groep_id
@@ -199,6 +194,7 @@ if (isset($_GET['Zoeken'])) {
               "product_naam" => $row["product_naam"],
               "Uitleendatum" => $row["Uitleendatum"],
               "terugbrengDatum" => $row["terugbrengDatum"]
+              "zichtbaar" => $row["zichtbaar"];
           );
       }
   } else {
@@ -249,6 +245,9 @@ const productNames = data.map(item => item.product_naam);
 const uitleendatums = data.map(item => item.Uitleendatum);
 const terugbrengDatums = data.map(item => item.terugbrengDatum);
 const productID = data.map(item => item.product_id);
+const zichtbaar = data.map(item => item.zichtbaar);
+
+console.log(zichtbaar);
 
 // Function to format date to day/month format
 function formatDate(dateString) {
@@ -376,7 +375,8 @@ function renderCalendar() {
                 </div>
                 <div class="buttons_item">
                     <button class="reserveren">Reserveren</button> </br>
-                    <button class="glyphicon glyphicon-eye-close" style="font-size:15px"></button> 
+
+                    <button class="glyphicon glyphicon-eye-open" style="font-size:15px"></button> 
                     <button class="fa fa-trash-o" style="font-size:15px"></button>
                     <button class="fa fa-pencil" style="font-size:15px"></button>
                 </div>
@@ -393,20 +393,110 @@ function renderCalendar() {
     dates.innerHTML = html;
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    //buttons roepen
-    var reserverenBtn = document.querySelector(".reserveren");
-    var editBtn = document.querySelector(".fa-pencil");
+//item onzichtbaar maken
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all delete buttons
+    const deleteButtons = document.querySelectorAll('.glyphicon-eye-close');
 
-    editBtn.addEventListener("click", function() {
-      window.location.href = "/ProgrammingProject1/php/admin/productToevoegen/product_wijzigen.php";
-    });
-
-    reserverenBtn.addEventListener("click", function() {
-        //redirect reserveren
-        window.location.href = "/ProgrammingProject1/php/admin/reserveren/reserveren.php";
+    // Add event listener to each delete button
+    deleteButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Show the SweetAlert popup
+            Swal.fire({
+                title: "Bent u zeker?",
+                text: "Wilt u dit item onzichtbaar maken, u zal deze wel nog zien in de catalogus!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ja, maak het item onzichtbaar!',
+                cancelButtonText: 'Nee, maak het item niet onzichtbaar!'
+            }).then((result) => {
+                // If the user confirms deletion
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Onzichtbaar!',
+                        'Het item is onzichtbaar gezet',
+                        'success'
+                    );
+                    // Optionally, you can add the logic to delete the item here
+                } else {
+                    // If the user cancels deletion
+                    Swal.fire(
+                        'Cancelled',
+                        'Het item is niet onzichtbaar gezet.',
+                        'error'
+                    );
+                }
+            });
+        });
     });
 });
+
+
+//item verwijderen knop
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all delete buttons
+    const deleteButtons = document.querySelectorAll('.fa-trash-o');
+
+    // Add event listener to each delete button
+    deleteButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Show the SweetAlert popup
+            Swal.fire({
+                title: "Bent u zeker?",
+                text: "Eens het item is verwijderd kan je hem niet terugkrijgen!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ja, verwijder het item!',
+                cancelButtonText: 'Nee, niet verwijderen!'
+            }).then((result) => {
+                // If the user confirms deletion
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Verwijderd!',
+                        'Het item is verwijderd',
+                        'success'
+                    );
+                    // Optionally, you can add the logic to delete the item here
+                } else {
+                    // If the user cancels deletion
+                    Swal.fire(
+                        'Cancelled',
+                        'Het item is niet verwijderd.',
+                        'error'
+                    );
+                }
+            });
+        });
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Select all elements with class "reserveren" and "fa-pencil"
+    var reserverenBtns = document.querySelectorAll(".reserveren");
+    var editBtns = document.querySelectorAll(".fa-pencil");
+
+    // Loop through each "reserveren" button and attach event listener
+    reserverenBtns.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+            // Redirect to reservation page
+            window.location.href = "/ProgrammingProject1/php/admin/reserveren/reserveren.php";
+        });
+    });
+
+    // Loop through each "edit" button and attach event listener
+    editBtns.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+            // Redirect to edit product page
+            window.location.href = "/ProgrammingProject1/php/admin/productToevoegen/product_wijzigen.php";
+        });
+    });
+});
+
 
 
 
