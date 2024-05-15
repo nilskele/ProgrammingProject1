@@ -208,7 +208,7 @@ button.btn.btn-primary.inloggen {
     z-index: 1;
   }
   
-  .popup {
+  .popup{
     display: none;
     position: fixed;
     width: 40em;
@@ -217,7 +217,7 @@ button.btn.btn-primary.inloggen {
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
-    z-index: 2;
+    z-index: 5;
     border: 1.5px solid red;
   }
   .popup_info{
