@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $lening_id = mysqli_real_escape_string($connection, $_POST["lening_id"]);
 
         // Prepare the delete query
-        $delete_query = "DELETE FROM MIJN_LENINGEN WHERE id = '$lening_id'";
+        $delete_query = "DELETE FROM MIJN_LENINGEN WHERE lening_id = '$lening_id'";
 
         // Execute the delete query
         if (mysqli_query($connection, $delete_query)) {
