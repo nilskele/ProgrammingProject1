@@ -55,6 +55,50 @@ document.addEventListener("DOMContentLoaded", function () {
     return terugbrengDatumDate.toLocaleDateString("en-NL");
   }
 
+  function updateDatabase(id, action) {
+    let daysToAdd = 0;
+
+    // Calculate the number of days to add or subtract based on the action
+    if (action === "verlengen") {
+      daysToAdd = 7;
+    } else if (action === "annuleren") {
+      daysToAdd = -7;
+    } else if (action === "uitlenen") {
+      daysToAdd = 7;
+    }
+
+    const daysToAddInt = parseInt(daysToAdd);
+
+    const requestBody = {
+      id: id,
+      action: action,
+      daysToAdd: daysToAddInt,
+    };
+
+    console.log("Fetch Request Body:", JSON.stringify(requestBody));
+
+    // Send a POST request to updateDatabase.php with the item ID and action
+    fetch("updateDatabase.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody), // Include daysToAdd in the request body
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Check if the update was successful
+        if (data.success) {
+          // If successful, fetch and populate the table with updated data
+          fetchDataAndPopulateTable();
+        } else {
+          // If not successful, display an error message
+          console.error("Error updating database:", data.message);
+        }
+      })
+      .catch((error) => console.error("Error updating database:", error));
+  }
+
   // Call the function to fetch data and populate the table when the page loads
   fetchDataAndPopulateTable();
 
@@ -127,6 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
               // Add any further actions here after cancellation confirmation
               target.textContent = "Verlengen";
               target.style.backgroundColor = "green";
+              updateDatabase(id, action);
             }
           });
         } else {
@@ -143,6 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
               // Add any further actions here after lending confirmation
               target.textContent = "Annuleren";
               target.style.backgroundColor = "red";
+              updateDatabase(id, action);
             }
           });
         }
@@ -166,6 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
               // Add any further actions here after cancellation confirmation
               target.textContent = "Uitlenen";
               target.style.backgroundColor = "green";
+              updateDatabase(id, action);
             }
           });
         } else {
@@ -182,64 +229,14 @@ document.addEventListener("DOMContentLoaded", function () {
               // Add any further actions here after lending confirmation
               target.textContent = "Annuleren";
               target.style.backgroundColor = "red";
+              updateDatabase(id, action);
             }
           });
         }
       }
     }
-    
-    // Handle Verlengen button click
-    if (target.textContent === "Verlengen") {
-      const productId = target.getAttribute("data-id");
-
-      // Fetch current date from server to calculate new terugbrengDatum
-      fetch("updateDatabase.php")
-        .then((response) => response.json())
-        .then((data) => {
-          const currentDate = new Date(data.currentDate);
-          currentDate.setDate(currentDate.getDate() + 7); // Add 7 days
-
-          const newReturnDate = currentDate.toISOString().split("T")[0]; // Format date as yyyy-mm-dd
-
-          // Update database with new terugbrengDatum
-          fetch("verlengen.php", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              productId: productId,
-              newReturnDate: newReturnDate,
-            }),
-          })
-            .then((response) => {
-              if (response.ok) {
-                Swal.fire(
-                  "Verlengd!",
-                  "De terugbrengdatum is met 7 dagen verlengd.",
-                  "success"
-                );
-                // Update UI to reflect new terugbrengDatum
-                target.parentNode.previousElementSibling.textContent = newReturnDate;
-                target.textContent = "Annuleren";
-                target.style.backgroundColor = "red";
-              } else {
-                throw new Error("Failed to update database.");
-              }
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-              Swal.fire({
-                title: "Er is iets fout gegaan",
-                text: "Probeer het later opnieuw.",
-                icon: "error",
-                confirmButtonText: "Ok",
-              });
-            });
-        })
-        .catch((error) => console.error("Error fetching current date:", error));
-    }
   });
+
 
   let waarschuwingenCount = document.querySelector(".waarschuwingenCount");
   let waarshcuwingenDiv = document.querySelector(".waarschuwingenDiv");
@@ -265,3 +262,4 @@ function toonMMeldenPopUp() {
 function sluitMMeldenPopUp() {
   document.getElementById("meldenPopUp").style.display = "none";
 }
+

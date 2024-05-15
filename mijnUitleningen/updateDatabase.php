@@ -1,28 +1,22 @@
 <?php
-include('../database.php'); // Include your database connection code here
+include('../database.php');
 
-// Check if the POST request contains the necessary data
-if (isset($_POST['id']) && isset($_POST['daysToAdd'])) {
-    // Get the item ID and daysToAdd from the POST request
-    $id = $_POST['id'];
-    $daysToAdd = $_POST['daysToAdd'];
+// Get data from the request
+$data = json_decode(file_get_contents("php://input"));
 
-    // Perform the database update
-    $query = "UPDATE MIJN_LENINGEN SET terugbrengDatum = DATE_ADD(terugbrengDatum, INTERVAL $daysToAdd DAY) WHERE product_id_fk = $id";
+// Sanitize and validate data (you should implement proper validation)
 
-    // Execute the query
-    $result = mysqli_query($connection, $query);
+$productId = mysqli_real_escape_string($connection, $data->productId);
+$newReturnDate = mysqli_real_escape_string($connection, $data->newReturnDate);
 
-    // Check if the query was successful
-    if ($result) {
-        // Send a success response
-        echo json_encode(['success' => true]);
-    } else {
-        // Send an error response
-        echo json_encode(['success' => false, 'message' => 'Error updating database']);
-    }
+// Update the database
+$query = "UPDATE MIJN_LENINGEN SET terugbrengDatum = '$newReturnDate' WHERE product_id_fk = '$productId'";
+
+if (mysqli_query($connection, $query)) {
+    http_response_code(200);
+    echo json_encode(array("message" => "Database updated successfully."));
 } else {
-    // Send an error response if required data is missing
-    echo json_encode(['success' => false, 'message' => 'Missing data']);
+    http_response_code(500);
+    echo json_encode(array("message" => "Failed to update database."));
 }
 ?>
