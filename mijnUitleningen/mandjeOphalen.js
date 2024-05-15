@@ -123,7 +123,6 @@ function decreaseReturnDate(target) {
         extendReturnDate(target);
     } else if (target.classList.contains("uitlenen-button")) {
         const lening_id = target.value;
-        console.log(lening_id);
 
         deleteRowFromDatabase(lening_id);
         decreaseReturnDate(target);
@@ -199,16 +198,13 @@ function decreaseReturnDate(target) {
 
 function deleteRowFromDatabase(lening_id) {
   // Create a FormData object with the loan ID
-  const jsonData = JSON.stringify({ "lening_id": lening_id });
-  console.log(jsonData);
+  const formData = new FormData();
+  formData.append("lening_id", lening_id);
 
   // Fetch request to the PHP script
   fetch("deleteRowUitleningen.php", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: jsonData,
+    body: formData,
   })
     .then((response) => response.json())
     .then((data) => {
