@@ -39,6 +39,9 @@ https://chat.openai.com/share/db62ad30-ddfb-47e7-9c3b-e8bcbe838b27<br>
 https://chat.openai.com/share/1852ada8-a052-440a-ae49-d5dc6b9d5e85<br>
 https://chat.openai.com/share/6bf0c5b6-168a-4f5b-9fb4-36d4ca43a080<br>
 https://chat.openai.com/share/bfdba506-60bb-484a-8137-ef663cdb0a34<br>
+https://chat.openai.com/share/698d145f-6b02-4e58-ae05-6cb93e97515f<br>
+https://chat.openai.com/share/1dc9c681-6b1d-4b49-977f-f2931e011df7<br>
+https://chat.openai.com/share/1dc9c681-6b1d-4b49-977f-f2931e011df7<br>
 <br>
 <br>
 Nils: <br>

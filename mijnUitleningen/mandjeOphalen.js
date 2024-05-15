@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <td><button class="melden-button" value="${
               row.lening_id
             }">Melden</button></td>
-            <td><button class="${buttonClass}" data-id="${
+            <td><button class="${buttonClass}" value="${row.lening_id}" data-id="${
             row.product_id
           }" style="background-color: ${
             row.in_bezit === 1 ? "green" : "red"
@@ -76,9 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Toggle button background color
     target.style.backgroundColor = buttonText === "Annuleren" ? "green" : "red";
-
-    console.log("Button text:", target.textContent);
-    console.log("Button class:", target.className);
 }
 
 // Function to decrease the return date by 7 days
@@ -111,9 +108,6 @@ function decreaseReturnDate(target) {
 
   // Toggle button background color
   target.style.backgroundColor = buttonText === "Annuleren" ? "green" : "red";
-
-  console.log("Button text:", target.textContent);
-  console.log("Button class:", target.className);
 }
 
   // Call the function to fetch data and populate the table when the page loads
@@ -128,6 +122,10 @@ function decreaseReturnDate(target) {
       if (target.classList.contains("reserveren-button")) {
         extendReturnDate(target);
     } else if (target.classList.contains("uitlenen-button")) {
+        const lening_id = target.value;
+        console.log(lening_id);
+
+        deleteRowFromDatabase(lening_id);
         decreaseReturnDate(target);
     } else if (target.classList.contains("melden-button")) {
       let buttonValue = target.getAttribute("value");
@@ -198,3 +196,33 @@ function decreaseReturnDate(target) {
     document.getElementById("meldenPopUp").style.display = "none";
   }
 });
+
+function deleteRowFromDatabase(lening_id) {
+  // Create a FormData object with the loan ID
+  const jsonData = JSON.stringify({ "lening_id": lening_id });
+  console.log(jsonData);
+
+  // Fetch request to the PHP script
+  fetch("deleteRowUitleningen.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: jsonData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        // Row deleted successfully, perform any additional actions here if needed
+        console.log(data.message);
+      } else {
+        // Error occurred while deleting row, handle the error
+        console.error(data.message);
+      }
+    })
+    .catch((error) => {
+      // Error occurred while fetching or parsing response, handle the error
+      console.error("Error:", error);
+    });
+}
+
