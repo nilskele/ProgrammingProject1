@@ -16,8 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
           const newRow = document.createElement("tr");
 
           // Format Uitleendatum to 'dd/mm/yyyy' format
-          const uitleendatumFormatted = formatDate(row.Uitleendatum);
-          const terugbrengDatumFormatted = formatDate(row.terugbrengDatum);
+          const uitleendatumFormatted = (row.Uitleendatum);
+          const terugbrengDatumFormatted = (row.terugbrengDatum);
 
           // Determine button classes based on possession
           const buttonClass =
@@ -47,13 +47,82 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error fetching data:", error));
   }
 
-  // Function to format date as 'dd/mm/yyyy'
-  function formatDate(dateString) {
-    const datumBeschikbaarDate = new Date(dateString);
-    const terugbrengDatumDate = new Date(datumBeschikbaarDate);
-    terugbrengDatumDate.setDate(terugbrengDatumDate.getDate());
-    return terugbrengDatumDate.toLocaleDateString("en-NL");
+  function extendReturnDate(target) {
+    const row = target.parentNode.parentNode; // Get the parent row
+    const terugbrengDatumCell = row.cells[2]; // Get the third cell (terugbrengdatum)
+    let returnDate = new Date(terugbrengDatumCell.textContent);
+    const buttonText = target.textContent.trim(); // Get the text content of the button
+
+    // Check the current action based on button text
+    if (buttonText === "Annuleren") {
+        // Decrease the return date by 7 days
+        returnDate.setDate(returnDate.getDate() - 7);
+    } else {
+        // Add 7 days to the return date
+        returnDate.setDate(returnDate.getDate() + 7);
+    }
+
+    const formattedDate = returnDate.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+
+    // Update the content of the third cell with the new date
+    terugbrengDatumCell.textContent = formattedDate;
+
+    // Toggle button text between "Verlengen" and "Annuleren"
+    target.textContent = buttonText === "Annuleren" ? "Verlengen" : "Annuleren";
+
+    // Toggle button class
+    target.classList.toggle("verlengen-button");
+    target.classList.toggle("annuleren-button");
+
+    // Toggle button background color
+    target.style.backgroundColor = buttonText === "Annuleren" ? "green" : "red";
+
+    console.log("Button text:", target.textContent);
+    console.log("Button class:", target.className);
+}
+
+// Function to decrease the return date by 7 days
+function decreaseReturnDate(target) {
+  const row = target.parentNode.parentNode; // Get the parent row
+  const terugbrengDatumCell = row.cells[2]; // Get the third cell (terugbrengdatum)
+  let returnDate = new Date(terugbrengDatumCell.textContent);
+  const buttonText = target.textContent.trim(); // Get the text content of the button
+
+  // Check the current action based on button text
+  if (buttonText === "Uitlenen") {
+      // Decrease the return date by 4 days
+      returnDate.setDate(returnDate.getDate() + 4);
+  } else {
+      // Add 4 days to the return date
+      returnDate.setDate(returnDate.getDate() - 4);
   }
+
+  const formattedDate = returnDate.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+
+  // Update the content of the third cell with the new date
+  terugbrengDatumCell.textContent = formattedDate;
+
+  // Toggle button text between "Uitlenen" and "Annuleren"
+  target.textContent = buttonText === "Uitlenen" ? "Annuleren" : "Uitlenen";
+
+  // Toggle button class
+  target.classList.toggle("uitlenen-button");
+  target.classList.toggle("annuleren-button");
+
+  // Toggle button background color
+  target.style.backgroundColor = buttonText === "Annuleren" ? "green" : "red";
+
+  console.log("Button text:", target.textContent);
+  console.log("Button class:", target.className);
+}
+
+
+
+
+
+
+
+
 
   // Call the function to fetch data and populate the table when the page loads
   fetchDataAndPopulateTable();
@@ -64,17 +133,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Check if the clicked element is a button
     if (target.tagName === "BUTTON") {
-      const id = target.getAttribute("data-id");
-      const action = target.textContent.trim().toLowerCase();
-      // Handle button clicks based on class name
-      if (target.classList.contains("melden-button")) {
-        let buttonValue = target.getAttribute("value");
-        document.getElementById("lening_id").value = buttonValue;
-        toonMMeldenPopUp();
+      if (target.classList.contains("reserveren-button")) {
+        extendReturnDate(target);
+    } else if (target.classList.contains("uitlenen-button")) {
+        decreaseReturnDate(target);
+    } else if (target.classList.contains("melden-button")) {
+      let buttonValue = target.getAttribute("value");
+      document.getElementById("lening_id").value = buttonValue;
+      toonMMeldenPopUp();
 
-        const form = document.getElementById("defectMeldenForm");
+      const form = document.getElementById("defectMeldenForm");
 
-        form.addEventListener("submit", function (event) {
+      form.addEventListener("submit", function (event) {
           event.preventDefault();
 
           const lening_id = localStorage.getItem("product_id");
@@ -107,93 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
               });
             });
         });
-      } else if (target.classList.contains("reserveren-button")) {
-        // Handle Reserveren button click
-        if (target.textContent === "Annuleren") {
-          Swal.fire({
-            title: "Weet je zeker dat je wil annuleren?",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Ja, annuleren!",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire(
-                "Cancelled!",
-                "Je verlenging is geannuleerd.",
-                "success"
-              );
-              // Add any further actions here after cancellation confirmation
-              target.textContent = "Verlengen";
-              target.style.backgroundColor = "green";
-            }
-          });
-        } else {
-          Swal.fire({
-            title: "Weet je zeker dat je het item wil verlengen?",
-            icon: "question",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Ja, verleng het!",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire("Verlenged!", "Het item is verlengd.", "success");
-              // Add any further actions here after lending confirmation
-              target.textContent = "Annuleren";
-              target.style.backgroundColor = "red";
-            }
-          });
-        }
-      } else if (target.classList.contains("uitlenen-button")) {
-        // Handle Uitlenen button click
-        if (target.textContent === "Annuleren") {
-          Swal.fire({
-            title: "Weet je zeker dat je de reservatie wilt annuleren?",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Ja, annuleren!",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire(
-                "Cancelled!",
-                "Je reservatie is geannuleerd.",
-                "success"
-              );
-              // Add any further actions here after cancellation confirmation
-              target.textContent = "Uitlenen";
-              target.style.backgroundColor = "green";
-            }
-          });
-        } else {
-          Swal.fire({
-            title: "Weet je zeker dat je het item wil uitlenen?",
-            icon: "question",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Ja, leen het uit!",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire("Uitgeleend!", "Het item is uitgeleend.", "success");
-              // Add any further actions here after lending confirmation
-              target.textContent = "Annuleren";
-              target.style.backgroundColor = "red";
-            }
-          });
-        }
       }
-    }
-
-    // Handle Verlengen button click
-    if (target.textContent === "Verlengen") {
-      const productId = target.getAttribute("data-id");
-
-      // Fetch current date from server to calculate new terugbrengDatum
-      fetchCurrentDateAndExtend(productId);
     }
   });
 
@@ -215,70 +199,70 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to fetch current date from server and extend product return date
   function fetchCurrentDateAndExtend(productId) {
     // AJAX request to fetch current date from server
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-          const response = JSON.parse(xhr.responseText);
-          const currentDate = response.currentDate;
+    fetch("updateDatabase.php")
+      .then((response) => response.json())
+      .then((data) => {
+        const currentDate = data.currentDate;
 
-          // Calculate new terugbrengDatum (7 days from current date)
-          const newReturnDate = new Date(currentDate);
-          newReturnDate.setDate(newReturnDate.getDate() + 7);
-          const formattedReturnDate = formatDate(newReturnDate);
+        // Calculate new terugbrengDatum (7 days from current date)
+        const newReturnDate = new Date(currentDate);
+        newReturnDate.setDate(newReturnDate.getDate() + 7);
+        const formattedReturnDate = formatDate(newReturnDate);
 
-          // Update database with new terugbrengDatum
-          const updateData = {
-            productId: productId,
-            newReturnDate: formattedReturnDate,
-          };
+        // Update database with new terugbrengDatum
+        const updateData = {
+          productId: productId,
+          newReturnDate: formattedReturnDate,
+        };
 
-          // AJAX request to update database with new terugbrengDatum
-          const xhrUpdate = new XMLHttpRequest();
-          xhrUpdate.onreadystatechange = function () {
-            if (xhrUpdate.readyState === XMLHttpRequest.DONE) {
-              if (xhrUpdate.status === 200) {
-                Swal.fire(
-                  "Verlengd!",
-                  "De terugbrengdatum is met 7 dagen verlengd.",
-                  "success"
-                );
-                // Update UI to reflect new terugbrengDatum
-                const verlengenButton = document.querySelector(
-                  `[data-id="${productId}"]`
-                );
-                const returnDateCell =
-                  verlengenButton.parentNode.previousElementSibling;
-                returnDateCell.textContent = formattedReturnDate;
-                verlengenButton.textContent = "Annuleren";
-                verlengenButton.style.backgroundColor = "red";
-              } else {
-                console.error("Failed to update database.");
-                Swal.fire({
-                  title: "Er is iets fout gegaan",
-                  text: "Probeer het later opnieuw.",
-                  icon: "error",
-                  confirmButtonText: "Ok",
-                });
-              }
+        // AJAX request to update database with new terugbrengDatum
+        fetch("verlengen.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updateData),
+        })
+          .then((response) => {
+            if (response.ok) {
+              Swal.fire(
+                "Verlengd!",
+                "De terugbrengdatum is met 7 dagen verlengd.",
+                "success"
+              );
+
+              // Update UI to reflect new terugbrengDatum
+              const verlengenButton = document.querySelector(
+                `[data-id="${productId}"]`
+              );
+              const returnDateCell =
+                verlengenButton.parentNode.previousElementSibling;
+              returnDateCell.textContent = formattedReturnDate;
+              verlengenButton.textContent = "Annuleren";
+              verlengenButton.style.backgroundColor = "red";
+            } else {
+              throw new Error("Failed to update database.");
             }
-          };
-          xhrUpdate.open("POST", "verlengen.php");
-          xhrUpdate.setRequestHeader("Content-Type", "application/json");
-          xhrUpdate.send(JSON.stringify(updateData));
-        } else {
-          console.error("Failed to fetch current date.");
-          Swal.fire({
-            title: "Er is iets fout gegaan",
-            text: "Probeer het later opnieuw.",
-            icon: "error",
-            confirmButtonText: "Ok",
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            Swal.fire({
+              title: "Er is iets fout gegaan",
+              text: "Probeer het later opnieuw.",
+              icon: "error",
+              confirmButtonText: "Ok",
+            });
           });
-        }
-      }
-    };
-    xhr.open("GET", "updateDatabase.php");
-    xhr.send();
+      })
+      .catch((error) => {
+        console.error("Error fetching current date:", error);
+        Swal.fire({
+          title: "Er is iets fout gegaan",
+          text: "Probeer het later opnieuw.",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+      });
   }
 
   // Function to display defect report popup
