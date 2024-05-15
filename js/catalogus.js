@@ -70,6 +70,7 @@ $(document).ready(function () {
   $(document).on('click', '.reserveren-btn', function (e) {
     e.preventDefault(); // Stop the default link behavior
     var groepID = $(this).data('groep_id');
+    localStorage.setItem('groep_id', groepID);
     var baseUrl = $(this).attr('href');
     var newUrl = baseUrl + '?groep_id=' + groepID;
     // Redirect to the newly constructed URL
