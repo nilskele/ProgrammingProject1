@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '/ProgrammingProject1/php/delete_row2.php',
+                        url: '/ProgrammingProject1/php/productAccepterenMetProductnr.php',
                         method: 'POST',
                         data: { productNr: productNr },
                         success: function(response) {

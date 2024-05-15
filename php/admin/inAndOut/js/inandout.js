@@ -212,7 +212,7 @@ $(function() {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: '/ProgrammingProject1/php/delete_row.php',
+                    url: '/ProgrammingProject1/php/productAccepteren.php',
                     method: 'POST',
                     data: { leningId: leningId, productNr: productNr},
                     data: { leningId: leningId, productNr: productNr},
@@ -356,7 +356,7 @@ acceptBtn.addEventListener("click", function () {
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
                                                     $.ajax({
-                                                        url: '../php/delete_row2.php',
+                                                        url: '../php/productAccepterenMetProductnr.php',
                                                         method: 'POST',
                                                         data: { productNr: productNr },
                                                         success: function(responsee) {

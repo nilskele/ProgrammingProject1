@@ -76,7 +76,7 @@ $(function() {
 
         // Send AJAX request to delete the row from the database
         $.ajax({
-            url: '../../delete_row.php',
+            url: '../../productAccepteren.php',
             method: 'POST',
             data: { leningId: leningId },
             success: function(response) {
