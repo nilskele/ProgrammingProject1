@@ -197,7 +197,7 @@ button.btn.btn-primary.inloggen {
 }
 
 /*popup styles*/ 
-.overlay {
+.overlay  {
     display: none;
     position: fixed;
     top: 0;

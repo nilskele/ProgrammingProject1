@@ -145,6 +145,7 @@ include('../../database.php');
   <div> 
 </body>
 <script src="../../js/admin.agenda.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <?php 
 
@@ -193,8 +194,8 @@ if (isset($_GET['Zoeken'])) {
               "product_id" => $row["product_id"],
               "product_naam" => $row["product_naam"],
               "Uitleendatum" => $row["Uitleendatum"],
-              "terugbrengDatum" => $row["terugbrengDatum"]
-              "zichtbaar" => $row["zichtbaar"];
+              "terugbrengDatum" => $row["terugbrengDatum"],
+              "zichtbaar" => $row["zichtbaar"]
           );
       }
   } else {
