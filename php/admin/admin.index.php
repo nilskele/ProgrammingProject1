@@ -155,11 +155,11 @@ if (isset($_GET['Zoeken'])) {
   $naamItem = htmlspecialchars($naamItem);
 
   // SQL query using a placeholder
-  $sql = "SELECT ML.Uitleendatum, ML.terugbrengDatum, G.naam AS product_naam
-          FROM MIJN_LENINGEN ML
-          JOIN PRODUCT P ON ML.product_id_fk = P.product_id
-          JOIN GROEP G ON P.groep_id = G.groep_id
-          WHERE G.naam = ?";
+  $sql = "SELECT ML.Uitleendatum, ML.terugbrengDatum, G.naam AS product_naam, P.product_id
+  FROM MIJN_LENINGEN ML
+  JOIN PRODUCT P ON ML.product_id_fk = P.product_id
+  JOIN GROEP G ON P.groep_id = G.groep_id
+  WHERE G.naam = ?";
 
   // Prepare the statement
   $stmt = $conn->prepare($sql);
@@ -185,6 +185,7 @@ if (isset($_GET['Zoeken'])) {
       while ($row = $result->fetch_assoc()) {
           // Store the results in an array
           $loanDetails[] = array(
+              "product_id" => $row["product_id"],
               "product_naam" => $row["product_naam"],
               "Uitleendatum" => $row["Uitleendatum"],
               "terugbrengDatum" => $row["terugbrengDatum"]
@@ -207,7 +208,6 @@ echo "</pre>";
 
 // Convert loanDetails to JSON
 $loanDetailsJSON = json_encode($loanDetails);
-
 
 ?>
 <script>
@@ -238,6 +238,7 @@ const nextButton = document.getElementById("next");
 const productNames = data.map(item => item.product_naam);
 const uitleendatums = data.map(item => item.Uitleendatum);
 const terugbrengDatums = data.map(item => item.terugbrengDatum);
+const productID = data.map(item => item.product_id);
 
 // Function to format date to day/month format
 function formatDate(dateString) {
@@ -359,7 +360,7 @@ function renderCalendar() {
         for (let index = 0; index < maxAantallen; index++) {
             const datesBetween = getDatesBetween(uitleendatums[indexLength], terugbrengDatums[indexLength]);
             if (index === 0) {
-                html += `<li class="inactive">${productNames[indexLength]}</li>`;
+                html += `<li class="inactive">${productNames[indexLength] + ", " + productID[indexLength]}</li>`;
             } else if (datesBetween.some(r => dagenWeek[index - 1].includes(r))) {
                 html += `<li class="inactive">${"Uitgeleend"}</li>`;
             } else {
