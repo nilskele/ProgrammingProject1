@@ -96,12 +96,15 @@ include('../../database.php');
 <script src="/ProgrammingProject1/php/admin/inAndOut/js/inandout.js"></script>
 <script src="/ProgrammingProject1/js/admin.index.js"></script>
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.3/popup.min.js"></script>
 </head>
 <body>
 <div class="buttons_kalender">
@@ -118,7 +121,7 @@ include('../../database.php');
   <h1 class="titel">Calendar</h1>
   <div class="calendar">
     <header>
-      <h3></h3>
+      <h3>Catalogus</h3>
       <nav>
         <button id="prev"></button>
         <button id="next"></button>
@@ -138,6 +141,13 @@ include('../../database.php');
       <ul class="dates"></ul>
     </section>
   </div>
+  <div> 
+  <div class="popup">
+    <h1>Bent u zeker dat u het item wilt verwijderen?</h1>
+    <button> Ja </button>
+    <button> Nee </button>
+  </div>
+</div>
 </body>
 <script src="../../js/admin.agenda.js"></script>
 
@@ -360,7 +370,17 @@ function renderCalendar() {
         for (let index = 0; index < maxAantallen; index++) {
             const datesBetween = getDatesBetween(uitleendatums[indexLength], terugbrengDatums[indexLength]);
             if (index === 0) {
-                html += `<li class="inactive">${productNames[indexLength] + ", " + productID[indexLength]}</li>`;
+                html += `<li class="inactive">
+                <div class="items" style="font-size:18px">
+                ${productNames[indexLength] + ", " + productID[indexLength]}
+                </div>
+                <div class="buttons_item">
+                    <button class="reserveren">Reserveren</button> </br>
+                    <button class="glyphicon glyphicon-eye-close" style="font-size:15px"></button> 
+                    <button class="fa fa-trash-o" style="font-size:15px"></button>
+                    <button class="fa fa-pencil" style="font-size:15px"></button>
+                </div>
+                </li>`;
             } else if (datesBetween.some(r => dagenWeek[index - 1].includes(r))) {
                 html += `<li class="inactive">${"Uitgeleend"}</li>`;
             } else {
@@ -372,6 +392,21 @@ function renderCalendar() {
     // Update the HTML of the dates
     dates.innerHTML = html;
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    //buttons roepen
+    var reserverenBtn = document.querySelector(".reserveren");
+    var editBtn = document.querySelector(".fa-pencil");
+
+    editBtn.addEventListener("click", function() {
+      window.location.href = "/ProgrammingProject1/php/admin/productToevoegen/product_wijzigen.php";
+    });
+
+    reserverenBtn.addEventListener("click", function() {
+        //redirect reserveren
+        window.location.href = "/ProgrammingProject1/php/admin/reserveren/reserveren.php";
+    });
+});
 
 
 
