@@ -218,7 +218,7 @@
             <div class="num mb-2">
   <div class="input-group">
     <p class="aantal">Aantal:</p>
-    <select class="custom-input available">
+    <select class="custom-input available" id="available">
       <?php
        // Create options dynamically based on available quantity
       for ($i = 1; $i <= $product['aantal_beschikbare_producten']; $i++) {
@@ -227,7 +227,7 @@
       ?>
     </select>
   </div>
-  <h5 class="maxAantal">Max aantal: <?php echo htmlspecialchars($product['aantal_beschikbare_producten']); ?></h5>
+  <h5 class="maxAantal">Max aantal: <span id="aantalBeschikbaar"><?php echo htmlspecialchars($product['aantal_beschikbare_producten']); ?></span> </h5>
 </div>
 <!-- Action buttons section -->
   <div class="container-fluid">
