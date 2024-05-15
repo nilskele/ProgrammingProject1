@@ -29,7 +29,7 @@
             een account met u school mail.
           </p>
           <div class="WelcomeButtons">
-            <a class="btn btn-primary" href="accountAanmaken.php">
+            <a class="btn btn-primary" href="../php/accountAanmaken.php">
               Account aanmaken
             </a>
             <a class="btn btn-light" href="#inputEmail3">
@@ -92,7 +92,7 @@
         <p>
           Nog geen account? =
         </p>
-        <a class="btn btn-light accountAanmaken" href="accountAanmaken.php">
+        <a class="btn btn-light accountAanmaken" href="../php/accountAanmaken.php">
           Account aanmaken
         </a>
       </div>
