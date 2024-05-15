@@ -11,7 +11,7 @@
     <a class="nav-item nav-link" href="../mijnUitleningen/mijnUitleningen.php">
       Mijn uitleningen
     </a>
-    <a class="nav-item nav-link" href="/info">
+    <a class="nav-item nav-link" href="../php/info.php">
       Info
     </a>
     <a class="nav-item nav-link" href="reserveren.php">
