@@ -21,6 +21,7 @@ $(function() {
                 // Parse the JSON response
                 var data = JSON.parse(response);
 
+                console.log('checkcheck')
                 // Loop through the data and create HTML elements
                 data.forEach(function(item) {
                     // Check if the date matches the selected date
@@ -32,7 +33,9 @@ $(function() {
                         card.setAttribute('data-terugbrengdatum', item.terugbrengDatum); // Set data-lening-id attribute
                         card.setAttribute('data-uitleendatum', item.Uitleendatum); // Set data-lening-id attribute
                         card.setAttribute('data-watdefect', item.watDefect); // Set data-lening-id attribute
-                        card.setAttribute('data-redenDefect', item.redenDefect); // Set data-lening-id attribute
+                        card.setAttribute('data-redendefect', item.redenDefect); // Set data-lening-id attribute
+                        card.setAttribute('data-image', item.image_data);
+
 
 
 
@@ -104,9 +107,11 @@ $(function() {
                         card.setAttribute('data-lening-id', item.lening_id); // Set data-lening-id attribute
                         card.setAttribute('data-terugbrengdatum', item.terugbrengDatum); // Set data-lening-id attribute
                         card.setAttribute('data-uitleendatum', item.Uitleendatum); // Set data-lening-id attribute
-                        card.setAttribute('data-watdefect', item.watDefect); 
-                        card.setAttribute('data-redenDefect', item.redenDefect); 
+                        card.setAttribute('data-watdefect', item.watDefect); // Set data-lening-id attribute
+                        card.setAttribute('data-redendefect', item.redenDefect); // Set data-lening-id attribute
+                        card.setAttribute('data-image', item.image_data);
 
+                        
 
 
 
@@ -397,6 +402,7 @@ acceptBtn.addEventListener("click", function () {
         }    
 });
 function openPopup() {
+    
     var overlay = document.getElementById("overlay");
     overlay.style.display = "block";
     var popup = document.getElementById("popup");
@@ -408,8 +414,10 @@ function openPopup() {
     var productNr = $this.closest('.inOutProduct').find('.accepterenProductID').attr('value');
     var terugbrengdatum = $this.closest('.inOutProduct').data('terugbrengdatum');
     var uitleendatum = $this.closest('.inOutProduct').data('uitleendatum');
-    var watdefect = $this.closest('.inOutProduct').data('watdefect');
-    var redenDefect = $this.closest('.inOutProduct').data('redenDefect');
+    var watdefect = $this.closest('.inOutProduct').attr('data-watdefect');
+    var redendefect = $this.closest('.inOutProduct').attr('data-redendefect');
+    var image = $this.closest('.inOutProduct').attr('data-image');
+
 
 
 
@@ -423,6 +431,8 @@ function openPopup() {
         <span class="closePopup" onclick="closePopup()">&times;</span>
         <div class="popup_info">
             <div class="contents">
+            <img class="statusImage" src="data:image/jpeg;base64,${image}">
+
                 <h5 class="Naam">${naam}</h5>
                 <p class="accepterenProductID">Product: ${productNr}</p>
                 <p>Lening ID: ${leningId}</p>
@@ -435,10 +445,10 @@ function openPopup() {
             
             </div>
             <div class="dates">
-                <h6>Wat is er defect?</h6>
-                <p>${watdefect}</p>
-                <h6>Hoe is het defect ontstaan?</h6>
-                <p>${redenDefect}</p>
+                
+                <p>Wat is er defect: ${watdefect}</p>
+                
+                <p>Hoe is het defect ontstaan: ${redendefect}</p>
             </div>
           </div>
             
