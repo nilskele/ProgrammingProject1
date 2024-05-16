@@ -7,7 +7,7 @@ if ($conn->connect_error) {
 
 mysqli_select_db($conn, '2324PROGPRGR02') or die('Error selecting the database');
 
-$group_id = $_GET['group_id'];
+$groep_id = $_GET['groep_id'];
 $startDatum = $_GET['startDatum'];
 $eindDatum = $_GET['eindDatum'];
 
@@ -18,7 +18,7 @@ FROM PRODUCT
 WHERE datumBeschikbaar BETWEEN ? AND ? AND PRODUCT.zichtbaar = true AND PRODUCT.isUitgeleend = false AND GROEP.groep_id = ?;";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sss", $startDatum, $eindDatum, $group_id);
+$stmt->bind_param("sss", $startDatum, $eindDatum, $groep_id);
 $stmt->execute();
 
 $result = $stmt->get_result();
