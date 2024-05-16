@@ -14,7 +14,7 @@
     <a class="nav-item nav-link" href="../php/info.php">
       Info
     </a>
-    <a class="nav-item nav-link" href="reserveren.php">
+    <a class="nav-item nav-link" href="#">
       Reglement
     </a>
     <a class="nav-item nav-link" href="../php/logout.php"><img src="../images/logout-svgrepo-com.svg" alt="loagout"
