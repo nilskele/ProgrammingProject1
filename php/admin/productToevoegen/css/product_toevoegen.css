@@ -1,20 +1,25 @@
 .container {
-    margin-top: 40px;
-    height: 700px;
-    padding: 20px;
-    text-align: center;
-    background-color: rgb(181, 181, 181);
+    margin-top: 3em;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    border-radius: 15px;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+    height: 60%;
+    border-radius: 1em;
+    background-color: white;
+    border: 1px solid #cecbcb;
+    box-shadow: #cecbcb 6px 6px;
+    padding-top:5em;
 }
 
 .gegevens_product,
 .product_toevoegen {
     margin-bottom: 40px;
-    background-color: grey;
+
+    background:
+        linear-gradient(to left top, rgb(244, 135, 135) 0%/*bottom-right color*/, rgb(255, 255, 255) 60% /*middle color*/, rgb(255, 255, 255) 100% /*top-left color*/),
+        linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1))/*"faked" black background make sure to add last or it will appear before the transparent/colored layer*/;
     width: 80%; /* Changed width to max-width */
     border-radius: 10px;
     height: 800px;
@@ -27,12 +32,43 @@
     height: 200px;
 }
 
-input,
-button {
-    margin-bottom: 20px;
-    border: 0;
+input {
+    margin-bottom: 2em;
+    border: 1px solid linear-gradient(to left top, rgb(252, 110, 110) 0%/*bottom-right color*/, rgb(255, 255, 255) 50% /*middle color*/, rgb(255, 255, 255) 100% /*top-left color*/);
     border-radius: 10px;
     font-size: 20px;
+    
     /* margin tussen input en knop */
 }
+.submit {
+    background-color: white;
+    color: red;
+    margin-left: 1em !important;
+    margin-right: 1em !important;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    border-radius: 2em;
+    text-decoration: none;
+    border: 2px solid #c4c4c4;
+    transition: 0.3s;
+    margin-top:-2em;
+    margin-bottom: 2em;
+}
+.categorieZoekbalk{
+    padding: 0.5em;
+    
+    border: 1px solid red;
+    border-radius: 1em;
+}
+.categorieZoekbalk2{  
+    padding: 0.2em;
+    border: 1px solid red;
+    border-radius: 1em;
+}
 
+.labelcontainers{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    margin: 2em;
+    
+}

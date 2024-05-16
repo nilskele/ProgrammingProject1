@@ -18,40 +18,54 @@
     <h1>Product Toevoegen</h1>
     
     <div class="product_toevoegen">
-      <label for="productNaam">Product naam:</label>
-      <input type="text" id="productName" name="productName">
-      <br>
-      <br>
-      <label for="merk">Merk:</label>
-      <input type="text" id="merk" name="merk">
-      <br>
-      <br>
-      <label for="categorie">Categorie:</label>
-      <select name="categorie" id="categorie" class="categorieZoekbalk">
-        <option value="All" id="categoryOptions">Categorie</option>
-        <?php echo $options; ?>
-      </select>
-      <br>
-      <br>
-      <label for="quantity">Quantity:</label>
-      <input type="number" id="quantity" name="quantity" min="1" value="1">
-      <br>
-      <br>
-      <label for="beschrijving">Beschrijving:</label>
-      <input type="text" id="beschrijving" name="beschrijving">
-      <br>
-      <br>
-      <label for="opmerkingen">Opmerkingen:</label>
-      <input type="text" id="opmerkingen" name="opmerkingen">
-      <br>
-      <br>
+      <div class="labelcontainers">
+          <div>
+            <label for="productNaam">Product naam:</label>
+            <input type="text" id="productName" name="productName">
+          </div>
+      
+        <div>
+          <label for="merk">Merk:</label>
+          <input type="text" id="merk" name="merk">
+        </div>
+      
+      </div>
+      
+      <div class="labelcontainers">
+        <div>
+          <label for="categorie">Categorie:</label>
+          <select name="categorie" id="categorie" class="categorieZoekbalk">
+            <option value="All" id="categoryOptions">Categorie</option>
+            <?php echo $options; ?>
+          </select>
+        </div>
+      
+        <div>
+          <label for="quantity">Quantity:</label>
+          <input class="categorieZoekbalk2" type="number" id="quantity" name="quantity" min="1" value="1">
+        </div>
+      
+      </div>
+      
+      <div class="labelcontainers">
+        <div>
+          <label for="beschrijving">Beschrijving:</label>
+          <input type="text" id="beschrijving" name="beschrijving">
+        </div>
+
+        <div>
+          <label for="opmerkingen">Opmerkingen:</label>
+          <input type="text" id="opmerkingen" name="opmerkingen">
+        </div>
+      
+      </div>
 
       <!-- <label for="fotos">Upload foto's:</label>
       <input type="file" id="fotos" name="fotos" accept="image/*" multiple>
       <button type="submit">Submit</button>  -->
     </div>
 
-    <button type="submit">Product toevoegen</button>
+    <button class="submit" type="submit">Product toevoegen</button>
   </div>
 </form>
 
