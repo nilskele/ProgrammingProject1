@@ -30,9 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
           if (row.isVerlenged) {
             buttonText = "Annuleren";
             action = "annuleren";
-          } else {
+          } else if (row.in_bezit === 1) {
             buttonText = "Verlengen";
             action = "verlengen";
+          } else {
+            buttonText = "Annuleren";
+            action = "annuleren";
           }
 
           // Populate the table row with data
@@ -46,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <td><button class="${buttonClass}" value="${
             row.lening_id
           }" data-id="${row.product_id}" style="background-color: ${
-            row.in_bezit === 1 && row.isVerlenged === 1? "red" : "green"
+            row.in_bezit === 1 && row.isVerlenged === 1 || row.in_bezit === 0? "red" : "green"
           }; color: white;">${buttonText}</button></td>
           `);
 
