@@ -11,16 +11,15 @@
 </head>
 
 <body>
-
+  <?php
+    include('index.header.php');
+  ?>
   <div id="app">
     <div id="container">
-      <?php
-      include('index.header.php');
-      ?>
       <div class="welcomeDiv">
         <div class="welcome">
           <h1>
-            Welcome <br />
+            Welcome <br/>
             in het Medialab
           </h1>
           <p>
