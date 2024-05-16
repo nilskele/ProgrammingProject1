@@ -1,9 +1,87 @@
 let aantalBeschikbaarSpan = document.getElementById("aantalBeschikbaar");
 let available = document.getElementById("available");
-let group_id = localStorage.getItem("groep_id");
+let groep_id = localStorage.getItem("groep_id");
 let usertype = localStorage.getItem("usertype");
 
 $(document).ready(function() {
+  fetch("../mijnUitleningen/waarschuwingenCount.php")
+    .then((response) => response.json())
+    .then((data) => {
+      let waarschuwingenCountPhp = data;
+      if (waarschuwingenCountPhp == 3) {
+        Swal.fire({
+          icon: "warning",
+          title: "Waarschuwing",
+          text: "Je hebt 2 waarschuwingen, je kan niet meer reserveren.",
+          confirmButtonText: "Ok",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = "catalogus.php";
+          }
+        });
+      }
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+
+
+  $(".reserveren-btn").click(function() {
+    let reden = $(".reden").val();
+    let startDatum = $('input[name="daterange"]').data('daterangepicker').startDate.format('YYYY-MM-DD');
+    let eindDatum = $('input[name="daterange"]').data('daterangepicker').endDate.format('YYYY-MM-DD');
+    let aantal = $(".available").val();
+    console.log(reden)
+    console.log(startDatum)
+    console.log(eindDatum)
+    console.log(aantal)
+    console.log(groep_id)
+    
+  
+    $.ajax({
+      url: "../php/reserveren_backend.php", 
+      type: "GET",
+      data: {
+        reden: reden,
+        startDatum: startDatum,
+        eindDatum: eindDatum,
+        aantal: aantal,
+        groep_id: groep_id 
+      },
+      dataType: "json",
+      success: function(response) {
+        if (response.success) {
+          Swal.fire({
+            icon: "success",
+            title: "Reservering succesvol",
+            text: "Je reservering is succesvol gemaakt.",
+            confirmButtonText: "Ok",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = "catalogus.php";
+            }
+          });
+        } else {
+          console.log(response);
+          Swal.fire({
+            icon: "error",
+            title: "Fout",
+            text: "Er is een fout opgetreden bij het maken van de reservering. Probeer het later opnieuw.",
+            confirmButtonText: "Ok",
+          });
+        }
+      },
+      error: function() {
+        Swal.fire({
+          icon: "error",
+          title: "Fout",
+          text: "Er is een fout opgetreden bij het maken van de reservering. Probeer het later opnieuw.",
+          confirmButtonText: "Ok",
+        });
+      }
+    });
+  });
+  
+  
+
   let dateRangeOptions = {
     opens: "center",
     minDate: moment().toDate(),
@@ -15,6 +93,10 @@ $(document).ready(function() {
       return false;
     },
   };
+
+  if (usertype == "3") {
+    dateRangeOptions.maxDate = moment().add(3, "week").toDate();
+  }
 
   if (usertype == "3") {
     dateRangeOptions.maxDate = moment().add(3, "week").toDate();
@@ -51,7 +133,7 @@ $(document).ready(function() {
         type: "GET",
         dataType: "json",
         data: {
-          group_id: group_id,
+          groep_id: groep_id,
           startDatum: startDatum,
           eindDatum: eindDatum,
         },
