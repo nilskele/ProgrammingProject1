@@ -6,12 +6,4 @@
       Medialab
     </span>
   </a>
-  <div class="navbar-nav">
-    <a class="nav-item nav-link" href="info.php">
-      Info
-    </a>
-    <a class="nav-item nav-link" href="#">
-      Reglement
-    </a>
-  </div>
 </nav>
