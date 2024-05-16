@@ -1,132 +1,124 @@
 .section-p1 {
-    padding: 100px 200px;
-    font-family: "Roboto";
-  }
-  #proditails {
-    display: flex;
-    margin-top: 20px;
-  }
-  #proditails .single-pro-img {
-    width: 40%;
-    margin-right: 70px;
-    margin-left: 150px;
-  }
-  .small-img-group {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .small-img-col {
-    flex-basis: 24%;
-    cursor: pointer;
-  }
-  #proditails .single-pro-details {
-    width: 50%;
-    padding-top: 20px;
-  }
-  .small-img-col {
-    border: 1px solid #131414;
-    margin: 15px 0;
-  }
-  .MainImg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #title {
-    padding-top: 30px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  
-    margin-top: 10px;
-  }
-  
-  .reserveren-btn {
-    background-color: rgb(244, 162, 10);
-    width: 270px;
-    height: 40px;
-    border-radius: 7px;
-    font-family: "Roboto";
-    font-weight: bold;
-  }
-  
-  a {
-    color: #131414;
-  }
-  
-  .verder {
-    font-family: "Roboto";
-    color: #131414;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  .terug {
-    font-family: "Roboto";
-    text-decoration: none;
-  }
-  
-  .btns {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px;
-  }
-  
-  .canon {
-    font-weight: bold;
-  }
-  .cc {
-    color: gray;
-  }
-  .main-container {
-    border: solid 1px black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0px;
-  }
-  .terug{
-    text-decoration: none;
-  
-  }
-  .up{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 50px;
-  }
-  .value{
-    height: 25px;
-    width: 35px;
-    
-  
-  }
-  .num{
-    display: flex;
-   flex-direction: row;
-    align-items: center;
-    padding-top: 115px;
-  }
-  .aantal{
-    padding-top: 15px;
-    font-weight: bold;
-    padding-left: 20px;
-  }
-  
-  
-  .datumZoekbalk {
-    cursor: pointer;
-  }
+  padding: 100px 200px;
+}
 
- /* Modify appearance of Date Range Picker calendar */
+#proditails {
+  display: flex;
+  margin-top: 20px;
+}
+
+#proditails .single-pro-img {
+  width: 40%;
+  margin-right: 70px;
+  margin-left: 150px;
+}
+
+#proditails .single-pro-details {
+  width: 50%;
+  padding-top: 20px;
+}
+
+.MainImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#title {
+  padding-top: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.terugLink {
+  position: absolute;
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  justify-content: left;
+  height: 44px;
+  text-align: center;
+  margin: 50px 0px 10px 15%;
+}
+
+.reserveren-btn {
+  background-color: rgb(244, 162, 10);
+  width: 270px;
+  height: 40px;
+  border-radius: 7px;
+  font-weight: bold;
+}
+
+a {
+  color: #131414;
+}
+
+.verder {
+  color: #131414;
+  font-weight: bold;
+  text-decoration: none;
+}
+.terug {
+  text-decoration: none;
+}
+
+.btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.canon {
+  font-weight: bold;
+}
+.cc {
+  color: gray;
+}
+.main-container {
+  border: solid 1px black;
+  border-radius: 10px;
+  margin-top: 0px;
+  padding: 20px;
+}
+
+.up {
+  padding-top: 50px;
+  margin: 0px;
+}
+.value {
+  height: 25px;
+  width: 35px;
+}
+.num {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20px;
+}
+.aantal {
+  padding-top: 15px;
+  font-weight: bold;
+  padding-left: 20px;
+}
+
+.datumZoekbalk {
+  all: unset;
+  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Modify appearance of Date Range Picker calendar */
 .daterangepicker {
   background-color: #fff; /* Background color */
   border-radius: 5px; /* Border radius */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
-  font-family: Arial, sans-serif; /* Font family */
 }
 
 .daterangepicker .calendar {
@@ -155,18 +147,128 @@
   cursor: not-allowed; /* Cursor style for unavailable dates */
 }
 
+.main-container {
+  padding-left: 50px;
+  /* Increased left padding */
+  padding-right: 50px;
+  /* Increased right padding */
+}
 
-.up-col-1 {
+.card {
+  border-color: transparent;
+  /* Removed border color */
+}
+
+h3.card-title {
+  margin-bottom: 20px;
+}
+
+.card-body {
+  padding: 20px 40px;
+  /* Added padding (20px top and bottom, 40px left) */
+}
+.card-text {
+  text-decoration: underline;
+  color: grey;
+}
+.num {
   display: flex;
-  justify-content: end;
-  width: 40%;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.up-col-2 {
-  width: 20%;
-  text-align: center;
+.input-group {
+  display: flex;
+  align-items: center;
 }
 
-.up-col-3 {
-  width: 40%;
+.aantal {
+  margin-right: 30px;
+  padding-left: 0px;
+  color: gray;
+}
+
+.custom-input {
+  width: 100px;
+}
+
+.maxAantal {
+  margin-top: 5px;
+}
+
+/* Added custom CSS */
+.main-container {
+  padding-left: 50px;
+  /* Increased left padding */
+  padding-right: 50px;
+  /* Increased right padding */
+}
+
+.card {
+  border-color: transparent;
+  /* Removed border color */
+}
+
+.card-body {
+  padding: 20px 40px;
+  /* Added padding (20px top and bottom, 40px left) */
+}
+.card-text {
+  text-decoration: underline;
+  color: grey;
+}
+.num {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.custom-input {
+  width: 100px;
+}
+
+/* Added custom CSS */
+.main-container {
+  padding-left: 50px;
+  /* Increased left padding */
+  padding-right: 50px;
+  /* Increased right padding */
+}
+
+.card {
+  border-color: transparent;
+  /* Removed border color */
+}
+
+.card-body {
+  padding: 20px 40px;
+  /* Added padding (20px top and bottom, 40px left) */
+}
+.card-text {
+  text-decoration: underline;
+  color: grey;
+}
+.num {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.custom-input {
+  width: 100px;
+}
+
+h6 {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
