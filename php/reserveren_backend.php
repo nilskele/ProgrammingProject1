@@ -1,7 +1,6 @@
 <?php
 
 include('../database.php');
-include('../ChromePhp.php');
 
 
 if ($conn->connect_error) {
@@ -12,17 +11,12 @@ mysqli_select_db($conn, '2324PROGPRGR02') or die('Error selecting the database')
 
 session_start();
 
-ChromePhp::log($_GET);
-
 $groep_id = $_GET['groep_id'];
 $startDatum = $_GET['startDatum'];
 $eindDatum = $_GET['eindDatum'];
 $reden = $_GET['reden'];
 $aantal = $_GET['aantal'];
 $user_id = $_SESSION['user_id'];
-
-
-
 
 
 $select_query = "SELECT PRODUCT.product_id
@@ -55,11 +49,9 @@ for ($i = 0; $i < $aantal; $i++) {
     $product_id = $product_ids[$i];
 
 
-    $update_query = "UPDATE PRODUCT SET isUitgeleend = true WHERE product_id = ?";
-
-
+    $update_query = "UPDATE PRODUCT SET isUitgeleend = true, datumBeschikbaar = ? WHERE product_id = ?";
     $update_stmt = $conn->prepare($update_query);
-    $update_stmt->bind_param("s", $product_id);
+    $update_stmt->bind_param("ss", $eindDatum, $product_id);    
     $update_success = $update_stmt->execute();
 
     if (!$update_success) {

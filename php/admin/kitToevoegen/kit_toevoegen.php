@@ -6,6 +6,9 @@
 <?php include("../admin.header.php")?>
 
 <h1>Add kit</h1>
+<div class="terug">
+  <a href="javascript:history.back()" class="terugLink">&#8592 Terug</a>
+</div>
 <form action="../add_kit">
   <div class="container">
     <h1>Kit Toevoegen</h1>

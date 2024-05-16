@@ -3,11 +3,19 @@
 <link rel="stylesheet" href="/ProgrammingProject1/php/admin/inAndOut/css/inandout.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
+<style>
+    .statusImage{
+    width: 7em!important;
+    margin-bottom:1em;
+    
+    
+  }
+</style>
 <?php 
 include("../admin.header.php");
 include('../../../database.php');
 ?>
+
 <div id="overlay" class="overlay"></div>
 
 <!-- Popup -->
