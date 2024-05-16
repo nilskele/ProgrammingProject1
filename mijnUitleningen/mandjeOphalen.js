@@ -203,6 +203,7 @@ function deleteRowFromDatabase(lening_id) {
     success: function (data) {
       if (data.success) {
         console.log(data.message);
+        window.location.reload();
       } else {
         console.error(data.message);
       }
