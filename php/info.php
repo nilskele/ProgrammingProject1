@@ -1,4 +1,6 @@
-<?php include("header.php"); ?>
+<?php
+include('index.header.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,19 +74,19 @@
 
                         <p class="card-text">
 
-                        Maandag: 9:00 - 17:00<br>
+                        Maandag: 12:30 - 17:00<br>
 
-Dinsdag: 9:00 - 17:00<br>
+                        Dinsdag: 09:30 - 12:00  12:30 - 17:00<br>
 
-Woensdag: 9:00 - 17:00<br>
+                        Woensdag: 09:30 - 12:00   12:30 - 17:00<br>
 
-Donderdag: 9:00 - 17:00<br>
+                        Donderdag: 9:30 - 12:30<br>
 
-Vrijdag: 9:00 - 17:00<br>
+                        Vrijdag: 9:03 - 12:30<br>
 
-Zaterdag: 10:00 - 15:00<br>
+                        Zaterdag: Gesloten<br>
 
-Zondag: Gesloten
+                        Zondag: Gesloten<br>
 
                         </p>
 
