@@ -1,4 +1,5 @@
 $(function() {
+    
     // IN AND OUT
     function teLaatTerugGebracht() {
         // Clear existing data
@@ -26,9 +27,13 @@ $(function() {
                         card.setAttribute('data-terugbrengdatum', item.terugbrengDatum); // Set data-lening-id attribute
                         card.setAttribute('data-uitleendatum', item.Uitleendatum); // Set data-lening-id attribute
                         card.setAttribute('data-watdefect', item.watDefect); // Set data-lening-id attribute
-                        card.setAttribute('data-redenDefect', item.redenDefect); // Set data-lening-id attribute
-                        console.log(item.watDefect);
-                        console.log(item.redenDefect);
+                        card.setAttribute('data-redendefect', item.redenDefect); // Set data-lening-id attribute
+                        card.setAttribute('data-image', item.image_data);
+
+
+
+                        
+                        
                         
 
                         
@@ -43,17 +48,16 @@ $(function() {
                                 <a class="defectBtn defectButton" id="defectBtn90" href="">Defect</a>
                             </div>
                             <div class="info">
-                                <h5 class="Naam">${item.voornaam} ${item.achternaam}</h5>
-                                <p>User ID: ${item.user_id}</p>
-                                <p id="accepterenProductID" style="display: none;" value="${item.product_id}"></p>
-                                <p>Product ID: ${item.product_id}</p>
+                                <h5 class="Naam" value="${item.voornaam} ${item.achternaam}">${item.voornaam} ${item.achternaam}</h5>
+                                <p class="userId" value="${item.user_id_fk}">User ID: ${item.user_id_fk}</p>
+                                <p class="accepterenProductID" value="${item.product_id}">Product ID: ${item.product_id}</p>
                             </div>
                             <div class="aantalDagenTelaat2">
-                            <p class="aantalDagenTelaat">Aantal dagen te laat: ${item.daysDifference}</p>
+                            <p class="aantalDagenTelaat" value="${item.image_data}">Aantal dagen te laat: ${item.daysDifference}</p>
                             
                             </div>
                             <div class="moreinfo">
-                                <img class="dots" src="/ProgrammingProject1/images/9025404_dots_three_icon.png" alt="More info image">
+                                <img class="dots"  src="/ProgrammingProject1/images/9025404_dots_three_icon.png" alt="More info image">
                             </div>
                         `;
     
@@ -138,74 +142,90 @@ $(function() {
     });
     
     teLaatTerugGebracht();
+
+    function openPopup() {
+    
+        var overlay = document.getElementById("overlay");
+        overlay.style.display = "block";
+        var popup = document.getElementById("popup");
+        var $this = $(this);
+    
+            // Retrieve the lening_id associated with the clicked row
+        var leningId = $this.closest('.inOutProduct').data('lening-id');
+        var naam = $this.closest('.inOutProduct').find('.Naam').attr('value');
+        var productNr = $this.closest('.inOutProduct').find('.accepterenProductID').attr('value');
+        var userNr = $this.closest('.inOutProduct').find('.userId').attr('value');
+        var terugbrengdatum = $this.closest('.inOutProduct').data('terugbrengdatum');
+        var uitleendatum = $this.closest('.inOutProduct').data('uitleendatum');
+        var watdefect = $this.closest('.inOutProduct').attr('data-watdefect');
+        var redendefect = $this.closest('.inOutProduct').attr('data-redendefect');
+        var image = $this.closest('.inOutProduct').attr('data-image');
+
+        
+        
+        
+        
+    
+    
+    
+    
+        
+    
+      
+        // Construct the popup content with the retrieved data
+        popup.innerHTML = `
+          <div class="popup-content">
+            <span class="closePopup" onclick="closePopup()">&times;</span>
+            <div class="popup_info">
+                <div class="contents">
+
+                    <img class="statusImage" src="data:image/jpeg;base64,${image}">
+               
+                    <h5 class="Naam">${naam}</h5>
+                    <p class="userId">User ID: ${userNr}</p>
+                    <p class="accepterenProductID">Product: ${productNr}</p>
+                    <p>Lening ID: ${leningId}</p>
+                </div>
+              <div>
+                <div class="dates">
+                    <h6 class="aantalDagenTelaat">Uitleendatum: ${uitleendatum}</h6>
+                    
+                    <h6 class="aantalDagenTelaat">Terugbrengdatum: ${terugbrengdatum}</h6>
+                
+                </div>
+                <div class="dates">
+                <p>Wat is er defect: ${watdefect}</p>
+                
+                <p>Hoe is het defect ontstaan: ${redendefect}</p>
+                </div>
+              </div>
+                
+              
+            </div>
+            
+          </div>
+        `;
+      
+        
+        popup.style.display = "block";
+        
+    
+      }
+      $(document).on('click', '.moreinfo', openPopup);
+    
+      
+      function closePopup() {
+        var overlay = document.getElementById("overlay");
+        overlay.style.display = "none";
+        
+        var popup = document.getElementById("popup");
+        popup.style.display = "none";
+        popup.innerHTML = ""; // Clear popup content
+      }
+      $(document).on('click', '.closePopup', closePopup);
 });
 
-function openPopup() {
-    var overlay = document.getElementById("overlay");
-    overlay.style.display = "block";
-    var popup = document.getElementById("popup");
-    var $this = $(this);
-
-        // Retrieve the lening_id associated with the clicked row
-    var leningId = $this.closest('.inOutProduct').data('lening-id');
-    var naam = $this.closest('.inOutProduct').find('.Naam').attr('value');
-    var productNr = $this.closest('.inOutProduct').find('.accepterenProductID').attr('value');
-    var terugbrengdatum = $this.closest('.inOutProduct').data('terugbrengdatum');
-    var uitleendatum = $this.closest('.inOutProduct').data('uitleendatum');
-    var watdefect = $this.closest('.inOutProduct').data('watdefect');
-    var redenDefect = $this.closest('.inOutProduct').data('redenDefect');
 
 
-
-
-    
-
-  
-    // Construct the popup content with the retrieved data
-    popup.innerHTML = `
-      <div class="popup-content">
-        <span class="closePopup" onclick="closePopup()">&times;</span>
-        <div class="popup_info">
-            <div class="contents">
-                <h5 class="Naam">${naam}</h5>
-                <p class="accepterenProductID">Product: ${productNr}</p>
-                <p>Lening ID: ${leningId}</p>
-            </div>
-          <div>
-            <div class="dates">
-                <h6 class="aantalDagenTelaat">Uitleendatum: ${uitleendatum}</h6>
-                
-                <h6 class="aantalDagenTelaat">Terugbrengdatum: ${terugbrengdatum}</h6>
-            
-            </div>
-            <div class="dates">
-                <h6>Wat is er defect?</h6>
-                <p>${watdefect}</p>
-                <h6>Hoe is het defect ontstaan?</h6>
-                <p>${redenDefect}</p>
-            </div>
-          </div>
-            
-          
-        </div>
-        
-      </div>
-    `;
-  
-    
-    popup.style.display = "block";
-  }
-  $(document).on('click', '.moreinfo', openPopup);
-
-  
-  function closePopup() {
-    var overlay = document.getElementById("overlay");
-    overlay.style.display = "none";
-    
-    var popup = document.getElementById("popup");
-    popup.style.display = "none";
-    popup.innerHTML = ""; // Clear popup content
-  }
-  $(document).on('click', '.closePopup', closePopup);
 
     

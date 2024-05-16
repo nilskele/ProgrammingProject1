@@ -9,13 +9,16 @@ include('../../../database.php');
 
     // Query to retrieve rows from MIJN_LENINGEN table with user information
     // First query: filter by Uitleendatum and in_bezit
-    $query1 = "SELECT l.*,ABS(DATEDIFF(l.terugbrengDatum, CURDATE())) AS daysDifference, 'Uitleendatum' AS queryType, u.voornaam, u.achternaam, p.product_id, g.naam, u.email
+    $query1 = "SELECT l.*,i.image_data ,d.watDefect, i.image_data,d.redenDefect, ABS(DATEDIFF(l.terugbrengDatum, CURDATE())) AS daysDifference, 'Uitleendatum' AS queryType, u.voornaam, u.achternaam, p.product_id, g.naam, u.email
                FROM MIJN_LENINGEN l 
                INNER JOIN USER u ON l.user_id_fk = u.user_id
                INNER JOIN PRODUCT p ON l.product_id_fk = p.product_id
                INNER JOIN GROEP g ON p.groep_id = g.groep_id
-               
-               WHERE l.terugbrengDatum < '$currentDate' AND l.isTerugGebracht = False";
+               LEFT JOIN DEFECT d ON l.lening_id = d.lening_id_fk
+               INNER JOIN IMAGE i ON g.image_id_fk =  i.image_id
+               WHERE l.terugbrengDatum < '$currentDate' AND l.isTerugGebracht = False ";
+
+
 
 
     // Execute the first query
@@ -26,6 +29,7 @@ include('../../../database.php');
     if ($result1->num_rows > 0) {
         // Fetch all rows and store them in the array
         while ($row = $result1->fetch_assoc()) {
+            
             $rows3[] = $row;
         }
     }
