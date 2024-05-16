@@ -1,7 +1,7 @@
 <?php
 
 include('../database.php');
-
+include('../ChromePhp.php');
 
 
 if ($conn->connect_error) {
@@ -12,13 +12,16 @@ mysqli_select_db($conn, '2324PROGPRGR02') or die('Error selecting the database')
 
 session_start();
 
-
+ChromePhp::log($_GET);
 
 $groep_id = $_GET['groep_id'];
 $startDatum = $_GET['startDatum'];
 $eindDatum = $_GET['eindDatum'];
 $reden = $_GET['reden'];
+$aantal = $_GET['aantal'];
 $user_id = $_SESSION['user_id'];
+
+
 
 
 

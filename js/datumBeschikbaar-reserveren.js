@@ -98,10 +98,6 @@ $(document).ready(function() {
     dateRangeOptions.maxDate = moment().add(3, "week").toDate();
   }
 
-  if (usertype == "3") {
-    dateRangeOptions.maxDate = moment().add(3, "week").toDate();
-  }
-
   $('input[name="daterange"]').daterangepicker(
     dateRangeOptions,
     function (start, end, label) {
