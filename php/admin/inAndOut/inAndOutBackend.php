@@ -12,11 +12,12 @@ if (isset($_POST['selectedDate'])) {
 
     // Query to retrieve rows from MIJN_LENINGEN table with user information
     // Filter by Uitleendatum and in_bezit
-    $query1 = "SELECT l.*,'Uitleendatum' AS queryType, u.voornaam, u.achternaam, p.product_id, g.naam, u.email
+    $query1 = "SELECT l.*,d.*,'Uitleendatum' AS queryType, u.voornaam, u.achternaam, p.product_id, g.naam, u.email
                FROM MIJN_LENINGEN l 
                INNER JOIN USER u ON l.user_id_fk = u.user_id
                INNER JOIN PRODUCT p ON l.product_id_fk = p.product_id
                INNER JOIN GROEP g ON p.groep_id = g.groep_id
+               INNER JOIN DEFECT d ON l.lening_id = d.lening_id_fk
                WHERE l.Uitleendatum = '$selectedDate' AND l.in_bezit = False";
     
     
@@ -27,11 +28,12 @@ if (isset($_POST['selectedDate'])) {
 
     // Query to retrieve rows from MIJN_LENINGEN table with user information
     // Filter by terugbrengDatum and isTerugGebracht
-    $query2 = "SELECT l.*,'terugbrengDatum' AS queryType, u.voornaam, u.achternaam, p.product_id, g.naam, u.email
+    $query2 = "SELECT l.*,d.*,'terugbrengDatum' AS queryType, u.voornaam, u.achternaam, p.product_id, g.naam, u.email
                FROM MIJN_LENINGEN l 
                INNER JOIN USER u ON l.user_id_fk = u.user_id
                INNER JOIN PRODUCT p ON l.product_id_fk = p.product_id
                INNER JOIN GROEP g ON p.groep_id = g.groep_id
+               INNER JOIN DEFECT d ON l.lening_id = d.lening_id_fk
                WHERE l.terugbrengDatum = '$selectedDate' AND l.isTerugGebracht = 'False'";
 
 
