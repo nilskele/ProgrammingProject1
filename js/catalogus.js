@@ -39,19 +39,6 @@ $(document).ready(function () {
                     <h6 class="aantal">Aantal aanwezig: ${
                       item.aantal_beschikbare_producten
                     }</h6>
-                    <select class="available">
-                    ${(() => {
-                      let optionsHtml = "";
-                      for (
-                        let i = 1;
-                        i <= item.aantal_beschikbare_producten;
-                        i++
-                      ) {
-                        optionsHtml += `<option value="${i}">${i}</option>`;
-                      }
-                      return optionsHtml;
-                    })()}
-                    </select>
                     <a class="btn btn-secondary reserveren-btn" href="reserveren.php" data-groep_id="${item.groep_id}">+<i class="fas fa-shopping-cart"></i></a>
                 </div>
               </div>

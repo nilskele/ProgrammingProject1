@@ -1,9 +1,25 @@
 let aantalBeschikbaarSpan = document.getElementById("aantalBeschikbaar");
 let available = document.getElementById("available");
 let groep_id = localStorage.getItem("groep_id");
-let usertype = localStorage.getItem("usertype");
+let usertype = 0;
+
+
 
 $(document).ready(function() {
+
+  $.ajax({
+    url: "../php/getUser_id.php",
+    type: "GET",
+    dataType: "json",
+    success: function(data) {
+      usertype = data.user_id;
+    },
+    error: function() {
+      alert("Er is een fout opgetreden bij het zoeken.");
+    },
+  })
+
+
   fetch("../mijnUitleningen/waarschuwingenCount.php")
     .then((response) => response.json())
     .then((data) => {
@@ -29,53 +45,88 @@ $(document).ready(function() {
     let startDatum = $('input[name="daterange"]').data('daterangepicker').startDate.format('YYYY-MM-DD');
     let eindDatum = $('input[name="daterange"]').data('daterangepicker').endDate.format('YYYY-MM-DD');
     let aantal = $(".available").val();
-    console.log(reden)
-    console.log(startDatum)
-    console.log(eindDatum)
-    console.log(aantal)
-    console.log(groep_id)
     
-  
-    $.ajax({
-      url: "../php/reserveren_backend.php", 
-      type: "GET",
-      data: {
-        reden: reden,
-        startDatum: startDatum,
-        eindDatum: eindDatum,
-        aantal: aantal,
-        groep_id: groep_id 
-      },
-      dataType: "json",
-      success: function(response) {
-        if (response.success) {
-          Swal.fire({
-            icon: "success",
-            title: "Reservering succesvol",
-            text: "Je reservering is succesvol gemaakt.",
-            confirmButtonText: "Ok",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              window.location.href = "catalogus.php";
+    if (reden == 0) {
+      Swal.fire({
+        icon: "warning",
+        title: "Ongeldige selectie",
+        text: "Je moet een reden invullen.",
+        confirmButtonText: "Ok",
+      });
+      return;
+    }
+
+    if (usertype == 3 && moment(eindDatum).diff(startDatum, 'days') !== 4) {
+      Swal.fire({
+        icon: "warning",
+        title: "Ongeldige selectie",
+        text: "Je kunt maximum 5 dagen selecteren.",
+        confirmButtonText: "Ok",
+      });
+      return;
+    }
+
+    if (aantal == null) {
+      Swal.fire({
+        icon: "warning",
+        title: "Ongeldige selectie",
+        text: "Je moet een aantal selecteren.",
+        confirmButtonText: "Ok",
+      });
+      return;
+    }
+
+    Swal.fire({
+      title: "Bevestiging",
+      text: "Ben je zeker dat je deze reservering wilt maken?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Ja",
+      cancelButtonText: "Nee",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          url: "../php/reserveren_backend.php", 
+          type: "GET",
+          data: {
+            reden: reden,
+            startDatum: startDatum,
+            eindDatum: eindDatum,
+            aantal: aantal,
+            groep_id: groep_id 
+          },
+          dataType: "json",
+          success: function(response) {
+            if (response.success) {
+              Swal.fire({
+                icon: "success",
+                title: "Reservering succesvol",
+                text: "Je reservering is succesvol gemaakt.",
+                confirmButtonText: "Ok",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.href = "catalogus.php";
+                }
+              });
+            } else {
+              console.log(response);
+              Swal.fire({
+                icon: "error",
+                title: "Fout",
+                text: "Er is een fout opgetreden bij het maken van de reservering. Probeer het later opnieuw.",
+                confirmButtonText: "Ok",
+              });
             }
-          });
-        } else {
-          console.log(response);
-          Swal.fire({
-            icon: "error",
-            title: "Fout",
-            text: "Er is een fout opgetreden bij het maken van de reservering. Probeer het later opnieuw.",
-            confirmButtonText: "Ok",
-          });
-        }
-      },
-      error: function() {
-        Swal.fire({
-          icon: "error",
-          title: "Fout",
-          text: "Er is een fout opgetreden bij het maken van de reservering. Probeer het later opnieuw.",
-          confirmButtonText: "Ok",
-        });
+          },
+          error: function() {
+            Swal.fire({
+              icon: "error",
+              title: "Fout",
+              text: "Er is een fout opgetreden bij het maken van de reservering. Probeer het later opnieuw.",
+              confirmButtonText: "Ok",
+            });
+          }
+        }); 
       }
     });
   });
