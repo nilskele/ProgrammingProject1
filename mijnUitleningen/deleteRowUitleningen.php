@@ -13,13 +13,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->begin_transaction();
 
         // Prepare the update query for the product table
-        $update_query = "UPDATE PRODUCT SET isUitgeleend = false WHERE product_id IN (SELECT product_id_fk FROM MIJN_LENINGEN WHERE lening_id = '$lening_id')";
+        $update_product_query = "UPDATE PRODUCT SET isUitgeleend = false, datumBeschikbaar = CURDATE() WHERE product_id IN (SELECT product_id_fk FROM MIJN_LENINGEN WHERE lening_id = '$lening_id')";
 
         // Execute the update query for product table
-        $update_result = $conn->query($update_query);
+        $update_product_result = $conn->query($update_product_query);
 
         // Check if the update query was successful
-        if ($update_result) {
+        if ($update_product_result) {
             // Prepare the delete query for MIJN_LENINGEN table
             $delete_query = "DELETE FROM MIJN_LENINGEN WHERE lening_id = '$lening_id'";
 
