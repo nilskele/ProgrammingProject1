@@ -37,6 +37,7 @@ input {
     border: 1px solid linear-gradient(to left top, rgb(252, 110, 110) 0%/*bottom-right color*/, rgb(255, 255, 255) 50% /*middle color*/, rgb(255, 255, 255) 100% /*top-left color*/);
     border-radius: 10px;
     font-size: 20px;
+    padding: 0.2em;
     
     /* margin tussen input en knop */
 }
