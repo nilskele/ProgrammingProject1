@@ -198,12 +198,12 @@
             <p class="card-text"><?php echo htmlspecialchars($product['merk_naam']); ?>></p>
 
             <select class="reden form-control mb-2">
-              <option>Reden</option>
-              <option>Project</option>
-              <option>Eindproject</option>
-              <option>School</option>
-              <option>Vrije tijd</option>
-              <option>Andere</option>
+              <option value="0" >Reden</option>
+              <option value="1">Project</option>
+              <option value="2" >Eindproject</option>
+              <option value="3" >School</option>
+              <option value="4" >Vrije tijd</option>
+              <option value="5" >Andere</option>
             </select>
             <!-- Available date display -->
             <div class="beschikbaar">
