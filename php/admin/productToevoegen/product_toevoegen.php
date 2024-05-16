@@ -10,9 +10,13 @@
 
 <br>
 <br>
+<div class="terug">
+  <a href="javascript:history.back()" class="terugLink">&#8592 Terug</a>
+</div>
 <form action="../../add_product">
   <div class="container">
     <h1>Product Toevoegen</h1>
+    
     <div class="product_toevoegen">
       <label for="productNaam">Product naam:</label>
       <input type="text" id="productName" name="productName">
