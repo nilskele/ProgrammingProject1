@@ -31,19 +31,20 @@
             <div class="form-group">
                 <label for="reden" class="col-sm-2 col-form-label">Reden:</label>
                 <select class="form-control select" id="reden" name="reden">
-                    <option value="Project">Project</option>
-                    <option value="Eindproject">Eindproject</option>
-                    <option value="School">School</option>
-                    <option value="Vrije_tijd">Vrije tijd</option>
-                    <option value="Andere">Andere</option>
+                <option value="0" >Reden</option>
+                <option value="1">Project</option>
+                <option value="2" >Eindproject</option>
+                <option value="3" >School</option>
+                <option value="4" >Vrije tijd</option>
+                <option value="5" >Andere</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="hoeveel" class="col-sm-2 col-form-label">Hoeveel:</label>
-                <input type="number" class="form-control" id="hoeveel" name="hoeveel" required>
+                <select class="form-control" id="hoeveel" name="hoeveel" required></select> <br>
                 <p class="aantalAanwezig">Aantal aanwezig: <span id="aantalProductenAanwezig"></span></p>
             </div>
-            <button type="submit" class="btn btn-primary">Reserveren</button>
+            <button type="button" class="btn btn-primary" id="reserverenBtn">Reserveren</button>
         </form>
     </div>
 </div>
