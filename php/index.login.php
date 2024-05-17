@@ -16,7 +16,7 @@ if (isset($_POST['inputEmail3']) && isset($_POST['inputPassword3'])) {
 
     if($result->num_rows === 1) {
         $row = $result->fetch_assoc();
-        if(hash('sha256', $plain_password) === $row['passwoord']) {
+        if(password_verify($plain_password, $row['passwoord'])) {
             $_SESSION['email'] = $row['email'];
             $_SESSION['isIngelogd'] = true;
             $_SESSION['user_id'] = $row['user_id'];
