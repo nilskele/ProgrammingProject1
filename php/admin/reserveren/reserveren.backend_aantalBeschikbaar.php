@@ -20,7 +20,7 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     $stmt = $conn->prepare("SELECT COUNT(PRODUCT.product_id) AS aantalBeschikbaar
         FROM GROEP
         INNER JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id
-        WHERE PRODUCT.zichtbaar = true AND PRODUCT.isUitgeleend = false AND PRODUCT.product_id = ? AND PRODUCT.datumBeschikbaar BETWEEN ? AND ?");
+        WHERE PRODUCT.zichtbaar = true AND PRODUCT.isUitgeleend = false AND PRODUCT.product_id = ? AND PRODUCT.datumBeschikbaar < ?");
     
     if ($stmt === false) {
         $response['error'] = "Failed to prepare the SQL statement.";
@@ -28,7 +28,7 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
         exit;
     }
 
-    $stmt->bind_param("sss", $productNr, $startDatum, $eindDatum); 
+    $stmt->bind_param("ss", $productNr, $eindDatum); 
     $stmt->execute();
 
     $resultaten = $stmt->get_result();

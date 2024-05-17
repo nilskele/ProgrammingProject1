@@ -28,9 +28,9 @@ if ($result1->num_rows > 0) {
     $row1 = $result1->fetch_assoc();
     $userId = $row1['user_id'];
 
-    $query2 = "SELECT product_id FROM PRODUCT WHERE product_id = ? AND zichtbaar = true AND isUitgeleend = false AND datumBeschikbaar BETWEEN ? AND ?";
+    $query2 = "SELECT product_id FROM PRODUCT WHERE product_id = ? AND zichtbaar = true AND isUitgeleend = false AND datumBeschikbaar < ?";
     $stmt2 = $conn->prepare($query2);
-    $stmt2->bind_param("sss", $productNr, $startDatum, $eindDatum);
+    $stmt2->bind_param("ss", $productNr, $eindDatum);
     $stmt2->execute();
     $result2 = $stmt2->get_result();
 

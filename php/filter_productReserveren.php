@@ -15,7 +15,7 @@ FROM GROEP
       INNER JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id
       INNER JOIN BESCHRIJVING ON GROEP.beschrijving_id_fk = BESCHRIJVING.besch_id
       INNER JOIN IMAGE ON GROEP.image_id_fk =  IMAGE.image_id
-WHERE PRODUCT.zichtbaar = true AND PRODUCT.isUitgeleend = false AND GROEP.groep_id = ?
+WHERE PRODUCT.zichtbaar = true AND GROEP.groep_id = ?
 GROUP BY GROEP.groep_id, GROEP.naam, MERK.naam, PRODUCT.opmerkingen, BESCHRIJVING.naam, IMAGE.image_data
     ");
 
