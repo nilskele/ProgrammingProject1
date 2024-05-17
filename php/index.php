@@ -43,33 +43,6 @@
         <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank">        <img src="../images/3d-printer_44218.png"  height="400px" alt="3d" />
 </a>
       </div>
-      <button class="btn btn-primary adminbtn" onclick="OpenAdminLogin()">
-        Admin
-      </button>
-
-      <div class="adminLogin" id="AdminLoginDiv">
-        <form action="index.adminLogin.php" class="AdminLoginContainer" id="AdminLoginForm" method="POST">
-          <h1>Admin Login</h1>
-
-          <div class="form-group row">
-            <label for="inputAdminEmail3" class="col-sm-2 col-form-label">Email:</label>
-            <div class="col-sm-10">
-              <input type="email" class="form-control" id="inputAdminEmail3" name="inputEmail3" placeholder="Email">
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label for="inputAdminPassword3" class="col-sm-2 col-form-label">Password:</label>
-            <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputAdminPassword3" name="inputPassword3"
-                placeholder="Password">
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary inloggen">Inloggen</button>
-          <button type="button" class="btn btn-light" class="btn" onclick="CloseAdminLogin()">Terug</button>
-        </form>
-      </div>
-
 
       <form action="index.login.php" class="loginForm" id="loginForm" method="POST">
         <div class="form-group row">

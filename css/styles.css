@@ -124,41 +124,6 @@ a.btn.btn-primary.inloggen {
     z-index: 2;
 }
 
-/* admin */
-
-button.btn-primary.adminbtn {
-    margin: 80px 0 80px 30px;
-    padding: 10px 20px 10px 20px;
-    border-radius: 20px;
-}
-
-button.btn.btn-primary.adminbtn {
-    margin: 90px 0 90px 30px; 
-}
-
-.adminLogin {
-    display: none;
-    position: absolute;
-    top: 35%;
-    left: 35%;
-    border: 4px solid #FF0000;
-    border-radius: 10px;
-    z-index: 3;
-    box-shadow: 0 0 100px black;
-}
-
-.AdminLoginContainer {
-    padding: 30px;
-    background-color: white;
-    width: 600px;
-}
-
-.AdminLoginContainer input[type=text], .form-container input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-  }
-
 /* login form */
 
 .loginForm {
@@ -167,6 +132,7 @@ button.btn.btn-primary.adminbtn {
     width: 50%;
     margin: auto;
     border-radius: 20px;
+    margin-top: 200px;
 }
 
 .form-group {
