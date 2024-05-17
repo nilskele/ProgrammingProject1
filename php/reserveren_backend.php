@@ -22,11 +22,11 @@ $user_id = $_SESSION['user_id'];
 $select_query = "SELECT PRODUCT.product_id
 FROM PRODUCT
          JOIN GROEP ON PRODUCT.groep_id = GROEP.groep_id
-WHERE datumBeschikbaar BETWEEN ? AND ? AND PRODUCT.zichtbaar = true AND PRODUCT.isUitgeleend = false AND GROEP.groep_id = ?";
+WHERE datumBeschikbaar < ? AND PRODUCT.zichtbaar = true AND GROEP.groep_id = ?";
 
 
 $select_stmt = $conn->prepare($select_query);
-$select_stmt->bind_param("sss", $startDatum, $eindDatum, $groep_id);
+$select_stmt->bind_param("ss", $eindDatum, $groep_id);
 $select_stmt->execute();
 $result = $select_stmt->get_result();
 

@@ -15,10 +15,10 @@ $eindDatum = $_GET['eindDatum'];
 $sql = "SELECT COUNT(*) AS aantalBeschikbaar
 FROM PRODUCT
     JOIN GROEP ON PRODUCT.groep_id = GROEP.groep_id
-WHERE datumBeschikbaar BETWEEN ? AND ? AND PRODUCT.zichtbaar = true AND PRODUCT.isUitgeleend = false AND GROEP.groep_id = ?;";
+WHERE datumBeschikbaar < ? AND PRODUCT.zichtbaar = true AND GROEP.groep_id = ?;";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sss", $startDatum, $eindDatum, $groep_id);
+$stmt->bind_param("ss", $eindDatum, $groep_id);
 $stmt->execute();
 
 $result = $stmt->get_result();

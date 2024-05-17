@@ -1,35 +1,102 @@
 .container {
-    margin-top: 40px;
-    height: 700px;
-    padding: 20px;
-    text-align: center;
-    background-color: rgb(181, 181, 181);
+    margin-top: 3em;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    border-radius: 15px;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+    height: 70%;
+    border-radius: 1em;
+    background-color: white;
+    border: 1px solid #cecbcb;
+    box-shadow: #cecbcb 6px 6px;
+    padding-top:5em;
+    padding-bottom:3em;
 }
 
-.gegevens_kit,
-.product_toevoegen,
-.overview_producten {
+.gegevens_kit{
+    margin: 2em;
+    width: 80%; 
+    border-radius: 1em;
+    height: 800px;
+    padding: 1em;
+    background: rgb(236, 232, 232);
+    
+}
+.product_toevoegen {
     margin-bottom: 40px;
-    background-color: grey;
+    background: rgb(237, 232, 232);
     width: 80%; /* Changed width to max-width */
-    border-radius: 10px;
-    height: 150px;
-    padding: 20px; /* Added padding */
-    box-sizing: border-box; /* Include padding and border in the total width */
-    /* margin tussen elke sectie */
+    border-radius: 1em;
+    height: 800px;
+    padding: 1em; /* Added padding */
+    
 }
 
-input,
-button {
-    margin-bottom: 20px;
-    border: 0;
+.gegevens_kit {
+    height: 200px;
+}
+
+input {
+    margin-bottom: 2em;
     border-radius: 10px;
     font-size: 20px;
+    padding: 0.2em;
+    
     /* margin tussen input en knop */
+}
+.submit {
+    background-color: white;
+    color: red;
+    margin-left: 1em !important;
+    margin-right: 1em !important;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    border-radius: 2em;
+    text-decoration: none;
+    border: 2px solid #c4c4c4;
+    transition: 0.3s;
+    margin-bottom: 2em;
+}
+.submit2 {
+    background-color: white;
+    color: red;
+    width: 10em;
+    
+    border-radius: 2em;
+    text-decoration: none;
+    border: 2px solid #c4c4c4;
+    transition: 0.3s;
+    
+}
+.categorieZoekbalk{
+    padding: 0.5em;
+    
+    border: 1px solid red;
+    border-radius: 1em;
+}
+.categorieZoekbalk2{  
+    padding: 0.2em;
+    border: 1px solid red;
+    border-radius: 1em;
+}
+
+.labelcontainers{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    margin: 2em;
+    
+    
+}
+.labelcontainers2{
+    width: 55%;
+    display: flex;
+    justify-content: space-between;
+    margin: 2em;
+    
+    
+}
+#groepinput{
+    margin-right: 1em;
 }
 

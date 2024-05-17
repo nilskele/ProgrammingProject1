@@ -19,7 +19,7 @@ FROM GROEP
       INNER JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id
       INNER JOIN BESCHRIJVING ON GROEP.beschrijving_id_fk = BESCHRIJVING.besch_id
       INNER JOIN IMAGE ON GROEP.image_id_fk =  IMAGE.image_id
-WHERE GROEP.naam LIKE ? AND PRODUCT.zichtbaar = true AND PRODUCT.isUitgeleend = false
+WHERE GROEP.naam LIKE ? AND PRODUCT.zichtbaar = true
 GROUP BY GROEP.groep_id, GROEP.naam, MERK.naam, PRODUCT.opmerkingen, BESCHRIJVING.naam, IMAGE.image_data
 
 UNION
@@ -45,7 +45,6 @@ AND KIT.zichtbaar = true
 AND EXISTS (
  SELECT 1 FROM PRODUCT
  WHERE PRODUCT.groep_id = GROEP.groep_id
-   AND PRODUCT.isUitgeleend = false
    AND PRODUCT.zichtbaar = true
 )
 GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data
@@ -79,7 +78,7 @@ FROM GROEP
       INNER JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id
       INNER JOIN BESCHRIJVING ON GROEP.beschrijving_id_fk = BESCHRIJVING.besch_id
       INNER JOIN IMAGE ON GROEP.image_id_fk =  IMAGE.image_id
-WHERE PRODUCT.zichtbaar = true AND PRODUCT.isUitgeleend = false
+WHERE PRODUCT.zichtbaar = true
 GROUP BY GROEP.groep_id, GROEP.naam, MERK.naam, PRODUCT.opmerkingen, BESCHRIJVING.naam, IMAGE.image_data
 
 UNION
@@ -104,7 +103,6 @@ AND KIT.zichtbaar = true
 AND EXISTS (
  SELECT 1 FROM PRODUCT
  WHERE PRODUCT.groep_id = GROEP.groep_id
-   AND PRODUCT.isUitgeleend = false
    AND PRODUCT.zichtbaar = true
 )
 GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data

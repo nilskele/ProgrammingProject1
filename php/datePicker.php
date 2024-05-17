@@ -16,7 +16,7 @@ FROM GROEP
          INNER JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id
          INNER JOIN BESCHRIJVING ON GROEP.beschrijving_id_fk = BESCHRIJVING.besch_id
          INNER JOIN IMAGE ON GROEP.image_id_fk =  IMAGE.image_id
-WHERE PRODUCT.datumBeschikbaar BETWEEN ? AND ? AND PRODUCT.zichtbaar = true AND PRODUCT.isUitgeleend = false
+WHERE PRODUCT.datumBeschikbaar < ? AND PRODUCT.zichtbaar = true
 GROUP BY GROEP.groep_id, GROEP.naam, MERK.naam, PRODUCT.opmerkingen, BESCHRIJVING.naam, IMAGE.image_data
 
 UNION
@@ -35,11 +35,10 @@ FROM KIT
          LEFT JOIN KIT_PRODUCT ON KIT.kit_id = KIT_PRODUCT.kit_id_fk
          LEFT JOIN GROEP ON KIT_PRODUCT.groep_id_fk = GROEP.groep_id
          JOIN IMAGE ON KIT.image_id_fk = IMAGE.image_id
-WHERE KIT.datumBeschikbaar BETWEEN ? AND ? AND KIT.isUitgeleend = false AND KIT.zichtbaar = true
+WHERE KIT.datumBeschikbaar < ? AND KIT.isUitgeleend = false AND KIT.zichtbaar = true
   AND EXISTS (
     SELECT 1 FROM PRODUCT
     WHERE PRODUCT.groep_id = GROEP.groep_id
-      AND PRODUCT.isUitgeleend = false
       AND PRODUCT.zichtbaar = true
 )
 GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data
@@ -50,7 +49,7 @@ HAVING COUNT(DISTINCT KIT_PRODUCT.groep_id_fk) >= (
 );";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssss", $startDatum, $eindDatum, $startDatum, $eindDatum);
+$stmt->bind_param("ss", $eindDatum , $eindDatum);
 $stmt->execute();
 
 $result = $stmt->get_result();

@@ -1,15 +1,33 @@
+let reserverenbtn = document.getElementById("reserverenbtn");
+let usertype = 0;
+
+let aantalProductenAanwezig = document.getElementById("aantalProductenAanwezig");
+let hoeveel = document.getElementById("hoeveel");
+
 $(function () {
+    $.ajax({
+        url: "/ProgrammingProject1/php/getUser_id.php",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            usertype = data.user_id;
+        },
+        error: function() {
+            alert("Er is een fout opgetreden bij het zoeken.");
+        },
+    });
+
     let dateRangeOptions = {
         opens: "center",
         minDate: moment().toDate(),
         startDate: moment().toDate(),
         isInvalidDate: function (date) {
-        if (date.day() === 6 || date.day() === 0) {
-            return true;
-        }
-        return false;
+            return date.day() === 6 || date.day() === 0;
         },
     };
+
+    let product_id = localStorage.getItem("productNr");
+    let aantalProductenAanwezig = document.getElementById("aantalProductenAanwezig");
 
     $('input[name="daterange"]').daterangepicker(
         dateRangeOptions,
@@ -26,42 +44,143 @@ $(function () {
                 });
                 return;
             }
-        }
-    )
-})
 
-document.addEventListener("DOMContentLoaded", function() {
-    let productNrSpan = document.getElementById("productNrSpan");
-    let productNr = localStorage.getItem("productNr");
-
-    if (productNrSpan) {
-        productNrSpan.innerHTML = "&nbsp;" + productNr;
-    } else {
-        console.error('localstorage productNr niet aanwezig');
-    }
-
-    let aantalProductenAanwezig = document.getElementById("aantalProductenAanwezig");
-
-    if (aantalProductenAanwezig) {
-        $.ajax({
-            url: "/ProgrammingProject1/php/admin/reserveren/reserveren.backend.php",
-            method: "POST",
-            data: {
-                productNr: productNr
-            },
-            success: function(response) {
-                response = JSON.parse(response);
-                if(response.error) {
-                    console.error(response.error);
-                } else {
-                    aantalProductenAanwezig.innerHTML = response[0].aantal_beschikbare_producten;
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
+            if (usertype == "3" && end.diff(start, "days") !== 4) {
+                Swal.fire({
+                    icon: "warning",
+                    title: "Ongeldige selectie",
+                    text: "Je kunt maximum 5 dagen selecteren.",
+                    confirmButtonText: "Ok",
+                });
+                return;
             }
+
+            $.ajax({
+                url: "reserveren.backend_aantalBeschikbaar.php",
+                type: "GET",
+                dataType: "json",
+                data: {
+                    product_id: product_id,
+                    startDatum: startDatum,
+                    eindDatum: eindDatum,
+                },
+                success: function (data) {
+                    if (data.error) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Fout",
+                            text: data.error,
+                            confirmButtonText: "Ok",
+                        });
+                    } else {
+                        aantalProductenAanwezig.innerHTML = data[0].aantalBeschikbaar;
+                        let optionsHTML = "";
+                        for (let i = 1; i <= data[0].aantalBeschikbaar; i++) {
+                            optionsHTML += `<option value="${i}">${i}</option>`;
+                        }
+                        hoeveel.innerHTML = optionsHTML;
+                    }
+                },
+                error: function (xhr, status, error) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Fout",
+                        text: "Er is een fout opgetreden bij het zoeken.(date)",
+                        confirmButtonText: "Ok",
+                    });
+                    console.error(xhr);
+                }
+            });
+        }
+    );
+});
+
+$("#reserverenBtn").click(function() {
+    let productNr = localStorage.getItem("productNr");
+    let startDatum = $('input[name="daterange"]').data('daterangepicker').startDate.format('YYYY-MM-DD');
+    let eindDatum = $('input[name="daterange"]').data('daterangepicker').endDate.format('YYYY-MM-DD');
+    let reden = document.getElementById("reden").value;
+    let aantal = document.getElementById("hoeveel").value;
+    let email = document.getElementById("email").value;
+
+    if (email === "") {
+        Swal.fire({
+            icon: "warning",
+            title: "Ongeldige selectie",
+            text: "Je moet een email invullen.",
+            confirmButtonText: "Ok",
         });
-    } else {
-        console.error('aantalProductenAanwezig niet aanwezig');
+        return;
     }
+
+    if (reden === "0") {
+        Swal.fire({
+            icon: "warning",
+            title: "Ongeldige selectie",
+            text: "Je moet een reden invullen.",
+            confirmButtonText: "Ok",
+        });
+        return;
+    }
+
+    if (aantal === "0") {
+        Swal.fire({
+            icon: "warning",
+            title: "Ongeldige selectie",
+            text: "Je moet een aantal invullen.",
+            confirmButtonText: "Ok",
+        });
+        return;
+    }
+
+    Swal.fire({
+        icon: "info",
+        title: "Bevestiging",
+        text: "Wil je deze reservatie bevestigen?",
+        showCancelButton: true,
+        confirmButtonText: "Ja",
+        cancelButtonText: "Nee",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "reserveren.backend.php",
+                method: "GET",
+                data: {
+                    productNr: productNr,
+                    startDatum: startDatum,
+                    eindDatum: eindDatum,
+                    reden: reden,
+                    email: email,
+                    aantal: aantal,
+                },
+                dataType: "json",
+                success: function(response) {
+                    if(response.error) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Reserveren mislukt",
+                            text: response.error,
+                            confirmButtonText: "Ok",
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Reserveren gelukt",
+                            text: "Je reservatie is succesvol opgeslagen.",
+                            confirmButtonText: "Ok",
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Fout",
+                        text: "Er is een fout opgetreden bij het reserveren.",
+                        confirmButtonText: "Ok",
+                    });
+                    console.error("Error details:", xhr.responseText);
+                }
+            }); 
+        }
+    });
 });

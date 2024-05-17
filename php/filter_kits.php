@@ -25,7 +25,6 @@ AND KIT.zichtbaar = true
 AND EXISTS (
  SELECT 1 FROM PRODUCT
  WHERE PRODUCT.groep_id = GROEP.groep_id
-   AND PRODUCT.isUitgeleend = false
    AND PRODUCT.zichtbaar = true
 )
 GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data

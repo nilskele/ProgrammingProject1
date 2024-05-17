@@ -13,16 +13,28 @@
   <div class="container">
     <h1>Kit Toevoegen</h1>
     <div class="gegevens_kit">
-      <label for="kitNaam">Kit naam:</label>
-      <input type="text" id="kitNaam" name="kitNaam"><br>
-      <label for="kitNr">Kit nummer:</label>
-      <input type="text" id="kitNr" name="kitNr"><br>
+      <div class="labelcontainers">
+        <div>
+          <label for="kitNaam">Kit naam:</label>
+          <input type="text" id="kitNaam" name="kitNaam">
+        </div>
+        <div>
+          <label for="kitNr">Kit nummer:</label>
+          <input type="text" id="kitNr" name="kitNr">
+        </div>
+        
+      </div>
+      
     </div>
 
-    <div class="product_toevoegen">
-      <label for="groepNr">Groep nummer product:</label>
-      <input type="text" id="groepNr" name="groepNr"><br>
-      <button type="button" onclick="searchItem()">Product toevoegen</button>
+    <div class="product_toevoegen ">
+      <div class="labelcontainers2">
+      <label  for="groepNr">Groep nummer product:</label>
+      <div style="display:flex;, flex-direction:row;">
+      <input id="groepinput" type="text" id="groepNr" name="groepNr"><br>
+        <button class="submit2" type="button" onclick="searchItem()">Product toevoegen</button>
+      </div> 
+      </div>
     </div>
 
     <div class="overview_producten">
@@ -32,7 +44,8 @@
         <p>Geen producten geselecteerd</p>
       </div>
     </div>
-    <button type="submit">Kit toevoegen</button>
+    <button class="submit" type="submit">Kit toevoegen</button>
+    
   </div>
-
+  
 </form>

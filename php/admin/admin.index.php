@@ -48,7 +48,7 @@ include('../../database.php');
         <a class="defectBtn" id="defectBtn">
           defect
         </a>
-        <a href="reserveren/reserveren.php">
+        <a>
           <button class="reserverenBtn" id="reserverenButtonProduct">
             reserveren
           </button>
