@@ -79,6 +79,8 @@ https://stackoverflow.com/questions/41391862/how-to-access-php-session-variable-
 https://stackoverflow.com/questions/23740548/how-do-i-pass-variables-and-data-from-php-to-javascript<br>
 https://dev.to/enygma/keeping-credentials-secure-in-php-1mgo<br>
 https://www.w3schools.com/howto/howto_js_scroll_to_top.asp<br>
+https://symfony.com/doc/current/mailer.html<br>
+https://mailtrap.io/blog/php-email-sending/#How-to-send-emails-using-Symfony-Mailer<br>
 <br>
 <br>
 

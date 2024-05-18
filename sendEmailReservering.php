@@ -81,23 +81,62 @@ $email = (new Email())
     ->from($smtpUsername)
     ->to($Email)
     ->subject('Bevestiging van je reservering')
-    ->text("
-Beste gebruiker,
+    ->html("
+   <!DOCTYPE html>
+    <html lang='en'>
+    <head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Bevestiging van je reservering</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
 
-Je reservering is succesvol gemaakt.
+        .a_img {
+            width: 100px;
+        }
+    </style>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>Beste gebruiker,</h1>
+            <p>Je reservering is succesvol gemaakt.</p>
+            <h2>Details:</h2>
+            <ul>
+                <li><strong>Startdatum:</strong> $startDatum</li>
+                <li><strong>Einddatum:</strong> $eindDatum</li>
+                <li><strong>Reden:</strong> $reden</li>
+                <li><strong>Aantal:</strong> $aantal</li>
+                <li><strong>Groep:</strong> $groepNaam</li>
+            </ul>
+            <p>Bedankt voor je reservering.</p>
+            <p>Met vriendelijke groet,
+            <br>EHB</p>
+            <a class='a_img' href='https://ibb.co/GQ4ptZj'><img class='ehb_img' src='https://i.ibb.co/hFJ9ZGv/Eh-B-logo-transparant.png' alt='Eh-B-logo-transparant' border='0'></a>
+        </div>
+    </body>
+    </html>
+    ");
 
-Details:
-Startdatum: $startDatum
-Einddatum: $eindDatum
-Reden: $reden
-Aantal: $aantal
-Product: $groepNaam
-
-Bedankt voor je reservering.
-
-Met vriendelijke groet, 
-EHB
-");
 
 try {
     $mailer->send($email);

@@ -1,24 +1,10 @@
 let aantalBeschikbaarSpan = document.getElementById("aantalBeschikbaar");
 let available = document.getElementById("available");
 let groep_id = localStorage.getItem("groep_id");
-let usertype = 0;
 
 
 
 $(document).ready(function() {
-
-  $.ajax({
-    url: "../php/getUser_id.php",
-    type: "GET",
-    dataType: "json",
-    success: function(data) {
-      usertype = data.user_id;
-    },
-    error: function() {
-      alert("Er is een fout opgetreden bij het zoeken.");
-    },
-  })
-
 
   fetch("../mijnUitleningen/waarschuwingenCount.php")
     .then((response) => response.json())

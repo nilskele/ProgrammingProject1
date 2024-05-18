@@ -100,6 +100,12 @@
 </div>
 <!-- Script for date range picker -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<?php
+    $user_type = $_SESSION['user_type'];
+    ?>
+  <script type="text/javascript">
+  let usertype = '<?php echo $user_type; ?>';
+  </script>
 <script src="../js/datumBeschikbaar-reserveren.js"></script>
 </body>
 </html>
