@@ -97,6 +97,25 @@ $(document).ready(function() {
           },
           dataType: "json",
           success: function(response) {
+            $.ajax({
+              url: "../sendEmailReservering.php",
+              type: "GET",
+              data: {
+                reden: reden,
+                startDatum: startDatum,
+                eindDatum: eindDatum,
+                aantal: aantal,
+                groep_id: groep_id 
+              },
+              dataType: "json",
+              success: function(response) {
+                console.log(response);
+              },
+              error: function() {
+                console.log("Er is een fout opgetreden bij het sturen van de email.");
+              }
+            })
+
             if (response.success) {
               Swal.fire({
                 icon: "success",
