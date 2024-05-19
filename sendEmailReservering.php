@@ -112,7 +112,7 @@ $email = (new Email())
         }
 
         .a_img {
-            width: 100px;
+            width: 30px;
         }
     </style>
     </head>

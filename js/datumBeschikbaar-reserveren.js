@@ -1,6 +1,7 @@
 let aantalBeschikbaarSpan = document.getElementById("aantalBeschikbaar");
 let available = document.getElementById("available");
 let groep_id = localStorage.getItem("groep_id");
+let isKit = localStorage.getItem("isKit");
 
 
 
@@ -185,11 +186,12 @@ $(document).ready(function() {
         type: "GET",
         dataType: "json",
         data: {
+          isKit: isKit,
           groep_id: groep_id,
           startDatum: startDatum,
           eindDatum: eindDatum,
         },
-        success: function (data) {
+        success: function (data) { 
           aantalBeschikbaarSpan.innerHTML = data[0].aantalBeschikbaar;
           let optionsHTML = "";
           for (let i = 1; i <= data[0].aantalBeschikbaar; i++) {

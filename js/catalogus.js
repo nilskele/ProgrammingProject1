@@ -39,7 +39,7 @@ $(document).ready(function () {
                     <h6 class="aantal">Aantal aanwezig: ${
                       item.aantal_beschikbare_producten
                     }</h6>
-                    <a class="btn btn-secondary reserveren-btn" href="reserveren.php" data-groep_id="${item.groep_id}">+<i class="fas fa-shopping-cart"></i></a>
+                    <a class="btn btn-secondary reserveren-btn" href="reserveren.php" data-groep_id="${item.groep_id}" data-iskit="${item.isKit}">+<i class="fas fa-shopping-cart"></i></a>
                 </div>
               </div>
             </div>
@@ -55,12 +55,16 @@ $(document).ready(function () {
     $(".aantalResultaten").text(aantalResultaten);
   }
   $(document).on('click', '.reserveren-btn', function (e) {
-    e.preventDefault(); // Stop the default link behavior
+    e.preventDefault();
     var groepID = $(this).data('groep_id');
+    let isKit = $(this).data('iskit');
+
     localStorage.setItem('groep_id', groepID);
+    localStorage.setItem('isKit', isKit);
+
     var baseUrl = $(this).attr('href');
-    var newUrl = baseUrl + '?groep_id=' + groepID;
-    // Redirect to the newly constructed URL
+    var newUrl = baseUrl + '?groep_id=' + groepID + '&isKit=' + isKit;
+    console.log(newUrl);
     window.location.href = newUrl;
   });
 
