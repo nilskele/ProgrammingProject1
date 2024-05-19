@@ -1,5 +1,6 @@
 <?php
 include('../database.php');
+include('../ChromePhp.php');
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -17,26 +18,32 @@ if ($isKit == 1) {
     (SELECT COUNT(*)
      FROM GROEP
               JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id
-     WHERE PRODUCT.isUitgeleend = false and PRODUCT.zichtbaar = true
+     WHERE PRODUCT.isUitgeleend = false
+       AND PRODUCT.zichtbaar = true
+       AND PRODUCT.datumBeschikbaar < ?
      GROUP BY GROEP.groep_id
      ORDER BY COUNT(*) asc
      limit 1) AS aantalBeschikbaar
 FROM KIT
-      JOIN MERK ON KIT.merk_fk = MERK.merk_id
-      LEFT JOIN KIT_PRODUCT ON KIT.kit_id = KIT_PRODUCT.kit_id_fk
-      LEFT JOIN GROEP ON KIT_PRODUCT.groep_id_fk = GROEP.groep_id
-      JOIN IMAGE ON KIT.image_id_fk = IMAGE.image_id
-WHERE KIT.datumBeschikbaar <= ? AND KIT.isUitgeleend = false AND KIT.zichtbaar = true AND KIT.kit_id = ?
-AND EXISTS (
- SELECT 1 FROM PRODUCT
- WHERE PRODUCT.groep_id = GROEP.groep_id
-   AND PRODUCT.zichtbaar = true
+         JOIN MERK ON KIT.merk_fk = MERK.merk_id
+         LEFT JOIN KIT_PRODUCT ON KIT.kit_id = KIT_PRODUCT.kit_id_fk
+         LEFT JOIN GROEP ON KIT_PRODUCT.groep_id_fk = GROEP.groep_id
+         JOIN IMAGE ON KIT.image_id_fk = IMAGE.image_id
+WHERE KIT.datumBeschikbaar < ?
+  AND KIT.zichtbaar = true
+  AND KIT.kit_id = ?
+  AND EXISTS (
+    SELECT 1 FROM PRODUCT
+    WHERE PRODUCT.groep_id = GROEP.groep_id
+      AND PRODUCT.zichtbaar = true
+      AND PRODUCT.isUitgeleend = false
+      AND PRODUCT.datumBeschikbaar < ?
 )
 GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data
 HAVING COUNT(DISTINCT KIT_PRODUCT.groep_id_fk) >= (
- SELECT COUNT(*)
- FROM KIT_PRODUCT
- WHERE KIT_PRODUCT.kit_id_fk = KIT.kit_id
+    SELECT COUNT(*)
+    FROM KIT_PRODUCT
+    WHERE KIT_PRODUCT.kit_id_fk = KIT.kit_id
 );";
 } else {
     $sql = "SELECT COUNT(*) AS aantalBeschikbaar
@@ -49,7 +56,7 @@ $stmt = $conn->prepare($sql);
 if (!$stmt) {
     die("Prepare failed: " . $conn->error);
 }
-$stmt->bind_param("ss", $eindDatum, $groep_id);
+$stmt->bind_param("ssss",$eindDatum, $eindDatum ,$groep_id, $eindDatum);
 if (!$stmt->execute()) {
     die("Execute failed: " . $stmt->error);
 }

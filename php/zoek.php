@@ -28,7 +28,7 @@ SELECT KIT.kit_id, KIT.kit_naam, MERK.naam AS merk_naam, KIT.opmerkingen, GROUP_
     (SELECT COUNT(*)
      FROM GROEP
               JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id
-     WHERE PRODUCT.isUitgeleend = false and PRODUCT.zichtbaar = true
+     WHERE PRODUCT.zichtbaar = true
      GROUP BY GROEP.groep_id
      ORDER BY COUNT(*) asc
      limit 1) AS aantal_beschikbare_producten,
@@ -40,7 +40,6 @@ FROM KIT
       LEFT JOIN GROEP ON KIT_PRODUCT.groep_id_fk = GROEP.groep_id
       LEFT JOIN IMAGE ON KIT.image_id_fk = IMAGE.image_id
 WHERE kit_naam LIKE ? 
-AND KIT.isUitgeleend = false
 AND KIT.zichtbaar = true
 AND EXISTS (
  SELECT 1 FROM PRODUCT
@@ -87,7 +86,7 @@ SELECT KIT.kit_id, KIT.kit_naam, MERK.naam AS merk_naam, KIT.opmerkingen, GROUP_
     (SELECT COUNT(*)
      FROM GROEP
               JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id
-     WHERE PRODUCT.isUitgeleend = false and PRODUCT.zichtbaar = true
+     WHERE PRODUCT.zichtbaar = true
      GROUP BY GROEP.groep_id
      ORDER BY COUNT(*) asc
      limit 1) AS aantal_beschikbare_producten,
@@ -98,8 +97,7 @@ FROM KIT
       LEFT JOIN KIT_PRODUCT ON KIT.kit_id = KIT_PRODUCT.kit_id_fk
       LEFT JOIN GROEP ON KIT_PRODUCT.groep_id_fk = GROEP.groep_id
       LEFT JOIN IMAGE ON KIT.image_id_fk = IMAGE.image_id
-WHERE KIT.isUitgeleend = false
-AND KIT.zichtbaar = true
+WHERE KIT.zichtbaar = true
 AND EXISTS (
  SELECT 1 FROM PRODUCT
  WHERE PRODUCT.groep_id = GROEP.groep_id

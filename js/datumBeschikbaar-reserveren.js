@@ -76,6 +76,7 @@ $(document).ready(function() {
           url: "../php/reserveren_backend.php", 
           type: "GET",
           data: {
+            isKit: isKit,
             reden: reden,
             startDatum: startDatum,
             eindDatum: eindDatum,
@@ -111,7 +112,7 @@ $(document).ready(function() {
                 confirmButtonText: "Ok",
               }).then((result) => {
                 if (result.isConfirmed) {
-                  window.location.href = "catalogus.php";
+                  // window.location.href = "catalogus.php";
                 }
               });
             } else {
@@ -124,7 +125,8 @@ $(document).ready(function() {
               });
             }
           },
-          error: function() {
+          error: function(response) {
+            console.log(response);
             Swal.fire({
               icon: "error",
               title: "Fout",
@@ -192,6 +194,31 @@ $(document).ready(function() {
           eindDatum: eindDatum,
         },
         success: function (data) { 
+          console.log(data);
+          if (data == 0) {
+            Swal.fire({
+              icon: "warning",
+              title: "Ongeldige selectie",
+              text: "Er zijn geen items beschikbaar voor deze periode.",
+              confirmButtonText: "Ok",
+            });
+            aantalBeschikbaarSpan.innerHTML = 0;
+            let optionsHTML = "";
+            available.innerHTML = optionsHTML;
+            return;
+          } 
+          if (data[0].aantalBeschikbaar == 0) {
+            Swal.fire({
+              icon: "warning",
+              title: "Ongeldige selectie",
+              text: "Er zijn geen items beschikbaar voor deze periode.",
+              confirmButtonText: "Ok",
+            });
+            aantalBeschikbaarSpan.innerHTML = 0;
+            let optionsHTML = "";
+            available.innerHTML = optionsHTML;
+            return;
+          }
           aantalBeschikbaarSpan.innerHTML = data[0].aantalBeschikbaar;
           let optionsHTML = "";
           for (let i = 1; i <= data[0].aantalBeschikbaar; i++) {
@@ -201,6 +228,7 @@ $(document).ready(function() {
       },
       
         error: function (data) {
+          console.log(data);
           alert("Er is een fout opgetreden bij het zoeken.(date)");
         },
       });
