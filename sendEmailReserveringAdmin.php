@@ -8,8 +8,6 @@ use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 use Symfony\Component\Mime\Email;
 
-session_start();
-
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/');
 $dotenv->load();
 
@@ -27,20 +25,24 @@ $reden = $_GET['reden'];
 $startDatum = $_GET['startDatum'];
 $eindDatum = $_GET['eindDatum'];
 $aantal = $_GET['aantal'];
-$groep_id = $_GET['groep_id'];
+$product_id = $_GET['productNr'];
+$Email = $_GET['email'];
 
 
-$query = "SELECT naam FROM GROEP WHERE groep_id = ?";
+$query = "SELECT GROEP.naam
+FROM PRODUCT
+JOIN GROEP ON PRODUCT.groep_id = GROEP.groep_id
+WHERE product_id LIKE ?";
 $stmt = $conn->prepare($query); 
-$stmt->bind_param("s", $groep_id); 
+$stmt->bind_param("s", $product_id); 
 $stmt->execute(); 
 $result = $stmt->get_result(); 
 
 
 if ($result) {
     $row = $result->fetch_assoc();
-    $groepNaam = $row['naam']; 
-    error_log("Groep: " . $groepNaam); 
+    $productNaam = $row['naam']; 
+    error_log("Groep: " . $productNaam); 
 } else {
     error_log("Fout bij het uitvoeren van de query: " . $conn->error);
 }
@@ -60,8 +62,6 @@ if ($result2) {
 } else {
     error_log("Fout bij het uitvoeren van de query: " . $conn->error);
 }
-
-$Email = $_SESSION['email'];
 
 
 $transport = (new Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport
@@ -120,7 +120,7 @@ $email = (new Email())
                 <li><strong>Einddatum:</strong> $eindDatum</li>
                 <li><strong>Reden:</strong> $reden</li>
                 <li><strong>Aantal:</strong> $aantal</li>
-                <li><strong>Product:</strong> $groepNaam</li>
+                <li><strong>Product:</strong> $productNaam</li>
             </ul>
             <p>Bedankt voor je reservering.</p>
             <p>Met vriendelijke groet,

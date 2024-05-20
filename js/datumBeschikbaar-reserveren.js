@@ -112,7 +112,7 @@ $(document).ready(function() {
                 confirmButtonText: "Ok",
               }).then((result) => {
                 if (result.isConfirmed) {
-                  // window.location.href = "catalogus.php";
+                  window.location.href = "catalogus.php";
                 }
               });
             } else {

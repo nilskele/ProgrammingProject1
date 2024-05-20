@@ -155,6 +155,27 @@ $("#reserverenBtn").click(function() {
                 },
                 dataType: "json",
                 success: function(response) {
+                    $.ajax({
+                        url: "../../../sendEmailReserveringAdmin.php",
+                        method: "GET",
+                        data: {
+                            productNr: productNr,
+                            startDatum: startDatum,
+                            eindDatum: eindDatum,
+                            reden: reden,
+                            email: email,
+                            aantal: aantal,
+                        },
+                        dataType: "json",
+                        success: function(response) {
+                            console.log(response);
+                        },
+                        error: function() {
+                            console.log("Er is een fout opgetreden bij het sturen van de email.");
+                        }
+                    })
+
+
                     if(response.error) {
                         Swal.fire({
                             icon: "error",
