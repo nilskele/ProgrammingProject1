@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.accepterenKitContainer {
+    margin-top: 150px;
+    height: 700px;
+    background-color: #D9D9D9;
+    box-shadow: 5px 5px 5px #888888;  
+    border-radius: 20px;
+}
+
+.titelContainer {
+    display: flex;
+    height: 100px;
+    padding: 20px;
+}
+
+.naamKit {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    margin: auto 0;   
+}
+
+.idKitTitel {
+    margin-left: 20px;
+}
+
+
+
+
+.accepterenFooter {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.aantalProductenBinnen {
+    margin-top: 20px;
+}
