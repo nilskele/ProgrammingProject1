@@ -58,16 +58,16 @@ include('../../database.php');
     <div class="adminAccepteren">
       <div class="productNr">
         <h1>Kit Nr.</h1>
-        <input type="text" class="form-control" id="inputName3" placeholder="kit nr" />
+        <input type="text" class="form-control" id="KitNrInput" placeholder="kit nr" />
       </div>
       <div class="knoppen">
-        <a id="acceptBtn" class="accepterenBtn">
+        <a id="acceptBtnKit" class="accepterenBtnKit">
           accepteren
         </a>
-        <a href="inAndOut/defectProduct.php" class="defectBtnAccepteren">
+        <a href="inAndOut/defectKit.php" class="defectBtnAccepteren" id="defectBtnKit">
           defect
         </a>
-        <a class="reserverenBtn">
+        <a href="inAndOut/reserverenKit.php" class="reserverenBtn" id="reserverenBtnKit">
           reserveren
         </a>
       </div>
