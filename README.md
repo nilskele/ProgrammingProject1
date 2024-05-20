@@ -12,6 +12,7 @@ Gebruikt gemaakt van:<br>
 <br>Sweetalert: https://sweetalert.js.org/guides/
 <br>Bootstrap: https://getbootstrap.com/
 <br>vlucas/PHP dotenv: https://github.com/vlucas/phpdotenv?tab=readme-ov-file
+<br>Symfony Mailer: https://symfony.com/doc/current/mailer.html
 
 
 
