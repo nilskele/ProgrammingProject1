@@ -83,9 +83,8 @@ https://www.w3schools.com/howto/howto_js_scroll_to_top.asp<br>
 https://symfony.com/doc/current/mailer.html<br>
 https://mailtrap.io/blog/php-email-sending/#How-to-send-emails-using-Symfony-Mailer<br>
 <br>
-<br>
 
-Lucas:
+Lucas:<br>
 https://chat.openai.com/share/8e8c51f8-d417-48ab-bab4-abe07de601da <br>
 [https://www.youtube.com/watch?v=SgynWhEgvlw](https://www.youtube.com/watch?v=SgynWhEgvlw <br>
 https://stackoverflow.com/questions/24739126/scroll-to-a-specific-element-using-html <br>
@@ -93,9 +92,8 @@ https://www.youtube.com/watch?v=v-y3B91Fhiw<br>
 https://chat.openai.com/share/f48b379f-73c4-4449-9596-b3476a4d8bf3<br>
 https://stackoverflow.com/questions/46743882/pass-result-of-sql-query-from-php-to-javascript-array<br>
 <br>
-<br>
 
-Weiam:
+Weiam:<br>
 https://youtu.be/yQimoqo0-7g?si=ovJUMtBwCWlU_kjh<br>
 https://youtu.be/ZBgTzx46B8s?si=BG3xPXQg9RiPL7qP<br>
 https://chat.openai.com/share/ed202594-ebc5-487b-ae79-a46f6ec4e197<br>
@@ -104,9 +102,8 @@ https://chat.openai.com/share/9f0a3b29-9770-4aee-a30a-259d6a64e3b1<br>
 https://chat.openai.com/share/d178c3b0-14d3-4a51-957c-81da2c28c649<br>
 https://www.daterangepicker.com/#config<br>
 <br>
-<br>
 
-Samia:
+Samia:<br>
 https://chat.openai.com/c/599204ef-1fc4-4cb8-9bda-229b001d5762<br>
 https://www.w3schools.com/css/default.asp<br>
 https://getbootstrap.com/docs/4.0/components/card/<br>
