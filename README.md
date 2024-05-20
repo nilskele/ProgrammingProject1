@@ -1,11 +1,8 @@
 # ProgrammingProject
-Whoever wrote this is a genius! 
-<br>
-<br>
 https://github.com/Ileriayo/markdown-badges
 <br>
-<br>
-Gebruikt gemaakt van:<br>
+<h3>Gebruikt gemaakt van:</h3>
+
 ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white) ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) ![Apache](https://img.shields.io/badge/apache-%23D42029.svg?style=for-the-badge&logo=apache&logoColor=white)
 <br>
 <br>Datepicker: https://retype.com/?from=datepicker.com 
@@ -13,15 +10,10 @@ Gebruikt gemaakt van:<br>
 <br>Bootstrap: https://getbootstrap.com/
 <br>vlucas/PHP dotenv: https://github.com/vlucas/phpdotenv?tab=readme-ov-file
 <br>Symfony Mailer: https://symfony.com/doc/current/mailer.html
-
-
-
 <br>
 
 ![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white) ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white) ![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white) ![W3schools](https://img.shields.io/badge/W3Schools-04AA6D?style=for-the-badge&logo=W3Schools&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
-<br>
-<br>
-Gust: <br>
+## Gust:
 Github Copilot <br>
 https://chat.openai.com/share/7bf0bb43-e63d-4799-be61-42fc6aa0cf1f<br>
 https://chat.openai.com/share/c7cb2562-9d44-47f3-84b2-6a55218c64e2<br>
@@ -49,7 +41,7 @@ https://chat.openai.com/share/3ea7f502-26e1-479c-935f-fd81399840c4<br>
 https://chat.openai.com/share/06ef04eb-6224-430e-9c58-a404dd031a4b<br>
 <br>
 <br>
-Nils: <br>
+## Nils:
 Github Copilot <br>
 https://chat.openai.com/share/73994dc4-b488-40a5-aac4-ee6dcb2238f9<br>
 https://www.youtube.com/watch?v=gy6LY0Xy2zU&t=388s<br>
@@ -59,7 +51,7 @@ https://chat.openai.com/share/bc1fc5a1-6348-4e74-8387-4346ec50cfb9<br>
 https://chat.openai.com/share/40671b2c-bd71-4d43-a342-65fd363f31f0
 <br>
 <br>
-Jente: <br>
+## Jente:
 Github Copilot <br>
 https://chat.openai.com/share/7e954263-4c5a-4ba2-ba28-d7a74d6596b5<br>
 https://chat.openai.com/share/7be44488-de03-4696-b952-572112f61830<br>
@@ -84,7 +76,7 @@ https://symfony.com/doc/current/mailer.html<br>
 https://mailtrap.io/blog/php-email-sending/#How-to-send-emails-using-Symfony-Mailer<br>
 <br>
 
-Lucas:<br>
+## Lucas:
 https://chat.openai.com/share/8e8c51f8-d417-48ab-bab4-abe07de601da <br>
 [https://www.youtube.com/watch?v=SgynWhEgvlw](https://www.youtube.com/watch?v=SgynWhEgvlw <br>
 https://stackoverflow.com/questions/24739126/scroll-to-a-specific-element-using-html <br>
@@ -93,7 +85,7 @@ https://chat.openai.com/share/f48b379f-73c4-4449-9596-b3476a4d8bf3<br>
 https://stackoverflow.com/questions/46743882/pass-result-of-sql-query-from-php-to-javascript-array<br>
 <br>
 
-Weiam:<br>
+## Weiam:
 https://youtu.be/yQimoqo0-7g?si=ovJUMtBwCWlU_kjh<br>
 https://youtu.be/ZBgTzx46B8s?si=BG3xPXQg9RiPL7qP<br>
 https://chat.openai.com/share/ed202594-ebc5-487b-ae79-a46f6ec4e197<br>
@@ -103,7 +95,7 @@ https://chat.openai.com/share/d178c3b0-14d3-4a51-957c-81da2c28c649<br>
 https://www.daterangepicker.com/#config<br>
 <br>
 
-Samia:<br>
+## Samia:
 https://chat.openai.com/c/599204ef-1fc4-4cb8-9bda-229b001d5762<br>
 https://www.w3schools.com/css/default.asp<br>
 https://getbootstrap.com/docs/4.0/components/card/<br>
