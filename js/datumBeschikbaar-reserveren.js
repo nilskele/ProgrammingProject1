@@ -89,6 +89,7 @@ $(document).ready(function() {
               url: "../sendEmailReservering.php",
               type: "GET",
               data: {
+                isKit: isKit,
                 reden: reden,
                 startDatum: startDatum,
                 eindDatum: eindDatum,
