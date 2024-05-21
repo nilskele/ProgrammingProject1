@@ -63,6 +63,11 @@ button.btn.defectBtnKit {
     transition: 0.3s;
 }
 
+button.btn.defectBtnKit:hover {
+    background-color: #818181;
+    color: white;
+}
+
 .product {
     display: flex;
     width: 100%;

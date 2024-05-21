@@ -10,7 +10,7 @@ $KitNr = $_GET['KitNr'];
 
 $response = [];
 
-$query = "SELECT product_id_fk, MIJN_LENINGEN.kit_id_fk, kit_naam, GROEP.naam, image_data, email, voornaam, achternaam
+$query = "SELECT product_id_fk, MIJN_LENINGEN.kit_id_fk, kit_naam, GROEP.naam, image_data, email, voornaam, achternaam, lening_id,  (SELECT COUNT(*) FROM KIT_PRODUCT WHERE KIT_PRODUCT.kit_id_fk = ?) AS aantalProducten
 FROM MIJN_LENINGEN
     JOIN PRODUCT ON MIJN_LENINGEN.product_id_fk = PRODUCT.product_id
     JOIN GROEP ON PRODUCT.groep_id = GROEP.groep_id
@@ -19,10 +19,9 @@ FROM MIJN_LENINGEN
     JOIN KIT_PRODUCT ON GROEP.groep_id = KIT_PRODUCT.groep_id_fk
     JOIN KIT ON KIT_PRODUCT.kit_id_fk = KIT.kit_id
 WHERE MIJN_LENINGEN.kit_id_fk = ? AND isTerugGebracht = false
-ORDER BY lening_id asc
-limit 3";
+ORDER BY lening_id asc";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("s", $KitNr);
+$stmt->bind_param("ss", $KitNr, $KitNr);
 $stmt->execute();
 $resultaten = $stmt->get_result();
 

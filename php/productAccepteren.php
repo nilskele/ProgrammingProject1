@@ -9,7 +9,7 @@ if (isset($_POST['leningId']) && isset($_POST['productNr'])) {
     $productNr = mysqli_real_escape_string($conn, $_POST['productNr']);
 
     // Query to delete the row from MIJN_LENINGEN table
-    $query = "UPDATE MIJN_LENINGEN SET isTerugGebracht = True WHERE lening_id = '$leningId'";
+    $query = "UPDATE MIJN_LENINGEN SET in_bezit = false, isTerugGebracht = True WHERE lening_id = '$leningId'";
 
 
     $query2 = "UPDATE PRODUCT

@@ -24,7 +24,7 @@ include("../admin.header.php");
         </div>
     </div>
     <div class="accepterenFooter">
-            <button type="button" class="btn btn-primary accepterenBtnKit">Kit Accepteren</button>
+            <button type="button" class="btn btn-primary accepterenBtnKit" id="kitAccepterenBtn">Kit Accepteren</button>
             <p id="aantalProductenBinnen"></p>
         </div> 
 </div>

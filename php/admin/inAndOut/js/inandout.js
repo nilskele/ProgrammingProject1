@@ -218,8 +218,8 @@ $(function() {
 
         // Send AJAX request to delete the row from the database
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You are about to perform an action. Do you want to proceed?",
+            title: 'Weet u zeker dat u dit wilt doen?',
+            text: "Dit product zal worden geaccepteerd.",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
