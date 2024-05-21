@@ -29,7 +29,7 @@ $(document).ready(function () {
                     <h6 class="product-id">Product ID: ${item.product_id_fk}</h6>
                 </div>
                 <div class="productBtns">
-                    <button  class="btn defectBtnKit" data-id="${item.product_id_fk}" data-lening-id="${item.lening_id}" id="accepterenBtn-${item.product_id_fk}">Defect</button>
+                    <button  class="btn defectBtnKit" data-id="${item.product_id_fk}" data-lening-id="${item.lening_id}" id="defectBtn-${item.product_id_fk}">Defect</button>
                 </div>
             </div>
             `;
@@ -54,4 +54,16 @@ $(document).ready(function () {
             }
         }
     });
+
+    productenLijstDiv.addEventListener('click', function (e) {
+        if (e.target.classList.contains('defectBtnKit')) {
+            let productNr = e.target.getAttribute('data-id');
+            let email = emailPersoon.innerHTML;
+
+            localStorage.setItem('productNr', productNr);
+            localStorage.setItem('email', email);
+
+            window.location.href = '/ProgrammingProject1/php/admin/inAndOut/defectProduct.php';
+        }
+    });    
 });

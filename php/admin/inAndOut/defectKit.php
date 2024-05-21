@@ -19,7 +19,6 @@ include("../admin.header.php");
         </div>
         <div class="accepterenContainer">
             <div class="productenLijst" id="productenLijstDiv">
-                
             </div>
         </div>
     </div> 
