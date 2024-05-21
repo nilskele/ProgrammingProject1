@@ -95,6 +95,16 @@ $(document).ready(function () {
                 }
             });
         }
+
+        if (e.target.classList.contains('defectBtnKit')) {
+            let productNr = e.target.getAttribute('data-id');
+            let email = emailPersoon.innerHTML;
+
+            localStorage.setItem('productNr', productNr);
+            localStorage.setItem('email', email);
+
+            window.location.href = '/ProgrammingProject1/php/admin/inAndOut/defectProduct.php';
+        }
     });
 
     kitAccepterenBtn.addEventListener('click', function () {
