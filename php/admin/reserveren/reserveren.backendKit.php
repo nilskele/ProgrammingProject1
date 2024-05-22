@@ -2,13 +2,11 @@
 
 include('../../../database.php');
 
-
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 mysqli_select_db($conn, '2324PROGPRGR02') or die('Error selecting the database');
-
 
 
 $KitNr = $_GET['KitNr'];
@@ -18,15 +16,28 @@ $reden = $_GET['reden'];
 $aantal = $_GET['aantal'];
 $email = $_GET['email'];
 
-$select_aantal_prodcten_nodig_query = "SELECT COUNT(*)
-FROM KIT_PRODUCT
-WHERE kit_id_fk = ?;";
+$user_query = "SELECT user_id FROM USER WHERE email = ?";
+$user_stmt = $conn->prepare($user_query);
+$user_stmt->bind_param("s", $email);
+$user_stmt->execute();
+$user_result = $user_stmt->get_result();
+if ($user_result->num_rows > 0) {
+    $user_row = $user_result->fetch_assoc();
+    $user_id = $user_row['user_id'];
+} else {
+    echo json_encode(array("success" => false, "error" => "Gebruiker niet gevonden"));
+    exit;
+}
+
+
+$select_aantal_prodcten_nodig_query = "SELECT COUNT(*) FROM KIT_PRODUCT WHERE kit_id_fk = ?";
 $select_stmt = $conn->prepare($select_aantal_prodcten_nodig_query);
 $select_stmt->bind_param("s", $KitNr);
 $select_stmt->execute();
 $result = $select_stmt->get_result();
 $row = $result->fetch_assoc();
 $aantalProducten = $row['COUNT(*)'];
+
 
 $select_proucten_query = "SELECT GROEP.groep_id, MIN(PRODUCT.product_id) as product_id
 FROM PRODUCT
@@ -57,7 +68,7 @@ for ($i = 0; $i < $aantalProducten * $aantal; $i++) {
 
     $update_query = "UPDATE PRODUCT SET isUitgeleend = true, datumBeschikbaar = ? WHERE product_id = ?";
     $update_stmt = $conn->prepare($update_query);
-    $update_stmt->bind_param("ss", $eindDatum, $KitNr);
+    $update_stmt->bind_param("ss", $eindDatum, $product_id);
     $update_success = $update_stmt->execute();
 
     if (!$update_success) {
@@ -74,10 +85,10 @@ for ($i = 0; $i < $aantalProducten * $aantal; $i++) {
         echo json_encode(array("success" => false, "error" => "Fout bij het maken van de reservering: " . $conn->error));
         exit;
     }
-
 }
 
-    $select_aantal_kits_query = "SELECT
+
+$select_aantal_kits_query = "SELECT
     (SELECT COUNT(*)
      FROM GROEP
               JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id
@@ -85,8 +96,8 @@ for ($i = 0; $i < $aantalProducten * $aantal; $i++) {
        AND PRODUCT.zichtbaar = true
        AND PRODUCT.datumBeschikbaar < ?
      GROUP BY GROEP.groep_id
-     ORDER BY COUNT(*) asc
-     limit 1) AS aantalBeschikbaar
+     ORDER BY COUNT(*) ASC
+     LIMIT 1) AS aantalBeschikbaar
 FROM KIT
          JOIN MERK ON KIT.merk_fk = MERK.merk_id
          LEFT JOIN KIT_PRODUCT ON KIT.kit_id = KIT_PRODUCT.kit_id_fk
@@ -109,28 +120,26 @@ HAVING COUNT(DISTINCT KIT_PRODUCT.groep_id_fk) >= (
     WHERE KIT_PRODUCT.kit_id_fk = KIT.kit_id
 );";
 
-    $select_stmt = $conn->prepare($select_aantal_kits_query);
-    $select_stmt->bind_param("ssss",$eindDatum, $eindDatum ,$KitNr, $eindDatum);
-    $select_stmt->execute();
-    $result = $select_stmt->get_result();
+$select_stmt = $conn->prepare($select_aantal_kits_query);
+$select_stmt->bind_param("ssss", $eindDatum, $eindDatum, $KitNr, $eindDatum);
+$select_stmt->execute();
+$result = $select_stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $aantalKits = $row['aantalBeschikbaar'];
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $aantalKits = $row['aantalBeschikbaar'];
 
-    } else {
-        $update_query = "UPDATE KIT SET isUitgeleend = true, datumBeschikbaar = ? WHERE kit_id = ?";
-            $update_stmt = $conn->prepare($update_query);
-            $update_stmt->bind_param("ss", $eindDatum, $KitNr);
-            $update_success = $update_stmt->execute();
-    
-            if (!$update_success) {
-                echo json_encode(array("success" => false, "error" => "Fout bij het bijwerken van kit status: " . $conn->error));
-                exit;
-            }
+} else {
+    $update_query = "UPDATE KIT SET isUitgeleend = true, datumBeschikbaar = ? WHERE kit_id = ?";
+    $update_stmt = $conn->prepare($update_query);
+    $update_stmt->bind_param("ss", $eindDatum, $KitNr);
+    $update_success = $update_stmt->execute();
+
+    if (!$update_success) {
+        echo json_encode(array("success" => false, "error" => "Fout bij het bijwerken van kit status: " . $conn->error));
+        exit;
     }
-
-    
+}
 
 echo json_encode(array("success" => true));
 
