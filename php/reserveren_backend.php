@@ -21,7 +21,6 @@ $isKit = $_GET['isKit'];
 
 
 if ($isKit == 1) {
-    // Het aantal producten dat nodig is voor de kit
     $select_aantal_prodcten_nodig_query = "SELECT COUNT(*)
     FROM KIT_PRODUCT
     WHERE kit_id_fk = ?;";
@@ -32,7 +31,6 @@ if ($isKit == 1) {
     $row = $result->fetch_assoc();
     $aantalProducten = $row['COUNT(*)'];
 
-    // Het selecteren van producten voor de kit
     $select_proucten_query = "SELECT GROEP.groep_id, MIN(PRODUCT.product_id) as product_id
     FROM PRODUCT
          JOIN GROEP ON PRODUCT.groep_id = GROEP.groep_id
@@ -52,17 +50,14 @@ if ($isKit == 1) {
         $product_ids[] = $row['product_id'];
     }
 
-    // Controleren op voldoende beschikbare producten
     if (count($product_ids) < $aantalProducten * $aantal) {
         echo json_encode(array("success" => false, "error" => "Niet genoeg beschikbare producten"));
         exit;
     }
 
-    // Reserveren van producten voor de kit
     for ($i = 0; $i < $aantalProducten * $aantal; $i++) {
         $product_id = $product_ids[$i];
 
-        // Update productstatus
         $update_query = "UPDATE PRODUCT SET isUitgeleend = true, datumBeschikbaar = ? WHERE product_id = ?";
         $update_stmt = $conn->prepare($update_query);
         $update_stmt->bind_param("ss", $eindDatum, $product_id);
@@ -73,7 +68,6 @@ if ($isKit == 1) {
             exit;
         }
 
-        // Reserveren in MIJN_LENINGEN
         $insert_query = "INSERT INTO MIJN_LENINGEN (Uitleendatum, terugbrengDatum, user_id_fk, product_id_fk, kit_id_fk, reden_id_fk) VALUES (?, ?, ?, ?, ?, ?)";
         $insert_stmt = $conn->prepare($insert_query);
         $insert_stmt->bind_param("ssssss", $startDatum, $eindDatum, $user_id, $product_id, $groep_id, $reden);
@@ -86,7 +80,6 @@ if ($isKit == 1) {
 
     }
 
-        // aantal kits dat er nog zijn
         $select_aantal_kits_query = "SELECT
         (SELECT COUNT(*)
          FROM GROEP
