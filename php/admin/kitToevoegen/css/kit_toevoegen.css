@@ -79,7 +79,9 @@ input {
     border: 1px solid red;
     border-radius: 1em;
 }
-
+.submit:hover, .submit2:hover {
+    border: 2px solid red;
+}
 .labelcontainers{
     width: 70%;
     display: flex;

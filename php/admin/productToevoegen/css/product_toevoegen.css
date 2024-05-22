@@ -54,6 +54,9 @@ input {
     margin-top:-2em;
     margin-bottom: 2em;
 }
+.submit:hover {
+    border: 2px solid red;
+}
 .categorieZoekbalk{
     padding: 0.5em;
     
