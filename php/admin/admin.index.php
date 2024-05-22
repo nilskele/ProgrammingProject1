@@ -67,7 +67,7 @@ include('../../database.php');
         <a class="defectBtnAccepteren" id="defectBtnKit">
           defect
         </a>
-        <a href="inAndOut/reserverenKit.php" class="reserverenBtn" id="reserverenBtnKit">
+        <a class="reserverenBtn" id="reserverenBtnKit">
           reserveren
         </a>
       </div>

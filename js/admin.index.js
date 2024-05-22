@@ -163,6 +163,42 @@ defectBtnKit.addEventListener("click", function () {
   }
 });
 
+let reserverenBtnKit = document.getElementById("reserverenBtnKit");
+
+reserverenBtnKit.addEventListener("click", function () {
+  let KitNrInput = document.getElementById("KitNrInput").value;
+  localStorage.removeItem("email");
+
+  if (KitNrInput === "") {
+    Swal.fire({
+      icon: "error",
+      title: "Oeps...",
+      text: "Het kitnummer mag niet leeg zijn!",
+    });
+  } else {
+    $.ajax({
+      url: "/ProgrammingProject1/php/checkKitNr.php",
+      method: "POST",
+      data: {
+        KitNrInput: KitNrInput,
+      },
+      success: function (data) {
+        if (data === "true") {
+          localStorage.setItem("KitNr", KitNrInput);
+          window.location.href =
+            "/ProgrammingProject1/php/admin/reserveren/reserverenKit.php";
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oeps...",
+            text: "Het kitnummer bestaat niet!",
+          });
+        }
+      },
+    });
+  }
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   $(document).on("click", ".defectBtn90", function (event) {
     event.preventDefault();
