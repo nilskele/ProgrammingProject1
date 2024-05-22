@@ -1,6 +1,6 @@
 <?php
 // Include your database connection file
-include('../database.php');
+include('../../../database.php');
 
 // Retrieve parameters from AJAX request
 $lening_id = $_POST['lening_id'];
