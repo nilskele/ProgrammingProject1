@@ -27,6 +27,8 @@ $(function () {
     };
 
     let product_id = localStorage.getItem("productNr");
+    let productNrSpan = document.getElementById("productNrSpan");
+    productNrSpan.innerHTML = product_id;
     let aantalProductenAanwezig = document.getElementById("aantalProductenAanwezig");
 
     $('input[name="daterange"]').daterangepicker(

@@ -15,7 +15,7 @@
 <div class="container">
     <div class="reserverenHeader">
         <a href="javascript:history.back()" class="terugLink">&#8592 Terug</a>
-        <h1 class="titel">Reserveren: <span id="productNrSpan"></span></h1>
+        <h1 class="titel">Reserveren: &nbsp; <span id="productNrSpan"></span></h1>
     </div>
 
     <div class="Reserveren">
