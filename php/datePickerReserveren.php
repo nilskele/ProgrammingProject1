@@ -39,12 +39,7 @@ WHERE KIT.datumBeschikbaar < ?
       AND PRODUCT.isUitgeleend = false
       AND PRODUCT.datumBeschikbaar < ?
 )
-GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data
-HAVING COUNT(DISTINCT KIT_PRODUCT.groep_id_fk) >= (
-    SELECT COUNT(*)
-    FROM KIT_PRODUCT
-    WHERE KIT_PRODUCT.kit_id_fk = KIT.kit_id
-);";
+GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data";
 } else {
     $sql = "SELECT COUNT(*) AS aantalBeschikbaar
             FROM PRODUCT
@@ -56,7 +51,13 @@ $stmt = $conn->prepare($sql);
 if (!$stmt) {
     die("Prepare failed: " . $conn->error);
 }
-$stmt->bind_param("ssss",$eindDatum, $eindDatum ,$groep_id, $eindDatum);
+
+if ($isKit == 1) {
+    $stmt->bind_param("ssss", $eindDatum, $eindDatum, $groep_id, $eindDatum);
+} else {
+    $stmt->bind_param("ss", $eindDatum, $groep_id);
+}
+
 if (!$stmt->execute()) {
     die("Execute failed: " . $stmt->error);
 }

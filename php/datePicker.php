@@ -41,12 +41,7 @@ WHERE KIT.datumBeschikbaar < ? AND KIT.zichtbaar = true
     WHERE PRODUCT.groep_id = GROEP.groep_id
       AND PRODUCT.zichtbaar = true
 )
-GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data
-HAVING COUNT(DISTINCT KIT_PRODUCT.groep_id_fk) >= (
-    SELECT COUNT(*)
-    FROM KIT_PRODUCT
-    WHERE KIT_PRODUCT.kit_id_fk = KIT.kit_id
-);";
+GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ss", $eindDatum , $eindDatum);

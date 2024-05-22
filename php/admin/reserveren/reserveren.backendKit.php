@@ -113,12 +113,7 @@ WHERE KIT.datumBeschikbaar < ?
       AND PRODUCT.isUitgeleend = false
       AND PRODUCT.datumBeschikbaar < ?
 )
-GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data
-HAVING COUNT(DISTINCT KIT_PRODUCT.groep_id_fk) >= (
-    SELECT COUNT(*)
-    FROM KIT_PRODUCT
-    WHERE KIT_PRODUCT.kit_id_fk = KIT.kit_id
-);";
+GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data";
 
 $select_stmt = $conn->prepare($select_aantal_kits_query);
 $select_stmt->bind_param("ssss", $eindDatum, $eindDatum, $KitNr, $eindDatum);

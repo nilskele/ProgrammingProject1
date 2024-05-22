@@ -4,10 +4,8 @@
 
 .card-container {
   background-color: #d3d7dada;
-  /* لون خلفية الكارد رمادي */
   padding: 20px;
   text-align: center;
-  /* محتوى الكارد منظم إلى اليمين */
 }
 
 /* .form-control {
@@ -42,10 +40,6 @@
 }
 
 label {
-
   font-size: 20px;
-  /* حجم الخط */
   color: black;
-  /* لون الخط */
-  /* يمكنك إضافة خصائص أخرى حسب احتياجاتك */
 }
