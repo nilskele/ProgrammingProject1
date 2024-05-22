@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.reserverenHeader {
+    margin: 100px auto 30px auto;
+    width: 70%;
+    display: flex;
+}
+
+
+.terugLink {
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    height: 44px;
+    text-align: center;
+    margin: 10px 0px 10px 0px;
+  }
+
+.titel {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.Reserveren {
+    margin-top: 100px;
+    margin-bottom: 30px;
+    background-color: #D9D9D9;
+    height: 600px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px #888888;  
+    padding: 50px;  
+}
+
+input#email {
+    width: 40%;
+
+}
+
+.reserverenForm {
+    margin: 0 auto;
+}
+
+input.datumZoekbalk.inputZoekbalk.form-control {
+    width: 20%;
+
+}
+
+select#reden {
+    width: 20%;
+}
+
+select#hoeveel {
+    width: 10%;
+}
+
+.form-group {
+    display: flex;
+    margin-top: 30px;
+}
+
+.aantalAanwezig {
+    margin: 10px 0px 10px 30px;
+}
