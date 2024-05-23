@@ -118,7 +118,6 @@ function submitForm() {
   const category = $("#categorie").val();
   const beschrijving = $("#beschrijving").val();
 
-  // New AJAX call to submit the form
   $.ajax({
     url: "productToevoegenBackend.php",
     method: "POST",
