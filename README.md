@@ -80,11 +80,21 @@ https://mailtrap.io/blog/php-email-sending/#How-to-send-emails-using-Symfony-Mai
 
 ## Lucas:
 https://chat.openai.com/share/8e8c51f8-d417-48ab-bab4-abe07de601da <br>
-[https://www.youtube.com/watch?v=SgynWhEgvlw](https://www.youtube.com/watch?v=SgynWhEgvlw <br>
+https://www.youtube.com/watch?v=SgynWhEgvlw](https://www.youtube.com/watch?v=SgynWhEgvlw <br>
 https://stackoverflow.com/questions/24739126/scroll-to-a-specific-element-using-html <br>
 https://www.youtube.com/watch?v=v-y3B91Fhiw<br>
 https://chat.openai.com/share/f48b379f-73c4-4449-9596-b3476a4d8bf3<br>
 https://stackoverflow.com/questions/46743882/pass-result-of-sql-query-from-php-to-javascript-array<br>
+https://stackoverflow.com/questions/4413590/javascript-get-array-of-dates-between-2-dates<br>
+https://stackoverflow.com/questions/23838850/check-all-variables-in-an-array-for-an-if-condition<br>
+https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript<br>
+https://www.w3schools.com/icons/tryit.asp?filename=tryicons_fa-eye<br>
+https://www.w3schools.com/icons/tryit.asp?filename=tryicons_fa-trash-o<br>
+https://jsfiddle.net/Vestride/dkr9b/<br>
+https://chatgpt.com/share/30b54623-9ab8-487f-8401-e0dce1d68c6a<br>
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch<br>
+https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_localstorage<br>
+https://chatgpt.com/share/33bc7769-57e8-449b-aad6-04d028428ccb<br>
 <br>
 
 ## Weiam:
