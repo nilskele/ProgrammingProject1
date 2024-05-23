@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 100px;
+}
+.statistiek {
+    color: black;
+    margin-top:20px ;
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+}
+.search-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.search-container input {
+    width: 60%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 1.5rem;
+    text-align: center;
+}
+.search-container input:focus {
+    outline: none;
+    border-color: red;
+}
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    justify-content: center;
+}
+table {
+    border-collapse: collapse;
+    width: 80%;
+    background-color: white;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(02, 0, 0, 0.1);
+}
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tr:last-child td {
+    border-bottom: none;
+}
