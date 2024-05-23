@@ -114,10 +114,20 @@ include('../../database.php');
   <script src="catalogus/getData.php"></script> 
     <script src="catalogus/kalender.backend.js"></script> 
 
-<div class="buttons_kalender">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Admin Calendar</title>
+</head>
+<body>
+  <div class="buttons_kalender">
     <form action="" method="GET">
-        <input type="text" name="Zoeken" placeholder="Zoeken...">
-        <button class="button_zoeken" type="submit">Zoek</button>
+      <input type="text" name="Zoeken" placeholder="Zoeken...">
+      <button class="button_zoeken" type="submit">Zoek</button>
     </form>
     <div class="buttons-container">
       <a href="/ProgrammingProject1/php/admin/kitToevoegen/kit_toevoegen.php"><button>Kit toevoegen</button></a>
@@ -126,7 +136,6 @@ include('../../database.php');
     </div>
   </div>
   <h1 class="titel">Calendar</h1>
-</div>
   <div class="calendar">
     <header>
       <h3>Catalogus</h3>
@@ -144,16 +153,79 @@ include('../../database.php');
         <li>Wo <span class="date"></span></li>
         <li>Do <span class="date"></span></li>
         <li>Vr <span class="date"></span></li>
-        <li class="new-row"><span class="date"></span></li> 
+        <li>Za <span class="date"></span></li>
       </ul>
       <ul class="dates"></ul>
     </section>
   </div>
-  <div> 
+  <?php 
+    // Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
 
-<script src="../../js/admin.agenda.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+$loanDetails = array(); // Initialize the array
 
+if (isset($_GET['Zoeken'])) {
+  $naamItem = $_GET['Zoeken'];
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="../../js/admin.agenda.js"></script>
+  // Sanitize the input to prevent XSS
+  $naamItem = htmlspecialchars($naamItem);
+
+  // SQL query using a placeholder
+  $sql = "SELECT ML.Uitleendatum, ML.terugbrengDatum, G.naam AS product_naam, P.product_id, P.zichtbaar
+  FROM MIJN_LENINGEN ML
+  JOIN PRODUCT P ON ML.product_id_fk = P.product_id
+  JOIN GROEP G ON P.groep_id = G.groep_id
+  WHERE G.naam = ?";
+
+  // Prepare the statement
+  $stmt = $conn->prepare($sql);
+  if ($stmt === false) {
+      die("Prepare failed: " . $conn->error);
+  }
+
+  // Bind the parameter
+  $stmt->bind_param("s", $naamItem);
+
+  // Execute the statement
+  $stmt->execute();
+
+  // Get the result
+  $result = $stmt->get_result();
+
+  // Check if there are results
+  if ($result->num_rows > 0) {
+      // Output data of each row
+      while ($row = $result->fetch_assoc()) {
+          // Store the results in an array
+          $loanDetails[] = array(
+              "product_id" => $row["product_id"],
+              "product_naam" => $row["product_naam"],
+              "Uitleendatum" => $row["Uitleendatum"],
+              "terugbrengDatum" => $row["terugbrengDatum"],
+              "zichtbaar" => $row["zichtbaar"]
+          );
+      }
+  } else {
+      echo "Geen resultaten gevonden";
+  }
+
+  // Close the statement
+  $stmt->close();
+}
+
+// Close the connection
+$conn->close();
+
+// Convert loanDetails to JSON
+$loanDetailsJSON = json_encode($loanDetails);
+  ?>
+  <script>
+    const loanDetails = <?php echo $loanDetailsJSON; ?>;
+    //console.log(loanDetails);
+  </script>
+  <script src="agenda/js/admin.agenda.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

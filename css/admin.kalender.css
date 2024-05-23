@@ -39,7 +39,7 @@
 }
 .calendar ul li {
   width: calc(100% / 8);
-  margin-top: 50px;
+  margin-top: 10px;
   margin-bottom: 20px;
   position: relative;
   z-index: 3;
@@ -83,7 +83,7 @@
 }
 .dates li.today::before {
   content: "";
-  width: 2rem;
+  width: 1rem;
   height: 2rem;
   position: absolute;
   top: 50%;
@@ -113,19 +113,20 @@
   background: none;
 }
 
-.buttons_item button.glyphicon-eye-close {
+.buttons_item button.fa-eye {
   border: none;
   background: none;
   outline: none;
   margin-top: 3px;
 }
 
-.buttons_item button.glyphicon-eye-open {
+.buttons_item button.fa-eye-slash {
   border: none;
   background: none;
   outline: none;
   margin-top: 3px;
 }
+
 
 
 .buttons_item button.fa-trash-o {
