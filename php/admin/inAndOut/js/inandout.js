@@ -41,7 +41,7 @@ $(function() {
                     card.setAttribute('data-watdefect', item1.watDefect);
                     card.setAttribute('data-redendefect', item1.redenDefect);
                     card.setAttribute('data-image', item1.image_data);
-                    card.style.backgroundColor = 'lightyellow';
+                    
                     // Create the product info div
                     var productInfo = document.createElement('div');
                     productInfo.className = 'productInfo';
@@ -63,16 +63,20 @@ $(function() {
                     `;
     
                     // If there is a match in query3, do something different
-                    if (matchInQuery3) {
-                        
-                        var errorIcon = card.querySelector('.erroricon');
-                    if (errorIcon) {
-                        errorIcon.style.display = 'none';
-                    }
-                    }
-    
-                    // Append product info to card
                     card.appendChild(productInfo);
+
+                // If there is a match in query3, hide the erroricon
+                if (matchInQuery3) {
+                    console.log("Match found, hiding error icon for product_id:", item1.product_id);
+                    var errorIcon = card.querySelector('.erroricon');
+                    if (errorIcon) {
+                        console.log("Error icon found, hiding it.");
+                        errorIcon.style.display = 'none';
+                    } else {
+                        console.log("Error icon not found.");
+                    }
+                }
+                    
     
                     // Append the card to the appropriate container
                     try {
