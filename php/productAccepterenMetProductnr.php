@@ -9,7 +9,7 @@ if (isset($_POST['productNr'])) {
 
     $query = "UPDATE MIJN_LENINGEN 
     JOIN PRODUCT ON MIJN_LENINGEN.product_id_fk = PRODUCT.product_id
-    SET MIJN_LENINGEN.isTerugGebracht = True
+    SET MIJN_LENINGEN.isTerugGebracht = True, in_bezit = False
     WHERE PRODUCT.product_id = '$productNr'";
 
     $query2 = "UPDATE PRODUCT

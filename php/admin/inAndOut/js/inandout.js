@@ -231,7 +231,6 @@ $(function() {
                     url: '/ProgrammingProject1/php/productAccepteren.php',
                     method: 'POST',
                     data: { leningId: leningId, productNr: productNr},
-                    data: { leningId: leningId, productNr: productNr},
                     success: function(response) {
                         
                         // Upon successful deletion, remove the corresponding row from the HTML
@@ -354,7 +353,7 @@ acceptBtn.addEventListener("click", function () {
                 });
         } else {
                 $.ajax({
-                        url: "../php/checkProductNr.php",
+                        url: "/ProgrammingProject1/php/checkProductNr.php",
                         method: "POST",
                         data: {
                                 productNr: productNr
@@ -372,7 +371,7 @@ acceptBtn.addEventListener("click", function () {
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
                                                     $.ajax({
-                                                        url: '../php/productAccepterenMetProductnr.php',
+                                                        url: '/ProgrammingProject1/php/productAccepterenMetProductnr.php',
                                                         method: 'POST',
                                                         data: { productNr: productNr },
                                                         success: function(responsee) {
