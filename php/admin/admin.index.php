@@ -125,7 +125,7 @@ include('../../database.php');
 </head>
 <body>
   <div class="buttons_kalender">
-    <form action="" method="GET">
+    <form action="" method="GET" onsubmit="scrollToResults()">
       <input type="text" name="Zoeken" placeholder="Zoeken...">
       <button class="button_zoeken" type="submit">Zoek</button>
     </form>
@@ -136,7 +136,7 @@ include('../../database.php');
     </div>
   </div>
   <h1 class="titel">Calendar</h1>
-  <div class="calendar">
+  <div class="calendar" id="results">
     <header>
       <h3>Catalogus</h3>
       <nav>
@@ -172,12 +172,15 @@ if (isset($_GET['Zoeken'])) {
   // Sanitize the input to prevent XSS
   $naamItem = htmlspecialchars($naamItem);
 
+  // Add wildcard characters for partial matching
+  $naamItem = "%" . $naamItem . "%";
+
   // SQL query using a placeholder
   $sql = "SELECT ML.Uitleendatum, ML.terugbrengDatum, G.naam AS product_naam, P.product_id, P.zichtbaar
   FROM MIJN_LENINGEN ML
   JOIN PRODUCT P ON ML.product_id_fk = P.product_id
   JOIN GROEP G ON P.groep_id = G.groep_id
-  WHERE G.naam = ?";
+  WHERE G.naam LIKE ?";
 
   // Prepare the statement
   $stmt = $conn->prepare($sql);
@@ -221,6 +224,21 @@ $conn->close();
 // Convert loanDetails to JSON
 $loanDetailsJSON = json_encode($loanDetails);
   ?>
+   <script>
+    function scrollToResults() {
+      // Scroll to the results section after form submission
+      setTimeout(function() {
+        document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+      }, 100); // Slight delay to ensure results are rendered
+    }
+
+    // Check if search was performed and scroll to results
+    window.addEventListener('DOMContentLoaded', (event) => {
+      <?php if (isset($_GET['Zoeken'])): ?>
+        scrollToResults();
+      <?php endif; ?>
+    });
+  </script>
   <script>
     const loanDetails = <?php echo $loanDetailsJSON; ?>;
     //console.log(loanDetails);
