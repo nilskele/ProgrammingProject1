@@ -7,7 +7,6 @@
   include ('categorienOphalen.php');
 ?>
 
-
 <br><br>
 <div class="terug">
   <a href="javascript:history.back()" class="terugLink">&#8592 Terug</a>
@@ -15,7 +14,6 @@
 <form id="productForm">
   <div class="container">
     <h1>Product Toevoegen</h1>
-
     <div class="product_toevoegen">
       <div class="labelcontainers">
         <div>
@@ -27,7 +25,6 @@
           <input type="text" id="merk" name="merk">
         </div>
       </div>
-
       <div class="labelcontainers">
         <div>
           <label for="categorie">Categorie:</label>
@@ -41,7 +38,6 @@
           <input class="categorieZoekbalk2" type="number" id="quantity" name="quantity" min="1" value="1">
         </div>
       </div>
-
       <div class="labelcontainers">
         <div>
           <label for="beschrijving">Beschrijving:</label>
@@ -52,17 +48,15 @@
           <input type="text" id="opmerkingen" name="opmerkingen">
         </div>
       </div>
-
     </div>
-
     <button class="submit" type="submit">Product toevoegen</button>
   </div>
 </form>
 
-<div id="brandMessage"></div>
-<div id="nameMessage"></div>
-<div id="categoryMessage"></div>
-<div id="descriptionMessage"></div>
+<div id="brandMessage" style="display: none;"></div>
+<div id="nameMessage" style="display: none;"></div>
+<div id="categoryMessage" style="display: none;"></div>
+<div id="descriptionMessage" style="display: none;"></div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

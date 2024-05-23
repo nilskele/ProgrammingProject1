@@ -30,8 +30,9 @@ function checkInputs() {
   // Callback function to be executed after each check
   function checkComplete() {
     completedChecks++;
+    console.log(`Completed checks: ${completedChecks}`);
 
-    if (completedChecks === 5) {
+    if (completedChecks === 4) {
       // All checks are completed
       if (allInputsValid()) {
         submitForm();
@@ -68,8 +69,6 @@ function checkInputs() {
     "The description already exists.",
     checkComplete
   );
-  // Increment the counter for the synchronous check
-  checkComplete();
 }
 
 function checkItem(url, data, messageSelector, existsMessage, callback) {
@@ -80,10 +79,10 @@ function checkItem(url, data, messageSelector, existsMessage, callback) {
     success: function (response) {
       if (!hasSubmitted) {
         if (response === "exists") {
-          console.log(data);
+          console.log(`Exists check failed for: ${JSON.stringify(data)}`);
           $(messageSelector).text(existsMessage).addClass("error-message");
         } else {
-          console.log("The item does not exist.");
+          console.log(`Check passed for: ${JSON.stringify(data)}`);
           $(messageSelector).text("").removeClass("error-message");
         }
       }
@@ -101,15 +100,49 @@ function checkItem(url, data, messageSelector, existsMessage, callback) {
 }
 
 function allInputsValid() {
-  return (
-    $("#brandMessage").text() === "" &&
-    $("#nameMessage").text() === "" &&
-    $("#categoryMessage").text() === "" &&
-    $("#descriptionMessage").text() === ""
+  const valid = (
+    $("#brandMessage").text() !== "" &&
+    $("#nameMessage").text() !== "" &&
+    $("#categoryMessage").text() !== "" &&
+    $("#descriptionMessage").text() !== ""
   );
+
+  console.log(`All inputs valid: ${valid}`);
+  return valid;
 }
 
 function submitForm() {
   hasSubmitted = true;
-  $("#productForm").off("submit").submit();
+
+  const merk = $("#merk").val();
+  const productName = $("#productName").val();
+  const category = $("#categorie").val();
+  const beschrijving = $("#beschrijving").val();
+
+  console.log("Submitting form...");
+  console.log(`Merk: ${merk}`);
+  console.log(`Product name: ${productName}`);
+  console.log(`Category: ${category}`);
+  console.log(`Beschrijving: ${beschrijving}`);
+
+  // New AJAX call to submit the form
+  $.ajax({
+    url: "productToevoegenBackend.php",
+    method: "POST",
+    data: { merk: merk, productNaam: productName, category: category, beschrijving: beschrijving },
+    dataType: "json",
+    success: function (response) {
+      if (response.status === "success") {
+        console.log("Product added successfully.");
+        $("#formMessage").text("Product added successfully.").removeClass("error-message").addClass("success-message");
+      } else {
+        console.error("Error adding product:", response.message);
+        $("#formMessage").text(`Error adding product: ${response.message}`).removeClass("success-message").addClass("error-message");
+      }
+    },
+    error: function (xhr, status, error) {
+      console.error("Error:", error);
+      $("#formMessage").text(`Error adding product: ${error}`).removeClass("success-message").addClass("error-message");
+    }
+  });
 }
