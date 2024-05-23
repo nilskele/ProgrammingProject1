@@ -20,67 +20,78 @@ $(function() {
             success: function(response) {
                 // Parse the JSON response
                 var data = JSON.parse(response);
-
-                console.log('checkcheck')
-                // Loop through the data and create HTML elements
-                data.forEach(function(item) {
-                    // Check if the date matches the selected date
-                    if (item.Uitleendatum === selectedDate) {
-                        // Create a new card element
-                        var card = document.createElement('div');
-                        card.className = 'inOutProduct';
-                        card.setAttribute('data-lening-id', item.lening_id); // Set data-lening-id attribute
-                        card.setAttribute('data-terugbrengdatum', item.terugbrengDatum); // Set data-lening-id attribute
-                        card.setAttribute('data-uitleendatum', item.Uitleendatum); // Set data-lening-id attribute
-                        card.setAttribute('data-watdefect', item.watDefect); // Set data-lening-id attribute
-                        card.setAttribute('data-redendefect', item.redenDefect); // Set data-lening-id attribute
-                        card.setAttribute('data-image', item.image_data);
-
-
-
-
-                        // Create the product info div
-                        var productInfo = document.createElement('div');
-                        productInfo.className = 'productInfo';
-
-                        // Populate the product info
-                        productInfo.innerHTML = `
-                            <div id="intButtons2">
-                                <a class="outBtn" href="">Out</a>
-                            </div>
-                            <div class="info">
-                                <h3 class="Naam">${item.voornaam} ${item.achternaam}</h3>
-                                <p class="accepterenProductID"  value="${item.naam} ${item.product_id}">${item.naam}, ${item.product_id}</p>
-                            </div>
-                            <p value=""></p>
-                            <p></p>
-                            <div class="moreinfo" onclick="openPopup()">
-                                <img class="dots"  src="/ProgrammingProject1/images/9025404_dots_three_icon.png" alt="More info image">
-                            </div>
-                        `;
-
-                        // Append product info to card
-                        card.appendChild(productInfo);
-
-                        // Append the card to the appropriate container
-                        try {
-                            document.getElementById('smallInOut1').appendChild(card);
-
-                          
-                          } catch (error) {
-                            document.getElementById('InOut1').appendChild(card);
-
-                            console.error("An error occurred:", error);
-                          }
+    
+                // Separate data based on source
+                var query1Data = data.filter(item => item.source === 'query1');
+                var query3Data = data.filter(item => item.source === 'query3');
+    
+                console.log('checkcheck');
+                
+                // Process query1Data
+                query1Data.forEach(function(item1) {
+                    // Check if there is a matching item in query3Data
+                    var matchInQuery3 = query3Data.find(item3 => item3.product_id === item1.product_id);
+    
+                    // Create a new card element
+                    var card = document.createElement('div');
+                    card.className = 'inOutProduct';
+                    card.setAttribute('data-lening-id', item1.lening_id);
+                    card.setAttribute('data-terugbrengdatum', item1.terugbrengDatum);
+                    card.setAttribute('data-uitleendatum', item1.Uitleendatum);
+                    card.setAttribute('data-watdefect', item1.watDefect);
+                    card.setAttribute('data-redendefect', item1.redenDefect);
+                    card.setAttribute('data-image', item1.image_data);
+                    card.style.backgroundColor = 'lightyellow';
+                    // Create the product info div
+                    var productInfo = document.createElement('div');
+                    productInfo.className = 'productInfo';
+    
+                    // Populate the product info
+                    productInfo.innerHTML = `
+                        <div id="intButtons2">
+                            <a class="outBtn" href="">Out</a>
+                        </div>
+                        <div class="info">
+                            <h3 class="Naam">${item1.voornaam} ${item1.achternaam}</h3>
+                            <p class="accepterenProductID"  value="${item1.naam} ${item1.product_id}">${item1.naam}, ${item1.product_id}</p>
+                        </div>
+                    
+                            <svg class="erroricon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#FFD43B" d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>                        <div class="moreinfo" onclick="openPopup()">
+                            
+                            <img class="dots"  src="/ProgrammingProject1/images/9025404_dots_three_icon.png" alt="More info image">
+                        </div>
+                    `;
+    
+                    // If there is a match in query3, do something different
+                    if (matchInQuery3) {
                         
+                        var errorIcon = card.querySelector('.erroricon');
+                    if (errorIcon) {
+                        errorIcon.style.display = 'none';
+                    }
+                    }
+    
+                    // Append product info to card
+                    card.appendChild(productInfo);
+    
+                    // Append the card to the appropriate container
+                    try {
+                        document.getElementById('smallInOut1').appendChild(card);
+                    } catch (error) {
+                        document.getElementById('InOut1').appendChild(card);
+                        console.error("An error occurred:", error);
                     }
                 });
+    
+                // Process query2Data similarly if needed...
+                // You can add specific processing logic for query2Data here
             },
             error: function(xhr, status, error) {
                 console.error(error);
             }
         });
     }
+    
 
     // Function to fetch and display data for terugbrengDatum
     function fetchDataTerugbrengDatum(selectedDate) {
