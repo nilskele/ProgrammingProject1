@@ -120,10 +120,12 @@ function renderCalendar() {
     // Log the updated dagenWeek
     console.log("dagen:" + dagenWeek);
 
+
     // Update the HTML of the dates
     let html = "";
     for (let indexLength = 0; indexLength < productNames.length; indexLength++) {
         let maxAantallen = 8;
+        console.log(zichtbaar);
         for (let index = 0; index < maxAantallen; index++) {
             const datesBetween = getDatesBetween(uitleendatums[indexLength], terugbrengDatums[indexLength]);
             if (index === 0) {
@@ -133,14 +135,18 @@ function renderCalendar() {
     </div>
     <div class="buttons_item">
         <button class="reserveren" href="/reserveren/reserveren.php">Reserveren</button> </br>
-        ${zichtbaar[indexLength] === 1
-    ? `<button class="fa fa-eye" style="font-size:15px" data-item-id="${productID[indexLength]}" data-index="${indexLength}"></button>` 
-    : `<button class="fa fa-eye-slash" style="font-size:15px" data-item-id="${productID[indexLength]}" data-index="${indexLength}"></button>`}
+        ${zichtbaar[indexLength] === 0 
+    ? `<button class="fa fa-eye-slash" style="font-size:15px" data-item-id="${productID[indexLength]}" data-index="${indexLength}"></button>` 
+    : `<button class="fa fa-eye" style="font-size:15px" data-item-id="${productID[indexLength]}" data-index="${indexLength}"></button>`}
         <button class="fa fa-trash-o" style="font-size:15px" data-item-id="${productID[indexLength]}" data-index="${indexLength}"></button>
         <button class="fa fa-pencil" style="font-size:15px"></button>
     </div>
 </li>`;
-            } else if (datesBetween.some(r => dagenWeek[index - 1].includes(r))) {
+         } else if (currentYear != new Date(uitleendatums[indexLength]).getFullYear() &&
+                currentYear != new Date(terugbrengDatums[indexLength]).getFullYear()) {
+                html += `<li class="inactive">${"/"}</li>`;
+}
+            else if (datesBetween.some(r => dagenWeek[index - 1].includes(r))) {
                 html += `<li class="inactive">${"Uitgeleend"}</li>`;
             } else {
                 html += `<li class="inactive">${"/"}</li>`;
@@ -262,6 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 'Het item is verwijderd',
                                 'success'
                             );
+                            window.location.reload();
                             button.closest('li').remove();
                         } else {
                             throw new Error(data.error || 'Unknown error');

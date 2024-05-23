@@ -125,10 +125,14 @@ include('../../database.php');
 </head>
 <body>
   <div class="buttons_kalender">
-    <form action="" method="GET" onsubmit="scrollToResults()">
-      <input type="text" name="Zoeken" placeholder="Zoeken...">
-      <button class="button_zoeken" type="submit">Zoek</button>
-    </form>
+  <form action="" method="GET" onsubmit="scrollToResults()">
+    <input type="text" name="Zoeken" placeholder="Zoeken...">
+    <select name="searchBy">
+        <option value="name">Zoek op basis van naam</option>
+        <option value="id">Zoek op basis van de ID</option>
+    </select>
+    <button class="button_zoeken" type="submit">Zoek</button>
+</form>
     <div class="buttons-container">
       <a href="/ProgrammingProject1/php/admin/kitToevoegen/kit_toevoegen.php"><button>Kit toevoegen</button></a>
       <a href="/ProgrammingProject1/php/admin/productToevoegen/product_toevoegen.php"><button>Product toevoegen</button></a>
@@ -167,35 +171,47 @@ if ($conn->connect_error) {
 $loanDetails = array(); // Initialize the array
 
 if (isset($_GET['Zoeken'])) {
-  $naamItem = $_GET['Zoeken'];
+  $zoekTerm = $_GET['Zoeken'];
 
   // Sanitize the input to prevent XSS
-  $naamItem = htmlspecialchars($naamItem);
+  $zoekTerm = htmlspecialchars($zoekTerm);
+
   
-  // Add wildcard characters for partial matching
-  $naamItem = "%" . $naamItem . "%";
-  
-  $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
-  FROM PRODUCT p
-  JOIN GROEP g ON p.groep_id = g.groep_id
-  LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
-  WHERE g.naam LIKE ?"; // Changed to use LIKE for partial matching
-  
+
+  // Check the value of the searchBy parameter
+  if ($_GET['searchBy'] === 'id') {
+      // Search by product ID
+      $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+              FROM PRODUCT p
+              JOIN GROEP g ON p.groep_id = g.groep_id
+              LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
+              WHERE p.product_id LIKE ?";
+  } else {
+    // Add wildcard characters for partial matching
+  $zoekTerm = "%" . $zoekTerm . "%";
+      // Search by product name
+      $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+              FROM PRODUCT p
+              JOIN GROEP g ON p.groep_id = g.groep_id
+              LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
+              WHERE g.naam LIKE ?";
+  }
+
   // Prepare the statement
   $stmt = $conn->prepare($sql);
   if ($stmt === false) {
       die("Prepare failed: " . $conn->error);
   }
-  
+
   // Bind the parameter
-  $stmt->bind_param("s", $naamItem);
-  
+  $stmt->bind_param("s", $zoekTerm);
+
   // Execute the statement
   $stmt->execute();
-  
+
   // Get the result
   $result = $stmt->get_result();
-  
+
   // Check if there are results
   if ($result->num_rows > 0) {
       // Output data of each row
@@ -210,21 +226,19 @@ if (isset($_GET['Zoeken'])) {
           );
       }
   } else {
-      echo "Geen resultaten gevonden";
+      echo "geen resultaten";
   }
-  
-
 
   // Close the statement
   $stmt->close();
 }
+ else {
+  // Prepare the SQL query to retrieve all items
+  $sql_all = "SELECT g.naam AS product_name, p.product_id, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+              FROM PRODUCT p
+              JOIN GROEP g ON p.groep_id = g.groep_id
+              LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
 
-else {
-   // Prepare the SQL query to retrieve all items
-   $sql_all = "SELECT g.naam AS product_name, p.product_id, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
-   FROM PRODUCT p
-   JOIN GROEP g ON p.groep_id = g.groep_id
-   LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
   // Execute the query
   $result_all = $conn->query($sql_all);
 
