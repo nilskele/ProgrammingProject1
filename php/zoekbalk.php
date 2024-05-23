@@ -53,5 +53,5 @@
   <script type="text/javascript">
   let usertype = '<?php echo $user_type; ?>';
   </script>
-  <script src="../js/changeLayout.js"></script>
+  <script src="/ProgrammingProject1/php/user/catalogus/js/changeLayout.js"></script>
 </body>

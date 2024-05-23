@@ -5,9 +5,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-<?php 
-  include('../../header.php');
-  include('defectMelden.php');
+<?php
+include ('../../header.php');
+include ('defectMelden.php');
 ?>
 
 <div class="waarshcuwingenDiv">
@@ -27,7 +27,8 @@
           <input type="field" id="watDefect" name="watDefect" class="form-control" required> <br>
           <label for="defectReden">Reden Defect:</label>
           <input type="hidden" id="lening_id" name="lening_id" value="">
-          <textarea name="redenDefect" id="redenDefect" cols="70" rows="4" class="form-control" required></textarea> <br>
+          <textarea name="redenDefect" id="redenDefect" cols="70" rows="4" class="form-control" required></textarea>
+          <br>
           <input type="submit" value="Melden" class="btn btn-primary submitButton">
           <br>
         </form>

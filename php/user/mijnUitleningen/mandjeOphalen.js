@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
           const terugbrengDatumFormatted = row.terugbrengDatum;
 
           // Determine button classes based on possession
-          const buttonClass = row.in_bezit === 1 ? "reserveren-button" : "uitlenen-button";
+          const buttonClass =
+            row.in_bezit === 1 ? "reserveren-button" : "uitlenen-button";
 
           // Determine button text and action based on isVerlenged
           let buttonText, action;
@@ -49,7 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
             <td><button class="${buttonClass}" value="${
             row.lening_id
           }" data-id="${row.product_id}" style="background-color: ${
-            row.in_bezit === 1 && row.isVerlenged === 1 || row.in_bezit === 0? "red" : "green"
+            (row.in_bezit === 1 && row.isVerlenged === 1) || row.in_bezit === 0
+              ? "red"
+              : "green"
           }; color: white;">${buttonText}</button></td>
           `);
 
@@ -66,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function extendReturnDate(target) {
     // Convert jQuery object to DOM element
     const button = target.get(0);
-  
+
     // Check if button exists and is a button element
     if (button && button.tagName === "BUTTON") {
       // Get the parent row
@@ -75,53 +78,52 @@ document.addEventListener("DOMContentLoaded", function () {
       const terugbrengDatumCell = row.cells[2];
       // Get the text content of the button
       const buttonText = button.textContent.trim();
-  
+
       // Check if isVerlenged is true
       const isVerlenged = buttonText === "Annuleren";
-  
+
       // Get lending ID from button value
       const lening_id = button.value;
-  
+
       if (!isVerlenged) {
         // Set action based on the button text
         const action = buttonText === "Verlengen" ? "verlengen" : "annuleren";
-  
+
         // Toggle button text based on the action performed
-        button.textContent =
-          action === "verlengen" ? "annuleren" : "verlengen";
-  
+        button.textContent = action === "verlengen" ? "annuleren" : "verlengen";
+
         // Call the updateDate function with lending ID and action
         updateDate(lening_id, action);
-  
+
         // Convert the return date to a Date object
         let returnDate = new Date(terugbrengDatumCell.textContent);
-  
+
         // Increase the return date by 7 days
         returnDate.setDate(returnDate.getDate() + 7);
-  
+
         // Format the new date as YYYY-MM-DD
         const formattedDate = returnDate.toISOString().split("T")[0];
-  
+
         // Update the content of the third cell with the new date
         terugbrengDatumCell.textContent = formattedDate;
-  
+
         // Toggle button class based on action
         button.classList.toggle("verlengen-button");
         button.classList.toggle("annuleren-button");
-  
+
         // Toggle button background color based on action
         button.style.backgroundColor = action === "verlengen" ? "green" : "red";
       } else {
         // Subtract 7 days from the return date
         let returnDate = new Date(terugbrengDatumCell.textContent);
         returnDate.setDate(returnDate.getDate() - 7);
-  
+
         // Format the new date as YYYY-MM-DD
         const formattedDate = returnDate.toISOString().split("T")[0];
-  
+
         // Update the content of the third cell with the new date
         terugbrengDatumCell.textContent = formattedDate;
-  
+
         // Set isVerlenged to false
         const action = "annuleren"; // Set action to "annuleren" to update isVerlenged
         updateDate(lening_id, action);
@@ -130,7 +132,6 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Target is not a button element or does not exist.");
     }
   }
-  
 
   // Function to decrease the return date by 7 days
   function decreaseReturnDate(target) {

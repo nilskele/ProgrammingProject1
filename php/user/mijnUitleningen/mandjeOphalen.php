@@ -1,8 +1,8 @@
 <?php
-include('../../../database.php');
+include ('../../../database.php');
 
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+  die("Connection failed: " . $conn->connect_error);
 }
 
 mysqli_select_db($conn, '2324PROGPRGR02') or die('Error selecting the database');
@@ -27,11 +27,11 @@ if (true) {
   $response = [];
 
   if ($resultaten->num_rows > 0) {
-      while ($row = $resultaten->fetch_assoc()) {
-          $response[] = $row;
-      }
+    while ($row = $resultaten->fetch_assoc()) {
+      $response[] = $row;
+    }
   } else {
-      $response['error'] = "Geen resultaten gevonden";
+    $response['error'] = "Geen resultaten gevonden";
   }
 
   $stmt->close();
