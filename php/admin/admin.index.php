@@ -171,32 +171,31 @@ if (isset($_GET['Zoeken'])) {
 
   // Sanitize the input to prevent XSS
   $naamItem = htmlspecialchars($naamItem);
-
+  
   // Add wildcard characters for partial matching
   $naamItem = "%" . $naamItem . "%";
-
-  // SQL query using a placeholder
-  $sql = "SELECT ML.Uitleendatum, ML.terugbrengDatum, G.naam AS product_naam, P.product_id, P.zichtbaar
-  FROM MIJN_LENINGEN ML
-  JOIN PRODUCT P ON ML.product_id_fk = P.product_id
-  JOIN GROEP G ON P.groep_id = G.groep_id
-  WHERE G.naam LIKE ?";
-
+  
+  $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+  FROM PRODUCT p
+  JOIN GROEP g ON p.groep_id = g.groep_id
+  LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
+  WHERE g.naam LIKE ?"; // Changed to use LIKE for partial matching
+  
   // Prepare the statement
   $stmt = $conn->prepare($sql);
   if ($stmt === false) {
       die("Prepare failed: " . $conn->error);
   }
-
+  
   // Bind the parameter
   $stmt->bind_param("s", $naamItem);
-
+  
   // Execute the statement
   $stmt->execute();
-
+  
   // Get the result
   $result = $stmt->get_result();
-
+  
   // Check if there are results
   if ($result->num_rows > 0) {
       // Output data of each row
@@ -204,7 +203,7 @@ if (isset($_GET['Zoeken'])) {
           // Store the results in an array
           $loanDetails[] = array(
               "product_id" => $row["product_id"],
-              "product_naam" => $row["product_naam"],
+              "product_name" => $row["product_name"],
               "Uitleendatum" => $row["Uitleendatum"],
               "terugbrengDatum" => $row["terugbrengDatum"],
               "zichtbaar" => $row["zichtbaar"]
@@ -213,10 +212,40 @@ if (isset($_GET['Zoeken'])) {
   } else {
       echo "Geen resultaten gevonden";
   }
+  
+
 
   // Close the statement
   $stmt->close();
 }
+
+else {
+   // Prepare the SQL query to retrieve all items
+   $sql_all = "SELECT g.naam AS product_name, p.product_id, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+   FROM PRODUCT p
+   JOIN GROEP g ON p.groep_id = g.groep_id
+   LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
+  // Execute the query
+  $result_all = $conn->query($sql_all);
+
+  // Check if there are results
+  if ($result_all->num_rows > 0) {
+      // Output data of each row
+      while ($row = $result_all->fetch_assoc()) {
+          // Store the results in an array
+          $loanDetails[] = array(
+              "product_id" => $row["product_id"],
+              "product_name" => $row["product_name"],
+              "Uitleendatum" => $row["Uitleendatum"],
+              "terugbrengDatum" => $row["terugbrengDatum"],
+              "zichtbaar" => $row["zichtbaar"]
+          );
+      }
+  } else {
+      echo "Geen resultaten gevonden";
+  }
+}
+
 
 // Close the connection
 $conn->close();

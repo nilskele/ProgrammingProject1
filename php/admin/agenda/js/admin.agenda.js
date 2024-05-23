@@ -3,26 +3,22 @@ const dates = document.querySelector(".dates");
 const prevButton = document.getElementById("prev");
 const nextButton = document.getElementById("next");
 
-console.log(loanDetails);
+
 // Extract product name, Uitleendatum, and terugbrengDatum
 function extractDetails(loanDetails) {
-  const productNames = loanDetails.map(item => item.product_naam);
-  const uitleendatums = loanDetails.map(item => item.Uitleendatum);
-  const terugbrengDatums = loanDetails.map(item => item.terugbrengDatum);
-  const productID = loanDetails.map(item => item.product_id);
-  const zichtbaar = loanDetails.map(item => item.zichtbaar);
-  return { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar };
+    const productNames = loanDetails.map(item => item.product_name); // Corrected to use "product_name"
+    const uitleendatums = loanDetails.map(item => item.Uitleendatum);
+    const terugbrengDatums = loanDetails.map(item => item.terugbrengDatum);
+    const productID = loanDetails.map(item => item.product_id);
+    const zichtbaar = loanDetails.map(item => item.zichtbaar);
+    return { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar };
 }
 
 // Capture the returned object
 const details = extractDetails(loanDetails);
 const { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar } = details;
 
-console.log(productNames);
-console.log(uitleendatums);
-console.log(terugbrengDatums);
-console.log(productID);
-console.log(zichtbaar);
+
 
 // Function to format date to day/month format
 function formatDate(dateString) {
@@ -137,7 +133,7 @@ function renderCalendar() {
     </div>
     <div class="buttons_item">
         <button class="reserveren" href="/reserveren/reserveren.php">Reserveren</button> </br>
-        ${zichtbaar[indexLength] === 1 
+        ${zichtbaar[indexLength] === 1
     ? `<button class="fa fa-eye" style="font-size:15px" data-item-id="${productID[indexLength]}" data-index="${indexLength}"></button>` 
     : `<button class="fa fa-eye-slash" style="font-size:15px" data-item-id="${productID[indexLength]}" data-index="${indexLength}"></button>`}
         <button class="fa fa-trash-o" style="font-size:15px" data-item-id="${productID[indexLength]}" data-index="${indexLength}"></button>
