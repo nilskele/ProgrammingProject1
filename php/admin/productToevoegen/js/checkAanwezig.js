@@ -24,18 +24,20 @@ function checkInputs() {
   const productName = $("#productName").val();
   const category = $("#categorie").val();
   const beschrijving = $("#beschrijving").val();
+  const quantity = $("#quantity").val();
 
   let completedChecks = 0;
 
   // Callback function to be executed after each check
   function checkComplete() {
     completedChecks++;
-    console.log(`Completed checks: ${completedChecks}`);
-
     if (completedChecks === 4) {
       // All checks are completed
       if (allInputsValid()) {
-        submitForm();
+        // Submit the form multiple times based on quantity
+        for (let i = 0; i < quantity; i++) {
+          submitForm();
+        }
       }
     }
   }
@@ -79,10 +81,8 @@ function checkItem(url, data, messageSelector, existsMessage, callback) {
     success: function (response) {
       if (!hasSubmitted) {
         if (response === "exists") {
-          console.log(`Exists check failed for: ${JSON.stringify(data)}`);
           $(messageSelector).text(existsMessage).addClass("error-message");
         } else {
-          console.log(`Check passed for: ${JSON.stringify(data)}`);
           $(messageSelector).text("").removeClass("error-message");
         }
       }
@@ -107,7 +107,6 @@ function allInputsValid() {
     $("#descriptionMessage").text() !== ""
   );
 
-  console.log(`All inputs valid: ${valid}`);
   return valid;
 }
 
@@ -118,12 +117,6 @@ function submitForm() {
   const productName = $("#productName").val();
   const category = $("#categorie").val();
   const beschrijving = $("#beschrijving").val();
-
-  console.log("Submitting form...");
-  console.log(`Merk: ${merk}`);
-  console.log(`Product name: ${productName}`);
-  console.log(`Category: ${category}`);
-  console.log(`Beschrijving: ${beschrijving}`);
 
   // New AJAX call to submit the form
   $.ajax({
