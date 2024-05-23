@@ -10,7 +10,9 @@
 <?php 
 include("../admin.header.php");
 ?>
+    
 <div class="container">
+        <a href="javascript:history.back()" class="terugLink" >&#8592 Terug</a>
     <div class="statistiek">
         <h1>Statistiek</h1>
     </div>

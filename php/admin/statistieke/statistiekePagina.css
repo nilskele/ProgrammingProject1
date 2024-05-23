@@ -10,11 +10,14 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 100%;
     max-width: 1200px;
     padding: 100px;
 }
+.terugLink {
+    text-align: left;
+}
+
 .statistiek {
     color: black;
     margin-top:20px ;
@@ -70,3 +73,4 @@ tr:nth-child(even) {
 tr:last-child td {
     border-bottom: none;
 }
+
