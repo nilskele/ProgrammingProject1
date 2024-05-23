@@ -39,6 +39,8 @@ https://chat.openai.com/share/9b6c691f-0a82-466d-b280-265cf4b1e5bf<br>
 https://stackoverflow.com/questions/74937545/uncaught-syntaxerror-unexpected-token-br-when-using-json-parse-on-the<br>
 https://chat.openai.com/share/3ea7f502-26e1-479c-935f-fd81399840c4<br>
 https://chat.openai.com/share/06ef04eb-6224-430e-9c58-a404dd031a4b<br>
+https://chatgpt.com/share/03b19128-17e3-4704-8a02-d24cdaf89495<br>
+https://chatgpt.com/share/41046d29-1338-443f-8cc4-21d9380f32de<br>
 <br>
 <br>
 ## Nils:
