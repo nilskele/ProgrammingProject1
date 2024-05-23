@@ -222,9 +222,6 @@ button.btn.btn-primary.inloggen {
     display: flex;
     flex-direction: column;
   }
-  .dates{
-    margin: 2em;
-  }
 
   .terug{
     margin-top: 5em;
