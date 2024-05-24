@@ -3,38 +3,42 @@ session_start();
 
 include '../database.php';
 include '../ChromePhp.php';
-
 include('validation_functions.php');
 
-if (isset($_POST['inputEmail3']) && isset($_POST['inputPassword3'])) {
-    $email = valideren($_POST['inputEmail3']);
-    $plain_password = valideren($_POST['inputPassword3']);
+$response = array();
 
-    $stmt = $conn->prepare("SELECT user_id, email, passwoord, userType_fk FROM USER WHERE email=?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['inputEmail3']) && isset($_POST['inputPassword3'])) {
+        $email = valideren($_POST['inputEmail3']);
+        $plain_password = valideren($_POST['inputPassword3']);
 
-    if($result->num_rows === 1) {
-        $row = $result->fetch_assoc();
-        if(password_verify($plain_password, $row['passwoord'])) {
-            $_SESSION['email'] = $row['email'];
-            $_SESSION['isIngelogd'] = true;
-            $_SESSION['user_id'] = $row['user_id'];
-            $_SESSION['user_type'] = $row['userType_fk'];
-            if ($_SESSION['user_type'] == 1) {
-                header("Location: admin/admin.index.php");
+        $stmt = $conn->prepare("SELECT user_id, email, passwoord, userType_fk FROM USER WHERE email=?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 1) {
+            $row = $result->fetch_assoc();
+            if (password_verify($plain_password, $row['passwoord'])) {
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['isIngelogd'] = true;
+                $_SESSION['user_id'] = $row['user_id'];
+                $_SESSION['user_type'] = $row['userType_fk'];
+                $response['status'] = 'success';
+                $response['redirect'] = ($_SESSION['user_type'] == 1) ? 'admin/admin.index.php' : 'catalogus.php';
             } else {
-                header("Location: catalogus.php");
+                $response['status'] = 'error';
+                $response['message'] = 'Invalide email of wachtwoord';
             }
-            exit();
         } else {
-            header("Location: index.php?error=Invalide email of wachtwoord");
-            exit();
+            $response['status'] = 'error';
+            $response['message'] = 'Invalide email of wachtwoord';
         }
     } else {
-        header("Location: index.php?error=Invalide email of wachtwoord");
-        exit();
+        $response['status'] = 'error';
+        $response['message'] = 'Alle velden zijn verplicht';
     }
+    echo json_encode($response);
+    exit();
 }
 ?>

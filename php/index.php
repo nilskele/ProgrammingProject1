@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 </head>
 
 <body>
@@ -44,7 +46,7 @@
 </a>
       </div>
 
-      <form action="index.login.php" class="loginForm" id="loginForm" method="POST">
+      <form class="loginForm" id="loginForm" method="POST">
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Email:</label>
           <div class="col-sm-10">
