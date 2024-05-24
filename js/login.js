@@ -47,6 +47,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
                   icon: "success",
                   title: "Succes",
                   text: "Je bent succesvol ingelogd.",
+                  timer: 2000,
               }).then(() => {
                   window.location.href = response.redirect;
               });

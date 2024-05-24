@@ -9,10 +9,11 @@ $voornaam = $_POST['voornaam'];
 $achternaam = $_POST['achternaam'];
 $email = $_POST['email'];
 $passwoord = $_POST['passwoord']; // Let op de juiste naam van het wachtwoordveld
+$userType_fk = $_POST['userType'];
 
 // Controleren op e-maildomein
-if (substr($email, -15) !== '@student.ehb.be') {
-    die("Je kunt je alleen registreren met een e-mail van de school (student.ehb.be)");
+if (!preg_match('/@student\.ehb\.be$/', $email) && !preg_match('/@ehb\.be$/', $email)) {
+    die("Je kunt je alleen registreren met een e-mail van de school (student.ehb.be of ehb.be)");
 }
 
 // Controleren op bestaande e-mail in de database
@@ -27,9 +28,6 @@ if ($result->num_rows > 0) {
 
 // Hash wachtwoord
 $hashed_passwoord = password_hash($passwoord, PASSWORD_DEFAULT);
-
-// UserType_fk voor studenten is 3
-$userType_fk = 3;
 
 // Gegevens invoegen in de database
 $stmt = $conn->prepare("INSERT INTO USER (voornaam, achternaam, email, passwoord, userType_fk) VALUES (?, ?, ?, ?, ?)");

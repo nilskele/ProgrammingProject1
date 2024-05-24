@@ -3,6 +3,19 @@
     padding: 0;
 }
 
+a.btn.btn-primary.aanmaken {
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    border-radius: 1em;
+    text-decoration: none;
+    transition: 0.3s;
+    position: absolute;
+    top: 80px;
+    left: 20px;
+}
+
 #adminDashboard {
     margin-top: 10em;
     display: flex;

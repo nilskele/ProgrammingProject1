@@ -33,8 +33,10 @@ include('../../database.php');
 <div id="popup" class="popup"></div>
 
 
-
 <div id="adminDashboard">
+<a class="btn btn-primary aanmaken" href="../accountAanmaken.php">
+  Account aanmaken
+</a>
   <div id="container1">
     <div class="adminAccepteren">
       <div class="productNr">
