@@ -6,6 +6,10 @@
 
 }
 
+.terugLink {
+    position: absolute;
+}
+
 .section {
     background-color: #d3d7dada;
     border: 1px solid #FF0000;

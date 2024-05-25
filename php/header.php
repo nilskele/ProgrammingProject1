@@ -16,7 +16,7 @@
     <a class="nav-item nav-link" href="/ProgrammingProject1/php/info.php">
       Info
     </a>
-    <a class="nav-item nav-link" href="#">
+    <a class="nav-item nav-link" href="/ProgrammingProject1/php/reglement.php">
       Reglement
     </a>
     <a class="nav-item nav-link" href="/ProgrammingProject1/php/logout.php"><img src="/ProgrammingProject1/images/logout-svgrepo-com.svg" alt="loagout"
