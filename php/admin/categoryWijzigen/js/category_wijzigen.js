@@ -1,8 +1,10 @@
 $(document).ready(function () {
+    // functie om de categorieën op te halen
     $("#wijzigButton").click(function () {
         let categoryId = $("#categoryName").val();
         let nieuweNaam = $("#nieuweNaam").val();
 
+        // controleer of alle velden zijn ingevuld
         if (categoryId === "" || nieuweNaam === "") {
             Swal.fire({
                 icon: "warning",
@@ -12,6 +14,7 @@ $(document).ready(function () {
             return;
         }
 
+        // update de categorie
         Swal.fire({
             title: "Weet je het zeker?",
             text: "Weet je zeker dat je deze categorie wilt wijzigen?",
@@ -47,9 +50,11 @@ $(document).ready(function () {
         });
     });
 
+    // functie om de categorieën te verwijderen
     $("#verwijderButton").click(function () {
         let categoryId = $("#categoryName").val();
 
+        // controleer of een categorie is geselecteerd
         if (categoryId === "") {
             Swal.fire({
                 icon: "warning",
@@ -59,6 +64,7 @@ $(document).ready(function () {
             return;
         }
 
+        // verwijder de categorie
         Swal.fire({
             title: "Weet je het zeker?",
             text: "Weet je zeker dat je deze categorie wilt verwijderen?",
@@ -94,9 +100,11 @@ $(document).ready(function () {
         });
     });
 
+    // functie om een categorie toe te voegen
     $("#toevoegenCategory").click(function () {
         let categoryNameInput = $("#categoryNameInput").val();
 
+        // controleer of een categorie is ingevuld
         if (categoryNameInput === "") {
             Swal.fire({
                 icon: "warning",
@@ -106,6 +114,7 @@ $(document).ready(function () {
             return;
         }
 
+        // voeg de categorie toe
         Swal.fire({
             title: "Weet je het zeker?",
             text: "Weet je zeker dat je deze categorie wilt toevoegen?",

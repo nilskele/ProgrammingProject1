@@ -8,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['kitNaam']) && isset($_
     $categorie = $_POST['categorie'];
     $merk = $_POST['merk'];
 
+    // voeg een nieuwe kit toe
     $query = "INSERT INTO KIT (kit_naam, datumBeschikbaar, zichtbaar, isUitgeleend, category_fk, merk_fk, image_id_fk) VALUES (?, SYSDATE(), true, false, ?, ?, 4)";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("sii", $kitNaam, $categorie, $merk);

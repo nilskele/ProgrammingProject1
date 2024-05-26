@@ -7,6 +7,7 @@ $response = array();
 if (isset($_GET["kitNaam"])) {
     $kitNaam = $_GET["kitNaam"];
     
+    // check of de kitnaam al bestaat
     $sql = "SELECT kit_naam FROM KIT WHERE kit_naam = ?";
     if ($stmt = $conn->prepare($sql)) {
         $stmt->bind_param("s", $kitNaam);

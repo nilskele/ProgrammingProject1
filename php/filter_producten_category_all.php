@@ -8,6 +8,7 @@ if ($conn->connect_error) {
 $categorie = isset($_GET['categorie']) ? $_GET['categorie'] : '';
 
 if ($categorie === 'All') {
+    // fetch van alle producten en kits
     $stmt = $conn->prepare("SELECT GROEP.groep_id AS groep_id, GROEP.naam AS groep_naam, MERK.naam AS merk_naam, PRODUCT.opmerkingen, BESCHRIJVING.naam AS beschrijving_naam, MIN(PRODUCT.datumBeschikbaar) AS datumBeschikbaar,
     COUNT(PRODUCT.product_id) AS aantal_beschikbare_producten, IMAGE.image_data
 FROM GROEP

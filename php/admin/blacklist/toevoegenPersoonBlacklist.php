@@ -4,7 +4,7 @@ include("../../../database.php");
 if (isset($_POST['email'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
 
-    // Check if email exists
+    // check of de email bestaat
     $checkQuery = "SELECT * FROM USER WHERE email = ?";
     $checkStmt = $conn->prepare($checkQuery);
     $checkStmt->bind_param("s", $email);
@@ -12,6 +12,7 @@ if (isset($_POST['email'])) {
     $checkResult = $checkStmt->get_result();
     $checkStmt->close();
 
+    // als de email bestaat, update de blacklist_fk en de blacklistDatum
     if ($checkResult->num_rows > 0) {
         $query = "UPDATE USER SET blacklist_fk = blacklist_fk + 1, blacklistDatum = DATE_ADD(NOW(), INTERVAL 3 MONTH) WHERE email = ?";
         

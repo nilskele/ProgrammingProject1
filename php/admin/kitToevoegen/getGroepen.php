@@ -5,6 +5,7 @@ header('Content-Type: application/json');
 
 $response = array();
 
+// fetch van alle groepen
 $sql = "SELECT naam FROM GROEP";
 if ($stmt = $conn->prepare($sql)) {
     $stmt->execute();

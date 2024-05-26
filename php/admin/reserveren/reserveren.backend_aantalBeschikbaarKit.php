@@ -10,13 +10,13 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     $startDatum = $_GET['startDatum'];
     $eindDatum = $_GET['eindDatum'];
 
-    // Ensure all parameters are received
     if (empty($KitNr) || empty($startDatum) || empty($eindDatum)) {
         $response['error'] = "Missing parameters.";
         echo json_encode($response);
         exit;
     }
 
+    // fetch van het aantal beschikbare kits
     $stmt = $conn->prepare("SELECT
     (SELECT COUNT(*)
      FROM GROEP

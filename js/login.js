@@ -3,6 +3,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
   let email = document.getElementById("inputEmail3").value;
   let password = document.getElementById("inputPassword3").value;
 
+    // Check of de velden zijn ingevuld
   if (email.trim() === "" && password.trim() === "") {
       Swal.fire({
           icon: "error",
@@ -10,6 +11,8 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
           text: "Gelieve alle velden in te vullen.",
       });
       return;
+
+      // Check of het e-mailadres is ingevuld
   } else if (email.trim() === "") {
       Swal.fire({
           icon: "error",
@@ -17,6 +20,8 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
           text: "Gelieve een e-mailadres in te vullen.",
       });
       return;
+
+      // Check of het e-mailadres een studenten e-mailadres is of docenten e-mailadres
   } else if (!email.endsWith("@student.ehb.be") && !email.endsWith("@ehb.be")) {
       Swal.fire({
           icon: "error",
@@ -24,6 +29,8 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
           text: "Je kunt je alleen inloggen met een e-mail van de school (student.ehb.be)",
       });
       return;
+
+        // Check of het wachtwoord is ingevuld
   } else if (password.trim() === "") {
       Swal.fire({
           icon: "error",
@@ -33,6 +40,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
       return;
   }
 
+  // AJAX-oproep om in te loggen
   $.ajax({
       url: "../php/index.login.php",
       type: "POST",

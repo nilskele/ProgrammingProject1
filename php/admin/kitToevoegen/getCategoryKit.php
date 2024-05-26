@@ -2,6 +2,7 @@
 
 include("../../../database.php");
 
+// fetch van alle categorieën
 $sql = "SELECT cat_id, naam FROM CATEGORY ORDER BY naam";
 $result = $conn->query($sql);
 

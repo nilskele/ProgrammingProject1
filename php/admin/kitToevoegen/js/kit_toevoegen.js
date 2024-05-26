@@ -2,6 +2,7 @@ $(document).ready(function () {
     let kitNaamInput = document.getElementById('kitNaam');
     let correctSpan = document.getElementById('correctSpan');
 
+    // functie om te controleren of de kitnaam al bestaat
     kitNaamInput.addEventListener('keyup', function () {
         let kitNaam = kitNaamInput.value;
         $.ajax({
@@ -25,6 +26,7 @@ $(document).ready(function () {
 
     let groepinput = document.getElementById('groepinput');
 
+    // AJAX-oproep om alle groepen op te halen
     $.ajax({
         url: 'getGroepen.php',
         type: 'GET',
@@ -50,6 +52,7 @@ $(document).ready(function () {
     let productenList = document.getElementById('productenList');
     let toevoegenProductBtn = document.getElementById('toevoegenProductBtn');
 
+    // Event listener voor het toevoegen van een product aan de lijst
     toevoegenProductBtn.addEventListener('click', function () {
         let selectedOption = groepinput.options[groepinput.selectedIndex];
         let product = selectedOption.value;
@@ -63,6 +66,7 @@ $(document).ready(function () {
 
     let categrieSelect = document.getElementById('categrieSelect');
 
+    // AJAX-oproep om alle categorieën op te halen
     if (categrieSelect) {
         $.ajax({
             url: 'getCategoryKit.php',
@@ -91,6 +95,7 @@ $(document).ready(function () {
 
     let merkSelect = document.getElementById('merkSelect');
 
+    // AJAX-oproep om alle merken op te halen
     if (merkSelect) {
         $.ajax({
             url: 'getMerkKit.php',
@@ -117,7 +122,7 @@ $(document).ready(function () {
         console.error('merkSelect element not found');
     }
 
-
+    // Event listener voor het toevoegen van een kit
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -149,7 +154,7 @@ $(document).ready(function () {
         for (let i = 0; i < productLis.length; i++) {
             producten.push(productLis[i].innerHTML);
         }
-
+        
         Swal.fire({
             icon: 'warning',
             title: 'Weet u zeker dat u deze kit wilt toevoegen?',
@@ -158,6 +163,7 @@ $(document).ready(function () {
             cancelButtonText: 'Nee'
         }).then((result) => {
             if (result.isConfirmed) {   
+                // AJAX-oproep om een kit toe te voegen
                 $.ajax({
                     url: 'kit_toevoegenBackend.php',
                     type: 'POST',

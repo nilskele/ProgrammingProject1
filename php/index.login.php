@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = valideren($_POST['inputEmail3']);
         $plain_password = valideren($_POST['inputPassword3']);
 
+        // check of de gebruiker bestaat
         $stmt = $conn->prepare("SELECT user_id, email, passwoord, userType_fk FROM USER WHERE email=?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -19,7 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($result->num_rows === 1) {
             $row = $result->fetch_assoc();
+            // check of het wachtwoord klopt
             if (password_verify($plain_password, $row['passwoord'])) {
+                // zet variabelen in de sessie
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['isIngelogd'] = true;
                 $_SESSION['user_id'] = $row['user_id'];

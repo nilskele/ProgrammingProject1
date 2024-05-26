@@ -2,6 +2,7 @@
 
 include('../../../database.php');
 
+// fetch van alle merken
 $sql = "SELECT merk_id, naam FROM MERK ORDER BY naam";
 $result = $conn->query($sql);
 

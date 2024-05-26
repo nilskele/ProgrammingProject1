@@ -235,6 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let waarschuwingenCount = document.querySelector(".waarschuwingenCount");
   let waarschuwingenDiv = document.querySelector(".waarschuwingenDiv");
 
+  // Fetch waarschuwingen count
   if (waarschuwingenCount) {
     fetch("waarschuwingenCount.php")
       .then((response) => response.json())

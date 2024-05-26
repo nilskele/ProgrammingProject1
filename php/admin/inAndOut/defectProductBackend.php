@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $redenDefect = mysqli_real_escape_string($conn, $_POST['reden']);
         $productNr = mysqli_real_escape_string($conn, $_POST['productNr']);
 
-
+        // check of de email bestaat
         $checkEmailQuery = "SELECT COUNT(*) AS num FROM USER WHERE email = '$email'";
         $result = $conn->query($checkEmailQuery);
         $row = $result->fetch_assoc();
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
 
-
+        // een nieuwe defect toevoegen voor het product
         $query = "INSERT INTO DEFECT (watdefect, redenDefect, lening_id_fk)
         SELECT
             '$watdefect' AS watdefect,

@@ -3,7 +3,7 @@ let topBtn = document.getElementById("topBtn");
 window.onscroll = function () {
   scrollFunction();
 };
-
+// functie voor de knop om naar boven te gaan hidden of display block
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     topBtn.style.display = "block";
@@ -12,6 +12,7 @@ function scrollFunction() {
   }
 }
 
+// functie om naar boven te gaan
 function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
@@ -22,6 +23,7 @@ let reserverenButtonProduct = document.getElementById(
 );
 let productNrInput = document.getElementById("productNrInput");
 
+// functie om prdouctNr te controleren en dan naar reserveren pagina te gaan
 reserverenButtonProduct.addEventListener("click", function () {
   let productNr = productNrInput.value;
 
@@ -57,6 +59,7 @@ reserverenButtonProduct.addEventListener("click", function () {
 
 let defectBtn = document.getElementById("defectBtn");
 
+// functie om productNr te controleren en dan naar defect pagina te gaan
 defectBtn.addEventListener("click", function () {
   let productNr = productNrInput.value;
   localStorage.removeItem("email");
@@ -93,6 +96,7 @@ defectBtn.addEventListener("click", function () {
 
 let acceptBtnKit = document.getElementById("acceptBtnKit");
 
+// functie om kitNr te controleren en dan naar accepteren pagina te gaan
 acceptBtnKit.addEventListener("click", function () {
   let KitNrInput = document.getElementById("KitNrInput").value;
   localStorage.removeItem("email");
@@ -129,6 +133,7 @@ acceptBtnKit.addEventListener("click", function () {
 
 let defectBtnKit = document.getElementById("defectBtnKit");
 
+// functie om kitNr te controleren en dan naar defect pagina te gaan
 defectBtnKit.addEventListener("click", function () {
   let KitNrInput = document.getElementById("KitNrInput").value;
   localStorage.removeItem("email");
@@ -165,6 +170,7 @@ defectBtnKit.addEventListener("click", function () {
 
 let reserverenBtnKit = document.getElementById("reserverenBtnKit");
 
+// functie om kitNr te controleren en dan naar reserveren pagina te gaan
 reserverenBtnKit.addEventListener("click", function () {
   let KitNrInput = document.getElementById("KitNrInput").value;
   localStorage.removeItem("email");
@@ -199,6 +205,7 @@ reserverenBtnKit.addEventListener("click", function () {
   }
 });
 
+// functie om naar defect pagina te gaan in de IN/OUT pagina
 document.addEventListener("DOMContentLoaded", function () {
   $(document).on("click", ".defectBtn90", function (event) {
     event.preventDefault();

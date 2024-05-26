@@ -4,6 +4,7 @@ session_start();
 $response = array();
 
 if(isset($_SESSION['user_id'])) {
+    // get user_id van session
     $user_id = $_SESSION['user_id'];
     $response['user_id'] = $user_id;
 } else {

@@ -5,6 +5,7 @@ include '../database.php';
 $responnse = [];
 
 if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+    // fetch van enkel kits die producten bevatten die zichtbaar zijn
     $query = "SELECT KIT.kit_id, KIT.kit_naam, MERK.naam AS merk_naam, KIT.opmerkingen, GROUP_CONCAT(GROEP.naam) AS beschrijving_naam, MIN(KIT.datumBeschikbaar) AS datumBeschikbaar ,
     (SELECT COUNT(*)
      FROM GROEP

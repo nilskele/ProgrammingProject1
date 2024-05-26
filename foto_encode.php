@@ -2,6 +2,7 @@
 
 include "database.php";
 
+// afbeelding inlezen en omzetten naar base64
 $afbeeldingData = file_get_contents("./images/jpg");
 $gecodeerdeAfbeelding = base64_encode($afbeeldingData);
 

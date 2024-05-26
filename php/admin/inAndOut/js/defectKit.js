@@ -7,6 +7,7 @@ $(document).ready(function () {
     let naamPersoon = document.getElementById('naamPersoon');
     let emailPersoon = document.getElementById('emailPersoon');
 
+    // functoe om alle producten van een kit te tonen in de frontend
     function toonProducten(data) {
         if (data.error) {
             productenLijstDiv.innerHTML = data.error;
@@ -38,6 +39,7 @@ $(document).ready(function () {
         productenLijstDiv.innerHTML = productenHtml;
     }
 
+    // AJAX-oproep om alle producten van een kit te tonen
     $.ajax({
         url: 'defectKitsProductenLaden.php',
         type: 'GET',
@@ -55,6 +57,7 @@ $(document).ready(function () {
         }
     });
 
+    // Functie om voor het specifieke product naar de defectProduct pagina te gaan
     productenLijstDiv.addEventListener('click', function (e) {
         if (e.target.classList.contains('defectBtnKit')) {
             let productNr = e.target.getAttribute('data-id');

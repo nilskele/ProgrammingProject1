@@ -13,6 +13,7 @@ $groep_id = $_GET['groep_id'];
 $startDatum = $_GET['startDatum'];
 $eindDatum = $_GET['eindDatum'];
 
+// fetch van alle producten die beschikbaar zijn voor de eindDatum in de kit
 if ($isKit == 1) {
     $sql = "SELECT
     (SELECT COUNT(*)
@@ -41,6 +42,7 @@ WHERE KIT.datumBeschikbaar < ?
 )
 GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data";
 } else {
+    // fetch van alle producten die beschikbaar zijn voor de eindDatum 
     $sql = "SELECT COUNT(*) AS aantalBeschikbaar
             FROM PRODUCT
             JOIN GROEP ON PRODUCT.groep_id = GROEP.groep_id
