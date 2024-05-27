@@ -10,6 +10,7 @@ https://github.com/Ileriayo/markdown-badges
 <br>Bootstrap: https://getbootstrap.com/
 <br>vlucas/PHP dotenv: https://github.com/vlucas/phpdotenv?tab=readme-ov-file
 <br>Symfony Mailer: https://symfony.com/doc/current/mailer.html
+<br>Formsubmit: https://formsubmit.co/
 <br>
 
 ![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white) ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white) ![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white) ![W3schools](https://img.shields.io/badge/W3Schools-04AA6D?style=for-the-badge&logo=W3Schools&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
@@ -44,23 +45,7 @@ https://chatgpt.com/share/41046d29-1338-443f-8cc4-21d9380f32de<br>
 https://chatgpt.com/share/d830216c-c669-4158-902b-85e4ce5474aa<br>
 https://chatgpt.com/share/dc3da249-ea1b-4651-a5d6-97e2894e1e82<br>
 https://chatgpt.com/share/9a0ae7e0-bd61-44c8-ab3b-47be3bb7af1f<br>
-<br>
-<br>
-## Nils:
-Github Copilot <br>
-https://chat.openai.com/share/73994dc4-b488-40a5-aac4-ee6dcb2238f9<br>
-https://www.youtube.com/watch?v=gy6LY0Xy2zU&t=388s<br>
-https://stackoverflow.com/questions/982919/sql-update-query-using-joins<br>
-https://stackoverflow.com/questions/60162968/how-to-dynamically-create-these-html-elements-using-js<br>
-https://chat.openai.com/share/bc1fc5a1-6348-4e74-8387-4346ec50cfb9<br>
-https://chat.openai.com/share/40671b2c-bd71-4d43-a342-65fd363f31f0 <br>
-https://stackoverflow.com/questions/8893551/update-query-php-mysql<br>
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach <br>
-https://sweetalert2.github.io/ <br>
-https://stackoverflow.com/questions/5426767/sql-server-how-to-use-union-with-two-queries-that-both-have-a-where-clause <br>
-https://stackoverflow.com/questions/40707493/pass-javascript-into-php-using-ajax <br>
-
-<br>
+https://chatgpt.com/share/154f2e8a-235e-4671-84a5-c2258c30aac9<br>
 <br>
 ## Jente:
 Github Copilot <br>
@@ -90,7 +75,6 @@ https://dev.mysql.com/doc/refman/8.0/en/union.html<br>
 https://stackoverflow.com/questions/9436534/ajax-tutorial-for-post-and-get<br>
 https://www.w3schools.com/jquery/ajax_ajax.asp<br>
 <br>
-
 ## Lucas:
 https://chat.openai.com/share/8e8c51f8-d417-48ab-bab4-abe07de601da <br>
 https://www.youtube.com/watch?v=SgynWhEgvlw](https://www.youtube.com/watch?v=SgynWhEgvlw <br>
@@ -109,18 +93,20 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch<br>
 https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_localstorage<br>
 https://chatgpt.com/share/33bc7769-57e8-449b-aad6-04d028428ccb<br>
 <br>
-
-## Weiam:
+## Nils:
 Github Copilot <br>
-https://youtu.be/yQimoqo0-7g?si=ovJUMtBwCWlU_kjh<br>
-https://youtu.be/ZBgTzx46B8s?si=BG3xPXQg9RiPL7qP<br>
-https://chat.openai.com/share/ed202594-ebc5-487b-ae79-a46f6ec4e197<br>
-https://chat.openai.com/share/06e379b1-131f-4ca3-8e78-1418eec917b8<br>
-https://chat.openai.com/share/9f0a3b29-9770-4aee-a30a-259d6a64e3b1<br>
-https://chat.openai.com/share/d178c3b0-14d3-4a51-957c-81da2c28c649<br>
-https://www.daterangepicker.com/#config<br>
+https://chat.openai.com/share/73994dc4-b488-40a5-aac4-ee6dcb2238f9<br>
+https://www.youtube.com/watch?v=gy6LY0Xy2zU&t=388s<br>
+https://stackoverflow.com/questions/982919/sql-update-query-using-joins<br>
+https://stackoverflow.com/questions/60162968/how-to-dynamically-create-these-html-elements-using-js<br>
+https://chat.openai.com/share/bc1fc5a1-6348-4e74-8387-4346ec50cfb9<br>
+https://chat.openai.com/share/40671b2c-bd71-4d43-a342-65fd363f31f0 <br>
+https://stackoverflow.com/questions/8893551/update-query-php-mysql<br>
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach <br>
+https://sweetalert2.github.io/ <br>
+https://stackoverflow.com/questions/5426767/sql-server-how-to-use-union-with-two-queries-that-both-have-a-where-clause <br>
+https://stackoverflow.com/questions/40707493/pass-javascript-into-php-using-ajax <br>
 <br>
-
 ## Samia:
 Github Copilot <br>
 https://chat.openai.com/c/599204ef-1fc4-4cb8-9bda-229b001d5762<br>
@@ -131,6 +117,16 @@ https://www.youtube.com/watch?v=wRNinF7YQqQ<br>
 https://chat.openai.com/share/24027565-42ed-4bf3-8ffc-d580c5fce01f<br>
 https://www.youtube.com/watch?v=oYRda7UtuhA<br>
 https://chat.openai.com/share/2df5f9f8-3398-4e20-a1c3-57113d8cd182<br>
+<br>
+## Weiam:
+Github Copilot <br>
+https://youtu.be/yQimoqo0-7g?si=ovJUMtBwCWlU_kjh<br>
+https://youtu.be/ZBgTzx46B8s?si=BG3xPXQg9RiPL7qP<br>
+https://chat.openai.com/share/ed202594-ebc5-487b-ae79-a46f6ec4e197<br>
+https://chat.openai.com/share/06e379b1-131f-4ca3-8e78-1418eec917b8<br>
+https://chat.openai.com/share/9f0a3b29-9770-4aee-a30a-259d6a64e3b1<br>
+https://chat.openai.com/share/d178c3b0-14d3-4a51-957c-81da2c28c649<br>
+https://www.daterangepicker.com/#config<br>
 https://chat.openai.com/share/722acf5f-d857-42fd-af97-7e61ea13346f<br>
 https://www.youtube.com/watch?v=oskJVzyEgnE<br>
 https://www.youtube.com/watch?v=FrfEWFO4VzM<br>
