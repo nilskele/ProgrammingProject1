@@ -1,5 +1,5 @@
 <?php
-include('index.header.php');
+  include('index.header.php');
 ?>
 
 
@@ -9,8 +9,8 @@ include('index.header.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank you</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="/ProgrammingProject1/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/ProgrammingProject1/css/styles.css">
 </head>
 <style>
     .container{

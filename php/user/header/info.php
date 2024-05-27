@@ -1,5 +1,5 @@
 <?php
-include ('header.php');
+  include ('header.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,9 +10,9 @@ include ('header.php');
   <title>Info Page</title>
   <!-- Bootstrap CSS -->
 
-  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/info.css">
+  <link rel="stylesheet" href="/ProgrammingProject1/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/ProgrammingProject1/css/styles.css">
+  <link rel="stylesheet" href="css/info.css">
 
   <!-- External JavaScript -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>

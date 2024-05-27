@@ -48,6 +48,7 @@ $(function() {
                                 <a class="defectBtn defectButton" id="defectBtn90" href="">Defect</a>
                             </div>
                             <div class="info">
+                                <p id="emailDefect" style="display: none;" value="${item.email}"></p>
                                 <h5 class="Naam" value="${item.voornaam} ${item.achternaam}">${item.voornaam} ${item.achternaam}</h5>
                                 <p class="userId" value="${item.user_id_fk}">User ID: ${item.user_id_fk}</p>
                                 <p class="accepterenProductID" value="${item.product_id}">Product ID: ${item.product_id}</p>
@@ -129,8 +130,9 @@ $(function() {
 
     $(document).off('click', '#defectBtn90').on('click', '#defectBtn90', function(event) {
         event.preventDefault();
-        let productnr = $(this).closest('.inOutProduct').find('#accepterenProductID').attr('value');
+        let productnr = $(this).closest('.inOutProduct').find('.accepterenProductID').attr('value');
         let email = $(this).closest('.inOutProduct').find('#emailDefect').attr('value');
+        console.log(productnr, email)
 
         if (productnr) {
             localStorage.setItem("productNr", productnr);

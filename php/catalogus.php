@@ -1,28 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+<title>Catalogus</title>
+<link rel="stylesheet" href="/ProgrammingProject1/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/ProgrammingProject1/css/styles.css" />
+<link rel="stylesheet" href="/ProgrammingProject1/php/user/catalogus/css/catalogus.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catalogus</title>
-  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../css/styles.css" />
-  <link rel="stylesheet" href="/ProgrammingProject1/php/user/catalogus/css/catalogus.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
-</head>
+<?php include ('user/header/header.php') ?>
 
-<body>
-  <?php include('header.php')?>
+<div class="zoekBalk">
+  <?php include ('zoekbalk.php') ?>
+</div>
 
-  <div class="zoekBalk">
-    <?php include('zoekbalk.php')?>
-  </div>
+<div class="resultaten"></div>
 
-  <div class="resultaten"></div>
-
-  <!-----Pagination----->
-  <!-- <footer>
+<!-----Pagination----->
+<!-- <footer>
     <div class="pagination">
       <a href="#">&laquo;</a>
       <a href="#">&lsaquo;</a>
@@ -36,12 +28,9 @@
     </div>
   </footer> -->
 
-  <br>
-  <div class="toTopAnker">
-    <button onclick="topFunction()" id="topBtn">Top &#8593;</button>
-  </div>
-  <script src="../js/catalogus.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</body>
-
-</html>
+<br>
+<div class="toTopAnker">
+  <button onclick="topFunction()" id="topBtn">Top &#8593;</button>
+</div>
+<script src="../js/catalogus.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

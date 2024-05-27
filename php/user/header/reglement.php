@@ -6,16 +6,16 @@ include ('header.php');
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reglement</title>
-  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/reglement.css">
+  <link rel="stylesheet" href="/ProgrammingProject1/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/ProgrammingProject1/css/styles.css">
+  <link rel="stylesheet" href="css/reglement.css">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 </head>
 <body>
     <div class="container">
         <a href="javascript:history.back()" class="terugLink">&#8592 Terug</a>
-        <h1 class="titel">Regelemnt</h1>
+        <h1 class="titel">Regelement</h1>
         <div class="reglementContainer">
             <ol>
                 <li class="bold">Reservatiebeleid</li>
