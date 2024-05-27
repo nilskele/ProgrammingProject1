@@ -53,11 +53,12 @@ $(function() {
                         </div>
                         <div class="info">
                             <h3 class="Naam">${item1.voornaam} ${item1.achternaam}</h3>
-                            <p class="accepterenProductID"  value="${item1.naam} ${item1.product_id}">${item1.naam}, ${item1.product_id}</p>
+                            <p class="accepterenProductID"  value="${item1.product_id}">${item1.naam}, ${item1.product_id}</p>
                         </div>
-                    
-                            <svg class="erroricon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#FFD43B" d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>                        <div class="moreinfo" onclick="openPopup()">
                             
+                            <svg class="erroricon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#FFD43B" d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>                        <div class="moreinfo" onclick="openPopup()">
+                            <p class="erroriconBlock" value=""> </p>
+
                             <img class="dots"  src="/ProgrammingProject1/images/9025404_dots_three_icon.png" alt="More info image">
                         </div>
                     `;
@@ -95,7 +96,44 @@ $(function() {
             }
         });
     }
+    $(document).ready(function() {
+        var $this, productNr1, telaattekst;
     
+        $(document).on('mouseenter', '.erroricon', function() {
+            $this = $(this);
+            productNr1 = $this.closest('.inOutProduct').find('.accepterenProductID').attr('value');
+    
+            $.ajax({
+                url: '/ProgrammingProject1/php/admin/teLaat/teLaatIngebracht.backend.php', 
+                method: 'POST',
+                success: function(response) {
+                    // Parse the JSON response
+                    var data = JSON.parse(response);
+                    data.forEach(function(item) {
+                        console.log(item.product_id, productNr1);
+                        if (item.product_id === productNr1) { // Replace 'productNr' with the actual property name
+                            telaattekst = $this.closest('.inOutProduct').find('.erroriconBlock');
+                            telaattekst.html(`product niet in stock en is al ${item.daysDifference} dagen te laat`);
+                        }
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+    
+            console.log("Mouse entered");
+        });
+    
+        $(document).on('mouseleave', '.erroricon', function() {
+            // This function gets called when the mouse leaves the element
+            if (telaattekst) {
+                telaattekst.html(``);
+            }
+    
+            console.log("Mouse left");
+        });
+    });
 
     // Function to fetch and display data for terugbrengDatum
     function fetchDataTerugbrengDatum(selectedDate) {
@@ -276,24 +314,40 @@ $(function() {
 
         // Retrieve the lening_id associated with the clicked row
         var leningId = $this.closest('.inOutProduct').data('lening-id');
-
-        // Send AJAX request to update the terugbrengDatum to NULL in the database
-        $.ajax({
-            url: '/ProgrammingProject1/php/update_uitleendatum.php',
-            method: 'POST',
-            data: { leningId: leningId },
-            success: function(response) {
-                // Upon successful update, hide the row from the page
-                if (response === 'success') {
-                    $this.closest('.inOutProduct').hide();
-                } else {
-                    console.error('Failed to update terugbrengDatum');
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
+        Swal.fire({
+            title: 'Weet u zeker dat u dit wilt doen?',
+            text: "Dit product zal worden geaccepteerd.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, proceed!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '/ProgrammingProject1/php/update_uitleendatum.php',
+                    method: 'POST',
+                    data: { leningId: leningId },
+                    success: function(response) {
+                        // Upon successful update, hide the row from the page
+                        if (response === 'success') {
+                            $this.closest('.inOutProduct').hide();
+                        } else {
+                            console.error('Failed to update terugbrengDatum');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
             }
         });
+        
+        
+    
+
+        
+        
     });
 
     $('.inputZoekbalk1').on('keyup', function() {

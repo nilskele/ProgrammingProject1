@@ -11,9 +11,10 @@ a.btn.btn-primary.aanmaken {
     border-radius: 1em;
     text-decoration: none;
     transition: 0.3s;
+    margin-bottom: 2em;
+    top: 5em;
     position: absolute;
-    top: 80px;
-    left: 20px;
+    left: 1em;
 }
 
 #adminDashboard {

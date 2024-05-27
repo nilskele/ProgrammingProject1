@@ -72,33 +72,47 @@ $(document).ready(function () {
             let productId = e.target.getAttribute('data-id');
             let leningId = e.target.getAttribute('data-lening-id');
             let accepterenBtn = document.getElementById('accepterenBtn-' + productId);
-            accepterenBtn.innerHTML = 'Geaccepteerd';
-            accepterenBtn.disabled = true;
+            
 
             // AJAX-oproep om een product te accepteren
-            $.ajax({
-                url: '/ProgrammingProject1/php/productAccepteren.php',
-                type: 'POST',
-                data: {
-                    productNr: productId,
-                    leningId: leningId
-                },
-                success: function (data) {
-                    // button accepteren veranderen naar geaccepteerd
-                    console.log('Product geaccepteerd:', data);
-                    aantalGeaccepteerdeProducten++;
-                    aantalProductenBinnen.innerHTML = aantalGeaccepteerdeProducten + "/" + aantalProducten + " producten zijn geaccepteerd";
-                    if (aantalGeaccepteerdeProducten === aantalProducten) {
-                        kitAccepterenBtn.disabled = false;
-                    }
-                },
-                error: function (xhr, status, error) {
-                    console.error('Error occurred:', error);
-                    console.error('Response text:', xhr.responseText);
-                    accepterenBtn.innerHTML = 'Accepteer';
-                    accepterenBtn.disabled = false; 
+            Swal.fire({
+                title: 'Weet u zeker dat u dit wilt doen?',
+                text: "Dit product zal worden geaccepteerd.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, proceed!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/ProgrammingProject1/php/productAccepteren.php',
+                        type: 'POST',
+                        data: {
+                            productNr: productId,
+                            leningId: leningId
+                        },
+                        success: function (data) {
+                            accepterenBtn.innerHTML = 'Geaccepteerd';
+            accepterenBtn.disabled = true;
+                            // button accepteren veranderen naar geaccepteerd
+                            console.log('Product geaccepteerd:', data);
+                            aantalGeaccepteerdeProducten++;
+                            aantalProductenBinnen.innerHTML = aantalGeaccepteerdeProducten + "/" + aantalProducten + " producten zijn geaccepteerd";
+                            if (aantalGeaccepteerdeProducten === aantalProducten) {
+                                kitAccepterenBtn.disabled = false;
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Error occurred:', error);
+                            console.error('Response text:', xhr.responseText);
+                            accepterenBtn.innerHTML = 'Accepteer';
+                            accepterenBtn.disabled = false; 
+                        }
+                    });
                 }
             });
+            
         }
 
         // Event listener voor het defect maken van een product naar de defectProduct.php pagina
