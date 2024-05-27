@@ -51,7 +51,13 @@ https://www.youtube.com/watch?v=gy6LY0Xy2zU&t=388s<br>
 https://stackoverflow.com/questions/982919/sql-update-query-using-joins<br>
 https://stackoverflow.com/questions/60162968/how-to-dynamically-create-these-html-elements-using-js<br>
 https://chat.openai.com/share/bc1fc5a1-6348-4e74-8387-4346ec50cfb9<br>
-https://chat.openai.com/share/40671b2c-bd71-4d43-a342-65fd363f31f0
+https://chat.openai.com/share/40671b2c-bd71-4d43-a342-65fd363f31f0 <br>
+https://stackoverflow.com/questions/8893551/update-query-php-mysql<br>
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach <br>
+https://sweetalert2.github.io/ <br>
+https://stackoverflow.com/questions/5426767/sql-server-how-to-use-union-with-two-queries-that-both-have-a-where-clause <br>
+https://stackoverflow.com/questions/40707493/pass-javascript-into-php-using-ajax <br>
+
 <br>
 <br>
 ## Jente:
