@@ -86,7 +86,7 @@ button.submit2 {
     border: 2px solid red;
 }
 .labelcontainers{
-    width: 70%;
+    width: 95%;
     display: flex;
     justify-content: space-between;
     margin: 2em;
@@ -113,3 +113,7 @@ select#categrieSelect {
 .overview_producten {
     margin-bottom: 30px;
 }
+
+input#formFile {
+    width: 300px;
+} 

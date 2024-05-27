@@ -9,7 +9,7 @@
 <div class="terug">
   <a href="javascript:history.back()" class="terugLink">&#8592 Terug</a>
 </div>
-<form id="form">
+<form id="form" enctype="multipart/form-data" method="post">
   <div class="container">
     <h1>Kit Toevoegen</h1>
     <div class="gegevens_kit">
@@ -20,21 +20,23 @@
         </div>
         <div>
           <div class="selectDiv">
-          <label for="categrie">Categorie: </label>
-            <Select class="form-control" id="categrieSelect">
+            <label for="categrie">Categorie: </label>
+            <Select class="form-control" id="categrieSelect" name="categorie">
               <option value="all">Selecteer een categorie</option>
             </Select>
           </div>
           <div class="selectDiv">
             <label for="merkSelect">Selecteer een merk:</label>
-            <Select class="form-control" id="merkSelect">
+            <Select class="form-control" id="merkSelect" name="merk">
               <option value="all">Selecteer een merk</option>
             </Select>
-            </div>
-        </div>       
+          </div>
+        </div>
+        <div class="mb-3">
+          <input class="form-control" type="file" id="formFile" name="kitFoto" accept="image/png, image/jpeg">
+        </div>
       </div>
     </div>
-
     <div class="product_toevoegen">
       <div class="labelcontainers2">
         <label id="labelProduct" for="GroepNaam">Naam product: </label>
@@ -47,7 +49,6 @@
         </div> 
       </div>
     </div>
-
     <div class="overview_producten">
       <h2>Kit producten</h2>
       <div class="selected_products" id="productenList">

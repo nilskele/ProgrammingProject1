@@ -154,6 +154,17 @@ $(document).ready(function () {
         for (let i = 0; i < productLis.length; i++) {
             producten.push(productLis[i].innerHTML);
         }
+
+        let formFile = document.getElementById('formFile');
+
+        if (formFile.files.length == 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Selecteer een afbeelding'
+            });
+            return;
+        }
         
         Swal.fire({
             icon: 'warning',
@@ -162,15 +173,27 @@ $(document).ready(function () {
             confirmButtonText: 'Ja',
             cancelButtonText: 'Nee'
         }).then((result) => {
-            if (result.isConfirmed) {   
-                // AJAX-oproep om een kit toe te voegen
+            if (result.isConfirmed) {
+                var formData = new FormData(this);
+
+                // Voeg extra gegevens toe aan FormData
+                formData.append('kitNaam', $('#kitNaam').val());
+                formData.append('categorie', $('#categrieSelect').val());
+                formData.append('merk', $('#merkSelect').val());
+
+                // Voeg geselecteerde producten toe
+                var producten = [];
+                $('#groepinput option:selected').each(function() {
+                    producten.push($(this).val());
+                });
+                formData.append('producten', JSON.stringify(producten));
+
                 $.ajax({
                     url: 'kit_toevoegenBackend.php',
                     type: 'POST',
-                    data: { kitNaam: kitNaam, 
-                        producten: producten,
-                        categorie: categorie,
-                        merk: merk},
+                    data: formData,
+                    processData: false, // Belangrijk: Zet dit op false om de data correct te verzenden
+                    contentType: false, // Belangrijk: Zet dit op false om de data correct te verzenden
                     success: function (data) {
                         if (data.error) {
                             console.error('Error adding kit:', data.error);
@@ -180,7 +203,7 @@ $(document).ready(function () {
                                 title: 'Succes',
                                 text: 'Kit toegevoegd'
                             });
-                            form.reset();                            
+                            $('#form')[0].reset();
                         }
                     },
                     error: function (xhr, status, error) {

@@ -1,14 +1,24 @@
 <?php
+include("../../../database.php");
 
-include "database.php";
+$imageId = null;
 
-// afbeelding inlezen en omzetten naar base64
-$afbeeldingData = file_get_contents("./images/jpg");
-$gecodeerdeAfbeelding = base64_encode($afbeeldingData);
+if (isset($_FILES['kitFoto'])) {
+    $afbeeldingData = file_get_contents($_FILES['kitFoto']['tmp_name']);
+    $gecodeerdeAfbeelding = base64_encode($afbeeldingData);
 
-$query = "INSERT INTO IMAGE (image_data) VALUES (?)";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("s", $gecodeerdeAfbeelding);
-$stmt->execute();
-$stmt->close();
+    $query = "INSERT INTO IMAGE (image_data) VALUES (?)";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $gecodeerdeAfbeelding);
+
+    if ($stmt->execute()) {
+        $imageId = $conn->insert_id;
+    } else {
+        echo json_encode(array("error" => "Failed to upload image"));
+        exit();
+    }
+    $stmt->close();
+}
+
+return $imageId;
 ?>
