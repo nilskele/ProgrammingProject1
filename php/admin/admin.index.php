@@ -202,14 +202,23 @@ if (isset($_GET['Zoeken'])) {
 
     // Determine the SQL query based on the search type and kitCheckbox
     if ($isKit && $searchType === 'id') {
-        $sql = "SELECT kp1.kit_id_fk, g.naam, k.kit_naam, k.zichtbaar
+        $sql = "SELECT k.kit_id, g.naam, k.kit_naam, k.zichtbaar
         FROM PRODUCT p
         JOIN KIT_PRODUCT kp1 ON p.groep_id = kp1.groep_id_fk
         JOIN KIT_PRODUCT kp2 ON kp1.kit_id_fk = kp2.kit_id_fk
         JOIN GROEP g ON kp2.groep_id_fk = g.groep_id
         JOIN KIT k ON kp1.kit_id_fk = k.kit_id
         WHERE p.product_id = ?";
-    } elseif ($searchType === 'id') {
+    } 
+    elseif ($isKit && $searchType === 'naam') {
+      $zoekTerm = "%" . $zoekTerm . "%";
+      $sql = "SELECT k.kit_id, g.naam, k.kit_naam, k.zichtbaar
+      FROM KIT k
+      JOIN KIT_PRODUCT kp ON k.kit_id = kp.kit_id_fk
+      JOIN GROEP g ON kp.groep_id_fk = g.groep_id
+      WHERE k.kit_naam LIKE ?";
+    }
+    elseif ($searchType === 'id') {
         $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
                 FROM PRODUCT p
                 JOIN GROEP g ON p.groep_id = g.groep_id
@@ -251,16 +260,17 @@ if (isset($_GET['Zoeken'])) {
       // Output data of each row
       while ($row = $result->fetch_assoc()) {
          
-              if ($isKit && $searchType === 'id') {
+                if ($isKit && ($searchType === 'id' || $searchType === 'naam')) {
                   // Handle results for Kit with ID search
                   $loanDetails[] = array(
                     //product id wordt hier vervangern door de naam van de kit
-                      "kit_id" => $row["kit_id_fk"],
+                      "kit_id" => $row["kit_id"],
                       "product_id" => $row["kit_naam"],
                       "product_name" => $row["naam"],
                       "zichtbaar" => $row["zichtbaar"],
                       "soort" => "kit"
                   );
+              
               } else {
                   // Handle results for other searches
                   $loanDetails[] = array(
