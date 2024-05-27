@@ -80,7 +80,7 @@ $(document).ready(function() {
 
         // reservering maken
         $.ajax({
-          url: "../php/reserveren_backend.php", 
+          url: "reserveren_backend.php", 
           type: "GET",
           data: {
             isKit: isKit,
@@ -95,7 +95,7 @@ $(document).ready(function() {
 
             // email sturen van reservering
             $.ajax({
-              url: "../sendEmailReservering.php",
+              url: "../../../sendEmailReservering.php",
               type: "GET",
               data: {
                 isKit: isKit,
@@ -201,7 +201,7 @@ $(document).ready(function() {
 
       // aantal producten beschikbaar ophalen
       $.ajax({
-        url: "../php/datePickerReserveren.php",
+        url: "datePickerReserveren.php",
         type: "GET",
         dataType: "json",
         data: {

@@ -40,7 +40,7 @@ $(document).ready(function () {
                     <h6 class="aantal">Aantal aanwezig: ${
                       item.aantal_beschikbare_producten
                     }</h6>
-                    <a class="btn btn-secondary reserveren-btn" href="/ProgrammingProject1/php/reserveren.php" data-groep_id="${item.groep_id}" data-iskit="${item.isKit}">+<i class="fas fa-shopping-cart"></i></a>
+                    <a class="btn btn-secondary reserveren-btn" href="/ProgrammingProject1/php/user/reserveren/reserveren.php" data-groep_id="${item.groep_id}" data-iskit="${item.isKit}">+<i class="fas fa-shopping-cart"></i></a>
                 </div>
               </div>
             </div>
