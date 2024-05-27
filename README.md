@@ -83,6 +83,10 @@ https://dev.to/enygma/keeping-credentials-secure-in-php-1mgo<br>
 https://www.w3schools.com/howto/howto_js_scroll_to_top.asp<br>
 https://symfony.com/doc/current/mailer.html<br>
 https://mailtrap.io/blog/php-email-sending/#How-to-send-emails-using-Symfony-Mailer<br>
+https://www.w3schools.com/sql/func_mysql_concat.asp<br>
+https://dev.mysql.com/doc/refman/8.0/en/union.html<br>
+https://stackoverflow.com/questions/9436534/ajax-tutorial-for-post-and-get<br>
+https://www.w3schools.com/jquery/ajax_ajax.asp<br>
 <br>
 
 ## Lucas:
