@@ -113,11 +113,6 @@ include('../../database.php');
 
 <script src="/ProgrammingProject1/js/admin.index.js"></script>
 
-
-  
-  <script src="catalogus/getData.php"></script> 
-    <script src="catalogus/kalender.backend.js"></script> 
-
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -224,8 +219,9 @@ if (isset($_GET['Zoeken'])) {
                 JOIN GROEP g ON p.groep_id = g.groep_id
                 LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
                 WHERE p.product_id LIKE ?";
-    } else {
-        $zoekTerm = "%" . $zoekTerm . "%";
+    } 
+    else {
+      $zoekTerm = "%" . $zoekTerm . "%";
         $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
                 FROM PRODUCT p
                 JOIN GROEP g ON p.groep_id = g.groep_id
@@ -288,33 +284,63 @@ if (isset($_GET['Zoeken'])) {
   }
 
     // Close the statement
-    $stmt->close();
+$stmt->close();
 } else {
-    // Prepare the SQL query to retrieve all items
-    $sql_all = "SELECT g.naam AS product_name, p.product_id, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
-                FROM PRODUCT p
-                JOIN GROEP g ON p.groep_id = g.groep_id
-                LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
-    
+  $searchType = $_GET['searchType']; // Get the search type (ID or Naam)
+  $isKit = isset($_GET['kitCheckbox']); // Check if KIT checkbox is selected
+
+  if ($isKit) {
+      // Retrieve all KIT items
+      $sql_all = "SELECT k.kit_id, g.naam, k.kit_naam, k.zichtbaar
+                  FROM KIT k
+                  JOIN KIT_PRODUCT kp ON k.kit_id = kp.kit_id_fk
+                  JOIN GROEP g ON kp.groep_id_fk = g.groep_id";
+  }
+      elseif($searchType === 'naam') {
+      // Retrieve all items by Naam
+      $sql_all = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+                  FROM PRODUCT p
+                  JOIN GROEP g ON p.groep_id = g.groep_id
+                  LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
+  }
+  else {
+    $sql_all = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+    FROM PRODUCT p
+    JOIN GROEP g ON p.groep_id = g.groep_id
+    LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
+  }
+   
     // Execute the query
     $result_all = $conn->query($sql_all);
 
     // Check if there are results
     if ($result_all->num_rows > 0) {
-        // Output data of each row
-        while ($row = $result_all->fetch_assoc()) {
-            // Store the results in an array
+      // Output data of each row
+      while ($row = $result_all->fetch_assoc()) {
+          // Store the results in an array
+          if ($isKit) {
+              $loanDetails[] = array(
+                  "kit_id" => $row["kit_id"],
+                  "product_id" => $row["kit_naam"],
+                  "product_name" => $row["naam"],
+                  "zichtbaar" => $row["zichtbaar"],
+                  "soort" => "kit"
+              );
+
+          } else {
             $loanDetails[] = array(
                 "product_id" => $row["product_id"],
                 "product_name" => $row["product_name"],
                 "Uitleendatum" => $row["Uitleendatum"],
                 "terugbrengDatum" => $row["terugbrengDatum"],
-                "zichtbaar" => $row["zichtbaar"]
+                "zichtbaar" => $row["zichtbaar"],
+                "soort" => "product"
             );
         }
-    } else {
-        echo "Geen resultaten gevonden";
     }
+} else {
+    echo "Geen resultaten gevonden";
+}
 }
 
 // Close the connection
@@ -339,7 +365,6 @@ $loanDetailsJSON = json_encode($loanDetails);
   </script>
   <script>
     const loanDetails = <?php echo $loanDetailsJSON; ?>;
-    //console.log(loanDetails);
   </script>
   <script src="agenda/js/admin.agenda.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

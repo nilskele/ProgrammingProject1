@@ -322,7 +322,7 @@ document.addEventListener("DOMContentLoaded", function() {
     editBtns.forEach(function(btn) {
         btn.addEventListener("click", function() {
             // Redirect to edit product page
-            window.location.href = "/ProgrammingProject1/php/admin/productToevoegen/product_wijzigen.php";
+            window.location.href = "/ProgrammingProject1/php/admin/productToevoegen/product_toevoegen.php";
         });
     });
 });
