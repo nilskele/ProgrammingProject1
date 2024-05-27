@@ -18,7 +18,7 @@
     </span>
   </a>
   <div class="navbar-nav">
-  <a class="nav-item nav-link" href="/ProgrammingProject1/php/admin/statistieke/statistiekePagina.php">Statistiek</a>
+  <a class="nav-item nav-link" href="/ProgrammingProject1/php/admin/statistieke/statistiekePagina.php">Statistieken</a>
     <a class="nav-item nav-link" href="/ProgrammingProject1/php/admin/inAndOut/inAndOut.php">In and Out</a>
     <a class="nav-item nav-link" href="/ProgrammingProject1/php/admin/teLaat/teLaatIngebracht.php">Te laat</a>
     <a class="nav-item nav-link" href="/ProgrammingProject1/php/admin/blacklist/blacklist.php">Blacklist</a>

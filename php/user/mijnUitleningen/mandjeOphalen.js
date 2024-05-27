@@ -85,6 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
               returnDateAfterExtension.getDate() + 7
             );
 
+            const dayOfWeek = currentDate.getDay();
+
             if (currentDate > returnDateAfterExtension) {
               Swal.fire({
                 title: "Verlenging niet toegestaan",
@@ -93,6 +95,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 confirmButtonText: "Ok",
               });
               return; // Stop de verlenging als de extra week al bezig is
+            } else if (dayOfWeek < 4 || dayOfWeek === 0) {
+              Swal.fire({
+                title: "Verlenging niet toegestaan",
+                text: "Je kunt alleen verlengen op donderdag of later.",
+                icon: "error",
+                confirmButtonText: "Ok",
+              });
+              return; // Stop de verlenging als het geen donderdag of later is
             }
 
             const action = "verlengen";
