@@ -192,8 +192,8 @@ $(document).ready(function () {
                     url: 'kit_toevoegenBackend.php',
                     type: 'POST',
                     data: formData,
-                    processData: false, // Belangrijk: Zet dit op false om de data correct te verzenden
-                    contentType: false, // Belangrijk: Zet dit op false om de data correct te verzenden
+                    processData: false, 
+                    contentType: false, 
                     success: function (data) {
                         if (data.error) {
                             console.error('Error adding kit:', data.error);

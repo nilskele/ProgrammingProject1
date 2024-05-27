@@ -11,42 +11,45 @@
 <div class="terug">
   <a href="javascript:history.back()" class="terugLink">&#8592 Terug</a>
 </div>
-<form id="productForm">
+<form id="productForm" enctype="multipart/form-data" method="post">
   <div class="container">
     <h1>Product Toevoegen</h1>
     <div class="product_toevoegen">
       <div class="labelcontainers">
         <div>
-          <label for="productNaam">Product naam:</label>
-          <input type="text" id="productName" name="productName">
+          <label for="productName">Product naam:</label>
+          <input type="text" id="productName" name="productName" required>
         </div>
         <div>
           <label for="merk">Merk:</label>
-          <input type="text" id="merk" name="merk">
+          <input type="text" id="merk" name="merk" required>
         </div>
       </div>
       <div class="labelcontainers">
         <div>
           <label for="categorie">Categorie:</label>
-          <select name="categorie" id="categorie" class="categorieZoekbalk">
+          <select name="category" id="categorie" class="categorieZoekbalk" required>
             <option value="All" id="categoryOptions">Categorie</option>
             <?php echo $options; ?>
           </select>
         </div>
         <div>
           <label for="quantity">Quantity:</label>
-          <input class="categorieZoekbalk2" type="number" id="quantity" name="quantity" min="1" value="1">
+          <input class="categorieZoekbalk2" type="number" id="quantity" name="quantity" min="1" value="1" required>
         </div>
       </div>
       <div class="labelcontainers">
         <div>
           <label for="beschrijving">Beschrijving:</label>
-          <input type="text" id="beschrijving" name="beschrijving">
+          <input type="text" id="beschrijving" name="beschrijving" required>
         </div>
         <div>
           <label for="opmerkingen">Opmerkingen:</label>
           <input type="text" id="opmerkingen" name="opmerkingen">
         </div>
+      </div>
+      <div class="mb-3">
+        <input class="form-control" type="file" id="formFile" name="kitFoto" accept="image/png, image/jpeg" required>
       </div>
     </div>
     <button class="submit" type="submit">Product toevoegen</button>

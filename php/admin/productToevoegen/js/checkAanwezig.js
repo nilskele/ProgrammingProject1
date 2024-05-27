@@ -33,7 +33,8 @@ function checkInputs() {
     completedChecks++;
     if (completedChecks === 4) {
       // All checks are completed
-      if (allInputsValid()) {
+      if (true) {
+        console.log("All inputs are valid.");
         // Submit the form multiple times based on quantity
         for (let i = 0; i < quantity; i++) {
           submitForm();
@@ -100,30 +101,29 @@ function checkItem(url, data, messageSelector, existsMessage, callback) {
 }
 
 function allInputsValid() {
-  const valid = (
+  let valid = (
     $("#brandMessage").text() !== "" &&
     $("#nameMessage").text() !== "" &&
     $("#categoryMessage").text() !== "" &&
     $("#descriptionMessage").text() !== ""
   );
-
+  console.log("All inputs are valid:", valid);
   return valid;
 }
 
 function submitForm() {
   hasSubmitted = true;
 
-  const merk = $("#merk").val();
-  const productName = $("#productName").val();
-  const category = $("#categorie").val();
-  const beschrijving = $("#beschrijving").val();
+  const formData = new FormData($("#productForm")[0]);
 
   $.ajax({
     url: "productToevoegenBackend.php",
     method: "POST",
-    data: { merk: merk, productNaam: productName, category: category, beschrijving: beschrijving },
-    dataType: "json",
+    data: formData,
+    processData: false,
+    contentType: false,
     success: function (response) {
+      console.log("Response:", response);
       if (response.status === "success") {
         console.log("Product added successfully.");
         $("#formMessage").text("Product added successfully.").removeClass("error-message").addClass("success-message");

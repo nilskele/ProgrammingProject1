@@ -76,3 +76,19 @@ input {
     margin: 2em;
     
 }
+
+input#formFile {
+    width: 300px;
+    margin: 0 auto;
+} 
+
+.product_toevoegen {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px;
+}
+
+.labelcontainers {
+    width: 90%
+}

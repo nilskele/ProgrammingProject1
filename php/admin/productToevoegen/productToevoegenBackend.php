@@ -6,10 +6,40 @@ header('Content-Type: application/json');
 $response = array();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $merk = $_POST["merk"];
-  $productNaam = $_POST["productNaam"];
-  $category = $_POST["category"];
-  $beschrijving = $_POST["beschrijving"];
+  $merk = isset($_POST["merk"]) ? $_POST["merk"] : null;
+  $productNaam = isset($_POST["productName"]) ? $_POST["productName"] : null;
+  $category = isset($_POST["category"]) ? $_POST["category"] : null;
+  $beschrijving = isset($_POST["beschrijving"]) ? $_POST["beschrijving"] : null;
+
+  if (is_null($merk) || is_null($productNaam) || is_null($category) || is_null($beschrijving)) {
+    $response['status'] = 'error';
+    $response['message'] = 'Missing required fields.';
+    echo json_encode($response);
+    exit();
+  }
+
+  if (isset($_FILES['kitFoto']) && $_FILES['kitFoto']['error'] == 0) {
+    $afbeeldingData = file_get_contents($_FILES['kitFoto']['tmp_name']);
+    $gecodeerdeAfbeelding = base64_encode($afbeeldingData);
+
+    $query = "INSERT INTO IMAGE (image_data, naam) VALUES (?, ?)";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ss", $gecodeerdeAfbeelding, $productNaam);
+    if ($stmt->execute()) {
+      $imageId = $conn->insert_id;
+    } else {
+      $response['status'] = 'error';
+      $response['message'] = 'Error inserting image.';
+      echo json_encode($response);
+      exit();
+    }
+    $stmt->close();
+  } else {
+    $response['status'] = 'error';
+    $response['message'] = 'No image provided.';
+    echo json_encode($response);
+    exit();
+  }
 
   $conn->begin_transaction();
 
@@ -81,9 +111,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 (SELECT merk_id FROM MERK WHERE naam = ?), 
                                 (SELECT cat_id FROM CATEGORY WHERE naam = ?), 
                                 (SELECT besch_id FROM BESCHRIJVING WHERE naam = ?),
-                                1)";
+                                ?)";
       $stmt = $conn->prepare($sqlInsertGroep);
-      $stmt->bind_param("ssss", $productNaam, $merk, $category, $beschrijving);
+      $stmt->bind_param("ssssi", $productNaam, $merk, $category, $beschrijving, $imageId);
       $stmt->execute();
 
       // Get the last inserted ID (groep_id)
