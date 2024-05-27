@@ -113,7 +113,7 @@ $(function() {
                         console.log(item.product_id, productNr1);
                         if (item.product_id === productNr1) { // Replace 'productNr' with the actual property name
                             telaattekst = $this.closest('.inOutProduct').find('.erroriconBlock');
-                            telaattekst.html(`product niet in stock en is al ${item.daysDifference} dagen te laat`);
+                            telaattekst.html(`product niet in stock en is al ${item.daysDifference} dag/dagen te laat`);
                         }
                     });
                 },

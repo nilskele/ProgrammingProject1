@@ -420,7 +420,7 @@ h1 {
     border-radius: 50%;
   }
 
-  .inputZoekbalk3, .inputZoekbalk4 {
+  .inputZoekbalk3, .inputZoekbalk4{
     font: 16px system-ui;
     width: 300px;
     padding: 6px 10px;
