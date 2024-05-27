@@ -6,7 +6,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <?php
-  include ('../../header.php');
+  include ('../header/header.php');
   include ('defectMelden.php');
 ?>
 

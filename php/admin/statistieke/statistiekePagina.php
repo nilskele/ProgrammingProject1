@@ -17,7 +17,7 @@ include("../admin.header.php");
         <a href="javascript:history.back()" class="terugLink" >&#8592 Terug</a>
 
     <div class="statistiek">
-        <h1>Statistiek</h1>
+        <h1>Statistieken</h1>
     </div>
     
     <div class="search-container">

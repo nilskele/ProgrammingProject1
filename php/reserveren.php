@@ -18,7 +18,7 @@
 <?php
     // Include PHP files
     include("filter_productReserveren.php");
-    include("header.php"); // Assuming header.php contains the header content
+    include("user/header/header.php"); // Assuming header.php contains the header content
 ?>
 <div id="container">
   <section class="up row mb-5">

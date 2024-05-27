@@ -8,7 +8,7 @@ let isKit = localStorage.getItem("isKit");
 $(document).ready(function() {
 
   // Check of de gebruiker 2 waarschuwingen heeft
-  fetch("../mijnUitleningen/waarschuwingenCount.php")
+  fetch("/ProgrammingProject1/php/user/mijnUitleningen/waarschuwingenCount.php")
     .then((response) => response.json())
     .then((data) => {
       let waarschuwingenCountPhp = data;
