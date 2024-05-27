@@ -42,6 +42,8 @@ https://chat.openai.com/share/06ef04eb-6224-430e-9c58-a404dd031a4b<br>
 https://chatgpt.com/share/03b19128-17e3-4704-8a02-d24cdaf89495<br>
 https://chatgpt.com/share/41046d29-1338-443f-8cc4-21d9380f32de<br>
 https://chatgpt.com/share/d830216c-c669-4158-902b-85e4ce5474aa<br>
+https://chatgpt.com/share/dc3da249-ea1b-4651-a5d6-97e2894e1e82<br>
+https://chatgpt.com/share/9a0ae7e0-bd61-44c8-ab3b-47be3bb7af1f<br>
 <br>
 <br>
 ## Nils:
