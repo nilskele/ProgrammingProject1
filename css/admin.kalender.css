@@ -94,7 +94,7 @@
   z-index: -1;
 }
 .dates li.inactive {
-  color: #adacac;
+  color: #7c7b7b;
 }
 
 /* buttons van items op catalogus */
@@ -233,4 +233,9 @@ input:checked + .slider:before {
 .toggle_kalender {
   display: flex;
   align-items: center;
+}
+
+.checkboxKit {
+  margin-left: 12px;
+  margin-right: 12px;
 }

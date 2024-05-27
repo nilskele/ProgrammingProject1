@@ -6,19 +6,19 @@ const nextButton = document.getElementById("next");
 
 // Extract product name, Uitleendatum, and terugbrengDatum
 function extractDetails(loanDetails) {
-    const productNames = loanDetails.map(item => item.product_name); // Corrected to use "product_name"
+    const productNames = loanDetails.map(item => item.product_name);
     const uitleendatums = loanDetails.map(item => item.Uitleendatum);
     const terugbrengDatums = loanDetails.map(item => item.terugbrengDatum);
     const productID = loanDetails.map(item => item.product_id);
     const zichtbaar = loanDetails.map(item => item.zichtbaar);
-    return { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar };
+    const soort = loanDetails.map(item => item.soort);
+    const kit_id = loanDetails.map(item => item.kit_id); 
+    return { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar, soort, kit_id };
 }
 
 // Capture the returned object
 const details = extractDetails(loanDetails);
-const { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar } = details;
-
-
+const { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar, soort, kit_id } = details;
 
 // Function to format date to day/month format
 function formatDate(dateString) {
@@ -72,6 +72,7 @@ const daysOfWeek = [
   "Za"
 ];
 
+console.log("tt" + kit_id); 
 const daysList = document.querySelector(".days");
 
 const daysHtml = daysOfWeek.map((day, index) => {
@@ -121,41 +122,41 @@ function renderCalendar() {
     console.log("dagen:" + dagenWeek);
 
 
-    // Update the HTML of the dates
-    let html = "";
-    for (let indexLength = 0; indexLength < productNames.length; indexLength++) {
-        let maxAantallen = 8;
-        console.log(zichtbaar);
-        for (let index = 0; index < maxAantallen; index++) {
-            const datesBetween = getDatesBetween(uitleendatums[indexLength], terugbrengDatums[indexLength]);
-            if (index === 0) {
-                html += `<li class="inactive">
+  // Update the HTML of the dates
+let html = "";
+for (let indexLength = 0; indexLength < productNames.length; indexLength++) {
+    let maxAantallen = 8;
+    for (let index = 0; index < maxAantallen; index++) {
+        const isKit = soort[indexLength] === 'kit'; // Use indexLength here
+        const itemId = isKit ? kit_id[indexLength] : productID[indexLength]; // Use indexLength here
+        const datesBetween = getDatesBetween(uitleendatums[indexLength], terugbrengDatums[indexLength]);
+        if (index === 0) {
+            html += `<li class="inactive">
     <div class="items" style="font-size:18px">
     ${productNames[indexLength] + ", " + productID[indexLength]}
     </div>
     <div class="buttons_item">
         <button class="reserveren" href="/reserveren/reserveren.php">Reserveren</button> </br>
-        ${zichtbaar[indexLength] === 0 
-    ? `<button class="fa fa-eye-slash" style="font-size:15px" data-item-id="${productID[indexLength]}" data-index="${indexLength}"></button>` 
-    : `<button class="fa fa-eye" style="font-size:15px" data-item-id="${productID[indexLength]}" data-index="${indexLength}"></button>`}
-        <button class="fa fa-trash-o" style="font-size:15px" data-item-id="${productID[indexLength]}" data-index="${indexLength}"></button>
-        <button class="fa fa-pencil" style="font-size:15px"></button>
+        ${zichtbaar[indexLength] === 0
+            ? `<button class="fa fa-eye-slash" style="font-size:15px" data-item-id="${itemId}" data-index="${indexLength}" data-soort="${soort[indexLength]}"></button>` 
+            : `<button class="fa fa-eye" style="font-size:15px" data-item-id="${itemId}" data-index="${indexLength}" data-soort="${soort[indexLength]}"></button>`}
+        <button class="fa fa-trash-o" style="font-size:15px" data-item-id="${itemId}" data-index="${indexLength}" data-soort="${soort[indexLength]}"></button>
+        <button class="fa fa-pencil" style="font-size:15px"></button>        
     </div>
 </li>`;
-         } else if (currentYear != new Date(uitleendatums[indexLength]).getFullYear() &&
-                currentYear != new Date(terugbrengDatums[indexLength]).getFullYear()) {
-                html += `<li class="inactive">${"/"}</li>`;
-}
-            else if (datesBetween.some(r => dagenWeek[index - 1].includes(r))) {
-                html += `<li class="inactive">${"Uitgeleend"}</li>`;
-            } else {
-                html += `<li class="inactive">${"/"}</li>`;
-            }
+        } else if (currentYear != new Date(uitleendatums[indexLength]).getFullYear() &&
+            currentYear != new Date(terugbrengDatums[indexLength]).getFullYear()) {
+            html += `<li class="inactive">${"/"}</li>`;
+        } else if (datesBetween.some(r => dagenWeek[index - 1].includes(r))) {
+            html += `<li class="inactive">${"Uitgeleend"}</li>`;
+        } else {
+            html += `<li class="inactive">${"/"}</li>`;
         }
     }
+}
 
-    // Update the HTML of the dates
-    dates.innerHTML = html;
+// Update the HTML of the dates
+dates.innerHTML = html;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -165,6 +166,11 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             const itemId = button.getAttribute('data-item-id');
             const indexLength = button.getAttribute('data-index');
+            const soort = button.getAttribute('data-soort');
+            console.log(soort);
+            
+
+            console.log("item ID" + itemId);    
 
             Swal.fire({
                 title: "Bent u zeker?",
@@ -178,7 +184,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }).then((result) => {
                 if (result.isConfirmed) {
                     const newVisibility = zichtbaar[indexLength] === 1 ? 0 : 1; // Toggle visibility
-
                     fetch('http://127.0.0.1/ProgrammingProject1/php/admin/agenda/php/update_visibility.php', {
                         method: 'POST',
                         headers: {
@@ -187,6 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         body: JSON.stringify({
                             itemId: itemId,
                             visibility: newVisibility,
+                            soort: soort,
                         }),
                     })
                     .then(response => {
@@ -238,7 +244,9 @@ document.addEventListener('DOMContentLoaded', function() {
     deleteButtons.forEach(function(button) {
         button.addEventListener('click', function() {
             const itemId = button.getAttribute('data-item-id');
-
+            const soort = button.getAttribute('data-soort');
+            console.log(soort);
+            
             Swal.fire({
                 title: "Bent u zeker?",
                 text: "Eens het item is verwijderd kan je hem niet terugkrijgen!",
@@ -257,6 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         },
                         body: JSON.stringify({
                             itemId: itemId,
+                            soort: soort,
                             action: 'delete'
                         }),
                     })

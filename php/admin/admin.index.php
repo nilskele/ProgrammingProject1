@@ -133,7 +133,6 @@ include('../../database.php');
   <form action="" method="GET" onsubmit="scrollToResults()">
   <div class="form_zoek">
     <div class="search-input-container">
-      <label for="searchInput">Zoeken:</label>
       <input type="text" id="searchInput" name="Zoeken" placeholder="Zoeken...">
     </div>
     <div class="toggle-container">
@@ -145,6 +144,10 @@ include('../../database.php');
       <span id="labelNaam" class="toggle-label">Naam</span>
     </div>
     <input type="hidden" id="searchType" name="searchType" value="naam">
+    <div class="checkboxKit">
+    <input type="checkbox" id="kitCheckbox" name="kitCheckbox" value="kit" onclick="updateKitCheckbox()">
+    <label for="kitCheckbox">KIT</label><br>
+</div>
     <button class="button_zoeken" type="submit">Zoek</button>
   </div>
 </form>
@@ -182,107 +185,134 @@ include('../../database.php');
     </section>
   </div>
   <?php 
-    // Check connection
+// Check connection
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
 $loanDetails = array(); // Initialize the array
 
 if (isset($_GET['Zoeken'])) {
-  $zoekTerm = $_GET['Zoeken'];
-  $searchType = $_GET['searchType'];
+    $zoekTerm = $_GET['Zoeken'];
+    $searchType = $_GET['searchType'];
+    $isKit = isset($_GET['kitCheckbox']) ? true : false;
 
-  // Sanitize the input to prevent XSS
-  $zoekTerm = htmlspecialchars($zoekTerm);
-  
+    // Sanitize the input to prevent XSS
+    $zoekTerm = htmlspecialchars($zoekTerm);
 
-  // Determine the SQL query based on the search type
-  if ($searchType === 'id') {
-      $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
-              FROM PRODUCT p
-              JOIN GROEP g ON p.groep_id = g.groep_id
-              LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
-              WHERE p.product_id LIKE ?";
-  } else {
-    $zoekTerm = "%" . $zoekTerm . "%";
-      $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
-              FROM PRODUCT p
-              JOIN GROEP g ON p.groep_id = g.groep_id
-              LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
-              WHERE g.naam LIKE ?";
-  }
+    // Determine the SQL query based on the search type and kitCheckbox
+    if ($isKit && $searchType === 'id') {
+        $sql = "SELECT kp1.kit_id_fk, g.naam, k.kit_naam, k.zichtbaar
+        FROM PRODUCT p
+        JOIN KIT_PRODUCT kp1 ON p.groep_id = kp1.groep_id_fk
+        JOIN KIT_PRODUCT kp2 ON kp1.kit_id_fk = kp2.kit_id_fk
+        JOIN GROEP g ON kp2.groep_id_fk = g.groep_id
+        JOIN KIT k ON kp1.kit_id_fk = k.kit_id
+        WHERE p.product_id = ?";
+    } elseif ($searchType === 'id') {
+        $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+                FROM PRODUCT p
+                JOIN GROEP g ON p.groep_id = g.groep_id
+                LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
+                WHERE p.product_id LIKE ?";
+    } else {
+        $zoekTerm = "%" . $zoekTerm . "%";
+        $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+                FROM PRODUCT p
+                JOIN GROEP g ON p.groep_id = g.groep_id
+                LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
+                WHERE g.naam LIKE ?";
+    }
 
-  // Prepare the statement
-  $stmt = $conn->prepare($sql);
-  if ($stmt === false) {
-      die("Prepare failed: " . $conn->error);
-  }
+    // Prepare the statement
+    $stmt = $conn->prepare($sql);
+    if ($stmt === false) {
+        die("Prepare failed: " . $conn->error);
+    }
 
-  // Bind the parameter
-  $stmt->bind_param("s", $zoekTerm);
+    // Bind the parameter based on the search type
+    if ($isKit && $searchType === 'id') {
+        $stmt->bind_param("s", $zoekTerm);
+    } else {
+        $stmt->bind_param("s", $zoekTerm);
+    }
 
-  // Execute the statement
-  $stmt->execute();
+    // Execute the statement
+    $stmt->execute();
 
-  // Get the result
-  $result = $stmt->get_result();
+    // Get the result
+    $result = $stmt->get_result();
 
-  // Check if there are results
-  if ($result->num_rows > 0) {
+    // Check if there are results
+    if ($result->num_rows > 0) {
+      // Initialize a flag to track if it's the first iteration
+      $firstIteration = true;
+
       // Output data of each row
       while ($row = $result->fetch_assoc()) {
-          // Store the results in an array
-          $loanDetails[] = array(
-              "product_id" => $row["product_id"],
-              "product_name" => $row["product_name"],
-              "Uitleendatum" => $row["Uitleendatum"],
-              "terugbrengDatum" => $row["terugbrengDatum"],
-              "zichtbaar" => $row["zichtbaar"]
-          );
+         
+              if ($isKit && $searchType === 'id') {
+                  // Handle results for Kit with ID search
+                  $loanDetails[] = array(
+                    //product id wordt hier vervangern door de naam van de kit
+                      "kit_id" => $row["kit_id_fk"],
+                      "product_id" => $row["kit_naam"],
+                      "product_name" => $row["naam"],
+                      "zichtbaar" => $row["zichtbaar"],
+                      "soort" => "kit"
+                  );
+              } else {
+                  // Handle results for other searches
+                  $loanDetails[] = array(
+                      "product_id" => $row["product_id"],
+                      "product_name" => $row["product_name"],
+                      "Uitleendatum" => $row["Uitleendatum"],
+                      "terugbrengDatum" => $row["terugbrengDatum"],
+                      "zichtbaar" => $row["zichtbaar"],
+                      "soort" => "product"
+                  );
+          }
       }
   } else {
       echo "Geen resultaten gevonden";
   }
 
-  // Close the statement
-  $stmt->close();
+    // Close the statement
+    $stmt->close();
 } else {
-  // Prepare the SQL query to retrieve all items
-  $sql_all = "SELECT g.naam AS product_name, p.product_id, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
-              FROM PRODUCT p
-              JOIN GROEP g ON p.groep_id = g.groep_id
-              LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
-  
-  // Execute the query
-  $result_all = $conn->query($sql_all);
+    // Prepare the SQL query to retrieve all items
+    $sql_all = "SELECT g.naam AS product_name, p.product_id, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+                FROM PRODUCT p
+                JOIN GROEP g ON p.groep_id = g.groep_id
+                LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
+    
+    // Execute the query
+    $result_all = $conn->query($sql_all);
 
-  // Check if there are results
-  if ($result_all->num_rows > 0) {
-      // Output data of each row
-      while ($row = $result_all->fetch_assoc()) {
-          // Store the results in an array
-          $loanDetails[] = array(
-              "product_id" => $row["product_id"],
-              "product_name" => $row["product_name"],
-              "Uitleendatum" => $row["Uitleendatum"],
-              "terugbrengDatum" => $row["terugbrengDatum"],
-              "zichtbaar" => $row["zichtbaar"]
-          );
-      }
-  } else {
-      echo "Geen resultaten gevonden";
-  }
+    // Check if there are results
+    if ($result_all->num_rows > 0) {
+        // Output data of each row
+        while ($row = $result_all->fetch_assoc()) {
+            // Store the results in an array
+            $loanDetails[] = array(
+                "product_id" => $row["product_id"],
+                "product_name" => $row["product_name"],
+                "Uitleendatum" => $row["Uitleendatum"],
+                "terugbrengDatum" => $row["terugbrengDatum"],
+                "zichtbaar" => $row["zichtbaar"]
+            );
+        }
+    } else {
+        echo "Geen resultaten gevonden";
+    }
 }
-
-
 
 // Close the connection
 $conn->close();
 
 // Convert loanDetails to JSON
 $loanDetailsJSON = json_encode($loanDetails);
-  ?>
+?>
    <script>
     function scrollToResults() {
       // Scroll to the results section after form submission
