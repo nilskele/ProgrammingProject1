@@ -38,7 +38,7 @@ if ($stmt->execute()) {
     exit();
 } else {
     die("Error bij uitvoeren van de query: " . $stmt->error);
-}
+};
 
 $stmt->close();
 $conn->close();
