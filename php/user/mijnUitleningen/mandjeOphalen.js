@@ -1,32 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Function to fetch data from the server and populate the table
   function fetchDataAndPopulateTable() {
-    // Ajax request to fetch data
+    console.log("Fetching data to populate the table...");
     $.ajax({
       url: "mandjeOphalen.php",
       method: "GET",
       dataType: "json",
       success: function (data) {
-        // Select the table body
+        console.log("Data fetched successfully:", data);
         const tableBody = $("table tbody");
-
-        // Clear existing table rows
         tableBody.empty();
 
-        // Iterate over the data and create table rows
         data.forEach((row) => {
-          // Create a new table row
           const newRow = $("<tr>");
 
-          // Format Uitleendatum to 'dd/mm/yyyy' format
           const uitleendatumFormatted = row.Uitleendatum;
           const terugbrengDatumFormatted = row.terugbrengDatum;
 
-          // Determine button classes based on possession
-          const buttonClass =
-            row.in_bezit === 1 ? "reserveren-button" : "uitlenen-button";
-
-          // Determine button text and action based on isVerlenged
+          const buttonClass = row.in_bezit === 1 ? "reserveren-button" : "uitlenen-button";
           let buttonText, action;
           if (row.isVerlenged) {
             buttonText = "Annuleren";
@@ -39,24 +29,18 @@ document.addEventListener("DOMContentLoaded", function () {
             action = "annuleren";
           }
 
-          // Populate the table row with data
           newRow.html(`
             <td>${row.groep_naam}</td>
             <td>${uitleendatumFormatted}</td>
             <td>${terugbrengDatumFormatted}</td>
-            <td><button class="melden-button" value="${
-              row.lening_id
-            }">Melden</button></td>
-            <td><button class="${buttonClass}" value="${
-            row.lening_id
-          }" data-id="${row.product_id}" style="background-color: ${
+            <td><button class="melden-button" value="${row.lening_id}">Melden</button></td>
+            <td><button class="${buttonClass}" value="${row.lening_id}" data-id="${row.product_id}" style="background-color: ${
             (row.in_bezit === 1 && row.isVerlenged === 1) || row.in_bezit === 0
               ? "red"
               : "green"
           }; color: white;">${buttonText}</button></td>
           `);
 
-          // Append the new row to the table body
           tableBody.append(newRow);
         });
       },
@@ -67,133 +51,144 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function extendReturnDate(target) {
-    // Convert jQuery object to DOM element
+    console.log("Extending return date...");
     const button = target.get(0);
 
-    // Check if button exists and is a button element
     if (button && button.tagName === "BUTTON") {
-      // Get the parent row
       const row = button.parentNode.parentNode;
-      // Get the third cell (terugbrengdatum)
       const terugbrengDatumCell = row.cells[2];
-      // Get the text content of the button
       const buttonText = button.textContent.trim();
-
-      // Check if isVerlenged is true
       const isVerlenged = buttonText === "Annuleren";
-
-      // Get lending ID from button value
       const lening_id = button.value;
 
       if (!isVerlenged) {
-        // Set action based on the button text
-        const action = buttonText === "Verlengen" ? "verlengen" : "annuleren";
-
-        // Toggle button text based on the action performed
-        button.textContent = action === "verlengen" ? "annuleren" : "verlengen";
-
-        // Call the updateDate function with lending ID and action
-        updateDate(lening_id, action);
-
-        // Convert the return date to a Date object
-        let returnDate = new Date(terugbrengDatumCell.textContent);
-
-        // Increase the return date by 7 days
-        returnDate.setDate(returnDate.getDate() + 7);
-
-        // Format the new date as YYYY-MM-DD
-        const formattedDate = returnDate.toISOString().split("T")[0];
-
-        // Update the content of the third cell with the new date
-        terugbrengDatumCell.textContent = formattedDate;
-
-        // Toggle button class based on action
-        button.classList.toggle("verlengen-button");
-        button.classList.toggle("annuleren-button");
-
-        // Toggle button background color based on action
-        button.style.backgroundColor = action === "verlengen" ? "green" : "red";
+        Swal.fire({
+          title: "Ben je zeker?",
+          text: "Wil je de uitleentermijn verlengen?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Ja, verleng het",
+          cancelButtonText: "Nee, annuleer",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const action = "verlengen";
+            button.textContent = "Annuleren";
+            updateDate(lening_id, action);
+            let returnDate = new Date(terugbrengDatumCell.textContent);
+            returnDate.setDate(returnDate.getDate() + 7);
+            const formattedDate = returnDate.toISOString().split("T")[0];
+            terugbrengDatumCell.textContent = formattedDate;
+            button.classList.toggle("verlengen-button");
+            button.classList.toggle("annuleren-button");
+            button.style.backgroundColor = "green";
+            Swal.fire("Verlengd!", "De uitleentermijn is verlengd.", "success");
+          }
+        });
       } else {
-        // Subtract 7 days from the return date
-        let returnDate = new Date(terugbrengDatumCell.textContent);
-        returnDate.setDate(returnDate.getDate() - 7);
-
-        // Format the new date as YYYY-MM-DD
-        const formattedDate = returnDate.toISOString().split("T")[0];
-
-        // Update the content of the third cell with the new date
-        terugbrengDatumCell.textContent = formattedDate;
-
-        // Set isVerlenged to false
-        const action = "annuleren"; // Set action to "annuleren" to update isVerlenged
-        updateDate(lening_id, action);
+        Swal.fire({
+          title: "Ben je zeker?",
+          text: "Wil je de verlenging annuleren?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Ja, annuleer het",
+          cancelButtonText: "Nee, behoud",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const action = "annuleren";
+            updateDate(lening_id, action);
+            let returnDate = new Date(terugbrengDatumCell.textContent);
+            returnDate.setDate(returnDate.getDate() - 7);
+            const formattedDate = returnDate.toISOString().split("T")[0];
+            terugbrengDatumCell.textContent = formattedDate;
+            button.textContent = "Verlengen";
+            button.classList.toggle("verlengen-button");
+            button.classList.toggle("annuleren-button");
+            button.style.backgroundColor = "red";
+            Swal.fire("Geannuleerd!", "De verlenging is geannuleerd.", "success");
+          }
+        });
       }
     } else {
       console.error("Target is not a button element or does not exist.");
     }
   }
 
-  // Function to decrease the return date by 7 days
   function decreaseReturnDate(target) {
-    // Check if target is defined and is a button element
+    console.log("Decreasing return date...");
     if (target && target.tagName === "BUTTON") {
-      const row = target.closest("tr"); // Find the closest parent table row
+      const row = target.closest("tr");
       if (row) {
-        const terugbrengDatumCell = row.cells[2]; // Get the third cell (terugbrengdatum)
+        const terugbrengDatumCell = row.cells[2];
         if (terugbrengDatumCell) {
           let returnDate = new Date(terugbrengDatumCell.textContent);
-          const buttonText = target.textContent.trim(); // Get the text content of the button
+          const buttonText = target.textContent.trim();
 
-          // Check the current action based on button text
           if (buttonText === "Uitlenen") {
-            // Decrease the return date by 4 days
-            returnDate.setDate(returnDate.getDate() + 4);
+            Swal.fire({
+              title: "Ben je zeker?",
+              text: "Wil je dit item uitlenen?",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonText: "Ja, leen uit",
+              cancelButtonText: "Nee, annuleer",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                returnDate.setDate(returnDate.getDate() + 4);
+                const formattedDate = returnDate.toISOString().split("T")[0];
+                terugbrengDatumCell.textContent = formattedDate;
+                target.textContent = "Annuleren";
+                target.classList.toggle("uitlenen-button");
+                target.classList.toggle("annuleren-button");
+                target.style.backgroundColor = "red";
+                const lening_id = target.value;
+                updateDatabase(lening_id, formattedDate);
+                Swal.fire("Uitgeleend!", "Het item is uitgeleend.", "success");
+              }
+            });
           } else {
-            // Add 4 days to the return date
-            returnDate.setDate(returnDate.getDate() - 4);
+            Swal.fire({
+              title: "Ben je zeker?",
+              text: "Wil je de uitlening annuleren?",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonText: "Ja, annuleer",
+              cancelButtonText: "Nee, behoud",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                returnDate.setDate(returnDate.getDate() - 4);
+                const formattedDate = returnDate.toISOString().split("T")[0];
+                terugbrengDatumCell.textContent = formattedDate;
+                target.textContent = "Uitlenen";
+                target.classList.toggle("uitlenen-button");
+                target.classList.toggle("annuleren-button");
+                target.style.backgroundColor = "green";
+                const lening_id = target.value;
+                updateDatabase(lening_id, formattedDate);
+                Swal.fire("Geannuleerd!", "De uitlening is geannuleerd.", "success");
+              }
+            });
           }
-
-          const formattedDate = returnDate.toISOString().split("T")[0]; // Format as YYYY-MM-DD
-
-          // Update the content of the third cell with the new date
-          terugbrengDatumCell.textContent = formattedDate;
-
-          // Toggle button text between "Uitlenen" and "Annuleren"
-          target.textContent =
-            buttonText === "Uitlenen" ? "Annuleren" : "Uitlenen";
-
-          // Toggle button class
-          target.classList.toggle("uitlenen-button");
-          target.classList.toggle("annuleren-button");
-
-          // Toggle button background color
-          target.style.backgroundColor =
-            buttonText === "Annuleren" ? "green" : "red";
-
-          // Call AJAX to update database (assuming you want to update the return date in the database)
-          const lening_id = target.value;
-          updateDatabase(lening_id, formattedDate);
         }
       }
     }
   }
 
-  // Call the function to fetch data and populate the table when the page loads
   fetchDataAndPopulateTable();
 
-  // Event delegation for button clicks
   $("table").on("click", "button", function () {
     const target = $(this);
 
-    // Check if the clicked element is a button
     if (target.is("button")) {
       if (target.hasClass("reserveren-button")) {
+        console.log("Reserveren button clicked");
         extendReturnDate(target);
       } else if (target.hasClass("uitlenen-button")) {
+        console.log("Uitlenen button clicked");
         const lening_id = target.val();
         deleteRowFromDatabase(lening_id);
         decreaseReturnDate(target);
       } else if (target.hasClass("melden-button")) {
+        console.log("Melden button clicked");
         let buttonValue = target.val();
         $("#lening_id").val(buttonValue);
         toonMMeldenPopUp();
@@ -202,23 +197,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
         form.submit(function (event) {
           event.preventDefault();
-
-          const lening_id = localStorage.getItem("product_id");
-          $("#lening_id").val(lening_id);
+          console.log("Submitting defect melden form...");
+          const lening_id = $("#lening_id").val();
+          const watDefect = $("#watDefect").val();
+          const redenDefect = $("#redenDefect").val();
 
           $.ajax({
-            url: form.attr("action"),
-            method: form.attr("method"),
-            data: form.serialize(),
+            url: "defectMelden.php",
+            method: "POST",
+            data: {
+              lening_id: lening_id,
+              watDefect: watDefect,
+              redenDefect: redenDefect,
+            },
             success: function (response) {
-              Swal.fire(
-                "Defect gemeld!",
-                "Het defect is succesvol gemeld.",
-                "success"
-              );
+              console.log("Defect reported successfully:", response);
+              Swal.fire("Defect gemeld!", "Het defect is succesvol gemeld.", "success");
+              sluitMMeldenPopUp();
             },
             error: function (error) {
-              console.error("Error:", error);
+              console.error("Error reporting defect:", error);
               Swal.fire({
                 title: "Er is iets fout gegaan",
                 text: "Probeer het later opnieuw.",
@@ -235,30 +233,32 @@ document.addEventListener("DOMContentLoaded", function () {
   let waarschuwingenCount = document.querySelector(".waarschuwingenCount");
   let waarschuwingenDiv = document.querySelector(".waarschuwingenDiv");
 
-  // Fetch waarschuwingen count
   if (waarschuwingenCount) {
     fetch("waarschuwingenCount.php")
       .then((response) => response.json())
       .then((data) => {
+        console.log("Waarschuwingen count fetched successfully:", data);
         let waarschuwingenCountPhp = data;
         waarschuwingenCount.textContent = waarschuwingenCountPhp - 1;
       })
-      .catch((error) => console.error("Error fetching data:", error));
+      .catch((error) => console.error("Error fetching waarschuwingen count:", error));
   } else {
     console.error("Element with class 'waarschuwingenCount' not found.");
   }
 });
 
-// Function to display defect report popup
 function toonMMeldenPopUp() {
+  console.log("Displaying melden popup...");
   document.getElementById("meldenPopUp").style.display = "block";
 }
 
 function sluitMMeldenPopUp() {
+  console.log("Closing melden popup...");
   document.getElementById("meldenPopUp").style.display = "none";
 }
 
 function deleteRowFromDatabase(lening_id) {
+  console.log("Deleting row from database with lening_id:", lening_id);
   $.ajax({
     url: "deleteRowUitleningen.php",
     method: "POST",
@@ -266,19 +266,20 @@ function deleteRowFromDatabase(lening_id) {
     dataType: "json",
     success: function (data) {
       if (data.success) {
-        console.log(data.message);
+        console.log("Row deleted successfully:", data.message);
         window.location.reload();
       } else {
-        console.error(data.message);
+        console.error("Error deleting row:", data.message);
       }
     },
     error: function (error) {
-      console.error("Error:", error);
+      console.error("Error deleting row:", error);
     },
   });
 }
 
 function updateDate(lening_id, action) {
+  console.log("Updating date for lening_id:", lening_id, "with action:", action);
   $.ajax({
     url: "updateDate.php",
     method: "POST",
@@ -286,14 +287,14 @@ function updateDate(lening_id, action) {
     dataType: "json",
     success: function (data) {
       if (data.success) {
-        console.log(data.message);
+        console.log("Date updated successfully:", data.message);
         window.location.reload();
       } else {
-        console.error(data.message);
+        console.error("Error updating date:", data.message);
       }
     },
     error: function (error) {
-      console.error("Error:", error);
+      console.error("Error updating date:", error);
     },
   });
 }
