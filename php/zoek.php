@@ -12,6 +12,7 @@ $zoekterm = isset($_GET['zoekbalk']) ? '%' . $_GET['zoekbalk'] . '%' : '%';
 $response = [];
 
 if ($zoekterm !== '%') {
+    // fetch van alle producten en kits die voldoen aan de zoekterm
     $stmt = $conn->prepare("SELECT GROEP.groep_id AS groep_id, GROEP.naam AS groep_naam, MERK.naam AS merk_naam, PRODUCT.opmerkingen, BESCHRIJVING.naam AS beschrijving_naam, MIN(PRODUCT.datumBeschikbaar) AS datumBeschikbaar,
     COUNT(PRODUCT.product_id) AS aantal_beschikbare_producten, IMAGE.image_data, null AS isKit
 FROM GROEP
@@ -65,6 +66,7 @@ GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data"
     $stmt->close();
     
 } else {
+    // fetch van alle producten en kits
     $stmt = $conn->prepare("SELECT GROEP.groep_id AS groep_id, GROEP.naam AS groep_naam, MERK.naam AS merk_naam, PRODUCT.opmerkingen, BESCHRIJVING.naam AS beschrijving_naam, MIN(PRODUCT.datumBeschikbaar) AS datumBeschikbaar,
     COUNT(PRODUCT.product_id) AS aantal_beschikbare_producten, IMAGE.image_data, null AS isKit
 FROM GROEP

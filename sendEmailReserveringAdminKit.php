@@ -28,7 +28,7 @@ $aantal = $_GET['aantal'];
 $KitNr = $_GET['KitNr'];
 $Email = $_GET['email'];
 
-
+// kitnaam ophalen
 $query = "SELECT kit_naam
 FROM KIT
 WHERE kit_id = ?";
@@ -46,6 +46,7 @@ if ($result) {
     error_log("Fout bij het uitvoeren van de query: " . $conn->error);
 }
 
+// reden ophalen
 $query2 = "SELECT naam
 FROM REDEN
 WHERE reden_id = ?";
@@ -64,7 +65,7 @@ if ($result2) {
 
 $Email = $_SESSION['email'];
 
-
+// smtp transport instellen
 $transport = (new Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport
 ('mail.smtp2go.com', 2525))
                 ->setUsername($smtpUsername)
@@ -72,6 +73,7 @@ $transport = (new Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport
 
 $mailer = new Mailer($transport);
 
+// email opstellen voor kit
 $email = (new Email())
     ->from($smtpUsername)
     ->to($Email)
@@ -134,6 +136,7 @@ $email = (new Email())
 
 
 try {
+    // email verzenden
     $mailer->send($email);
     error_log("Email sent");   
     echo json_encode(array("success" => true));

@@ -10,6 +10,7 @@ $(document).ready(function () {
     let aantalGeaccepteerdeProducten = 0;
     let aantalProducten = 0;
 
+    // functoe om alle producten van een kit te tonen in de frontend
     function toonProducten(data) {
         if (data.error) {
             productenLijstDiv.innerHTML = data.error;
@@ -44,6 +45,7 @@ $(document).ready(function () {
         productenLijstDiv.innerHTML = productenHtml;
     }
 
+    // AJAX-oproep om alle producten van een kit te tonen
     $.ajax({
         url: 'accepterenKitsProductenLaden.php',
         type: 'GET',
@@ -64,6 +66,7 @@ $(document).ready(function () {
     let kitAccepterenBtn = document.getElementById('kitAccepterenBtn');
     kitAccepterenBtn.disabled = true;
 
+    // Event listener voor het accepteren van een product
     productenLijstDiv.addEventListener('click', function (e) {
         if (e.target && e.target.classList.contains('accepteerProduct')) {
             let productId = e.target.getAttribute('data-id');
@@ -72,6 +75,7 @@ $(document).ready(function () {
             accepterenBtn.innerHTML = 'Geaccepteerd';
             accepterenBtn.disabled = true;
 
+            // AJAX-oproep om een product te accepteren
             $.ajax({
                 url: '/ProgrammingProject1/php/productAccepteren.php',
                 type: 'POST',
@@ -80,6 +84,7 @@ $(document).ready(function () {
                     leningId: leningId
                 },
                 success: function (data) {
+                    // button accepteren veranderen naar geaccepteerd
                     console.log('Product geaccepteerd:', data);
                     aantalGeaccepteerdeProducten++;
                     aantalProductenBinnen.innerHTML = aantalGeaccepteerdeProducten + "/" + aantalProducten + " producten zijn geaccepteerd";
@@ -96,6 +101,7 @@ $(document).ready(function () {
             });
         }
 
+        // Event listener voor het defect maken van een product naar de defectProduct.php pagina
         if (e.target.classList.contains('defectBtnKit')) {
             let productNr = e.target.getAttribute('data-id');
             let email = emailPersoon.innerHTML;
@@ -107,6 +113,7 @@ $(document).ready(function () {
         }
     });
 
+    // Functie om voor het specifieke product naar de defectProduct pagina te gaan
     kitAccepterenBtn.addEventListener('click', function () {
         $.ajax({
             url: 'kitAccepterenBackend.php',

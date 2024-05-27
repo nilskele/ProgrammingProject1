@@ -28,7 +28,7 @@ $aantal = $_GET['aantal'];
 $product_id = $_GET['productNr'];
 $Email = $_GET['email'];
 
-
+// productnaam ophalen
 $query = "SELECT GROEP.naam
 FROM PRODUCT
 JOIN GROEP ON PRODUCT.groep_id = GROEP.groep_id
@@ -47,6 +47,7 @@ if ($result) {
     error_log("Fout bij het uitvoeren van de query: " . $conn->error);
 }
 
+// reden ophalen
 $query2 = "SELECT naam
 FROM REDEN
 WHERE reden_id = ?";
@@ -63,7 +64,7 @@ if ($result2) {
     error_log("Fout bij het uitvoeren van de query: " . $conn->error);
 }
 
-
+// smtp transport instellen
 $transport = (new Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport
 ('mail.smtp2go.com', 2525))
                 ->setUsername($smtpUsername)
@@ -71,6 +72,7 @@ $transport = (new Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport
 
 $mailer = new Mailer($transport);
 
+// email opstellen voor product
 $email = (new Email())
     ->from($smtpUsername)
     ->to($Email)
@@ -133,6 +135,7 @@ $email = (new Email())
 
 
 try {
+    // email verzenden
     $mailer->send($email);
     error_log("Email sent");   
     echo json_encode(array("success" => true));

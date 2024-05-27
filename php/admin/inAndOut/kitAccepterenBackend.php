@@ -8,6 +8,7 @@ if ($conn->connect_error) {
 if (isset($_GET['kit_id_fk'])) {
     $Kit_id = $_GET['kit_id_fk'];
 
+    // update kit wanneer deze wordt geaccepteerd
     $query = "UPDATE KIT
               SET isUitgeleend = false
               WHERE kit_id = ?";

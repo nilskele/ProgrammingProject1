@@ -12,6 +12,7 @@ $redenDefect = isset($_POST['redenDefect']) ? $_POST['redenDefect'] : '';
 $lening_id = isset($_POST['lening_id']) ? $_POST['lening_id'] : '';
 
 if ($watDefect !== '' && $redenDefect !== '') {
+  // voeg defect toe
   $stmt = $conn->prepare("INSERT INTO DEFECT (watDefect, redenDefect, lening_id_fk) VALUES (?, ?, ?)");
   $stmt->bind_param("ssi", $watDefect, $redenDefect, $lening_id);
 

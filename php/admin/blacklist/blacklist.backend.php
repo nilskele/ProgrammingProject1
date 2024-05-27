@@ -3,11 +3,13 @@ include('../../../database.php');
 
 
 if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+    // fetch van alle data van de user die in de blacklist zitten
     $query1 = "SELECT USER.voornaam, USER.achternaam, USER.blacklist_fk, USER.blacklistDatum, USER.user_id
                 FROM USER
                 WHERE USER.blacklist_fk = 3
                 ORDER BY USER.blacklistDatum DESC;";
 
+    // fetch van alle data van de user die in de waarschuwingen zitten
     $query2 = "SELECT USER.voornaam, USER.achternaam, USER.blacklist_fk, USER.blacklistDatum, USER.user_id
                 FROM USER
                 WHERE USER.blacklist_fk = 2

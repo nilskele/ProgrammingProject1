@@ -33,8 +33,10 @@ include('../../database.php');
 <div id="popup" class="popup"></div>
 
 
-
 <div id="adminDashboard">
+<a class="btn btn-primary aanmaken" href="../accountAanmaken.php">
+  Account aanmaken
+</a>
   <div id="container1">
     <div class="adminAccepteren">
       <div class="productNr">
@@ -125,10 +127,29 @@ include('../../database.php');
 </head>
 <body>
   <div class="buttons_kalender">
-    <form action="" method="GET" onsubmit="scrollToResults()">
-      <input type="text" name="Zoeken" placeholder="Zoeken...">
-      <button class="button_zoeken" type="submit">Zoek</button>
-    </form>
+
+  <form action="" method="GET" onsubmit="scrollToResults()">
+  <div class="form_zoek">
+    <div class="search-input-container">
+      <label for="searchInput">Zoeken:</label>
+      <input type="text" id="searchInput" name="Zoeken" placeholder="Zoeken...">
+    </div>
+    <div class="toggle-container">
+      <span id="labelID" class="toggle-label active">ID</span>
+      <label class="switch">
+        <input type="checkbox" id="searchToggle" onclick="updateSearchType()">
+        <span class="slider round"></span>
+      </label>
+      <span id="labelNaam" class="toggle-label">Naam</span>
+    </div>
+    <input type="hidden" id="searchType" name="searchType" value="naam">
+    <button class="button_zoeken" type="submit">Zoek</button>
+  </div>
+</form>
+
+
+
+
     <div class="buttons-container">
       <a href="/ProgrammingProject1/php/admin/kitToevoegen/kit_toevoegen.php"><button>Kit toevoegen</button></a>
       <a href="/ProgrammingProject1/php/admin/productToevoegen/product_toevoegen.php"><button>Product toevoegen</button></a>
@@ -167,20 +188,28 @@ if ($conn->connect_error) {
 $loanDetails = array(); // Initialize the array
 
 if (isset($_GET['Zoeken'])) {
-  $naamItem = $_GET['Zoeken'];
+  $zoekTerm = $_GET['Zoeken'];
+  $searchType = $_GET['searchType'];
 
   // Sanitize the input to prevent XSS
-  $naamItem = htmlspecialchars($naamItem);
+  $zoekTerm = htmlspecialchars($zoekTerm);
+  
 
-  // Add wildcard characters for partial matching
-  $naamItem = "%" . $naamItem . "%";
-
-  // SQL query using a placeholder
-  $sql = "SELECT ML.Uitleendatum, ML.terugbrengDatum, G.naam AS product_naam, P.product_id, P.zichtbaar
-  FROM MIJN_LENINGEN ML
-  JOIN PRODUCT P ON ML.product_id_fk = P.product_id
-  JOIN GROEP G ON P.groep_id = G.groep_id
-  WHERE G.naam LIKE ?";
+  // Determine the SQL query based on the search type
+  if ($searchType === 'id') {
+      $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+              FROM PRODUCT p
+              JOIN GROEP g ON p.groep_id = g.groep_id
+              LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
+              WHERE p.product_id LIKE ?";
+  } else {
+    $zoekTerm = "%" . $zoekTerm . "%";
+      $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+              FROM PRODUCT p
+              JOIN GROEP g ON p.groep_id = g.groep_id
+              LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
+              WHERE g.naam LIKE ?";
+  }
 
   // Prepare the statement
   $stmt = $conn->prepare($sql);
@@ -189,7 +218,7 @@ if (isset($_GET['Zoeken'])) {
   }
 
   // Bind the parameter
-  $stmt->bind_param("s", $naamItem);
+  $stmt->bind_param("s", $zoekTerm);
 
   // Execute the statement
   $stmt->execute();
@@ -204,7 +233,7 @@ if (isset($_GET['Zoeken'])) {
           // Store the results in an array
           $loanDetails[] = array(
               "product_id" => $row["product_id"],
-              "product_naam" => $row["product_naam"],
+              "product_name" => $row["product_name"],
               "Uitleendatum" => $row["Uitleendatum"],
               "terugbrengDatum" => $row["terugbrengDatum"],
               "zichtbaar" => $row["zichtbaar"]
@@ -216,7 +245,35 @@ if (isset($_GET['Zoeken'])) {
 
   // Close the statement
   $stmt->close();
+} else {
+  // Prepare the SQL query to retrieve all items
+  $sql_all = "SELECT g.naam AS product_name, p.product_id, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+              FROM PRODUCT p
+              JOIN GROEP g ON p.groep_id = g.groep_id
+              LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
+  
+  // Execute the query
+  $result_all = $conn->query($sql_all);
+
+  // Check if there are results
+  if ($result_all->num_rows > 0) {
+      // Output data of each row
+      while ($row = $result_all->fetch_assoc()) {
+          // Store the results in an array
+          $loanDetails[] = array(
+              "product_id" => $row["product_id"],
+              "product_name" => $row["product_name"],
+              "Uitleendatum" => $row["Uitleendatum"],
+              "terugbrengDatum" => $row["terugbrengDatum"],
+              "zichtbaar" => $row["zichtbaar"]
+          );
+      }
+  } else {
+      echo "Geen resultaten gevonden";
+  }
 }
+
+
 
 // Close the connection
 $conn->close();
@@ -229,10 +286,9 @@ $loanDetailsJSON = json_encode($loanDetails);
       // Scroll to the results section after form submission
       setTimeout(function() {
         document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
-      }, 100); // Slight delay to ensure results are rendered
+      }, 100); 
     }
 
-    // Check if search was performed and scroll to results
     window.addEventListener('DOMContentLoaded', (event) => {
       <?php if (isset($_GET['Zoeken'])): ?>
         scrollToResults();
@@ -245,5 +301,6 @@ $loanDetailsJSON = json_encode($loanDetails);
   </script>
   <script src="agenda/js/admin.agenda.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <script src="agenda/js/admin.agenda.search.js"></script>
 </body>
 </html>

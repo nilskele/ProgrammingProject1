@@ -16,6 +16,7 @@ $reden = $_GET['reden'];
 $aantal = $_GET['aantal'];
 $email = $_GET['email'];
 
+// fetch user id
 $user_query = "SELECT user_id FROM USER WHERE email = ?";
 $user_stmt = $conn->prepare($user_query);
 $user_stmt->bind_param("s", $email);
@@ -29,7 +30,7 @@ if ($user_result->num_rows > 0) {
     exit;
 }
 
-
+// fetch aantal producten nodig
 $select_aantal_prodcten_nodig_query = "SELECT COUNT(*) FROM KIT_PRODUCT WHERE kit_id_fk = ?";
 $select_stmt = $conn->prepare($select_aantal_prodcten_nodig_query);
 $select_stmt->bind_param("s", $KitNr);
@@ -38,7 +39,7 @@ $result = $select_stmt->get_result();
 $row = $result->fetch_assoc();
 $aantalProducten = $row['COUNT(*)'];
 
-
+// fetch producten die beschikbaar zijn
 $select_proucten_query = "SELECT GROEP.groep_id, MIN(PRODUCT.product_id) as product_id
 FROM PRODUCT
      JOIN GROEP ON PRODUCT.groep_id = GROEP.groep_id
@@ -66,6 +67,7 @@ if (count($product_ids) < $aantalProducten * $aantal) {
 for ($i = 0; $i < $aantalProducten * $aantal; $i++) {
     $product_id = $product_ids[$i];
 
+    // update product die nog beschikbaar zijn
     $update_query = "UPDATE PRODUCT SET isUitgeleend = true, datumBeschikbaar = ? WHERE product_id = ?";
     $update_stmt = $conn->prepare($update_query);
     $update_stmt->bind_param("ss", $eindDatum, $product_id);
@@ -76,6 +78,7 @@ for ($i = 0; $i < $aantalProducten * $aantal; $i++) {
         exit;
     }
 
+    // insert van de lening
     $insert_query = "INSERT INTO MIJN_LENINGEN (Uitleendatum, terugbrengDatum, user_id_fk, product_id_fk, kit_id_fk, reden_id_fk) VALUES (?, ?, ?, ?, ?, ?)";
     $insert_stmt = $conn->prepare($insert_query);
     $insert_stmt->bind_param("ssssss", $startDatum, $eindDatum, $user_id, $product_id, $KitNr, $reden);
@@ -87,7 +90,7 @@ for ($i = 0; $i < $aantalProducten * $aantal; $i++) {
     }
 }
 
-
+// fetch van het aantal beschikbare kits
 $select_aantal_kits_query = "SELECT
     (SELECT COUNT(*)
      FROM GROEP
@@ -125,6 +128,7 @@ if ($result->num_rows > 0) {
     $aantalKits = $row['aantalBeschikbaar'];
 
 } else {
+    // update kit die nog beschikbaar zijn
     $update_query = "UPDATE KIT SET isUitgeleend = true, datumBeschikbaar = ? WHERE kit_id = ?";
     $update_stmt = $conn->prepare($update_query);
     $update_stmt->bind_param("ss", $eindDatum, $KitNr);

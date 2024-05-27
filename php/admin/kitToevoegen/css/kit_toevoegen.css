@@ -8,7 +8,7 @@
     height: 70%;
     border-radius: 1em;
     background-color: white;
-    border: 1px solid #cecbcb;
+    border: 1px solid #d1d1d1;
     box-shadow: #cecbcb 6px 6px;
     padding-top:5em;
     padding-bottom:3em;
@@ -17,15 +17,15 @@
 .gegevens_kit{
     margin: 2em;
     width: 80%; 
+    height: 900px;
     border-radius: 1em;
-    height: 800px;
     padding: 1em;
-    background: rgb(236, 232, 232);
+    background: rgb(231, 231, 231);
     
 }
 .product_toevoegen {
     margin-bottom: 40px;
-    background: rgb(237, 232, 232);
+    background: rgb(231, 231, 231);
     width: 80%; /* Changed width to max-width */
     border-radius: 1em;
     height: 800px;
@@ -61,12 +61,15 @@ input {
     background-color: white;
     color: red;
     width: 10em;
-    
+    padding: 5px;
     border-radius: 2em;
     text-decoration: none;
     border: 2px solid #c4c4c4;
     transition: 0.3s;
-    
+}
+
+button.submit2 {
+    width: 500px;
 }
 .categorieZoekbalk{
     padding: 0.5em;
@@ -87,18 +90,26 @@ input {
     display: flex;
     justify-content: space-between;
     margin: 2em;
-    
-    
 }
 .labelcontainers2{
     width: 55%;
     display: flex;
-    justify-content: space-between;
-    margin: 2em;
-    
-    
-}
-#groepinput{
-    margin-right: 1em;
+    margin: 2em;    
 }
 
+select#categrieSelect {
+    margin-bottom: 20px;
+}
+
+#groepinput{
+    margin-right: 1em;
+    height: 40px;
+}
+
+#labelProduct {
+    margin-right: 20px;
+}
+
+.overview_producten {
+    margin-bottom: 30px;
+}

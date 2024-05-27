@@ -4,6 +4,7 @@ include "../database.php";
 if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
     $kitNr = htmlspecialchars($_POST['KitNrInput']);
     
+    // check of kit_id bestaat
     $query = "SELECT KIT.kit_id
     FROM KIT
     WHERE kit_id = ?";

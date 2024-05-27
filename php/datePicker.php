@@ -10,6 +10,7 @@ mysqli_select_db($conn, '2324PROGPRGR02') or die('Error selecting the database')
 $startDatum = $_GET['startDatum'];
 $eindDatum = $_GET['eindDatum']; 
 
+// fetch van alle producten die beschikbaar zijn voor de eindDatum
 $sql = "SELECT GROEP.groep_id AS groep_id, GROEP.naam AS groep_naam, MERK.naam AS merk_naam, PRODUCT.opmerkingen, BESCHRIJVING.naam AS beschrijving_naam, MIN(PRODUCT.datumBeschikbaar) AS datumBeschikbaar, COUNT(PRODUCT.product_id) AS aantal_beschikbare_producten, IMAGE.image_data
 FROM GROEP
          INNER JOIN MERK ON GROEP.merk_id_fk = MERK.merk_id

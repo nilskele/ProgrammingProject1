@@ -9,6 +9,7 @@
     $isKit = $_GET['isKit'];
     
     if ($isKit == 1) {
+        // fetch van alle producten die beschikbaar zijn in de kit
         $stmt = $conn->prepare("SELECT KIT.kit_id AS groep_id, KIT.kit_naam AS groep_naam, MERK.naam AS merk_naam, MIN(KIT.datumBeschikbaar) AS datumBeschikbaar,
         (SELECT COUNT(*)
         FROM GROEP
@@ -24,6 +25,7 @@
         WHERE KIT.zichtbaar = true AND KIT.kit_id = ?
         GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, IMAGE.image_data");
     } else {
+        // fetch van alle producten
         $stmt = $conn->prepare("SELECT GROEP.groep_id AS groep_id, GROEP.naam AS groep_naam, MERK.naam AS merk_naam, PRODUCT.opmerkingen, BESCHRIJVING.naam AS beschrijving_naam, MIN(PRODUCT.datumBeschikbaar) AS datumBeschikbaar,
         COUNT(PRODUCT.product_id) AS aantal_beschikbare_producten, IMAGE.image_data
         FROM GROEP

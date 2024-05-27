@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+    // functie om een nieuwe kaart te maken voor de blacklist
     function addToBlacklist(naam, datum, user_id) {
         let item = '<div class="Item">' +
             '<h4 class="Naam">' + naam + '</h4>' +
@@ -8,6 +10,7 @@ $(document).ready(function() {
         $('.blacklistLijst').append(item);
     }
 
+    // functie om een nieuwe kaart te maken voor de waarschuwingen
     function addToWaarschuwingen(naam, datum, user_id) {
         let item = '<div class="Item">' +
             '<h4 class="Naam">' + naam + '</h4>' +
@@ -17,6 +20,7 @@ $(document).ready(function() {
         $('.waarschuwingLijst').append(item);
     }
 
+    // AJAX-oproep om de blacklist en waarschuwingen op te halen
     $.ajax({
         url: '../blacklist/blacklist.backend.php',
         type: 'POST',
@@ -39,6 +43,7 @@ $(document).ready(function() {
         }
     });
 
+    // functie om een gebruiker te verwijderen uit de blacklist
     $(document).on('click', '.Verwijderen', function(e) {
         Swal.fire({
             title: "Weet je zeker of je deze gebruiker wilt verwijderen uit deze lijst?",
@@ -76,7 +81,7 @@ $(document).ready(function() {
         });
     });
 
-
+    // functie om te zoeken naar studenten in de blacklist
     $('.inputZoekbalk1').on('keyup', function() {
         let zoekterm = $(this).val().toLowerCase();
 
@@ -91,6 +96,7 @@ $(document).ready(function() {
         });
     });
 
+    // functie om te zoeken naar studenten in de waarschuwingen
     $('.inputZoekbalk2').on('keyup', function() {
         let zoekterm = $(this).val().toLowerCase();
 
@@ -106,16 +112,16 @@ $(document).ready(function() {
     });
 });
 
-
+// functie om de pop-up te openen voor het toevoegen van een persoon aan de blacklist
 function OpenPersoonWaarschuwen() {
     document.getElementById("waarschuwenPersoonPopUPDiv").style.display = "block";
 }
-  
+  // functie om de pop-up te sluiten voor het toevoegen van een persoon aan de blacklist
   function ClosePersoonWaarschuwen() {
     document.getElementById("waarschuwenPersoonPopUPDiv").style.display = "none";
 }
 
-
+// functie om een persoon toe te voegen aan de blacklist
 document.getElementById("waarschuwenBtnForm").addEventListener("click", function(e) {
     e.preventDefault();
 
@@ -128,6 +134,7 @@ document.getElementById("waarschuwenBtnForm").addEventListener("click", function
         return;
     }
 
+    // AJAX-oproep om een persoon toe te voegen aan de blacklist
     $.ajax({
         url: '../blacklist/toevoegenPersoonBlacklist.php',
         type: 'POST',

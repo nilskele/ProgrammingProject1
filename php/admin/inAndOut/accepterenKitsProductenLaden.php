@@ -10,6 +10,7 @@ $KitNr = $_GET['KitNr'];
 
 $response = [];
 
+// fetch van alle producten die in de kit zitten
 $query = "SELECT product_id_fk, MIJN_LENINGEN.kit_id_fk, kit_naam, GROEP.naam, image_data, email, voornaam, achternaam, lening_id,  (SELECT COUNT(*) FROM KIT_PRODUCT WHERE KIT_PRODUCT.kit_id_fk = ?) AS aantalProducten
 FROM MIJN_LENINGEN
     JOIN PRODUCT ON MIJN_LENINGEN.product_id_fk = PRODUCT.product_id

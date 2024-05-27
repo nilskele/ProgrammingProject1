@@ -5,6 +5,7 @@ let aantalProductenAanwezig = document.getElementById("aantalProductenAanwezig")
 let hoeveel = document.getElementById("hoeveel");
 
 $(function () {
+    // AJAX-oproep om het usertype op te halen
     $.ajax({
         url: "/ProgrammingProject1/php/getUser_id.php",
         type: "GET",
@@ -17,6 +18,7 @@ $(function () {
         },
     });
 
+    // opties voor de datepicker
     let dateRangeOptions = {
         opens: "center",
         minDate: moment().toDate(),
@@ -31,12 +33,14 @@ $(function () {
     kitNrspan.innerHTML = KitNr; 
     let aantalProductenAanwezig = document.getElementById("aantalProductenAanwezig");
 
+    // functie voor zoeken op datum om het aantal beschikbare items te tonen
     $('input[name="daterange"]').daterangepicker(
         dateRangeOptions,
         function(start, end) {
             let startDatum = start.format("YYYY-MM-DD");
             let eindDatum = end.format("YYYY-MM-DD");
 
+            // controle of de start en einddatum op een maandag en vrijdag vallen
             if (start.day() !== 1 || end.day() !== 5) {
                 Swal.fire({
                     icon: "warning",
@@ -47,6 +51,7 @@ $(function () {
                 return;
             }
 
+            // controle of de einddatum correct is voor studenten
             if (usertype == "3" && end.diff(start, "days") !== 4) {
                 Swal.fire({
                     icon: "warning",
@@ -57,6 +62,7 @@ $(function () {
                 return;
             }
 
+            // aantal producten beschikbaar ophalen
             $.ajax({
                 url: "reserveren.backend_aantalBeschikbaarKit.php",
                 type: "GET",
@@ -75,6 +81,7 @@ $(function () {
                             confirmButtonText: "Ok",
                         });
                     } else {
+                        // aantal producten beschikbaar tonen in de select
                         aantalProductenAanwezig.innerHTML = data[0].aantalBeschikbaar;
                         let optionsHTML = "";
                         for (let i = 1; i <= data[0].aantalBeschikbaar; i++) {
@@ -97,6 +104,7 @@ $(function () {
     );
 });
 
+// Event listener voor het reserveren van een kit
 $("#reserverenBtn").click(function() {
     let KitNr = localStorage.getItem("KitNr");
     let startDatum = $('input[name="daterange"]').data('daterangepicker').startDate.format('YYYY-MM-DD');
@@ -105,6 +113,7 @@ $("#reserverenBtn").click(function() {
     let aantal = document.getElementById("hoeveel").value;
     let email = document.getElementById("email").value;
 
+    // controle of email inegevuld is
     if (email === "") {
         Swal.fire({
             icon: "warning",
@@ -115,6 +124,7 @@ $("#reserverenBtn").click(function() {
         return;
     }
 
+    // controle of reden ingevuld is
     if (reden === "0") {
         Swal.fire({
             icon: "warning",
@@ -125,6 +135,7 @@ $("#reserverenBtn").click(function() {
         return;
     }
 
+    // controle of aantal ingevuld is
     if (aantal === "0") {
         Swal.fire({
             icon: "warning",
@@ -144,6 +155,7 @@ $("#reserverenBtn").click(function() {
         cancelButtonText: "Nee",
     }).then((result) => {
         if (result.isConfirmed) {
+            // reservering maken
             $.ajax({
                 url: "reserveren.backendKit.php",
                 method: "GET",
@@ -157,6 +169,7 @@ $("#reserverenBtn").click(function() {
                 },
                 dataType: "json",
                 success: function(response) {
+                    // email sturen van reservering naar student
                     $.ajax({
                         url: "../../../sendEmailReserveringAdminKit.php",
                         method: "GET",

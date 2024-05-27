@@ -5,6 +5,7 @@ session_start();
 
 $user_id = $_SESSION['user_id'];
 
+// query om de blacklist_fk op te halen
 $query = "SELECT blacklist_fk FROM USER WHERE user_id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $user_id);

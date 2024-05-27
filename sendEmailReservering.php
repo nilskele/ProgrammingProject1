@@ -31,6 +31,7 @@ $groep_id = $_GET['groep_id'];
 $isKit = $_GET['isKit'];
 
 if ($isKit == 1) {
+    // kitnaam ophalen
     $query = "SELECT kit_naam
     FROM KIT
     WHERE kit_id = ?";
@@ -48,6 +49,7 @@ if ($isKit == 1) {
         error_log("Fout bij het uitvoeren van de query: " . $conn->error);
     }
 
+    // reden ophalen
     $query2 = "SELECT naam
     FROM REDEN
     WHERE reden_id = ?";
@@ -66,7 +68,7 @@ if ($isKit == 1) {
 
     $Email = $_SESSION['email'];
 
-
+    // smtp transport instellen
     $transport = (new Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport
     ('mail.smtp2go.com', 2525))
                     ->setUsername($smtpUsername)
@@ -74,6 +76,7 @@ if ($isKit == 1) {
 
     $mailer = new Mailer($transport);
 
+    // email opstellen voor kit
     $email = (new Email())
         ->from($smtpUsername)
         ->to($Email)
@@ -136,6 +139,7 @@ if ($isKit == 1) {
 
 
     try {
+        // email versturen
         $mailer->send($email);
         error_log("Email sent");   
         echo json_encode(array("success" => true));
@@ -144,6 +148,7 @@ if ($isKit == 1) {
         echo json_encode(array("success" => false, "error" => "Reservering succesvol, maar fout bij het verzenden van de bevestigingsmail: " . $e->getMessage()));
     }
 } else {
+    // productnaam ophalen
     $query = "SELECT naam FROM GROEP WHERE groep_id = ?";
     $stmt = $conn->prepare($query); 
     $stmt->bind_param("s", $groep_id); 
@@ -159,6 +164,7 @@ if ($isKit == 1) {
         error_log("Fout bij het uitvoeren van de query: " . $conn->error);
     }
     
+    // reden ophalen
     $query2 = "SELECT naam
     FROM REDEN
     WHERE reden_id = ?";
@@ -177,7 +183,7 @@ if ($isKit == 1) {
     
     $Email = $_SESSION['email'];
     
-    
+    // smtp transport instellen
     $transport = (new Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport
     ('mail.smtp2go.com', 2525))
                     ->setUsername($smtpUsername)
@@ -185,6 +191,7 @@ if ($isKit == 1) {
     
     $mailer = new Mailer($transport);
     
+    // email opstellen voor product
     $email = (new Email())
         ->from($smtpUsername)
         ->to($Email)
@@ -247,6 +254,7 @@ if ($isKit == 1) {
     
     
     try {
+        // email versturen
         $mailer->send($email);
         error_log("Email sent");   
         echo json_encode(array("success" => true));

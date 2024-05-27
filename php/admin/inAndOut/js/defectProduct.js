@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     productNrInput.value = productNr;
 
+    // Event listener voor het defect melden
     defectForm.addEventListener("submit", function(event) {
         event.preventDefault();
 
@@ -91,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 confirmButtonText: 'Ja, haal het uit de catalogus!'
             }).then((result) => {
                 if (result.isConfirmed) {
+                    // Defect product uit catalogus halen
                     let productNr = productNrInput.value;
                     let formData = new FormData();
                     formData.append('productNr', productNr);
@@ -142,7 +144,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Ja, waarschuw de persoon!'
-            }).then((result) => {
+            }).then((result) => { 
+                // Persoon waarschuwen
                 if (result.isConfirmed) {
                     let email = document.getElementById("email").value;
                     let formData = new FormData();
@@ -182,11 +185,12 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Event listener voor de knop "Accepteren"
     let accepterenBtn = document.getElementById("accepterenBtn");
     if (accepterenBtn) {
         accepterenBtn.addEventListener("click", function(event) {
             event.preventDefault();
-    
+            
             Swal.fire({
                 title: "Weet je zeker dat je het product wilt accepteren?",
                 text: "Dit product zal worden geaccepteerd",
@@ -198,6 +202,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 cancelButtonText: "Annuleren"
             }).then((result) => {
                 if (result.isConfirmed) {
+                    // Product accepteren
                     $.ajax({
                         url: '/ProgrammingProject1/php/productAccepterenMetProductnr.php',
                         method: 'POST',

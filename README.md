@@ -39,6 +39,9 @@ https://chat.openai.com/share/9b6c691f-0a82-466d-b280-265cf4b1e5bf<br>
 https://stackoverflow.com/questions/74937545/uncaught-syntaxerror-unexpected-token-br-when-using-json-parse-on-the<br>
 https://chat.openai.com/share/3ea7f502-26e1-479c-935f-fd81399840c4<br>
 https://chat.openai.com/share/06ef04eb-6224-430e-9c58-a404dd031a4b<br>
+https://chatgpt.com/share/03b19128-17e3-4704-8a02-d24cdaf89495<br>
+https://chatgpt.com/share/41046d29-1338-443f-8cc4-21d9380f32de<br>
+https://chatgpt.com/share/d830216c-c669-4158-902b-85e4ce5474aa<br>
 <br>
 <br>
 ## Nils:
@@ -48,7 +51,13 @@ https://www.youtube.com/watch?v=gy6LY0Xy2zU&t=388s<br>
 https://stackoverflow.com/questions/982919/sql-update-query-using-joins<br>
 https://stackoverflow.com/questions/60162968/how-to-dynamically-create-these-html-elements-using-js<br>
 https://chat.openai.com/share/bc1fc5a1-6348-4e74-8387-4346ec50cfb9<br>
-https://chat.openai.com/share/40671b2c-bd71-4d43-a342-65fd363f31f0
+https://chat.openai.com/share/40671b2c-bd71-4d43-a342-65fd363f31f0 <br>
+https://stackoverflow.com/questions/8893551/update-query-php-mysql<br>
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach <br>
+https://sweetalert2.github.io/ <br>
+https://stackoverflow.com/questions/5426767/sql-server-how-to-use-union-with-two-queries-that-both-have-a-where-clause <br>
+https://stackoverflow.com/questions/40707493/pass-javascript-into-php-using-ajax <br>
+
 <br>
 <br>
 ## Jente:
@@ -74,15 +83,29 @@ https://dev.to/enygma/keeping-credentials-secure-in-php-1mgo<br>
 https://www.w3schools.com/howto/howto_js_scroll_to_top.asp<br>
 https://symfony.com/doc/current/mailer.html<br>
 https://mailtrap.io/blog/php-email-sending/#How-to-send-emails-using-Symfony-Mailer<br>
+https://www.w3schools.com/sql/func_mysql_concat.asp<br>
+https://dev.mysql.com/doc/refman/8.0/en/union.html<br>
+https://stackoverflow.com/questions/9436534/ajax-tutorial-for-post-and-get<br>
+https://www.w3schools.com/jquery/ajax_ajax.asp<br>
 <br>
 
 ## Lucas:
 https://chat.openai.com/share/8e8c51f8-d417-48ab-bab4-abe07de601da <br>
-[https://www.youtube.com/watch?v=SgynWhEgvlw](https://www.youtube.com/watch?v=SgynWhEgvlw <br>
+https://www.youtube.com/watch?v=SgynWhEgvlw](https://www.youtube.com/watch?v=SgynWhEgvlw <br>
 https://stackoverflow.com/questions/24739126/scroll-to-a-specific-element-using-html <br>
 https://www.youtube.com/watch?v=v-y3B91Fhiw<br>
 https://chat.openai.com/share/f48b379f-73c4-4449-9596-b3476a4d8bf3<br>
 https://stackoverflow.com/questions/46743882/pass-result-of-sql-query-from-php-to-javascript-array<br>
+https://stackoverflow.com/questions/4413590/javascript-get-array-of-dates-between-2-dates<br>
+https://stackoverflow.com/questions/23838850/check-all-variables-in-an-array-for-an-if-condition<br>
+https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript<br>
+https://www.w3schools.com/icons/tryit.asp?filename=tryicons_fa-eye<br>
+https://www.w3schools.com/icons/tryit.asp?filename=tryicons_fa-trash-o<br>
+https://jsfiddle.net/Vestride/dkr9b/<br>
+https://chatgpt.com/share/30b54623-9ab8-487f-8401-e0dce1d68c6a<br>
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch<br>
+https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_localstorage<br>
+https://chatgpt.com/share/33bc7769-57e8-449b-aad6-04d028428ccb<br>
 <br>
 
 ## Weiam:
@@ -109,3 +132,5 @@ https://chat.openai.com/share/2df5f9f8-3398-4e20-a1c3-57113d8cd182<br>
 https://chat.openai.com/share/722acf5f-d857-42fd-af97-7e61ea13346f<br>
 https://www.youtube.com/watch?v=oskJVzyEgnE<br>
 https://www.youtube.com/watch?v=FrfEWFO4VzM<br>
+https://chatgpt.com/share/3330b472-fa10-4b84-b974-69d1d4fd34cc<br>
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_list<br>

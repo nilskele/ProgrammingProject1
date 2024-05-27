@@ -2,6 +2,7 @@ $(document).ready(function () {
   let resultatenDiv = document.querySelector(".resultaten");
   let aantalResultaten = 0;
 
+  // Functie om de producten te tonen
   function toonResultaten(data) {
     if (data.error) {
       resultatenDiv.innerHTML = data.error;
@@ -54,6 +55,8 @@ $(document).ready(function () {
     resultatenDiv.innerHTML = resultHtml;
     $(".aantalResultaten").text(aantalResultaten);
   }
+
+  // Functie om voor het specifieke product naar de reserveren pagina te gaan
   $(document).on('click', '.reserveren-btn', function (e) {
     e.preventDefault();
     var groepID = $(this).data('groep_id');
@@ -68,6 +71,7 @@ $(document).ready(function () {
     window.location.href = newUrl;
   });
 
+  // AJAX-oproep om alle producten te tonen
   $.ajax({
     url: "../php/zoek.php",
     type: "GET",
@@ -81,6 +85,7 @@ $(document).ready(function () {
     },
   });
 
+  // AJAX-oproep om alle porudcten te tonen wanneer de zoekbalk leeg is
   $("#zoekForm").submit(function (e) {
     e.preventDefault();
 
@@ -107,6 +112,7 @@ $(document).ready(function () {
     }
   });
 
+  // AJAX-oproep om alle producten te tonen wanneer de enter-toets wordt ingedrukt
   $("#zoekbalk").keydown(function (e) {
     if (e.keyCode === 13) {
       var zoekterm = $("#zoekbalk").val().trim();
@@ -131,6 +137,7 @@ $(document).ready(function () {
     }
   });
 
+  // AJAX-oproep om de producten te filteren op categorie
   $("#categorie").change(function () {
     var selectedCategorie = $(this).val();
     if (selectedCategorie !== "All") {
@@ -168,6 +175,7 @@ $(document).ready(function () {
     }
   });
 
+  // opties voor de datepicker
   let dateRangeOptions = {
     opens: "center",
     minDate: moment().toDate(),
@@ -184,6 +192,7 @@ $(document).ready(function () {
     dateRangeOptions.maxDate = moment().add(3, "week").toDate();
   }
 
+  // functie voor zoeken op datum
   $('input[name="daterange"]').daterangepicker(
     dateRangeOptions,
     function (start, end, label) {
@@ -228,6 +237,7 @@ $(document).ready(function () {
     }
   );
 
+  // AJAX-oproep om de producten te filteren op kits
   $("#kit").change(function () {
     if ($(this).is(":checked")) {
       
@@ -244,7 +254,7 @@ $(document).ready(function () {
         },
       });
     } else {
-      // Als de checkbox niet is aangevinkt, voer dan een standaard AJAX-oproep uit om alle producten te tonen
+      // AJAX-oproep om alle producten te tonen wanneer de checkbox niet is aangevinkt
       aantalResultaten = 0;
       $.ajax({
         url: "../php/zoek.php",
@@ -269,6 +279,7 @@ window.onscroll = function () {
   scrollFunction();
 }
 
+// functie voor de knop om naar boven te gaan hidden of display block
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     topBtn.style.display = "block";
@@ -277,6 +288,7 @@ function scrollFunction() {
   }
 }
 
+// functie om naar boven te gaan
 function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;

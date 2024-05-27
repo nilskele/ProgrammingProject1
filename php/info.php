@@ -58,11 +58,11 @@ include ('header.php');
           <div class="card">
             <div class="card-body opening-hours">
               <p class="card-text">
-                Maandag: 12:30 - 17:00<br>
-                Dinsdag: 09:30 - 12:00 12:30 - 17:00<br>
-                Woensdag: 09:30 - 12:00 12:30 - 17:00<br>
-                Donderdag: 9:30 - 12:30<br>
-                Vrijdag: 9:03 - 12:30<br>
+                Maandag: 10:00 - 12:00 | 12:30 - 17:00<br>
+                Dinsdag: Gesloten<br>
+                Woensdag: Gesloten<br>
+                Donderdag: Gesloten<br>
+                Vrijdag: 10:00 - 12:00 | 12:30 - 17:00<br>
                 Zaterdag: Gesloten<br>
                 Zondag: Gesloten<br>
               </p>

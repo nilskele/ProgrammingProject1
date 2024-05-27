@@ -4,8 +4,10 @@ include('../../../database.php');
 
 if (isset($_POST['user_id'])) {
 
+    // user_id ophalen
     $user_id = mysqli_real_escape_string($conn, $_POST['user_id']);
 
+    // query om de blacklist_fk en blacklistDatum aan te passen afahankelijk van de huidige blacklist_fk
     $query = "UPDATE USER 
         SET blacklist_fk = CASE 
                             WHEN blacklist_fk = 2 THEN 1 

@@ -12,11 +12,12 @@ include('index.header.php');
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/accountAanmaken.css">
     <style>
-        /* Your CSS styles here */
+        /* Your CSS styles hier */
     </style>
 </head>
 <body>
 <div class="container">
+<a href="javascript:history.back()" class="terugLink">&#8592 Terug</a>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card card-container">
@@ -40,10 +41,15 @@ include('index.header.php');
                         <input type="password" id="passwoord" name="passwoord" class="form-control" required>
                     </div>
                     <div class="input-field">
-                        <label for="passwoord_confirm">Wachtwoord nogmaals:</label>
+                        <label for="passwoord_confirm">Wachtwoord herhalen:</label>
                         <input type="password" id="passwoord_confirm" name="passwoord_confirm" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Account Aanmaken</button>
+                    <input type="hidden" id="userType" name="userType" value="3">
+                    <div class="buttons">
+                        <button type="submit" class="btn btn-primary btn-block" onclick="setUserType(3)">Account Aanmaken</button>
+                        <button type="button" class="btn btn-primary btn-block" id="admin" style="display: none;" onclick="setUserType(1)">Admin Aanmaken</button>
+                        <button type="button" class="btn btn-primary btn-block" id="docent" style="display: none;" onclick="setUserType(2)">Docent Aanmaken</button>
+                    </div>
                 </form>
             </div>
             <div class="text-center mt-3 login-message">
@@ -85,6 +91,7 @@ include('index.header.php');
     if (successParam === 'true') {
         showSuccessMessage();
     }
+
 </script>
 </body>
 </html>

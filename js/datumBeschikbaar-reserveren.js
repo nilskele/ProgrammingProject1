@@ -7,6 +7,7 @@ let isKit = localStorage.getItem("isKit");
 
 $(document).ready(function() {
 
+  // Check of de gebruiker 2 waarschuwingen heeft
   fetch("../mijnUitleningen/waarschuwingenCount.php")
     .then((response) => response.json())
     .then((data) => {
@@ -26,13 +27,14 @@ $(document).ready(function() {
     })
     .catch((error) => console.error("Error fetching data:", error));
 
-
+  // functie wanneer de reserveren knop wordt ingedrukt
   $(".reserveren-btn").click(function() {
     let reden = $(".reden").val();
     let startDatum = $('input[name="daterange"]').data('daterangepicker').startDate.format('YYYY-MM-DD');
     let eindDatum = $('input[name="daterange"]').data('daterangepicker').endDate.format('YYYY-MM-DD');
     let aantal = $(".available").val();
     
+    // Check of de reden is ingevuld
     if (reden == 0) {
       Swal.fire({
         icon: "warning",
@@ -43,6 +45,7 @@ $(document).ready(function() {
       return;
     }
 
+    // Check of de startdatum en einddatum zijn ingevuld
     if (usertype == 3 && moment(eindDatum).diff(startDatum, 'days') !== 4) {
       Swal.fire({
         icon: "warning",
@@ -53,6 +56,7 @@ $(document).ready(function() {
       return;
     }
 
+    // Check of het aantal is ingevuld
     if (aantal == null) {
       Swal.fire({
         icon: "warning",
@@ -63,6 +67,7 @@ $(document).ready(function() {
       return;
     }
 
+    // reservering bevestigen
     Swal.fire({
       title: "Bevestiging",
       text: "Ben je zeker dat je deze reservering wilt maken?",
@@ -72,6 +77,8 @@ $(document).ready(function() {
       cancelButtonText: "Nee",
     }).then((result) => {
       if (result.isConfirmed) {
+
+        // reservering maken
         $.ajax({
           url: "../php/reserveren_backend.php", 
           type: "GET",
@@ -85,6 +92,8 @@ $(document).ready(function() {
           },
           dataType: "json",
           success: function(response) {
+
+            // email sturen van reservering
             $.ajax({
               url: "../sendEmailReservering.php",
               type: "GET",
@@ -105,6 +114,7 @@ $(document).ready(function() {
               }
             })
 
+            // reservering succesvol
             if (response.success) {
               Swal.fire({
                 icon: "success",
@@ -117,6 +127,8 @@ $(document).ready(function() {
                 }
               });
             } else {
+
+              // reservering mislukt
               console.log(response);
               Swal.fire({
                 icon: "error",
@@ -141,7 +153,7 @@ $(document).ready(function() {
   });
   
   
-
+  // opties voor de datum range picker
   let dateRangeOptions = {
     opens: "center",
     minDate: moment().toDate(),
@@ -158,12 +170,14 @@ $(document).ready(function() {
     dateRangeOptions.maxDate = moment().add(3, "week").toDate();
   }
 
+  // functie voor zoeken op datum om het aantal beschikbare items te tonen
   $('input[name="daterange"]').daterangepicker(
     dateRangeOptions,
     function (start, end, label) {
       let startDatum = start.format("YYYY-MM-DD");
       let eindDatum = end.format("YYYY-MM-DD");
 
+      // Check of de startdatum en einddatum correct zijn
       if (start.day() !== 1 || end.day() !== 5) {
         Swal.fire({
           icon: "warning",
@@ -174,6 +188,7 @@ $(document).ready(function() {
         return;
       }
 
+      // Check of de gebruiker een student is en of de einddatum correct is
       if (usertype == "3" && end.diff(start, "days") !== 4) {
         Swal.fire({
           icon: "warning",
@@ -184,6 +199,7 @@ $(document).ready(function() {
         return;
       }
 
+      // aantal producten beschikbaar ophalen
       $.ajax({
         url: "../php/datePickerReserveren.php",
         type: "GET",
@@ -196,6 +212,8 @@ $(document).ready(function() {
         },
         success: function (data) { 
           console.log(data);
+          
+          // Check of er geen items beschikbaar zijn
           if (data == 0) {
             Swal.fire({
               icon: "warning",
@@ -208,6 +226,8 @@ $(document).ready(function() {
             available.innerHTML = optionsHTML;
             return;
           } 
+
+          // aantal beschikbare items tonen
           if (data[0].aantalBeschikbaar == 0) {
             Swal.fire({
               icon: "warning",
