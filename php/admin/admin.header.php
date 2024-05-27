@@ -22,7 +22,7 @@
     <a class="nav-item nav-link" href="/ProgrammingProject1/php/admin/inAndOut/inAndOut.php">In and Out</a>
     <a class="nav-item nav-link" href="/ProgrammingProject1/php/admin/teLaat/teLaatIngebracht.php">Te laat</a>
     <a class="nav-item nav-link" href="/ProgrammingProject1/php/admin/blacklist/blacklist.php">Blacklist</a>
-    <a class="nav-item nav-link" href="/ProgrammingProject1/php/logout.php"><img src="/ProgrammingProject1/images/logout-svgrepo-com.svg" alt="loagout"
+    <a class="nav-item nav-link" href="/ProgrammingProject1/php/logout.php"><img src="/ProgrammingProject1/images/logout-svgrepo-com.svg" alt="logout"
         height="25px"></a>
   </div>
 </nav>

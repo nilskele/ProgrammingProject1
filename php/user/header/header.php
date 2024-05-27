@@ -1,4 +1,7 @@
-<?php include('checkIngelogd.php'); ?>
+
+
+<?php include('checkIngelogd.php');?>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 <nav class="navbar fixed-top navbar-light nav_shadow">
@@ -13,13 +16,13 @@
     <a class="nav-item nav-link" href="/ProgrammingProject1/php/user/mijnUitleningen/mijnUitleningen.php">
       Mijn uitleningen
     </a>
-    <a class="nav-item nav-link" href="/ProgrammingProject1/php/info.php">
+    <a class="nav-item nav-link" href="/ProgrammingProject1/php/user/header/info.php">
       Info
     </a>
-    <a class="nav-item nav-link" href="/ProgrammingProject1/php/reglement.php">
+    <a class="nav-item nav-link" href="/ProgrammingProject1/php/user/header/reglement.php">
       Reglement
     </a>
-    <a class="nav-item nav-link" href="/ProgrammingProject1/php/logout.php"><img src="/ProgrammingProject1/images/logout-svgrepo-com.svg" alt="loagout"
+    <a class="nav-item nav-link" href="/ProgrammingProject1/php/logout.php"><img src="/ProgrammingProject1/images/logout-svgrepo-com.svg" alt="logout"
         height="25px"></a>
   </div>
 </nav>
