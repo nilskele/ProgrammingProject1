@@ -63,6 +63,7 @@
     var watdefect = $this.closest('.inOutProduct').attr('data-watdefect');
     var redendefect = $this.closest('.inOutProduct').attr('data-redendefect');
     var image = $this.closest('.inOutProduct').attr('data-image');
+    var
 
 
 

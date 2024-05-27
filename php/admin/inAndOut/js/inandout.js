@@ -229,7 +229,7 @@ $(function() {
 
         var leningId = $this.closest('.inOutProduct').data('lening-id');
         var productNr = $this.closest('.inOutProduct').find('.accepterenProductID').attr('value');
-        var productNr = $this.closest('.inOutProduct').find('.accepterenProductID').attr('value');
+        
 
         // Send AJAX request to delete the row from the database
         Swal.fire({

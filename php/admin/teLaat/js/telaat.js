@@ -91,23 +91,37 @@ $(function() {
 
         // Retrieve the lening_id associated with the clicked row
         var leningId = $this.closest('.inOutProduct').data('lening-id');
-
+        var productNr = $this.closest('.inOutProduct').find('.accepterenProductID').attr('value');
         // Send AJAX request to delete the row from the database
-        $.ajax({
-            url: '../../productAccepteren.php',
-            method: 'POST',
-            data: { leningId: leningId },
-            success: function(response) {
-                // Upon successful deletion, remove the corresponding row from the HTML
-                if (response === 'success') {
-                    // Remove the closest '.inOutProduct' element
-                    $this.closest('.inOutProduct').remove();
-                } else {
-                    console.error('Failed to delete row');
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
+        Swal.fire({
+            title: 'Weet u zeker dat u dit wilt doen?',
+            text: "Dit product zal worden geaccepteerd.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, proceed!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '/ProgrammingProject1/php/productAccepteren.php',
+                    method: 'POST',
+                    data: { leningId: leningId, productNr: productNr},
+                    success: function(response) {
+                        
+                        // Upon successful deletion, remove the corresponding row from the HTML
+                        if (response === 'success') {
+                            $this.closest('.inOutProduct').remove();
+                            
+                            
+                        } else {
+                            console.error('Failed to delete row');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
             }
         });
         

@@ -11,6 +11,7 @@
     
   }
 </style>
+<script src="js/telaat.js"></script>
 <?php 
 include("../admin.header.php");
 include('../../../database.php');
@@ -37,4 +38,5 @@ include('../../../database.php');
     </div>
 </div>
 
-<script src="js/telaat.js"></script>
+
+
