@@ -15,7 +15,7 @@ include ('header.php');
 <body>
     <div class="container">
         <a href="javascript:history.back()" class="terugLink">&#8592 Terug</a>
-        <h1 class="titel">Regelemnt</h1>
+        <h1 class="titel">Regelement</h1>
         <div class="reglementContainer">
             <ol>
                 <li class="bold">Reservatiebeleid</li>

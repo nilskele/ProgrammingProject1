@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
           const uitleendatumFormatted = row.Uitleendatum;
           const terugbrengDatumFormatted = row.terugbrengDatum;
 
-          const buttonClass = row.in_bezit === 1 ? "reserveren-button" : "uitlenen-button";
+          const buttonClass =
+            row.in_bezit === 1 ? "reserveren-button" : "uitlenen-button";
           let buttonText, action;
           if (row.isVerlenged) {
             buttonText = "Annuleren";
@@ -33,8 +34,12 @@ document.addEventListener("DOMContentLoaded", function () {
             <td>${row.groep_naam}</td>
             <td>${uitleendatumFormatted}</td>
             <td>${terugbrengDatumFormatted}</td>
-            <td><button class="melden-button" value="${row.lening_id}" data-in_bezit="${row.in_bezit}">Melden</button></td>
-            <td><button class="${buttonClass}" value="${row.lening_id}" data-id="${row.product_id}" style="background-color: ${
+            <td><button class="melden-button" value="${
+              row.lening_id
+            }" data-in_bezit="${row.in_bezit}">Melden</button></td>
+            <td><button class="${buttonClass}" value="${
+            row.lening_id
+          }" data-id="${row.product_id}" style="background-color: ${
             (row.in_bezit === 1 && row.isVerlenged === 1) || row.in_bezit === 0
               ? "red"
               : "green"
@@ -71,6 +76,25 @@ document.addEventListener("DOMContentLoaded", function () {
           cancelButtonText: "Nee, annuleer",
         }).then((result) => {
           if (result.isConfirmed) {
+            // Check if the extra week is already in progress
+            const currentDate = new Date();
+            const returnDateAfterExtension = new Date(
+              terugbrengDatumCell.textContent
+            );
+            returnDateAfterExtension.setDate(
+              returnDateAfterExtension.getDate() + 7
+            );
+
+            if (currentDate > returnDateAfterExtension) {
+              Swal.fire({
+                title: "Verlenging niet toegestaan",
+                text: "De extra week voor deze verlenging is al bezig. Je kunt de verlenging niet annuleren.",
+                icon: "error",
+                confirmButtonText: "Ok",
+              });
+              return; // Stop de verlenging als de extra week al bezig is
+            }
+
             const action = "verlengen";
             button.textContent = "Annuleren";
             updateDate(lening_id, action);
@@ -82,29 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
             button.classList.toggle("annuleren-button");
             button.style.backgroundColor = "green";
             Swal.fire("Verlengd!", "De uitleentermijn is verlengd.", "success");
-          }
-        });
-      } else {
-        Swal.fire({
-          title: "Ben je zeker?",
-          text: "Wil je de verlenging annuleren?",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonText: "Ja, annuleer het",
-          cancelButtonText: "Nee, behoud",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            const action = "annuleren";
-            updateDate(lening_id, action);
-            let returnDate = new Date(terugbrengDatumCell.textContent);
-            returnDate.setDate(returnDate.getDate() - 7);
-            const formattedDate = returnDate.toISOString().split("T")[0];
-            terugbrengDatumCell.textContent = formattedDate;
-            button.textContent = "Verlengen";
-            button.classList.toggle("verlengen-button");
-            button.classList.toggle("annuleren-button");
-            button.style.backgroundColor = "red";
-            Swal.fire("Geannuleerd!", "De verlenging is geannuleerd.", "success");
           }
         });
       }
@@ -164,7 +165,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 target.style.backgroundColor = "green";
                 const lening_id = target.value;
                 updateDatabase(lening_id, formattedDate);
-                Swal.fire("Geannuleerd!", "De uitlening is geannuleerd.", "success");
+                Swal.fire(
+                  "Geannuleerd!",
+                  "De uitlening is geannuleerd.",
+                  "success"
+                );
               }
             });
           }
@@ -214,7 +219,11 @@ document.addEventListener("DOMContentLoaded", function () {
               },
               success: function (response) {
                 console.log("Defect reported successfully:", response);
-                Swal.fire("Defect gemeld!", "Het defect is succesvol gemeld.", "success");
+                Swal.fire(
+                  "Defect gemeld!",
+                  "Het defect is succesvol gemeld.",
+                  "success"
+                );
                 sluitMMeldenPopUp();
               },
               error: function (error) {
@@ -251,7 +260,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let waarschuwingenCountPhp = data;
         waarschuwingenCount.textContent = waarschuwingenCountPhp - 1;
       })
-      .catch((error) => console.error("Error fetching waarschuwingen count:", error));
+      .catch((error) =>
+        console.error("Error fetching waarschuwingen count:", error)
+      );
   } else {
     console.error("Element with class 'waarschuwingenCount' not found.");
   }
@@ -289,7 +300,12 @@ function deleteRowFromDatabase(lening_id) {
 }
 
 function updateDate(lening_id, action) {
-  console.log("Updating date for lening_id:", lening_id, "with action:", action);
+  console.log(
+    "Updating date for lening_id:",
+    lening_id,
+    "with action:",
+    action
+  );
   $.ajax({
     url: "updateDate.php",
     method: "POST",
