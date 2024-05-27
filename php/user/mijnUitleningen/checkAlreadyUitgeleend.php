@@ -8,13 +8,13 @@ if (isset($_POST['lening_id']) && !empty($_POST['lening_id'])) {
 
   // Construct the SQL query to check for overlapping reservations
   $query = "SELECT lening_id 
-              FROM MIJN_LENINGEN 
-              WHERE lening_id != '$lening_id' 
-              AND terugbrengDatum = DATE_ADD(
-                                            (SELECT Uitleendatum 
-                                              FROM MIJN_LENINGEN 
-                                              WHERE lening_id = '$lening_id'), 
-                                            INTERVAL 7 DAY)";
+            FROM MIJN_LENINGEN 
+            WHERE lening_id != '$lening_id' 
+            AND terugbrengDatum = DATE_ADD(
+                                          (SELECT terugbrengDatum 
+                                            FROM MIJN_LENINGEN 
+                                            WHERE lening_id = '$lening_id'), 
+                                          INTERVAL 7 DAY)";
 
   // Execute the query
   $result = mysqli_query($conn, $query);

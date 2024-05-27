@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
               returnDate.setDate(returnDate.getDate() + 7);
               const dayOfWeek = currentDate.getDay();
 
-              if (currentDate > returnDate || (dayOfWeek < 4 && dayOfWeek !== 0)) {
+              if (currentDate > returnDate || dayOfWeek < 4 || dayOfWeek === 0) {
                 Swal.fire({
                   title: "Verlenging niet toegestaan",
                   text: "Je kunt alleen verlengen op donderdag of later.",
