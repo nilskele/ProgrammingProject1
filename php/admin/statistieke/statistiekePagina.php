@@ -12,9 +12,7 @@
 <?php 
 include("../admin.header.php");
 ?>
-<div class="terug">
-  <a href="javascript:history.back()" class="terugLink">&#8592 Terug</a>
-</div>
+
 <div class="container">
         <a href="javascript:history.back()" class="terugLink" >&#8592 Terug</a>
 
