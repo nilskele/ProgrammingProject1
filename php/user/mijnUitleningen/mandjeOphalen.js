@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <td>${row.groep_naam}</td>
             <td>${uitleendatumFormatted}</td>
             <td>${terugbrengDatumFormatted}</td>
-            <td><button class="melden-button" value="${row.lening_id}">Melden</button></td>
+            <td><button class="melden-button" value="${row.lening_id}" data-in_bezit="${row.in_bezit}">Melden</button></td>
             <td><button class="${buttonClass}" value="${row.lening_id}" data-id="${row.product_id}" style="background-color: ${
             (row.in_bezit === 1 && row.isVerlenged === 1) || row.in_bezit === 0
               ? "red"
@@ -188,44 +188,54 @@ document.addEventListener("DOMContentLoaded", function () {
         deleteRowFromDatabase(lening_id);
         decreaseReturnDate(target);
       } else if (target.hasClass("melden-button")) {
-        console.log("Melden button clicked");
-        let buttonValue = target.val();
-        $("#lening_id").val(buttonValue);
-        toonMMeldenPopUp();
+        const inBezit = target.data("in_bezit");
+        if (inBezit === 1) {
+          console.log("Melden button clicked");
+          let buttonValue = target.val();
+          $("#lening_id").val(buttonValue);
+          toonMMeldenPopUp();
 
-        const form = $("#defectMeldenForm");
+          const form = $("#defectMeldenForm");
 
-        form.submit(function (event) {
-          event.preventDefault();
-          console.log("Submitting defect melden form...");
-          const lening_id = $("#lening_id").val();
-          const watDefect = $("#watDefect").val();
-          const redenDefect = $("#redenDefect").val();
+          form.submit(function (event) {
+            event.preventDefault();
+            console.log("Submitting defect melden form...");
+            const lening_id = $("#lening_id").val();
+            const watDefect = $("#watDefect").val();
+            const redenDefect = $("#redenDefect").val();
 
-          $.ajax({
-            url: "defectMelden.php",
-            method: "POST",
-            data: {
-              lening_id: lening_id,
-              watDefect: watDefect,
-              redenDefect: redenDefect,
-            },
-            success: function (response) {
-              console.log("Defect reported successfully:", response);
-              Swal.fire("Defect gemeld!", "Het defect is succesvol gemeld.", "success");
-              sluitMMeldenPopUp();
-            },
-            error: function (error) {
-              console.error("Error reporting defect:", error);
-              Swal.fire({
-                title: "Er is iets fout gegaan",
-                text: "Probeer het later opnieuw.",
-                icon: "error",
-                confirmButtonText: "Ok",
-              });
-            },
+            $.ajax({
+              url: "defectMelden.php",
+              method: "POST",
+              data: {
+                lening_id: lening_id,
+                watDefect: watDefect,
+                redenDefect: redenDefect,
+              },
+              success: function (response) {
+                console.log("Defect reported successfully:", response);
+                Swal.fire("Defect gemeld!", "Het defect is succesvol gemeld.", "success");
+                sluitMMeldenPopUp();
+              },
+              error: function (error) {
+                console.error("Error reporting defect:", error);
+                Swal.fire({
+                  title: "Er is iets fout gegaan",
+                  text: "Probeer het later opnieuw.",
+                  icon: "error",
+                  confirmButtonText: "Ok",
+                });
+              },
+            });
           });
-        });
+        } else {
+          Swal.fire({
+            title: "Niet toegestaan",
+            text: "Je kunt dit item niet melden omdat je het niet in bezit hebt.",
+            icon: "warning",
+            confirmButtonText: "Ok",
+          });
+        }
       }
     }
   });
