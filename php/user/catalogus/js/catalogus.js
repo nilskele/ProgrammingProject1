@@ -40,7 +40,7 @@ $(document).ready(function () {
                     <h6 class="aantal">Aantal aanwezig: ${
                       item.aantal_beschikbare_producten
                     }</h6>
-                    <a class="btn btn-secondary reserveren-btn" href="reserveren.php" data-groep_id="${item.groep_id}" data-iskit="${item.isKit}">+<i class="fas fa-shopping-cart"></i></a>
+                    <a class="btn btn-secondary reserveren-btn" href="/ProgrammingProject1/php/reserveren.php" data-groep_id="${item.groep_id}" data-iskit="${item.isKit}">+<i class="fas fa-shopping-cart"></i></a>
                 </div>
               </div>
             </div>
@@ -73,7 +73,7 @@ $(document).ready(function () {
 
   // AJAX-oproep om alle producten te tonen
   $.ajax({
-    url: "../php/zoek.php",
+    url: "zoek.php",
     type: "GET",
     dataType: "json",
     data: {
@@ -93,7 +93,7 @@ $(document).ready(function () {
     if (zoekterm !== "") {
       aantalResultaten = 0;
       $.ajax({
-        url: "../php/zoek.php",
+        url: "zoek.php",
         type: "GET",
         data: {
           zoekbalk: zoekterm,
@@ -119,7 +119,7 @@ $(document).ready(function () {
       if (zoekterm === "") {
         aantalResultaten = 0;
         $.ajax({
-          url: "../php/zoek.php",
+          url: "zoek.php",
           type: "GET",
           dataType: "json",
           data: {
@@ -143,7 +143,7 @@ $(document).ready(function () {
     if (selectedCategorie !== "All") {
       aantalResultaten = 0;
       $.ajax({
-        url: "../php/filter_producten.php",
+        url: "filter_producten.php",
         type: "GET",
         data: {
           categorie: selectedCategorie,
@@ -159,7 +159,7 @@ $(document).ready(function () {
     } else if (selectedCategorie === "All") {
       aantalResultaten = 0;
       $.ajax({
-        url: "../php/filter_producten_category_all.php",
+        url: "filter_producten_category_all.php",
         type: "GET",
         data: {
           categorie: "All",
@@ -220,7 +220,7 @@ $(document).ready(function () {
       }
 
       $.ajax({
-        url: "../php/datePicker.php",
+        url: "datePicker.php",
         type: "GET",
         dataType: "json",
         data: {
@@ -243,7 +243,7 @@ $(document).ready(function () {
       
       aantalResultaten = 0;
       $.ajax({
-        url: "../php/filter_kits.php",
+        url: "filter_kits.php",
         type: "GET",
         dataType: "json",
         success: function (data) {
@@ -257,7 +257,7 @@ $(document).ready(function () {
       // AJAX-oproep om alle producten te tonen wanneer de checkbox niet is aangevinkt
       aantalResultaten = 0;
       $.ajax({
-        url: "../php/zoek.php",
+        url: "zoek.php",
         type: "GET",
         dataType: "json",
         data: {

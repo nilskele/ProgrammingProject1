@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   button.addEventListener("click", function () {
     // Define the image sources
-    var src1 = "../images/layoutChange1.png";
-    var src2 = "../images/layoutChange2.png";
+    var src1 = "/ProgrammingProject1/images/layoutChange1.png";
+    var src2 = "/ProgrammingProject1/images/layoutChange2.png";
 
     // Toggle the state for layout and visibility
     isLayout1 = !isLayout1;

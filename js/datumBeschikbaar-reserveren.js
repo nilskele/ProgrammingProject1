@@ -20,7 +20,7 @@ $(document).ready(function() {
           confirmButtonText: "Ok",
         }).then((result) => {
           if (result.isConfirmed) {
-            window.location.href = "catalogus.php";
+            window.location.href = "/ProgrammingProject1/php/user/catalogus/catalogus.php";
           }
         });
       }
@@ -123,7 +123,7 @@ $(document).ready(function() {
                 confirmButtonText: "Ok",
               }).then((result) => {
                 if (result.isConfirmed) {
-                  window.location.href = "catalogus.php";
+                  window.location.href = "/ProgrammingProject1/php/user/catalogus/catalogus.php";
                 }
               });
             } else {

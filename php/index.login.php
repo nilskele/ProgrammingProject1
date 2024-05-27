@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_id'] = $row['user_id'];
                 $_SESSION['user_type'] = $row['userType_fk'];
                 $response['status'] = 'success';
-                $response['redirect'] = ($_SESSION['user_type'] == 1) ? 'admin/admin.index.php' : 'catalogus.php';
+                $response['redirect'] = ($_SESSION['user_type'] == 1) ? 'admin/admin.index.php' : 'user/catalogus/catalogus.php';
             } else {
                 $response['status'] = 'error';
                 $response['message'] = 'Invalide email of wachtwoord';

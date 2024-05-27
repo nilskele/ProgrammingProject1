@@ -1,5 +1,5 @@
 <title>Zoekbalk</title>
-<link rel="stylesheet" href="../css/zoekbalkStyle.css" />
+<link rel="stylesheet" href="css/zoekbalkStyle.css" />
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -36,7 +36,7 @@
     <label for="kit" class="kitLabel">Kit</label>
     <div class="vl"></div>
     <button id="changeLayout" class="buttonZoekbalk"><img class="imagelayoutwijzigen"
-        src="../images/layoutChange1.png"></button>
+        src="/ProgrammingProject1/images/layoutChange1.png"></button>
   </form>
 </div>
 <?php

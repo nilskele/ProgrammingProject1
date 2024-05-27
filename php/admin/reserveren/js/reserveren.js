@@ -7,7 +7,7 @@ let hoeveel = document.getElementById("hoeveel");
 $(function () {
     // AJAX-oproep om het usertype op te halen
     $.ajax({
-        url: "/ProgrammingProject1/php/getUser_id.php",
+        url: "getUser_id.php",
         type: "GET",
         dataType: "json",
         success: function(data) {
