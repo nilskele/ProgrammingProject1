@@ -72,7 +72,6 @@ const daysOfWeek = [
   "Za"
 ];
 
-console.log("tt" + kit_id); 
 const daysList = document.querySelector(".days");
 
 const daysHtml = daysOfWeek.map((day, index) => {
@@ -115,11 +114,6 @@ function renderCalendar() {
     });
 
     header.textContent = `${months[currentMonth]} ${currentYear}`;
-
-    
-    
-    // Log the updated dagenWeek
-    console.log("dagen:" + dagenWeek);
 
 
   // Update the HTML of the dates
@@ -167,10 +161,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const itemId = button.getAttribute('data-item-id');
             const indexLength = button.getAttribute('data-index');
             const soort = button.getAttribute('data-soort');
-            console.log(soort);
-            
-
-            console.log("item ID" + itemId);    
 
             Swal.fire({
                 title: "Bent u zeker?",
@@ -205,7 +195,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (data.error) {
                             throw new Error(data.error);
                         }
-                        console.log(data); // Debug: Check the response data
                         Swal.fire(
                             data.visibility === 1 ? 'Zichtbaar!' : 'Onzichtbaar!',
                             `Het item is ${data.visibility === 1 ? 'zichtbaar' : 'onzichtbaar'} gezet`,
@@ -245,7 +234,6 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             const itemId = button.getAttribute('data-item-id');
             const soort = button.getAttribute('data-soort');
-            console.log(soort);
             
             Swal.fire({
                 title: "Bent u zeker?",
