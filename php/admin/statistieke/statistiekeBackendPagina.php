@@ -7,36 +7,60 @@ if ($conn->connect_error) {
 
 $groupID = isset($_GET['groupID']) ? $_GET['groupID'] : '';
 
-if ($groupID) {
-    // SQL query met filtering
+if ($groupID ) {
+    // SQL query with filtering
     $sql = "SELECT 
-    GROEP.groep_id, naam, COUNT(MIJN_LENINGEN.product_id_fk) AS reserve_count,
-    COUNT(DEFECT.defect_id) AS defect_count
-    FROM GROEP
-    JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id
-    JOIN MIJN_LENINGEN ON PRODUCT.product_id = MIJN_LENINGEN.product_id_fk
-    LEFT JOIN DEFECT ON MIJN_LENINGEN.lening_id = DEFECT.lening_id_fk
-    WHERE GROEP.groep_id = ?
-    GROUP BY GROEP.groep_id, naam
-    ORDER BY reserve_count DESC";
-    
+    g.groep_id, 
+    g.naam, 
+    COUNT(ml.product_id_fk) AS reserve_count,
+    COUNT(d.defect_id) AS defect_count,
+    (
+        SELECT r.naam 
+        FROM MIJN_LENINGEN ml
+        JOIN REDEN r ON ml.reden_id_fk = r.reden_id
+        WHERE ml.product_id_fk = ml.product_id_fk
+        GROUP BY r.naam
+        ORDER BY COUNT(ml.reden_id_fk) DESC
+        LIMIT 1
+    ) AS most_common_reason
+FROM GROEP g
+JOIN PRODUCT p ON g.groep_id = p.groep_id
+JOIN MIJN_LENINGEN ml ON p.product_id = ml.product_id_fk
+LEFT JOIN DEFECT d ON ml.lening_id = d.lening_id_fk
+WHERE g.groep_id = ?
+GROUP BY g.groep_id, g.naam
+ORDER BY reserve_count DESC";
+
+
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('s', $groupID);
     $stmt->execute();
     $result = $stmt->get_result();
 } else {
-    // SQL query zonder filtering
+    // SQL query without filtering
     $sql = "SELECT 
-    GROEP.groep_id, naam, COUNT(MIJN_LENINGEN.product_id_fk) AS reserve_count,
-    COUNT(DEFECT.defect_id) AS defect_count
-    FROM GROEP
-    JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id
-    JOIN MIJN_LENINGEN ON PRODUCT.product_id = MIJN_LENINGEN.product_id_fk
-    LEFT JOIN DEFECT ON MIJN_LENINGEN.lening_id = DEFECT.lening_id_fk
-    GROUP BY GROEP.groep_id, naam
-    ORDER BY reserve_count DESC";
+    g.groep_id, 
+    g.naam, 
+    COUNT(ml.product_id_fk) AS reserve_count,
+    COUNT(d.defect_id) AS defect_count,
+    (
+        SELECT r.naam 
+        FROM MIJN_LENINGEN ml
+        JOIN REDEN r ON ml.reden_id_fk = r.reden_id
+        WHERE ml.product_id_fk = ml.product_id_fk
+        GROUP BY r.naam
+        ORDER BY COUNT(ml.reden_id_fk) DESC
+        LIMIT 1
+    ) AS most_common_reason
+FROM GROEP g
+JOIN PRODUCT p ON g.groep_id = p.groep_id
+JOIN MIJN_LENINGEN ml ON p.product_id = ml.product_id_fk
+LEFT JOIN DEFECT d ON ml.lening_id = d.lening_id_fk
+WHERE g.groep_id = ?
+GROUP BY g.groep_id, g.naam
+ORDER BY reserve_count DESC";
 
-    $result = $conn->query($sql);
+$result = $conn->query($sql);
 }
 
 $rows = [];
@@ -48,4 +72,4 @@ if ($result->num_rows > 0) {
 $conn->close();
 
 echo json_encode($rows);
-?>
+?> 

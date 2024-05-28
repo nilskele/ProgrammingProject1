@@ -6,7 +6,7 @@ function filterProducts() {
         return;
     }
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'statistiekeBackendPagina.php?groupID=' + groupID, true);
+    xhr.open('GET', 'statistiekeBackendPagina.php?groupID='+ groupID, true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             var data = JSON.parse(xhr.responseText);
@@ -17,10 +17,11 @@ function filterProducts() {
                     <th>Product naam</th>
                     <th>Aantal keer gereserveerd</th>
                     <th>Aantal defecten gemeld</th>
+                    <th>De meest voorkomende reden</th>
                 </tr>`;
             data.forEach(function(row) {
                 var tr = document.createElement('tr');
-                tr.innerHTML = `<td>${row.groep_id}</td><td>${row.naam}</td><td>${row.reserve_count}</td><td>${row.defect_count}</td>`;
+                tr.innerHTML = `<td>${row.groep_id}</td><td>${row.naam}</td><td>${row.reserve_count}</td><td>${row.defect_count}</td><td>${row.most_common_reason}</td>`;
                 table.appendChild(tr);
             });
         }
@@ -41,10 +42,11 @@ function loadAllProducts() {
                     <th>Product naam</th>
                     <th>Aantal keer gereserveerd</th>
                     <th>Aantal defecten gemeld</th>
+                    <th>De meest voorkomende reden</th>
                 </tr>`;
             data.forEach(function(row) {
                 var tr = document.createElement('tr');
-                tr.innerHTML = `<td>${row.groep_id}</td><td>${row.naam}</td><td>${row.reserve_count}</td><td>${row.defect_count}</td>`;
+                tr.innerHTML = `<td>${row.groep_id}</td><td>${row.naam}</td><td>${row.reserve_count}</td><td>${row.defect_count}</td><td>${row.most_common_reason}</td>`;
                 table.appendChild(tr);
             });
         }

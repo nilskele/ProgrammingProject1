@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sta</title>
     <link rel="stylesheet" href="/ProgrammingProject1/php/admin/statistieke/statistiekePagina.css">
-    <li<link rel="stylesheet" href="css/styles.css">
-
+    
 </head>
 <body>
 <?php 
@@ -30,6 +29,7 @@ include("../admin.header.php");
                 <th>Product naam</th>
                 <th>Aantal keer gereserveerd</th>
                 <th>Aantal defecten gemeld</th>
+                <th>De meest voorkomende reden</th>
             </tr>
             <!-- Rijen worden hier dynamisch toegevoegd met js -->
         </table>
