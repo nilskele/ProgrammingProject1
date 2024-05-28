@@ -291,11 +291,9 @@ document.addEventListener('click', function(event) {
     }
 });
 
-// Add event listener to a parent element
 document.addEventListener('click', function(event) {
-    // Check if the clicked element is a button with the class 'fa-trash-o'
     if (event.target.classList.contains('fa-trash-o')) {
-        const button = event.target; // Get the clicked button
+        const button = event.target;
         const itemId = button.getAttribute('data-item-id');
         const soort = button.getAttribute('data-soort');
 
@@ -329,8 +327,8 @@ document.addEventListener('click', function(event) {
                             'Het item is verwijderd',
                             'success'
                         );
-                        window.location.reload();
                         button.closest('li').remove();
+                        window.location.reload();
                     } else {
                         throw new Error(data.error || 'Unknown error');
                     }
@@ -363,7 +361,7 @@ function handleReserverenClick() {
 
 //function redirect naar aanpassen
 function handleEditClick(productId) {
-    window.location.href = `/ProgrammingProject1/php/admin/productToevoegen/product_toevoegen.php?product_id=${productId}`;
+    window.location.href = `/ProgrammingProject1/php/admin/productWijzigen/productWijzigen.php?product_id=${productId}`;
 }
 
 
