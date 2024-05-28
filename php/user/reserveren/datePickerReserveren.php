@@ -40,7 +40,12 @@ WHERE KIT.datumBeschikbaar < ?
       AND PRODUCT.isUitgeleend = false
       AND PRODUCT.datumBeschikbaar < ?
 )
-GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data";
+GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data
+HAVING COUNT(DISTINCT KIT_PRODUCT.groep_id_fk) >= (
+    SELECT COUNT(*)
+    FROM KIT_PRODUCT
+    WHERE KIT_PRODUCT.kit_id_fk = KIT.kit_id
+)";
 } else {
     // fetch van alle producten die beschikbaar zijn voor de eindDatum 
     $sql = "SELECT COUNT(*) AS aantalBeschikbaar

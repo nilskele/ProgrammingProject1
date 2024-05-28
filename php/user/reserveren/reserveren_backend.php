@@ -21,7 +21,7 @@ $isKit = $_GET['isKit'];
 
 
 if ($isKit == 1) {
-  // check of er genoeg producten beschikbaar zijn voor de kit
+  // aantal groepen in de kit
   $select_aantal_prodcten_nodig_query = "SELECT COUNT(*)
     FROM KIT_PRODUCT
     WHERE kit_id_fk = ?;";
