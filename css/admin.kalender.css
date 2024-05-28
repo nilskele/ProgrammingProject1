@@ -44,6 +44,23 @@
   position: relative;
   z-index: 3;
 }
+
+/* button uitgeleend kalender */
+.calendar-button {
+  
+  background-color: white; 
+  border: none;
+  color: inherit; 
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none; 
+}
+
+.calendar-button:hover {
+  background-color: #f0f0f0; 
+}
+
+
 #prev,
 #next {
   width: 20px;
@@ -95,6 +112,10 @@
 }
 .dates li.inactive {
   color: #7c7b7b;
+}
+
+.dates button.inactive {
+
 }
 
 /* buttons van items op catalogus */

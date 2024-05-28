@@ -52,7 +52,26 @@ if ($action === 'delete') {
             echo json_encode(array('error' => $e->getMessage()));
         }
     }
-} else {
+} 
+
+elseif ($action === 'annuleer') {
+    try {
+
+        $annuleerReservatie = "DELETE FROM MIJN_LENINGEN WHERE product_id_fk = {$itemId}";
+    if (!$conn->query($annuleerReservatie)) {
+        throw new Exception('Error deleting from PRODUCT: ' . $conn->error);
+    }
+
+    $conn->commit();
+    echo json_encode(array('success' => true));
+    } catch (Exception $e) {
+        $conn->rollback();
+        echo json_encode(array('error' => $e->getMessage()));
+    }
+    
+}
+
+else {
     $visibility = intval($data['visibility']);
     if ($soort == "kit") {
         $updateZichtbaarheid = "UPDATE KIT SET zichtbaar = {$visibility} WHERE kit_id = {$itemId}";

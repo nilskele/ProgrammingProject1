@@ -20,6 +20,8 @@ function extractDetails(loanDetails) {
 const details = extractDetails(loanDetails);
 const { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar, soort, kit_id } = details;
 
+console.log("tt"+productID);
+
 // Function to format date to day/month format
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -142,7 +144,13 @@ for (let indexLength = 0; indexLength < productNames.length; indexLength++) {
             currentYear != new Date(terugbrengDatums[indexLength]).getFullYear()) {
             html += `<li class="inactive">${"/"}</li>`;
         } else if (datesBetween.some(r => dagenWeek[index - 1].includes(r))) {
-            html += `<li class="inactive">${"Uitgeleend"}</li>`;
+            console.log(itemId);
+            html += `<li class="inactive">
+            <button class="inactive calendar-button" 
+                data-item-id="${itemId}" 
+            >Uitgeleend</button>
+         </li>`;
+
         } else {
             html += `<li class="inactive">${"/"}</li>`;
         }
@@ -153,169 +161,189 @@ for (let indexLength = 0; indexLength < productNames.length; indexLength++) {
 dates.innerHTML = html;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const eyeButtons = document.querySelectorAll('.fa-eye, .fa-eye-slash');
+document.addEventListener('click', function(event) {
+    // Check if the clicked element has the class 'calendar-button'
+    if (event.target.classList.contains('calendar-button')) {
+        // Extract necessary data attributes from the button
+        const itemId = event.target.getAttribute('data-item-id');
+        console.log(itemId);
 
-    eyeButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            const itemId = button.getAttribute('data-item-id');
-            const indexLength = button.getAttribute('data-index');
-            const soort = button.getAttribute('data-soort');
-
-            Swal.fire({
-                title: "Bent u zeker?",
-                text: zichtbaar[indexLength] === 1 ? "Wilt u dit item onzichtbaar maken, u zal deze wel nog zien in de catalogus!" : "Wilt u dit item zichtbaar maken?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: zichtbaar[indexLength] === 1 ? 'Ja, maak het item onzichtbaar!' : 'Ja, maak het item zichtbaar!',
-                cancelButtonText: 'Nee, maak het item niet zichtbaar!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    const newVisibility = zichtbaar[indexLength] === 1 ? 0 : 1; // Toggle visibility
-                    fetch('http://127.0.0.1/ProgrammingProject1/php/admin/agenda/php/update_visibility.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            itemId: itemId,
-                            visibility: newVisibility,
-                            soort: soort,
-                        }),
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data.error) {
-                            throw new Error(data.error);
-                        }
-                        Swal.fire(
-                            data.visibility === 1 ? 'Zichtbaar!' : 'Onzichtbaar!',
-                            `Het item is ${data.visibility === 1 ? 'zichtbaar' : 'onzichtbaar'} gezet`,
-                            'success'
-                        ).then(() => {
-                            zichtbaar[indexLength] = data.visibility; // Update visibility in the array
-                            window.location.reload(); // Reload the page after the success message
-                        });
-                    })
-                    .catch(error => {
-                        console.error('There was a problem with the fetch operation:', error);
-                        Swal.fire(
-                            'Error',
-                            'Failed to update item visibility',
-                            'error'
-                        );
-                    });
-                } else {
+        Swal.fire({
+            title: "Bent u zeker?",
+            text: "Wilt u deze reservatie annuleren?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ja, annuleer de reservatie',
+            cancelButtonText: 'Nee, annuleer de reservatie niet'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch('http://127.0.0.1/ProgrammingProject1/php/admin/agenda/php/update_visibility.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        itemId: itemId,
+                        action: "annuleer",
+                    }),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.error) {
+                        throw new Error(data.error);
+                    }
                     Swal.fire(
-                        'Cancelled',
-                        `Het item is niet ${zichtbaar[indexLength] === 1 ? 'onzichtbaar' : 'zichtbaar'} gezet.`,
-                        'error'
-                    );
-                }
-            });
+                        `De reservatie is geannuleerd`,
+                        'success'
+                    ).then(() => {
+                        window.location.reload(); // Reload the page after the success message
+                    });
+                })
+
+            } else {
+                Swal.fire(
+                    'Cancelled',
+                    `De reservatie is niet geannuleerd`,
+                    'error'
+                );
+            }
         });
-    });
+    }
 });
 
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    const deleteButtons = document.querySelectorAll('.fa-trash-o');
-
-    deleteButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            const itemId = button.getAttribute('data-item-id');
-            const soort = button.getAttribute('data-soort');
-            
-            Swal.fire({
-                title: "Bent u zeker?",
-                text: "Eens het item is verwijderd kan je hem niet terugkrijgen!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ja, verwijder het item!',
-                cancelButtonText: 'Nee, niet verwijderen!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    fetch('http://127.0.0.1/ProgrammingProject1/php/admin/agenda/php/update_visibility.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            itemId: itemId,
-                            soort: soort,
-                            action: 'delete'
-                        }),
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            Swal.fire(
-                                'Verwijderd!',
-                                'Het item is verwijderd',
-                                'success'
-                            );
-                            window.location.reload();
-                            button.closest('li').remove();
-                        } else {
-                            throw new Error(data.error || 'Unknown error');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('There was a problem with the fetch operation:', error);
-                        Swal.fire(
-                            'Error',
-                            'Failed to delete item: ' + error.message,
-                            'error'
-                        );
-                    });
-                } else {
+// Add event listener to a parent element
+document.addEventListener('click', function(event) {
+    // Check if the clicked element is a button with the class 'calendar-button'
+    if (event.target.classList.contains('fa-eye') || event.target.classList.contains('fa-eye-slash')) {
+        // Extract necessary data attributes from the button
+        const itemId = event.target.getAttribute('data-item-id');
+        const indexLength = event.target.getAttribute('data-index');
+        const soort = event.target.getAttribute('data-soort');
+        // Perform desired actions
+        Swal.fire({
+            title: "Bent u zeker?",
+            text: zichtbaar[indexLength] === 1 ? "Wilt u dit item onzichtbaar maken, u zal deze wel nog zien in de catalogus!" : "Wilt u dit item zichtbaar maken?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: zichtbaar[indexLength] === 1 ? 'Ja, maak het item onzichtbaar!' : 'Ja, maak het item zichtbaar!',
+            cancelButtonText: 'Nee, maak het item niet zichtbaar!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const newVisibility = zichtbaar[indexLength] === 1 ? 0 : 1; // Toggle visibility
+                fetch('http://127.0.0.1/ProgrammingProject1/php/admin/agenda/php/update_visibility.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        itemId: itemId,
+                        visibility: newVisibility,
+                        soort: soort,
+                    }),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.error) {
+                        throw new Error(data.error);
+                    }
                     Swal.fire(
-                        'Cancelled',
-                        'Het item is niet verwijderd.',
+                        data.visibility === 1 ? 'Zichtbaar!' : 'Onzichtbaar!',
+                        `Het item is ${data.visibility === 1 ? 'zichtbaar' : 'onzichtbaar'} gezet`,
+                        'success'
+                    ).then(() => {
+                        zichtbaar[indexLength] = data.visibility; // Update visibility in the array
+                        window.location.reload(); // Reload the page after the success message
+                    });
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                    Swal.fire(
+                        'Error',
+                        'Failed to update item visibility',
                         'error'
                     );
-                }
-            });
+                });
+            } else {
+                Swal.fire(
+                    'Cancelled',
+                    `Het item is niet ${zichtbaar[indexLength] === 1 ? 'onzichtbaar' : 'zichtbaar'} gezet.`,
+                    'error'
+                );
+            }
         });
-    });
+    }
+});
+
+// Function to handle reserveren click
+function handleReserverenClick() {
+    // Redirect to reservation page
+    window.location.href = "/ProgrammingProject1/php/admin/reserveren/reserveren.php";
+}
+
+// Function to handle fa-pencil click
+function handleEditClick(productId) {
+    // Redirect to edit product page with the product ID as a query parameter
+    window.location.href = `/ProgrammingProject1/php/admin/productToevoegen/product_toevoegen.php?product_id=${productId}`;
+}
+
+// Add event listener to a parent element
+document.addEventListener('click', function(event) {
+    const itemId = event.target.getAttribute('data-item-id');
+    // Check if the clicked element is a button with the class 'reserveren'
+    if (event.target.classList.contains('reserveren')) {
+        handleReserverenClick();
+    }
+
+    // Check if the clicked element is a button with the class 'fa-pencil'
+    if (event.target.classList.contains('fa-pencil')) {
+        const productId = event.target.getAttribute('data-product-id');
+        handleEditClick(productId);
+    }
 });
 
 
 
 document.addEventListener("DOMContentLoaded", function() {
-  // Select all elements with class "reserveren" and "fa-pencil"
-  var reserverenBtns = document.querySelectorAll(".reserveren");
-  var editBtns = document.querySelectorAll(".fa-pencil");
+    // Select all elements with class "reserveren" and "fa-pencil"
+    var reserverenBtns = document.querySelectorAll(".reserveren");
+    var editBtns = document.querySelectorAll(".fa-pencil");
 
-  // Loop through each "reserveren" button and attach event listener
-  reserverenBtns.forEach(function(btn) {
-      btn.addEventListener("click", function() {
-          // Redirect to reservation page
-          window.location.href = "/ProgrammingProject1/php/admin/reserveren/reserveren.php";
-      });
-  });
+    // Loop through each "reserveren" button and attach event listener
+    reserverenBtns.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+            // Redirect to reservation page
+            window.location.href = "/ProgrammingProject1/php/admin/reserveren/reserveren.php";
+        });
+    });
 
-  // Loop through each "edit" button and attach event listener
-  editBtns.forEach(function(btn) {
-      btn.addEventListener("click", function() {
-          // Get the product ID from the data attribute
-          const productId = btn.getAttribute('data-product-id');
-          // Redirect to edit product page with the product ID as a query parameter
-          window.location.href = `/ProgrammingProject1/php/admin/productToevoegen/product_toevoegen.php?product_id=${productId}`;
-      });
-  });
+    // Attach event listener for edit buttons
+    editBtns.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+            // Get the product ID from the data attribute
+            const productId = btn.getAttribute('data-product-id');
+            // Redirect to edit product page with the product ID as a query parameter
+            window.location.href = `/ProgrammingProject1/php/admin/productToevoegen/product_toevoegen.php?product_id=${productId}`;
+        });
+    });
 });
+
 
 // Get the start date of the week
 function getStartDate(date) {
