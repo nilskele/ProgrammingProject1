@@ -135,7 +135,7 @@ for (let indexLength = 0; indexLength < productNames.length; indexLength++) {
             ? `<button class="fa fa-eye-slash" style="font-size:15px" data-item-id="${itemId}" data-index="${indexLength}" data-soort="${soort[indexLength]}"></button>` 
             : `<button class="fa fa-eye" style="font-size:15px" data-item-id="${itemId}" data-index="${indexLength}" data-soort="${soort[indexLength]}"></button>`}
         <button class="fa fa-trash-o" style="font-size:15px" data-item-id="${itemId}" data-index="${indexLength}" data-soort="${soort[indexLength]}"></button>
-        <button class="fa fa-pencil" style="font-size:15px"></button>        
+        <button class="fa fa-pencil" style="font-size:15px" data-product-id="${itemId}"></button>       
     </div>
 </li>`;
         } else if (currentYear != new Date(uitleendatums[indexLength]).getFullYear() &&
@@ -294,29 +294,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Select all elements with class "reserveren" and "fa-pencil"
-    var reserverenBtns = document.querySelectorAll(".reserveren");
-    var editBtns = document.querySelectorAll(".fa-pencil");
+  // Select all elements with class "reserveren" and "fa-pencil"
+  var reserverenBtns = document.querySelectorAll(".reserveren");
+  var editBtns = document.querySelectorAll(".fa-pencil");
 
-    // Loop through each "reserveren" button and attach event listener
-    reserverenBtns.forEach(function(btn) {
-        btn.addEventListener("click", function() {
-            // Redirect to reservation page
-            window.location.href = "/ProgrammingProject1/php/admin/reserveren/reserveren.php";
-        });
-    });
+  // Loop through each "reserveren" button and attach event listener
+  reserverenBtns.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+          // Redirect to reservation page
+          window.location.href = "/ProgrammingProject1/php/admin/reserveren/reserveren.php";
+      });
+  });
 
-    // Loop through each "edit" button and attach event listener
-    editBtns.forEach(function(btn) {
-        btn.addEventListener("click", function() {
-            // Redirect to edit product page
-            window.location.href = "/ProgrammingProject1/php/admin/productToevoegen/product_toevoegen.php";
-        });
-    });
+  // Loop through each "edit" button and attach event listener
+  editBtns.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+          // Get the product ID from the data attribute
+          const productId = btn.getAttribute('data-product-id');
+          // Redirect to edit product page with the product ID as a query parameter
+          window.location.href = `/ProgrammingProject1/php/admin/productToevoegen/product_toevoegen.php?product_id=${productId}`;
+      });
+  });
 });
-
-
-
 
 // Get the start date of the week
 function getStartDate(date) {

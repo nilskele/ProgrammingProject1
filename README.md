@@ -16,6 +16,7 @@ https://github.com/Ileriayo/markdown-badges
 ![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white) ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white) ![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white) ![W3schools](https://img.shields.io/badge/W3Schools-04AA6D?style=for-the-badge&logo=W3Schools&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 ## Gust:
 Github Copilot <br>
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/<br>
 https://chat.openai.com/share/7bf0bb43-e63d-4799-be61-42fc6aa0cf1f<br>
 https://chat.openai.com/share/c7cb2562-9d44-47f3-84b2-6a55218c64e2<br>
 https://chat.openai.com/share/db0e0f7d-ced5-44fe-84aa-fe79c74bf841<br>
@@ -46,6 +47,7 @@ https://chatgpt.com/share/d830216c-c669-4158-902b-85e4ce5474aa<br>
 https://chatgpt.com/share/dc3da249-ea1b-4651-a5d6-97e2894e1e82<br>
 https://chatgpt.com/share/9a0ae7e0-bd61-44c8-ab3b-47be3bb7af1f<br>
 https://chatgpt.com/share/154f2e8a-235e-4671-84a5-c2258c30aac9<br>
+https://chatgpt.com/share/007b4704-8728-4b75-8994-347c5556b340<br>
 <br>
 ## Jente:
 Github Copilot <br>

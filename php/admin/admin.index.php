@@ -9,35 +9,28 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
-
 <!-- Include your custom JavaScript file -->
 <style>
-  .statusImage{
-    width: 7em!important;
-    margin-bottom:1em;
-    
-    
+  .statusImage {
+    width: 7em !important;
+    margin-bottom: 1em;
   }
 </style>
-<?php 
-include("admin.header.php");
-include('../../database.php');
+<?php
+include ("admin.header.php");
+include ('../../database.php');
 ?>
-
-
-
 
 <div id="overlay" class="overlay"></div>
 
 <!-- Popup -->
 <div id="popup" class="popup"></div>
 
-
 <div id="adminDashboard">
-<a class="btn btn-primary aanmaken" href="../index.accountAanmaken.php">
-  Account aanmaken
-</a>
-<h1 style="margin-bottom:1em;">Dashboard</h1>
+  <a class="btn btn-primary aanmaken" href="../index.accountAanmaken.php">
+    Account aanmaken
+  </a>
+  <h1 style="margin-bottom:1em;">Dashboard</h1>
   <div id="container1">
 
     <div class="adminAccepteren">
@@ -88,23 +81,17 @@ include('../../database.php');
     <h1>Vandaag Terug</h1>
   </div>
   <div class="inOutTitels">
-  <input type="text" id="zoekbalka" name="zoekbalk" placeholder="Zoek naar studenten" class="inputZoekbalk3">
-
-  <input type="text" id="zoekbalkb" name="zoekbalk" placeholder="Zoek naar studenten" class="inputZoekbalk4">
-
+    <input type="text" id="zoekbalka" name="zoekbalk" placeholder="Zoek naar studenten" class="inputZoekbalk3">
+    <input type="text" id="zoekbalkb" name="zoekbalk" placeholder="Zoek naar studenten" class="inputZoekbalk4">
   </div>
-
   <div class="inoutdiv">
     <div id="smallInOut1" class="productContainer overflow-auto">
-
     </div>
     <div id="smallInOut2" class="productContainer overflow-auto "></div>
   </div>
 </div>
 
 <script src="../admin/inAndOut/js/inandout.js"></script>
-
-
 
 </div>
 <div class="toTopAnker">
@@ -113,8 +100,9 @@ include('../../database.php');
 
 <script src="/ProgrammingProject1/js/admin.index.js"></script>
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -122,38 +110,37 @@ include('../../database.php');
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Admin Calendar</title>
 </head>
+
 <body>
   <div class="buttons_kalender">
 
-  <form action="" method="GET" onsubmit="scrollToResults()">
-  <div class="form_zoek">
-    <div class="search-input-container">
-      <input type="text" id="searchInput" name="Zoeken" placeholder="Zoeken...">
-    </div>
-    <div class="toggle-container">
-      <span id="labelID" class="toggle-label active">ID</span>
-      <label class="switch">
-        <input type="checkbox" id="searchToggle" onclick="updateSearchType()">
-        <span class="slider round"></span>
-      </label>
-      <span id="labelNaam" class="toggle-label">Naam</span>
-    </div>
-    <input type="hidden" id="searchType" name="searchType" value="naam">
-    <div class="checkboxKit">
-    <input type="checkbox" id="kitCheckbox" name="kitCheckbox" value="kit" onclick="updateKitCheckbox()">
-    <label for="kitCheckbox">KIT</label><br>
-</div>
-    <button class="button_zoeken" type="submit">Zoek</button>
-  </div>
-</form>
-
-
-
-
+    <form action="" method="GET" onsubmit="scrollToResults()">
+      <div class="form_zoek">
+        <div class="search-input-container">
+          <input type="text" id="searchInput" name="Zoeken" placeholder="Zoeken...">
+        </div>
+        <div class="toggle-container">
+          <span id="labelID" class="toggle-label active">ID</span>
+          <label class="switch">
+            <input type="checkbox" id="searchToggle" onclick="updateSearchType()">
+            <span class="slider round"></span>
+          </label>
+          <span id="labelNaam" class="toggle-label">Naam</span>
+        </div>
+        <input type="hidden" id="searchType" name="searchType" value="naam">
+        <div class="checkboxKit">
+          <input type="checkbox" id="kitCheckbox" name="kitCheckbox" value="kit" onclick="updateKitCheckbox()">
+          <label for="kitCheckbox">KIT</label><br>
+        </div>
+        <button class="button_zoeken" type="submit">Zoek</button>
+      </div>
+    </form>
     <div class="buttons-container">
       <a href="/ProgrammingProject1/php/admin/kitToevoegen/kit_toevoegen.php"><button>Kit toevoegen</button></a>
-      <a href="/ProgrammingProject1/php/admin/productToevoegen/product_toevoegen.php"><button>Product toevoegen</button></a>
-      <a href="/ProgrammingProject1/php/admin/categoryWijzigen/category_wijzigen.php"><button>Categorie wijzigen</button></a>
+      <a href="/ProgrammingProject1/php/admin/productToevoegen/product_toevoegen.php"><button>Product
+          toevoegen</button></a>
+      <a href="/ProgrammingProject1/php/admin/categoryWijzigen/category_wijzigen.php"><button>Categorie
+          wijzigen</button></a>
     </div>
   </div>
   <h1 class="titel">Calendar</h1>
@@ -179,15 +166,15 @@ include('../../database.php');
       <ul class="dates"></ul>
     </section>
   </div>
-  <?php 
-// Check connection
-if ($conn->connect_error) {
+  <?php
+  // Check connection
+  if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-}
+  }
 
-$loanDetails = array(); // Initialize the array
-
-if (isset($_GET['Zoeken'])) {
+  $loanDetails = array(); // Initialize the array
+  
+  if (isset($_GET['Zoeken'])) {
     $zoekTerm = $_GET['Zoeken'];
     $searchType = $_GET['searchType'];
     $isKit = isset($_GET['kitCheckbox']) ? true : false;
@@ -197,32 +184,29 @@ if (isset($_GET['Zoeken'])) {
 
     // Determine the SQL query based on the search type and kitCheckbox
     if ($isKit && $searchType === 'id') {
-        $sql = "SELECT k.kit_id, g.naam, k.kit_naam, k.zichtbaar
+      $sql = "SELECT k.kit_id, g.naam, k.kit_naam, k.zichtbaar
         FROM PRODUCT p
         JOIN KIT_PRODUCT kp1 ON p.groep_id = kp1.groep_id_fk
         JOIN KIT_PRODUCT kp2 ON kp1.kit_id_fk = kp2.kit_id_fk
         JOIN GROEP g ON kp2.groep_id_fk = g.groep_id
         JOIN KIT k ON kp1.kit_id_fk = k.kit_id
         WHERE p.product_id = ?";
-    } 
-    elseif ($isKit && $searchType === 'naam') {
+    } elseif ($isKit && $searchType === 'naam') {
       $zoekTerm = "%" . $zoekTerm . "%";
       $sql = "SELECT k.kit_id, g.naam, k.kit_naam, k.zichtbaar
       FROM KIT k
       JOIN KIT_PRODUCT kp ON k.kit_id = kp.kit_id_fk
       JOIN GROEP g ON kp.groep_id_fk = g.groep_id
       WHERE k.kit_naam LIKE ?";
-    }
-    elseif ($searchType === 'id') {
-        $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+    } elseif ($searchType === 'id') {
+      $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
                 FROM PRODUCT p
                 JOIN GROEP g ON p.groep_id = g.groep_id
                 LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
                 WHERE p.product_id LIKE ?";
-    } 
-    else {
+    } else {
       $zoekTerm = "%" . $zoekTerm . "%";
-        $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+      $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
                 FROM PRODUCT p
                 JOIN GROEP g ON p.groep_id = g.groep_id
                 LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
@@ -232,14 +216,14 @@ if (isset($_GET['Zoeken'])) {
     // Prepare the statement
     $stmt = $conn->prepare($sql);
     if ($stmt === false) {
-        die("Prepare failed: " . $conn->error);
+      die("Prepare failed: " . $conn->error);
     }
 
     // Bind the parameter based on the search type
     if ($isKit && $searchType === 'id') {
-        $stmt->bind_param("s", $zoekTerm);
+      $stmt->bind_param("s", $zoekTerm);
     } else {
-        $stmt->bind_param("s", $zoekTerm);
+      $stmt->bind_param("s", $zoekTerm);
     }
 
     // Execute the statement
@@ -255,61 +239,59 @@ if (isset($_GET['Zoeken'])) {
 
       // Output data of each row
       while ($row = $result->fetch_assoc()) {
-         
-                if ($isKit && ($searchType === 'id' || $searchType === 'naam')) {
-                  // Handle results for Kit with ID search
-                  $loanDetails[] = array(
-                    //product id wordt hier vervangern door de naam van de kit
-                      "kit_id" => $row["kit_id"],
-                      "product_id" => $row["kit_naam"],
-                      "product_name" => $row["naam"],
-                      "zichtbaar" => $row["zichtbaar"],
-                      "soort" => "kit"
-                  );
-              
-              } else {
-                  // Handle results for other searches
-                  $loanDetails[] = array(
-                      "product_id" => $row["product_id"],
-                      "product_name" => $row["product_name"],
-                      "Uitleendatum" => $row["Uitleendatum"],
-                      "terugbrengDatum" => $row["terugbrengDatum"],
-                      "zichtbaar" => $row["zichtbaar"],
-                      "soort" => "product"
-                  );
-          }
+
+        if ($isKit && ($searchType === 'id' || $searchType === 'naam')) {
+          // Handle results for Kit with ID search
+          $loanDetails[] = array(
+            //product id wordt hier vervangern door de naam van de kit
+            "kit_id" => $row["kit_id"],
+            "product_id" => $row["kit_naam"],
+            "product_name" => $row["naam"],
+            "zichtbaar" => $row["zichtbaar"],
+            "soort" => "kit"
+          );
+
+        } else {
+          // Handle results for other searches
+          $loanDetails[] = array(
+            "product_id" => $row["product_id"],
+            "product_name" => $row["product_name"],
+            "Uitleendatum" => $row["Uitleendatum"],
+            "terugbrengDatum" => $row["terugbrengDatum"],
+            "zichtbaar" => $row["zichtbaar"],
+            "soort" => "product"
+          );
+        }
       }
-  } else {
+    } else {
       echo "Geen resultaten gevonden";
-  }
+    }
 
     // Close the statement
-$stmt->close();
-} else {
-  $searchType = $_GET['searchType']; // Get the search type (ID or Naam)
-  $isKit = isset($_GET['kitCheckbox']); // Check if KIT checkbox is selected
-
-  if ($isKit) {
+    $stmt->close();
+  } else {
+    $searchType = $_GET['searchType']; // Get the search type (ID or Naam)
+    $isKit = isset($_GET['kitCheckbox']); // Check if KIT checkbox is selected
+  
+    if ($isKit) {
       // Retrieve all KIT items
       $sql_all = "SELECT k.kit_id, g.naam, k.kit_naam, k.zichtbaar
                   FROM KIT k
                   JOIN KIT_PRODUCT kp ON k.kit_id = kp.kit_id_fk
                   JOIN GROEP g ON kp.groep_id_fk = g.groep_id";
-  }
-      elseif($searchType === 'naam') {
+    } elseif ($searchType === 'naam') {
       // Retrieve all items by Naam
       $sql_all = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
                   FROM PRODUCT p
                   JOIN GROEP g ON p.groep_id = g.groep_id
                   LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
-  }
-  else {
-    $sql_all = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+    } else {
+      $sql_all = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
     FROM PRODUCT p
     JOIN GROEP g ON p.groep_id = g.groep_id
     LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
-  }
-   
+    }
+
     // Execute the query
     $result_all = $conn->query($sql_all);
 
@@ -317,46 +299,44 @@ $stmt->close();
     if ($result_all->num_rows > 0) {
       // Output data of each row
       while ($row = $result_all->fetch_assoc()) {
-          // Store the results in an array
-          if ($isKit) {
-              $loanDetails[] = array(
-                  "kit_id" => $row["kit_id"],
-                  "product_id" => $row["kit_naam"],
-                  "product_name" => $row["naam"],
-                  "zichtbaar" => $row["zichtbaar"],
-                  "soort" => "kit"
-              );
-
-          } else {
-            $loanDetails[] = array(
-                "product_id" => $row["product_id"],
-                "product_name" => $row["product_name"],
-                "Uitleendatum" => $row["Uitleendatum"],
-                "terugbrengDatum" => $row["terugbrengDatum"],
-                "zichtbaar" => $row["zichtbaar"],
-                "soort" => "product"
-            );
+        // Store the results in an array
+        if ($isKit) {
+          $loanDetails[] = array(
+            "kit_id" => $row["kit_id"],
+            "product_id" => $row["kit_naam"],
+            "product_name" => $row["naam"],
+            "zichtbaar" => $row["zichtbaar"],
+            "soort" => "kit"
+          );
+        } else {
+          $loanDetails[] = array(
+            "product_id" => $row["product_id"],
+            "product_name" => $row["product_name"],
+            "Uitleendatum" => $row["Uitleendatum"],
+            "terugbrengDatum" => $row["terugbrengDatum"],
+            "zichtbaar" => $row["zichtbaar"],
+            "soort" => "product"
+          );
         }
+      }
+    } else {
+      echo "Geen resultaten gevonden";
     }
-} else {
-    echo "Geen resultaten gevonden";
-}
-}
-
-// Close the connection
-$conn->close();
-
-// Convert loanDetails to JSON
-$loanDetailsJSON = json_encode($loanDetails);
-?>
-   <script>
+  }
+  // Close the connection
+  $conn->close();
+  // Convert loanDetails to JSON
+  $loanDetailsJSON = json_encode($loanDetails);
+  ?>
+  <script>
     function scrollToResults() {
       // Scroll to the results section after form submission
-      setTimeout(function() {
-        document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
-      }, 100); 
+      setTimeout(function () {
+        document.getElementById('results').scrollIntoView({
+          behavior: 'smooth'
+        });
+      }, 100);
     }
-
     window.addEventListener('DOMContentLoaded', (event) => {
       <?php if (isset($_GET['Zoeken'])): ?>
         scrollToResults();
@@ -368,6 +348,7 @@ $loanDetailsJSON = json_encode($loanDetails);
   </script>
   <script src="agenda/js/admin.agenda.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
- <script src="agenda/js/admin.agenda.search.js"></script>
+  <script src="agenda/js/admin.agenda.search.js"></script>
 </body>
+
 </html>
