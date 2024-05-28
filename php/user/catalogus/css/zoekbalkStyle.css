@@ -105,6 +105,11 @@ svg {
   height: auto;
 }
 
+.fixed-height .product {
+  height: 400px; /* Set your desired fixed height here */
+  overflow: hidden; /* Optional: to handle overflow content */
+}
+
 .columns {
   display: flex;
   flex-wrap: wrap;
@@ -115,9 +120,23 @@ svg {
 .columns .product {
   width: calc(33.33% - 20px); /* Adjust width as needed, minus margins */
   margin: 10px; /* Add margin between products */
+  display: flex;
+  flex-direction: column; /* Ensure products grow vertically */
 }
 
 .columns .col-md-4.img-container,
 .columns .col-md-8 {
   flex: 0 0 100%; /* Set flex-basis to 100% to make them stack vertically */
+}
+
+.columns .col-md-4.img-container {
+  height: 250px;
+}
+
+.columns .col-md-8 {
+  height: 350px;
+}
+
+.columns .card-body {
+  height: 290px;
 }

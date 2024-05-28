@@ -26,7 +26,7 @@ $(document).ready(function () {
                     <p class="merk">${item.merk_naam}></p>
                     <div class="card-title">
                       <h2>${item.groep_naam || item.kit_naam}</h2>
-                      <p> Beschikbaar vanaf: ${item.datumBeschikbaar}</p>
+                      <p> Beschikbaar: ${item.datumBeschikbaar}</p>
                     </div>
                     <p class="card-text">
                       Beschrijving: ${

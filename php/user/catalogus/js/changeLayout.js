@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   var button = document.getElementById("changeLayout");
-  var products = document.querySelectorAll(".resultaten");
+  var products = document.querySelectorAll(".product"); // Select all row elements
   var image = button.querySelector(".imagelayoutwijzigen");
   var isLayout1 = true; // Initial state
   var isLayoutHidden = false; // Initial state
@@ -17,9 +17,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // Update the image source based on the state
     image.src = isLayout1 ? src1 : src2;
 
-    // Toggle the hidden class for each product
-    products.forEach(function (product) {
+    // Toggle the 'columns' class on .resultaten elements
+    var producten = document.querySelectorAll(".resultaten");
+    producten.forEach(function (product) {
       product.classList.toggle("columns", isLayoutHidden);
+    });
+
+    // Toggle the 'fixed-height' class on each .row
+    products.forEach(function (product) {
+      product.classList.toggle("fixed-height", isLayoutHidden);
     });
   });
 });
