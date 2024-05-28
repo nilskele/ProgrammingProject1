@@ -34,7 +34,7 @@ include('../../database.php');
 
 
 <div id="adminDashboard">
-<a class="btn btn-primary aanmaken" href="../accountAanmaken.php">
+<a class="btn btn-primary aanmaken" href="../index.accountAanmaken.php">
   Account aanmaken
 </a>
 <h1 style="margin-bottom:1em;">Dashboard</h1>

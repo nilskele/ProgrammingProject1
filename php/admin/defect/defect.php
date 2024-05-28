@@ -12,7 +12,7 @@
     
   }
 </style>
-<script src="js/defect.js"></script>
+
 <?php 
 include("../admin.header.php");
 include('../../../database.php');
@@ -33,7 +33,7 @@ include('../../../database.php');
 
     <h1>Defectenlijst. </h1>
     <div class="searchbar">
-        <input type="text" id="zoekbalk" name="zoekbalk" placeholder="Zoek naar studenten" class="inputZoekbalk6">
+        <input type="text" id="zoekbalk" name="zoekbalk" placeholder="Zoek naar product nr" class="inputZoekbalk6">
     </div>
     <div id="InOut3" class="inOutCatalagus overflow-auto">
     </div>

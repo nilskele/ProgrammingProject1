@@ -74,6 +74,7 @@ https://www.w3schools.com/sql/func_mysql_concat.asp<br>
 https://dev.mysql.com/doc/refman/8.0/en/union.html<br>
 https://stackoverflow.com/questions/9436534/ajax-tutorial-for-post-and-get<br>
 https://www.w3schools.com/jquery/ajax_ajax.asp<br>
+https://stackoverflow.com/questions/66676519/retain-preserve-selected-date-of-jquery-daterangepicker-after-button-clicked<br>
 <br>
 ## Lucas:
 https://chat.openai.com/share/8e8c51f8-d417-48ab-bab4-abe07de601da <br>
