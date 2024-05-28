@@ -1,4 +1,29 @@
-# ProgrammingProject
+# Programming Project 1
+
+<div>
+  <h2>Intro en voorstelling team</h2>
+    <p>Welkom op onze repository voor Programming Project 1, deze opdracht werd ons gegeven door onze profs op de ErasmusHogeschool Brussel.</p>
+    <p>Ons team bestaat uit een Scrum Master Nils Kelecom en 4 developers: Gust Berchmans, Jente Tavernier, Lucas Huygen en Samia Almtlek</p>
+  <h2>Voorstelling probleem en oplossing</h2>
+    <p>De huidige status van het uitelnigssysteem van het MediaLab is zeer abreidsintensief waardoor het niet efficiënt verloopt. Er werd ons aan ons gevraagd om de uitleningsdienst te streamlinen.</p>
+    <p>Voor de oplossing zijn we begonnen met fase 1: oplijsten van de user stories die nodig zijn voor dit proejct. <br>
+    Hierna zijn we begonnen met fase 2: het prototype maken. Hiervoor hebben we Figma gebruikt om een design te maken voor onze applicatie.
+    Dan zijn we begonnen aan fase 3: de development fase. 
+    In deze fase hebben we gebruik gemaakt van Trello om hierin alle user stories te plaatsen die we in fase 1 hebben genoteerd.
+    Voor elke userstorie hebben we een checklist gemaakt van alle functionaliteit die het nodig heeft om hem af te ronden.
+    We zijn dan itertaief in sprints gaan werken waardoor we op een constante snelheid suer stories konden voltooien.</p>
+  <h2>De oplossing</h2>
+    <p>Wij hebben voor dit project gebruik gemaakt van PHP in combinatie met Javascript en wij gebruiken een MySQL database. In de root van het project moet je .env file maken met de database gegevens. </p>
+    <p>Om onze oplossing te kunnen runnen heb je XAMPP nodig en een actieve netwerkverbinding en een connectie met de VPN van EHB om een verbinding te kunnen maken met de database.</p> <br>
+    <p>In onze oplossing kan een student een product of een kit reserveren. Voordat de student het product heeft afgehaald kan hij dit product nog annuleren. 
+    Op de dag van de uitlening gaat de user naar het MediaLab, hier ziet de medwerker heb het admindashboard welk product de student nodig heeft.
+    Wanneer de student op de terugbrengdatum het product wilt terugbrengen kan de admin deze via het productnummer of de email van de student het product accepteren.</p>
+    <p>Funtionaliteiten zoals blacklist, te laat, product toevoegen/wijzigen/verwijderen/onzichtbaar, statistieken en defecten</p>
+</div>
+<div>
+<h2>Bronnen</h2>
+
+
 https://github.com/Ileriayo/markdown-badges
 <br>
 <h3>Gebruikt gemaakt van:</h3>
@@ -135,3 +160,5 @@ https://www.youtube.com/watch?v=oskJVzyEgnE<br>
 https://www.youtube.com/watch?v=FrfEWFO4VzM<br>
 https://chatgpt.com/share/3330b472-fa10-4b84-b974-69d1d4fd34cc<br>
 https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_list<br>
+
+</div>
