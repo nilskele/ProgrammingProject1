@@ -20,7 +20,7 @@ if (isset($_POST['selectedDate'])) {
                LEFT JOIN DEFECT d ON l.lening_id = d.lening_id_fk
                INNER JOIN IMAGE i ON g.image_id_fk = i.image_id
                WHERE l.Uitleendatum = '$selectedDate' 
-               AND l.in_bezit = False";
+               AND l.in_bezit = False AND l.isTerugGebracht = False";
 
     // Query 2: Products That Haven't Been Brought Back Yet
     $query2 = "SELECT DISTINCT l.lening_id, i.image_data, l.Uitleendatum, l.terugbrengDatum, d.watDefect, d.redenDefect, 

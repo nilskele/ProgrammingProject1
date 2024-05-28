@@ -34,7 +34,7 @@ $stmt = $conn->prepare("INSERT INTO USER (voornaam, achternaam, email, passwoord
 $stmt->bind_param("ssssi", $voornaam, $achternaam, $email, $hashed_passwoord, $userType_fk);
 if ($stmt->execute()) {
     // Account is succesvol aangemaakt, redirect to accountAanmaken.php with success parameter
-    header("Location: accountAanmaken.php?success=true");
+    header("Location: index.accountAanmaken.php?success=true");
     exit();
 } else {
     die("Error bij uitvoeren van de query: " . $stmt->error);

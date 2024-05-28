@@ -68,7 +68,7 @@
         <p>
           Nog geen account? =
         </p>
-        <a class="btn btn-light accountAanmaken" href="../php/accountAanmaken.php">
+        <a class="btn btn-light accountAanmaken" href="../php/index.accountAanmaken.php">
           Account aanmaken
         </a>
       </div>
