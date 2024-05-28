@@ -55,20 +55,40 @@ if ($action === 'delete') {
 } 
 
 elseif ($action === 'annuleer') {
+    $conn->begin_transaction();
     try {
+        // SQL query to check for matching records
+        $checkenDefect = "SELECT d.*
+                          FROM DEFECT d
+                          JOIN MIJN_LENINGEN mu ON d.lening_id_fk = mu.lening_id
+                          WHERE mu.product_id_fk = {$itemId}";
 
-        $annuleerReservatie = "DELETE FROM MIJN_LENINGEN WHERE product_id_fk = {$itemId}";
-    if (!$conn->query($annuleerReservatie)) {
-        throw new Exception('Error deleting from PRODUCT: ' . $conn->error);
-    }
+        // Execute the query
+        $result = $conn->query($checkenDefect);
 
-    $conn->commit();
-    echo json_encode(array('success' => true));
+        // Check if the query has a result
+        if ($result->num_rows > 0) {
+            echo json_encode(array('error' => 'Er is een defect gemeld voor dit product'));
+        } else {
+            // Update the PRODUCT table
+            $veranderIsUitgeleend = "UPDATE PRODUCT SET isUitgeleend = 0 WHERE product_id = {$itemId}";
+            if (!$conn->query($veranderIsUitgeleend)) {
+                throw new Exception('Error updating PRODUCT: ' . $conn->error);
+            }
+
+            // Delete from MIJN_LENINGEN
+            $annuleerReservatie = "DELETE FROM MIJN_LENINGEN WHERE product_id_fk = {$itemId}";
+            if (!$conn->query($annuleerReservatie)) {
+                throw new Exception('Error deleting from MIJN_LENINGEN: ' . $conn->error);
+            }
+
+            $conn->commit();
+            echo json_encode(array('success' => true));
+        }
     } catch (Exception $e) {
         $conn->rollback();
         echo json_encode(array('error' => $e->getMessage()));
     }
-    
 }
 
 else {

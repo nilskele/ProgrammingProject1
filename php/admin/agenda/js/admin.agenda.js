@@ -291,27 +291,90 @@ document.addEventListener('click', function(event) {
     }
 });
 
-// Function to handle reserveren click
+// Add event listener to a parent element
+document.addEventListener('click', function(event) {
+    // Check if the clicked element is a button with the class 'fa-trash-o'
+    if (event.target.classList.contains('fa-trash-o')) {
+        const button = event.target; // Get the clicked button
+        const itemId = button.getAttribute('data-item-id');
+        const soort = button.getAttribute('data-soort');
+
+        Swal.fire({
+            title: "Bent u zeker?",
+            text: "Eens het item is verwijderd kan je hem niet terugkrijgen!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ja, verwijder het item!',
+            cancelButtonText: 'Nee, niet verwijderen!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch('http://127.0.0.1/ProgrammingProject1/php/admin/agenda/php/update_visibility.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        itemId: itemId,
+                        soort: soort,
+                        action: 'delete'
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire(
+                            'Verwijderd!',
+                            'Het item is verwijderd',
+                            'success'
+                        );
+                        window.location.reload();
+                        button.closest('li').remove();
+                    } else {
+                        throw new Error(data.error || 'Unknown error');
+                    }
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                    Swal.fire(
+                        'Error',
+                        'Failed to delete item: ' + error.message,
+                        'error'
+                    );
+                });
+            } else {
+                Swal.fire(
+                    'Cancelled',
+                    'Het item is niet verwijderd.',
+                    'error'
+                );
+            }
+        });
+    }
+});
+
+
+
 function handleReserverenClick() {
-    // Redirect to reservation page
+   
     window.location.href = "/ProgrammingProject1/php/admin/reserveren/reserveren.php";
 }
 
-// Function to handle fa-pencil click
+//function redirect naar aanpassen
 function handleEditClick(productId) {
-    // Redirect to edit product page with the product ID as a query parameter
     window.location.href = `/ProgrammingProject1/php/admin/productToevoegen/product_toevoegen.php?product_id=${productId}`;
 }
 
-// Add event listener to a parent element
+
 document.addEventListener('click', function(event) {
     const itemId = event.target.getAttribute('data-item-id');
-    // Check if the clicked element is a button with the class 'reserveren'
+    //reserveren
     if (event.target.classList.contains('reserveren')) {
         handleReserverenClick();
     }
 
-    // Check if the clicked element is a button with the class 'fa-pencil'
+    //aanpassen
     if (event.target.classList.contains('fa-pencil')) {
         const productId = event.target.getAttribute('data-product-id');
         handleEditClick(productId);
@@ -339,7 +402,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Get the product ID from the data attribute
             const productId = btn.getAttribute('data-product-id');
             // Redirect to edit product page with the product ID as a query parameter
-            window.location.href = `/ProgrammingProject1/php/admin/productToevoegen/product_toevoegen.php?product_id=${productId}`;
+            window.location.href = `/ProgrammingProject1/php/admin/productWijzigen/productWijzigen.php?product_id=${productId}`;
         });
     });
 });
