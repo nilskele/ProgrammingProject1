@@ -1,33 +1,27 @@
 $(function() {
-    // Clear existing data
     $('#InOut3').empty();
     
-    // Send the request to the PHP script using AJAX
     $.ajax({
         url: 'defect_backend.php',
         method: 'POST',
-        dataType: 'json', // Expect a JSON response
+        dataType: 'json', 
         data: {},
         success: function(response) {
-            // The response is already parsed as JSON, no need to call JSON.parse
+            console.log("1")
             try {
-                // Check if the response contains an error
                 if (response.error) {
                     console.error('Error from server:', response.error);
                     return;
                 }
+        
                 
-                // Loop through the data and create HTML elements
                 response.forEach(function(item) {
-                    // Create a new card element
                     var card = document.createElement('div');
                     card.className = 'inOutProduct';
                     
-                    // Create the product info div
                     var productInfo = document.createElement('div');
                     productInfo.className = 'productInfo';
     
-                    // Populate the product info
                     productInfo.innerHTML = `
                         <div id="vandaagInButtons">
                              <h6>${item.naam}</h6>
@@ -44,10 +38,8 @@ $(function() {
                         </div>
                     `;
     
-                    // Append product info to card
                     card.appendChild(productInfo);
     
-                    // Append the card to the appropriate container
                     document.getElementById('InOut3').appendChild(card);
                 });
             } catch (e) {
@@ -60,7 +52,6 @@ $(function() {
         }
     });
     
-    // Implement the search functionality
     $('.inputZoekbalk6').on('keyup', function() {
         let zoekterm = $(this).val().toLowerCase();
     
