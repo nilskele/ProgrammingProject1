@@ -10,7 +10,7 @@ $categorie = isset($_GET['categorie']) ? $_GET['categorie'] : '';
 if ($categorie !== 'All') {
     // fetch van alle producten en kits die bij de categorie horen
     $stmt = $conn->prepare("SELECT GROEP.groep_id AS groep_id, GROEP.naam AS groep_naam, MERK.naam AS merk_naam, PRODUCT.opmerkingen, BESCHRIJVING.naam AS beschrijving_naam, MIN(PRODUCT.datumBeschikbaar) AS datumBeschikbaar,
-    COUNT(PRODUCT.product_id) AS aantal_beschikbare_producten, IMAGE.image_data
+    COUNT(PRODUCT.product_id) AS aantal_beschikbare_producten, IMAGE.image_data, null AS isKit
 FROM GROEP
       JOIN MERK ON GROEP.merk_id_fk = MERK.merk_id
       JOIN PRODUCT ON GROEP.groep_id = PRODUCT.groep_id
@@ -30,7 +30,7 @@ SELECT KIT.kit_id, KIT.kit_naam, MERK.naam AS merk_naam, KIT.opmerkingen, GROUP_
      GROUP BY GROEP.groep_id
      ORDER BY COUNT(*) asc
      limit 1) AS aantal_beschikbare_producten,
-    IMAGE.image_data
+    IMAGE.image_data, true AS isKit
 FROM KIT
       JOIN CATEGORY AS CAT1 ON KIT.category_fk = CAT1.cat_id
       JOIN MERK ON KIT.merk_fk = MERK.merk_id

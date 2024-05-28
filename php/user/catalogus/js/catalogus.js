@@ -192,6 +192,10 @@ $(document).ready(function () {
     dateRangeOptions.maxDate = moment().add(3, "week").toDate();
   }
 
+  $('input[name="daterange"]').change(function() {
+    sessionStorage.setItem('daterange', $(this).val());
+  })
+
   // functie voor zoeken op datum
   $('input[name="daterange"]').daterangepicker(
     dateRangeOptions,

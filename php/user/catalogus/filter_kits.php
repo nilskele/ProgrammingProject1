@@ -14,7 +14,7 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
      GROUP BY GROEP.groep_id
      ORDER BY COUNT(*) asc
      limit 1) AS aantal_beschikbare_producten,
-    IMAGE.image_data
+    IMAGE.image_data, true AS isKit
 FROM KIT
       JOIN CATEGORY ON KIT.category_fk = CATEGORY.cat_id
       JOIN MERK ON KIT.merk_fk = MERK.merk_id

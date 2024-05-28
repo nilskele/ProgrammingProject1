@@ -7,6 +7,80 @@ let isKit = localStorage.getItem("isKit");
 
 $(document).ready(function() {
 
+  // functie om de adtum die in de session is gestoken vanuit de catalogus tonen
+  $(function() {
+    if(sessionStorage.getItem('daterange') != null) {
+      $('input[name="daterange"]').val(sessionStorage.getItem('daterange'));
+    }
+
+  })
+
+  // direchht de beschikbaarheid check van de geslecteerde datum die vanuit de catalogus is opgehaald
+  let daterangeVal = sessionStorage.getItem('daterange');
+  if(daterangeVal != null) {
+    let startDatum = daterangeVal.split(" - ")[0];
+    let eindDatum = daterangeVal.split(" - ")[1];
+  
+    startDatum = moment(startDatum, "MM/DD/YYYY");
+    eindDatum = moment(eindDatum, "MM/DD/YYYY");
+    
+    startDatum = startDatum.format("YYYY-MM-DD");
+    eindDatum = eindDatum.format("YYYY-MM-DD");
+    if (startDatum !== eindDatum) { 
+      $.ajax({
+        url: "datePickerReserveren.php",
+        type: "GET",
+        dataType: "json",
+        data: {
+          isKit: isKit,
+          groep_id: groep_id,
+          startDatum: startDatum,
+          eindDatum: eindDatum,
+        },
+        success: function (data) { 
+          
+          // Check of er geen items beschikbaar zijn
+          if (data == 0) {
+            Swal.fire({
+              icon: "warning",
+              title: "Ongeldige selectie",
+              text: "Er zijn geen items beschikbaar voor deze periode.",
+              confirmButtonText: "Ok",
+            });
+            aantalBeschikbaarSpan.innerHTML = 0;
+            let optionsHTML = "";
+            available.innerHTML = optionsHTML;
+            return;
+          } 
+    
+          // aantal beschikbare items tonen
+          if (data[0].aantalBeschikbaar == 0) {
+            Swal.fire({
+              icon: "warning",
+              title: "Ongeldige selectie",
+              text: "Er zijn geen items beschikbaar voor deze periode.",
+              confirmButtonText: "Ok",
+            });
+            aantalBeschikbaarSpan.innerHTML = 0;
+            let optionsHTML = "";
+            available.innerHTML = optionsHTML;
+            return;
+          }
+          aantalBeschikbaarSpan.innerHTML = data[0].aantalBeschikbaar;
+          let optionsHTML = "";
+          for (let i = 1; i <= data[0].aantalBeschikbaar; i++) {
+              optionsHTML += `<option value="${i}">${i}</option>`;
+          }
+          available.innerHTML = optionsHTML;
+      },
+      
+        error: function (data) {
+          alert("Er is een fout opgetreden bij het zoeken.(date)");
+        },
+      });
+    }
+  }  
+
   // Check of de gebruiker 2 waarschuwingen heeft
   fetch("/ProgrammingProject1/php/user/mijnUitleningen/waarschuwingenCount.php")
     .then((response) => response.json())
