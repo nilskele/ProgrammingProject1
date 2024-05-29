@@ -120,6 +120,7 @@ include ('../../database.php');
           <input type="text" id="searchInput" name="Zoeken" placeholder="Zoeken...">
         </div>
         <div class="toggle-container">
+        <input type="hidden" id="searchType" name="searchType" value="id">
           <span id="labelID" class="toggle-label active">ID</span>
           <label class="switch">
             <input type="checkbox" id="searchToggle" onclick="updateSearchType()">
@@ -269,7 +270,10 @@ include ('../../database.php');
 
     // Close the statement
     $stmt->close();
-  } else {
+  } 
+  
+  
+  else {
     $searchType = $_GET['searchType']; // Get the search type (ID or Naam)
     $isKit = isset($_GET['kitCheckbox']); // Check if KIT checkbox is selected
   
@@ -300,7 +304,7 @@ include ('../../database.php');
       // Output data of each row
       while ($row = $result_all->fetch_assoc()) {
         // Store the results in an array
-        if ($isKit) {
+        if ($isKit && ($searchType === 'id' || $searchType === 'naam')) {
           $loanDetails[] = array(
             "kit_id" => $row["kit_id"],
             "product_id" => $row["kit_naam"],
