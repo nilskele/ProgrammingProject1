@@ -13,8 +13,22 @@
     Voor elke userstorie hebben we een checklist gemaakt van alle functionaliteit die het nodig heeft om hem af te ronden.
     We zijn dan itertaief in sprints gaan werken waardoor we op een constante snelheid suer stories konden voltooien.</p>
   <h2>De oplossing</h2>
-    <p>Wij hebben voor dit project gebruik gemaakt van PHP in combinatie met Javascript en wij gebruiken een MySQL database. In de root van het project moet je .env file maken met de database gegevens. </p>
-    <p>Om onze oplossing te kunnen runnen heb je XAMPP nodig en een actieve netwerkverbinding en een connectie met de VPN van EHB om een verbinding te kunnen maken met de database.</p> <br>
+    <p>Wij hebben voor dit project gebruik gemaakt van PHP in combinatie met Javascript en wij gebruiken een MySQL database. <br><br>
+      om deze oplossing te runnen hebben wij een stappenplan gemaakt om het makkelijk te maken: <br>
+      STAP 1: download XAMPP. <br>
+      STAP 2: downloaden de repository. <br>
+      STAP 3: Zet de gedownloade repository map in de HTDOCS map van XAMPP. <br>
+      STAP 4: Open XAMPP en run the apache server. <br>
+      STAP 5: Start een secure connection met de school server dankszij een VPN. <br>
+      STAP 6: Open het project in een IDE bevoorbeeld "Visual studio code". <br>
+      STAP 7: Maak een .env file aan in de root van het project. <br>
+      STAP 8: Vul deze variabelen dan met de nodige gegevens in. <br>
+      DB_HOST=<br>
+      DB_USERNAME=<br>
+      DB_PASSWORD=<br>
+      DB_DATABASE=<br>
+      <br>
+      STAP 9: ga naar u browser en type dit in http://127.0.0.1/programmingProject1/php/.<br><br>
     <p>In onze oplossing kan een student een product of een kit reserveren. Voordat de student het product heeft afgehaald kan hij dit product nog annuleren. 
     Op de dag van de uitlening gaat de user naar het MediaLab, hier ziet de medwerker heb het admindashboard welk product de student nodig heeft.
     Wanneer de student op de terugbrengdatum het product wilt terugbrengen kan de admin deze via het productnummer of de email van de student het product accepteren.</p>
