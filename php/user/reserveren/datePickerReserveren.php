@@ -51,7 +51,7 @@ HAVING COUNT(DISTINCT KIT_PRODUCT.groep_id_fk) >= (
     $sql = "SELECT COUNT(*) AS aantalBeschikbaar
             FROM PRODUCT
             JOIN GROEP ON PRODUCT.groep_id = GROEP.groep_id
-            WHERE PRODUCT.datumBeschikbaar < ? AND PRODUCT.zichtbaar = true AND GROEP.groep_id = ?";
+            WHERE PRODUCT.datumBeschikbaar < ? AND PRODUCT.zichtbaar = true AND PRODUCT.isUitgeleend = false AND GROEP.groep_id = ?";
 }
 
 $stmt = $conn->prepare($sql);
