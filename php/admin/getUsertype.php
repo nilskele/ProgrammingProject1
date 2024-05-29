@@ -1,5 +1,4 @@
 <?php
-
 include("../../database.php");
 
 session_start();
@@ -12,5 +11,4 @@ if ($usertype == "1") {
 } else {
     echo "Geen admin";
 }
-
 ?>

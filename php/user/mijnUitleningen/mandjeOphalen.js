@@ -12,7 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         data.forEach((row) => {
           const newRow = $("<tr>");
-          const buttonClass = row.in_bezit === 1 ? "reserveren-button" : "uitlenen-button";
+          const buttonClass =
+            row.in_bezit === 1 ? "reserveren-button" : "uitlenen-button";
           let buttonText, action;
 
           if (row.isVerlenged) {
@@ -30,8 +31,16 @@ document.addEventListener("DOMContentLoaded", function () {
             <td>${row.groep_naam}</td>
             <td>${row.Uitleendatum}</td>
             <td>${row.terugbrengDatum}</td>
-            <td><button class="melden-button" value="${row.lening_id}" data-in_bezit="${row.in_bezit}">Melden</button></td>
-            <td><button class="${buttonClass}" value="${row.lening_id}" data-id="${row.product_id}" style="background-color: ${(row.in_bezit === 1 && row.isVerlenged === 1) || row.in_bezit === 0 ? "red" : "green"}; color: white;">${buttonText}</button></td>
+            <td><button class="melden-button" value="${
+              row.lening_id
+            }" data-in_bezit="${row.in_bezit}">Melden</button></td>
+            <td><button class="${buttonClass}" value="${
+            row.lening_id
+          }" data-id="${row.product_id}" style="background-color: ${
+            (row.in_bezit === 1 && row.isVerlenged === 1) || row.in_bezit === 0
+              ? "red"
+              : "green"
+          }; color: white;">${buttonText}</button></td>
           `);
 
           tableBody.append(newRow);
@@ -90,7 +99,11 @@ document.addEventListener("DOMContentLoaded", function () {
               returnDate.setDate(returnDate.getDate() + 7);
               const dayOfWeek = currentDate.getDay();
 
-              if (currentDate > returnDate || dayOfWeek < 4 || dayOfWeek === 0) {
+              if (
+                currentDate > returnDate ||
+                dayOfWeek < 4 ||
+                dayOfWeek === 0
+              ) {
                 Swal.fire({
                   title: "Verlenging niet toegestaan",
                   text: "Je kunt alleen verlengen op donderdag of later.",
@@ -105,7 +118,11 @@ document.addEventListener("DOMContentLoaded", function () {
               button.classList.add("annuleren-button");
               button.classList.remove("reserveren-button");
               button.style.backgroundColor = "green";
-              Swal.fire("Verlengd!", "De uitleentermijn is verlengd.", "success");
+              Swal.fire(
+                "Verlengd!",
+                "De uitleentermijn is verlengd.",
+                "success"
+              );
             } else {
               Swal.fire({
                 title: "Verlenging niet toegestaan",
@@ -139,13 +156,17 @@ document.addEventListener("DOMContentLoaded", function () {
         button.classList.add("reserveren-button");
         button.classList.remove("annuleren-button");
         button.style.backgroundColor = "green";
-        Swal.fire("Geannuleerd!", "De verlenging is geannuleerd.", "success").then(() => {
+        Swal.fire(
+          "Geannuleerd!",
+          "De verlenging is geannuleerd.",
+          "success"
+        ).then(() => {
           window.location.reload();
         });
       }
     });
   }
-  
+
   function cancelReservation(button) {
     const lening_id = button.value;
     Swal.fire({
@@ -159,7 +180,11 @@ document.addEventListener("DOMContentLoaded", function () {
       if (result.isConfirmed) {
         deleteRowFromDatabase(lening_id);
         button.closest("tr").remove();
-        Swal.fire("Geannuleerd!", "De reservering is geannuleerd.", "success").then(() => {
+        Swal.fire(
+          "Geannuleerd!",
+          "De reservering is geannuleerd.",
+          "success"
+        ).then(() => {
           window.location.reload();
         });
       }
@@ -182,9 +207,17 @@ document.addEventListener("DOMContentLoaded", function () {
         $.ajax({
           url: "defectMelden.php",
           method: "POST",
-          data: { lening_id: lening_id, watDefect: watDefect, redenDefect: redenDefect },
+          data: {
+            lening_id: lening_id,
+            watDefect: watDefect,
+            redenDefect: redenDefect,
+          },
           success: function (response) {
-            Swal.fire("Defect gemeld!", "Het defect is succesvol gemeld.", "success");
+            Swal.fire(
+              "Defect gemeld!",
+              "Het defect is succesvol gemeld.",
+              "success"
+            );
             sluitMMeldenPopUp();
           },
           error: function (error) {
@@ -254,6 +287,20 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchDataAndPopulateTable();
   $("table").on("click", "button", handleButtonClick);
 
+  function fetchUserType() {
+    return $.ajax({
+      url: "getUserType.php",
+      method: "GET",
+      dataType: "json"
+    });
+  }
+
+  fetchUserType().then((data) => {
+    if (data.user_type === 2) {
+      console.log("User is a docent");
+    }
+  });
+
   let waarschuwingenCount = document.querySelector(".waarschuwingenCount");
   if (waarschuwingenCount) {
     fetch("waarschuwingenCount.php")
@@ -261,7 +308,9 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         waarschuwingenCount.textContent = data - 1;
       })
-      .catch((error) => console.error("Error fetching waarschuwingen count:", error));
+      .catch((error) =>
+        console.error("Error fetching waarschuwingen count:", error)
+      );
   } else {
     console.error("Element with class 'waarschuwingenCount' not found.");
   }
