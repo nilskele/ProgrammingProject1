@@ -14,9 +14,9 @@
     We zijn dan itertaief in sprints gaan werken waardoor we op een constante snelheid suer stories konden voltooien.</p>
   <h2>De oplossing</h2>
     <p>Wij hebben voor dit project gebruik gemaakt van PHP in combinatie met Javascript en wij gebruiken een MySQL database. <br><br>
-      om deze oplossing te runnen hebben wij een stappenplan gemaakt om het makkelijk te maken: <br>
-      STAP 1: download XAMPP. <br>
-      STAP 2: downloaden de repository. <br>
+      Om deze oplossing te runnen hebben wij een stappenplan gemaakt om het makkelijk te maken: <br>
+      STAP 1: Download XAMPP. <br>
+      STAP 2: Downloaden de repository. <br>
       STAP 3: Zet de gedownloade repository map in de HTDOCS map van XAMPP. <br>
       STAP 4: Open XAMPP en run the apache server. <br>
       STAP 5: Start een secure connection met de school server dankszij een VPN. <br>
