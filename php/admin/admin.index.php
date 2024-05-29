@@ -120,7 +120,6 @@ include ('../../database.php');
           <input type="text" id="searchInput" name="Zoeken" placeholder="Zoeken...">
         </div>
         <div class="toggle-container">
-        <input type="hidden" id="searchType" name="searchType" value="id">
           <span id="labelID" class="toggle-label active">ID</span>
           <label class="switch">
             <input type="checkbox" id="searchToggle" onclick="updateSearchType()">
@@ -132,6 +131,12 @@ include ('../../database.php');
         <div class="checkboxKit">
           <input type="checkbox" id="kitCheckbox" name="kitCheckbox" value="kit" onclick="updateKitCheckbox()">
           <label for="kitCheckbox">KIT</label><br>
+        </div>
+        <div class="selection-container">
+          <select id="itemStatus" name="itemStatus">
+            <option value="gereserveerd">Gereserveerd</option>
+            <option value="alleItems">Alle items</option>
+          </select>
         </div>
         <button class="button_zoeken" type="submit">Zoek</button>
       </div>
@@ -175,43 +180,60 @@ include ('../../database.php');
 
   $loanDetails = array(); // Initialize the array
   
-  if (isset($_GET['Zoeken'])) {
+  if (isset($_GET['Zoeken']) && !empty($_GET['Zoeken'])) {
     $zoekTerm = $_GET['Zoeken'];
     $searchType = $_GET['searchType'];
     $isKit = isset($_GET['kitCheckbox']) ? true : false;
+    $itemStatus = $_GET['itemStatus'];
 
     // Sanitize the input to prevent XSS
     $zoekTerm = htmlspecialchars($zoekTerm);
 
-    // Determine the SQL query based on the search type and kitCheckbox
+    // Determine the SQL query based on the search type, kitCheckbox, and itemStatus
     if ($isKit && $searchType === 'id') {
-      $sql = "SELECT k.kit_id, g.naam, k.kit_naam, k.zichtbaar
-        FROM PRODUCT p
-        JOIN KIT_PRODUCT kp1 ON p.groep_id = kp1.groep_id_fk
-        JOIN KIT_PRODUCT kp2 ON kp1.kit_id_fk = kp2.kit_id_fk
-        JOIN GROEP g ON kp2.groep_id_fk = g.groep_id
-        JOIN KIT k ON kp1.kit_id_fk = k.kit_id
-        WHERE p.product_id = ?";
+        $sql = "SELECT k.kit_id, g.naam, k.kit_naam, k.zichtbaar
+                FROM PRODUCT p
+                JOIN KIT_PRODUCT kp1 ON p.groep_id = kp1.groep_id_fk
+                JOIN KIT_PRODUCT kp2 ON kp1.kit_id_fk = kp2.kit_id_fk
+                JOIN GROEP g ON kp2.groep_id_fk = g.groep_id
+                JOIN KIT k ON kp1.kit_id_fk = k.kit_id
+                WHERE p.product_id = ?";
     } elseif ($isKit && $searchType === 'naam') {
-      $zoekTerm = "%" . $zoekTerm . "%";
-      $sql = "SELECT k.kit_id, g.naam, k.kit_naam, k.zichtbaar
-      FROM KIT k
-      JOIN KIT_PRODUCT kp ON k.kit_id = kp.kit_id_fk
-      JOIN GROEP g ON kp.groep_id_fk = g.groep_id
-      WHERE k.kit_naam LIKE ?";
+        $zoekTerm = "%" . $zoekTerm . "%";
+        $sql = "SELECT k.kit_id, g.naam, k.kit_naam, k.zichtbaar
+                FROM KIT k
+                JOIN KIT_PRODUCT kp ON k.kit_id = kp.kit_id_fk
+                JOIN GROEP g ON kp.groep_id_fk = g.groep_id
+                WHERE k.kit_naam LIKE ?";
     } elseif ($searchType === 'id') {
-      $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
-                FROM PRODUCT p
-                JOIN GROEP g ON p.groep_id = g.groep_id
-                LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
-                WHERE p.product_id LIKE ?";
+        if ($itemStatus === 'gereserveerd') {
+            $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+                    FROM PRODUCT p
+                    JOIN GROEP g ON p.groep_id = g.groep_id
+                    LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
+                    WHERE p.product_id LIKE ? AND l.product_id_fk IS NOT NULL";
+        } else {
+            $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+                    FROM PRODUCT p
+                    JOIN GROEP g ON p.groep_id = g.groep_id
+                    LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
+                    WHERE p.product_id LIKE ?";
+        }
     } else {
-      $zoekTerm = "%" . $zoekTerm . "%";
-      $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
-                FROM PRODUCT p
-                JOIN GROEP g ON p.groep_id = g.groep_id
-                LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
-                WHERE g.naam LIKE ?";
+        $zoekTerm = "%" . $zoekTerm . "%";
+        if ($itemStatus === 'gereserveerd') {
+            $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+                    FROM PRODUCT p
+                    JOIN GROEP g ON p.groep_id = g.groep_id
+                    LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
+                    WHERE g.naam LIKE ? AND l.product_id_fk IS NOT NULL";
+        } else {
+            $sql = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+                    FROM PRODUCT p
+                    JOIN GROEP g ON p.groep_id = g.groep_id
+                    LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
+                    WHERE g.naam LIKE ?";
+        }
     }
 
     // Prepare the statement
@@ -275,62 +297,70 @@ include ('../../database.php');
   
   else {
     $searchType = $_GET['searchType']; // Get the search type (ID or Naam)
-    $isKit = isset($_GET['kitCheckbox']); // Check if KIT checkbox is selected
-  
+$isKit = isset($_GET['kitCheckbox']); 
+$itemStatus = $_GET['itemStatus'];
+
+if ($isKit) {
+  $sql_all = "SELECT k.kit_id, g.naam, k.kit_naam, k.zichtbaar
+              FROM KIT k
+              JOIN KIT_PRODUCT kp ON k.kit_id = kp.kit_id_fk
+              JOIN GROEP g ON kp.groep_id_fk = g.groep_id";
+} elseif ($itemStatus === "gereserveerd" && ($searchType === 'id' || $searchType === 'naam')) {
+  $sql_all = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+              FROM PRODUCT p
+              JOIN GROEP g ON p.groep_id = g.groep_id
+              LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk
+              WHERE l.product_id_fk IS NOT NULL";
+} else {
+  if ($searchType === 'naam') {
+    $sql_all = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+                FROM PRODUCT p
+                JOIN GROEP g ON p.groep_id = g.groep_id
+                LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
+  } else {
+    $sql_all = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+                FROM PRODUCT p
+                JOIN GROEP g ON p.groep_id = g.groep_id
+                LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
+  }
+}
+
+// Execute the query
+$result_all = $conn->query($sql_all);
+
+// Check if there are results
+if ($result_all->num_rows > 0) {
+  // Output data of each row
+  while ($row = $result_all->fetch_assoc()) {
+    // Store the results in an array
     if ($isKit) {
-      // Retrieve all KIT items
-      $sql_all = "SELECT k.kit_id, g.naam, k.kit_naam, k.zichtbaar
-                  FROM KIT k
-                  JOIN KIT_PRODUCT kp ON k.kit_id = kp.kit_id_fk
-                  JOIN GROEP g ON kp.groep_id_fk = g.groep_id";
-    } elseif ($searchType === 'naam') {
-      // Retrieve all items by Naam
-      $sql_all = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
-                  FROM PRODUCT p
-                  JOIN GROEP g ON p.groep_id = g.groep_id
-                  LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
+      $loanDetails[] = array(
+        "kit_id" => $row["kit_id"],
+        "product_id" => $row["kit_naam"],
+        "product_name" => $row["naam"],
+        "zichtbaar" => $row["zichtbaar"],
+        "soort" => "kit"
+      );
     } else {
-      $sql_all = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
-    FROM PRODUCT p
-    JOIN GROEP g ON p.groep_id = g.groep_id
-    LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
-    }
-
-    // Execute the query
-    $result_all = $conn->query($sql_all);
-
-    // Check if there are results
-    if ($result_all->num_rows > 0) {
-      // Output data of each row
-      while ($row = $result_all->fetch_assoc()) {
-        // Store the results in an array
-        if ($isKit && ($searchType === 'id' || $searchType === 'naam')) {
-          $loanDetails[] = array(
-            "kit_id" => $row["kit_id"],
-            "product_id" => $row["kit_naam"],
-            "product_name" => $row["naam"],
-            "zichtbaar" => $row["zichtbaar"],
-            "soort" => "kit"
-          );
-        } else {
-          $loanDetails[] = array(
-            "product_id" => $row["product_id"],
-            "product_name" => $row["product_name"],
-            "Uitleendatum" => $row["Uitleendatum"],
-            "terugbrengDatum" => $row["terugbrengDatum"],
-            "zichtbaar" => $row["zichtbaar"],
-            "soort" => "product"
-          );
-        }
-      }
-    } else {
-      echo "Geen resultaten gevonden";
+      $loanDetails[] = array(
+        "product_id" => $row["product_id"],
+        "product_name" => $row["product_name"],
+        "Uitleendatum" => $row["Uitleendatum"],
+        "terugbrengDatum" => $row["terugbrengDatum"],
+        "zichtbaar" => $row["zichtbaar"],
+        "soort" => "product"
+      );
     }
   }
-  // Close the connection
-  $conn->close();
-  // Convert loanDetails to JSON
-  $loanDetailsJSON = json_encode($loanDetails);
+} else {
+  echo "Geen resultaten gevonden";
+}
+  }
+// Close the connection
+$conn->close();
+
+// Convert loanDetails to JSON
+$loanDetailsJSON = json_encode($loanDetails);
   ?>
   <script>
     function scrollToResults() {
