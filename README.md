@@ -24,10 +24,6 @@
       STAP 7: Maak een .env file aan in de root van het project. <br>
       STAP 8: Vul deze variabelen dan met de nodige gegevens in. <br>
       
-      
-      
-      
-      
 ```
 DB_HOST=
 DB_USERNAME=
@@ -39,7 +35,8 @@ DB_DATABASE=
     <p>In onze oplossing kan een student een product of een kit reserveren. Voordat de student het product heeft afgehaald kan hij dit product nog annuleren. 
     Op de dag van de uitlening gaat de user naar het MediaLab, hier ziet de medwerker heb het admindashboard welk product de student nodig heeft.
     Wanneer de student op de terugbrengdatum het product wilt terugbrengen kan de admin deze via het productnummer of de email van de student het product accepteren.</p>
-    <p>Funtionaliteiten zoals blacklist, te laat, product toevoegen/wijzigen/verwijderen/onzichtbaar, statistieken en defecten</p>
+    <br>
+    <p>Onze oplossing bevat ook nog funtionaliteiten zoals blacklist, te laat, product of kit toevoegen/wijzigen/verwijderen/onzichtbaar, statistieken, defecten en uitleningen bekijken.</p>
       
 </div>
 <div>
