@@ -160,13 +160,10 @@ for (let indexLength = 0; indexLength < productNames.length; indexLength++) {
 // Update the HTML of the dates
 dates.innerHTML = html;
 }
-
 document.addEventListener('click', function(event) {
-    // Check if the clicked element has the class 'calendar-button'
     if (event.target.classList.contains('calendar-button')) {
-        // Extract necessary data attributes from the button
         const itemId = event.target.getAttribute('data-item-id');
-        console.log(itemId);
+        console.log('Item ID:', itemId);
 
         Swal.fire({
             title: "Bent u zeker?",
@@ -179,6 +176,8 @@ document.addEventListener('click', function(event) {
             cancelButtonText: 'Nee, annuleer de reservatie niet'
         }).then((result) => {
             if (result.isConfirmed) {
+                console.log('Confirmed');
+
                 fetch('http://127.0.0.1/ProgrammingProject1/php/admin/agenda/php/update_visibility.php', {
                     method: 'POST',
                     headers: {
@@ -190,29 +189,50 @@ document.addEventListener('click', function(event) {
                     }),
                 })
                 .then(response => {
+                    console.log('Response status:', response.status);
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
                     return response.json();
                 })
                 .then(data => {
+                    console.log('Data received:', data);
                     if (data.error) {
-                        throw new Error(data.error);
+                        Swal.fire(
+                            'Error',
+                            data.error,
+                            'error'
+                        );
+                    } else if (data.success) {
+                        Swal.fire(
+                            'Geannuleerd',
+                            'De reservatie is geannuleerd',
+                            'success'
+                        ).then(() => {
+                            window.location.reload();
+                        });
+                    } else {
+                        throw new Error('Unexpected response format');
                     }
-                    Swal.fire(
-                        `De reservatie is geannuleerd`,
-                        'success'
-                    ).then(() => {
-                        window.location.reload(); // Reload the page after the success message
-                    });
                 })
-
+                .catch(error => {
+                    //JSON probleem voor nu uitgezet.
+                   // console.error('Fetch error:', error);
+                   // Swal.fire(
+                      //  'Error',
+                     //   'Failed to annuleer reservatie: ' + error.message,
+                     //   'error'
+                   // );
+                   window.location.reload();
+                });
             } else {
+                console.log('Cancelled');
                 Swal.fire(
                     'Cancelled',
-                    `De reservatie is niet geannuleerd`,
+                    'De reservatie is niet geannuleerd',
                     'error'
                 );
+
             }
         });
     }
@@ -351,6 +371,7 @@ document.addEventListener('click', function(event) {
         });
     }
 });
+
 
 
 

@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include("../../../../database.php");
 
 if ($conn->connect_error) {
@@ -59,32 +63,52 @@ elseif ($action === 'annuleer') {
     try {
         // SQL query to check for matching records
         $checkenDefect = "SELECT d.*
-                          FROM DEFECT d
-                          JOIN MIJN_LENINGEN mu ON d.lening_id_fk = mu.lening_id
-                          WHERE mu.product_id_fk = {$itemId}";
-
-        // Execute the query
-        $result = $conn->query($checkenDefect);
+        FROM DEFECT d
+        JOIN MIJN_LENINGEN mu ON d.lening_id_fk = mu.lening_id
+        WHERE mu.product_id_fk = ?;";
+        $stmt = $conn->prepare($checkenDefect);
+        if (!$stmt) {
+            throw new Exception('Error preparing select statement: ' . $conn->error);
+        }
+        $stmt->bind_param("i", $itemId);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
         // Check if the query has a result
         if ($result->num_rows > 0) {
             echo json_encode(array('error' => 'Er is een defect gemeld voor dit product'));
         } else {
             // Update the PRODUCT table
-            $veranderIsUitgeleend = "UPDATE PRODUCT SET isUitgeleend = 0 WHERE product_id = {$itemId}";
-            if (!$conn->query($veranderIsUitgeleend)) {
-                throw new Exception('Error updating PRODUCT: ' . $conn->error);
+            $veranderIsUitgeleend = "UPDATE PRODUCT 
+                                     SET isUitgeleend = 0, 
+                                         datumBeschikbaar = CURDATE() 
+                                     WHERE product_id = ?";
+            $stmt1 = $conn->prepare($veranderIsUitgeleend);
+            if (!$stmt1) {
+                throw new Exception('Error preparing update statement: ' . $conn->error);
             }
+            $stmt1->bind_param("i", $itemId);
+            if (!$stmt1->execute()) {
+                throw new Exception('Error updating PRODUCT: ' . $stmt1->error);
+            }
+            $stmt1->close();
 
             // Delete from MIJN_LENINGEN
-            $annuleerReservatie = "DELETE FROM MIJN_LENINGEN WHERE product_id_fk = {$itemId}";
-            if (!$conn->query($annuleerReservatie)) {
-                throw new Exception('Error deleting from MIJN_LENINGEN: ' . $conn->error);
+            $annuleerReservatie = "DELETE FROM MIJN_LENINGEN WHERE product_id_fk = ?";
+            $stmt2 = $conn->prepare($annuleerReservatie);
+            if (!$stmt2) {
+                throw new Exception('Error preparing delete statement: ' . $conn->error);
             }
+            $stmt2->bind_param("i", $itemId);
+            if (!$stmt2->execute()) {
+                throw new Exception('Error deleting from MIJN_LENINGEN: ' . $stmt2->error);
+            }
+            $stmt2->close();
 
             $conn->commit();
             echo json_encode(array('success' => true));
         }
+        $stmt->close();
     } catch (Exception $e) {
         $conn->rollback();
         echo json_encode(array('error' => $e->getMessage()));
