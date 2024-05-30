@@ -290,8 +290,7 @@ include ('../../database.php');
             "lening_id" => $row["lening_id"]
           );
         }
-        // Include lening_id in the array if it's not empty
-        $loanDetails[] = array_merge($loanDetail, array("lening_id" => $row["lening_id"]));
+
       }
     } else {
       echo "Geen resultaten gevonden";

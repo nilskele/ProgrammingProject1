@@ -21,7 +21,7 @@ function extractDetails(loanDetails) {
 const details = extractDetails(loanDetails);
 const { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar, soort, kit_id, lening_id} = details;
 
-console.log("tt"+lening_id);
+console.log("tt");
 
 // Function to format date to day/month format
 function formatDate(dateString) {
