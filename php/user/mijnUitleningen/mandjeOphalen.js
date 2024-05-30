@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
 
           newRow.html(`
+            <td>${row.product_id_fk}</td>
             <td>${row.groep_naam}</td>
             <td>${row.Uitleendatum}</td>
             <td>${row.terugbrengDatum}</td>

@@ -1,10 +1,7 @@
 <?php
-// Include database connection file
 include('../database.php');
 
-// Check if leningId is provided
 if (isset($_POST['productNr'])) {
-    // Sanitize the input to prevent SQL injection
     $productNr = mysqli_real_escape_string($conn, $_POST['productNr']);
 
     $query = "UPDATE MIJN_LENINGEN 
@@ -19,17 +16,12 @@ if (isset($_POST['productNr'])) {
 
 
 if ($conn->query($query) == TRUE && $conn->query($query2) == TRUE) {
-    // If both queries are successful, return success message
     echo "success";
 } else {
-    // If either query fails, return error message
     echo "error";
-}
-} else {
-    // If leningId is not provided, return error message
+}} else {
     echo "Lening ID not provided";
 }
 
-// Close the database connection
 $conn->close();
 ?>

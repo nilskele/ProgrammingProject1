@@ -41,6 +41,7 @@
   <table>
     <thead>
       <tr>
+        <th>Id</th>
         <th>Product</th>
         <th>Uitleendatum</th>
         <th>Terugbrengdatum</th>

@@ -3,8 +3,8 @@ document.getElementById('categorie').addEventListener('change', function() {
   var categoryOptions = categorieSelect.options;
 
   if (categorieSelect.value !== 'All') {
-      categoryOptions[0].disabled = true; // Disable the "Categorie" option
+      categoryOptions[0].disabled = true;
   } else {
-      categoryOptions[0].disabled = false; // Enable the "Categorie" option
+      categoryOptions[0].disabled = false;
   }
 });

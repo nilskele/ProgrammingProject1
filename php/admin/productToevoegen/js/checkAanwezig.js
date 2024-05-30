@@ -1,13 +1,11 @@
 let hasSubmitted = false;
 
 $(document).ready(function () {
-  // Event listener for form submission
   $("#productForm").submit(function (e) {
     e.preventDefault();
     checkInputs();
   });
 
-  // Event listener for keydown event on input fields
   $("#productName, #merk, #categorie, #beschrijving").on(
     "keydown",
     function (e) {
@@ -28,14 +26,11 @@ function checkInputs() {
 
   let completedChecks = 0;
 
-  // Callback function to be executed after each check
   function checkComplete() {
     completedChecks++;
     if (completedChecks === 4) {
-      // All checks are completed
       if (true) {
         console.log("All inputs are valid.");
-        // Submit the form multiple times based on quantity
         for (let i = 0; i < quantity; i++) {
           submitForm();
         }
@@ -43,7 +38,6 @@ function checkInputs() {
     }
   }
 
-  // Call the asynchronous checks for each input
   checkItem(
     "merkOphalen.php",
     { merk: merk },

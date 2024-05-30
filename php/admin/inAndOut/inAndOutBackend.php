@@ -1,5 +1,4 @@
 <?php
-// Include database connection file
 include('../../../database.php');
 
 // Check if the selected date is provided
@@ -82,7 +81,5 @@ if (isset($_POST['selectedDate'])) {
     echo json_encode(array("error" => "Selected date not provided"));
 }
 
-// Close the database connection
 $conn->close();
-
 ?>

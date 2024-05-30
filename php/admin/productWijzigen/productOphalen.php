@@ -1,12 +1,9 @@
 <?php
 include('../../../database.php');
 
-// Check if product_id is set in the request
 if(isset($_GET['product_id'])) {
-    // Sanitize the input
     $product_id = $_GET['product_id'];
 
-    // Prepare and execute the SQL query
     $stmt = $conn->prepare("
         SELECT
             p.product_id,
@@ -26,23 +23,17 @@ if(isset($_GET['product_id'])) {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Fetch the product details
     $productDetails = $result->fetch_assoc();
 
-    // Check if product details are found
     if($productDetails) {
-        // Return the product details as JSON
         echo json_encode($productDetails);
     } else {
-        // Product not found
         echo json_encode(array('error' => 'Product not found'));
     }
 
-    // Close the statement and database connection
     $stmt->close();
     $conn->close();
 } else {
-    // product_id not provided in the request
     echo json_encode(array('error' => 'Product ID not provided'));
 }
 ?>
