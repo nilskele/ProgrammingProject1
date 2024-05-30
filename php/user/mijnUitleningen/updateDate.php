@@ -1,6 +1,7 @@
 <?php
 include ('../../../database.php');
 
+// Deze code is voor het verlengen van de uitleendatum
 $lening_id = $_POST['lening_id'];
 $action = $_POST['action'];
 

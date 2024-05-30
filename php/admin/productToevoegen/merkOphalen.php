@@ -1,6 +1,7 @@
 <?php
 include('../../../database.php');
 
+// Kijkt of merk al bestaat
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $merk = $_POST["merk"];
 

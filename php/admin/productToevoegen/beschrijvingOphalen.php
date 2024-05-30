@@ -1,6 +1,7 @@
 <?php
 include('../../../database.php');
 
+// Geeft aan of de beschrijving al bestaat
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $beschrijving = $_POST["beschrijving"];
 

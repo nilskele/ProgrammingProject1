@@ -1,3 +1,4 @@
+// Met deze code kan de admin een product of meerdere producten toevoegen.
 let hasSubmitted = false;
 
 $(document).ready(function () {

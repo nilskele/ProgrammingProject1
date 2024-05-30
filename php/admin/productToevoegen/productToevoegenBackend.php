@@ -5,6 +5,7 @@ header('Content-Type: application/json');
 
 $response = array();
 
+// Wijzigt het product in de database
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $merk = isset($_POST["merk"]) ? $_POST["merk"] : null;
   $productNaam = isset($_POST["productName"]) ? $_POST["productName"] : null;

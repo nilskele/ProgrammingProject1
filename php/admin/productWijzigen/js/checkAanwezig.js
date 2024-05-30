@@ -1,3 +1,4 @@
+// Met deze javascript file kan de admin de gegevens van een product wijzigen.
 document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get('product_id');

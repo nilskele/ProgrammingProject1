@@ -1,6 +1,7 @@
 <?php
 include ('../../../database.php');
 
+// Deze code haalt alle producten op die de gebruiker in zijn mandje heeft zitten
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }

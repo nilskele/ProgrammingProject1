@@ -288,20 +288,6 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchDataAndPopulateTable();
   $("table").on("click", "button", handleButtonClick);
 
-  function fetchUserType() {
-    return $.ajax({
-      url: "getUserType.php",
-      method: "GET",
-      dataType: "json"
-    });
-  }
-
-  fetchUserType().then((data) => {
-    if (data.user_type === 2) {
-      console.log("User is a docent");
-    }
-  });
-
   let waarschuwingenCount = document.querySelector(".waarschuwingenCount");
   if (waarschuwingenCount) {
     fetch("waarschuwingenCount.php")

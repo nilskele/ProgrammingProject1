@@ -1,6 +1,7 @@
 <?php
 include('../../../database.php');
 
+// Met deze query worden alle categorien uit de database opgehaald
 $sql = "SELECT naam FROM CATEGORY";
 $result = $conn->query($sql);
 

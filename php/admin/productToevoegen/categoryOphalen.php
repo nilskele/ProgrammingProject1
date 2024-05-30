@@ -1,6 +1,7 @@
 <?php
 include('../../../database.php');
 
+// Kijkt of categorie al bestaat
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $category = $_POST["category"];
 
