@@ -1,6 +1,7 @@
 <?php
 include('../../../database.php');
 
+// In deze code wordt een product opgehaald uit de database op basis van het product_id dat wordt meegegeven in de URL.
 if(isset($_GET['product_id'])) {
     $product_id = $_GET['product_id'];
 

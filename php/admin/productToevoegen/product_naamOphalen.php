@@ -1,6 +1,7 @@
 <?php
 include('../../../database.php');
 
+// Haalt de naam van het product op
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $productName = $_POST["productName"];
 

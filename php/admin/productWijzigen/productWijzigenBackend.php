@@ -1,6 +1,7 @@
 <?php
 include('../../../database.php');
 
+// In deze code wordt gecontroleerd of de benodigde velden zijn ingevuld. Als dit niet het geval is, wordt een foutmelding geretourneerd.
 $merk = isset($_POST["merk"]) ? $_POST["merk"] : null;
 $productNaam = isset($_POST["productName"]) ? $_POST["productName"] : null;
 $category = isset($_POST["category"]) ? $_POST["category"] : null;
@@ -16,6 +17,7 @@ if (is_null($merk) || is_null($productNaam) || is_null($category) || is_null($be
 
 $conn->begin_transaction();
 
+// Hier wordt gecontroleerd of het merk, categorie of beschrijving al bestaan in de database. Als dit niet het geval is, wordt het merk, categorie of beschrijving toegevoegd.
 try {
     $stmt = $conn->prepare("SELECT merk_id FROM MERK WHERE naam = ?");
     $stmt->bind_param("s", $merk);
@@ -62,6 +64,7 @@ try {
         $beschrijvingId = $result->fetch_assoc()['besch_id'];
     }
 
+    // Hier wordt gecontroleerd of de groep al bestaat in de database. Als dit niet het geval is, wordt de groep toegevoegd.
     $stmt = $conn->prepare("SELECT groep_id FROM GROEP WHERE naam = ? AND beschrijving_id_fk = ? AND merk_id_fk = ? AND category_id_fk = ?");
     $stmt->bind_param("siii", $productNaam, $beschrijvingId, $merkId, $categoryId);
     $stmt->execute();
@@ -77,6 +80,7 @@ try {
         $newGroupId = $result->fetch_assoc()['groep_id'];
     }
 
+    // Hier wordt het product bijgewerkt met de nieuwe groep_id en opmerkingen.
     $updateProductQuery = "UPDATE PRODUCT SET groep_id = ?, opmerkingen = ? WHERE product_id = ?";
     $stmt = $conn->prepare($updateProductQuery);
     $stmt->bind_param("isi", $newGroupId, $_POST['opmerkingen'], $productId);

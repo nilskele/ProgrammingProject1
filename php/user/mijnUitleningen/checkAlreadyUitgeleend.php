@@ -1,6 +1,7 @@
 <?php
 include ('../../../database.php');
 
+// Deze code is voor het controleren of de lening al is uitgeleend
 if (isset($_POST['lening_id']) && !empty($_POST['lening_id'])) {
 
   $lening_id = mysqli_real_escape_string($conn, $_POST['lening_id']);
