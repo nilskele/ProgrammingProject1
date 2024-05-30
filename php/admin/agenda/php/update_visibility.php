@@ -12,6 +12,7 @@ if ($conn->connect_error) {
 
 $data = json_decode(file_get_contents('php://input'), true);
 $itemId = intval($data['itemId']);
+$lening_id = intval($data['lening_id']);
 $action = isset($data['action']) ? $data['action'] : '';
 $soort = $data['soort'];
 
@@ -94,12 +95,12 @@ elseif ($action === 'annuleer') {
             $stmt1->close();
 
             // Delete from MIJN_LENINGEN
-            $annuleerReservatie = "DELETE FROM MIJN_LENINGEN WHERE product_id_fk = ?";
+            $annuleerReservatie = "DELETE FROM MIJN_LENINGEN WHERE lening_id = ?";
             $stmt2 = $conn->prepare($annuleerReservatie);
             if (!$stmt2) {
                 throw new Exception('Error preparing delete statement: ' . $conn->error);
             }
-            $stmt2->bind_param("i", $itemId);
+            $stmt2->bind_param("i", $lening_id);
             if (!$stmt2->execute()) {
                 throw new Exception('Error deleting from MIJN_LENINGEN: ' . $stmt2->error);
             }

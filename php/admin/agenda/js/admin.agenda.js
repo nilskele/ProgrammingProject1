@@ -13,14 +13,15 @@ function extractDetails(loanDetails) {
     const zichtbaar = loanDetails.map(item => item.zichtbaar);
     const soort = loanDetails.map(item => item.soort);
     const kit_id = loanDetails.map(item => item.kit_id); 
-    return { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar, soort, kit_id };
+    const lening_id = loanDetails.map(item => item.lening_id);
+    return { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar, soort, kit_id, lening_id };
 }
 
 // Capture the returned object
 const details = extractDetails(loanDetails);
-const { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar, soort, kit_id } = details;
+const { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar, soort, kit_id, lening_id} = details;
 
-console.log("tt"+zichtbaar);
+console.log("tt"+lening_id);
 
 // Function to format date to day/month format
 function formatDate(dateString) {
@@ -147,7 +148,7 @@ for (let indexLength = 0; indexLength < productNames.length; indexLength++) {
             console.log(itemId);
             html += `<li class="inactive">
             <button class="inactive calendar-button" 
-                data-item-id="${itemId}" 
+                data-lening-id="${lening_id[indexLength]}" data-item-id="${itemId[indexLength]}"
             >Uitgeleend</button>
          </li>`;
 
@@ -162,8 +163,9 @@ dates.innerHTML = html;
 }
 document.addEventListener('click', function(event) {
     if (event.target.classList.contains('calendar-button')) {
+        const lening_id = event.target.getAttribute('data-lening-id');
         const itemId = event.target.getAttribute('data-item-id');
-        console.log('Item ID:', itemId);
+        console.log('Item ID:', lening_id);
 
         Swal.fire({
             title: "Bent u zeker?",
@@ -184,6 +186,7 @@ document.addEventListener('click', function(event) {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
+                        lening_id: lening_id,
                         itemId: itemId,
                         action: "annuleer",
                     }),
@@ -217,12 +220,12 @@ document.addEventListener('click', function(event) {
                 })
                 .catch(error => {
                     //JSON probleem voor nu uitgezet.
-                   // console.error('Fetch error:', error);
-                   // Swal.fire(
-                      //  'Error',
-                     //   'Failed to annuleer reservatie: ' + error.message,
-                     //   'error'
-                   // );
+                    // console.error('Fetch error:', error);
+                     //Swal.fire(
+                       // 'Error',
+                       // 'Failed to annuleer reservatie: ' + error.message,
+                        //'error'
+                  // );
                    window.location.reload();
                 });
             } else {
