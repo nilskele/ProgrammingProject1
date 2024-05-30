@@ -207,6 +207,46 @@ document.addEventListener('click', function(event) {
                             'error'
                         );
                     } else if (data.success) {
+
+                        $.ajax({
+                            url: '../../../sendAnullering.php',
+                            type: 'POST',
+                            data: {
+                                lening_id: lening_id,
+                                itemId: itemId,
+                            },
+                            success: function(response) {
+                                if (response.success) {
+                                    Swal.fire({
+                                        title: 'Succes!',
+                                        text: 'De reservering is geannuleerd en de bevestigingsmail is verzonden.',
+                                        icon: 'success',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        title: 'Fout!',
+                                        text: response.error,
+                                        icon: 'error',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                Swal.fire({
+                                    title: 'Fout!',
+                                    text: 'Er is een probleem opgetreden bij het annuleren van de reservering.',
+                                    icon: 'error',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                console.error(error);
+                            }
+                        });
+
+
                         Swal.fire(
                             'Geannuleerd',
                             'De reservatie is geannuleerd',
