@@ -187,7 +187,9 @@ body {
 /* styles.css */
 
 
-
+button.oplossenButton.btn.btn-dark {
+    height: 50px;
+}
 
 
 

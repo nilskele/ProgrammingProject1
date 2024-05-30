@@ -10,6 +10,7 @@ $query1 = "SELECT  DISTINCT d.*, p.product_id, g.*,u.voornaam, u.achternaam, u.e
            INNER JOIN USER u ON l.user_id_fk = u.user_id
            INNER JOIN GROEP g ON p.groep_id = g.groep_id
            INNER JOIN IMAGE i ON g.image_id_fk =  i.image_id
+           WHERE d.isOpgelost = false
            ";
 
 $result1 = $conn->query($query1);
