@@ -109,12 +109,13 @@ include ('../../database.php');
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Admin Calendar</title>
+  
 </head>
 
 <body>
   <div class="buttons_kalender">
 
-    <form action="" method="GET" onsubmit="scrollToResults()">
+    <form action="" method="GET">
       <div class="form_zoek">
         <div class="search-input-container">
           <input type="text" id="searchInput" name="Zoeken" placeholder="Zoeken...">
@@ -318,7 +319,7 @@ if ($isKit) {
                 JOIN GROEP g ON p.groep_id = g.groep_id
                 LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
   } else {
-    $sql_all = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
+    $sql_all = "SELECT  p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum
                 FROM PRODUCT p
                 JOIN GROEP g ON p.groep_id = g.groep_id
                 LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
@@ -339,7 +340,8 @@ if ($result_all->num_rows > 0) {
         "product_id" => $row["kit_naam"],
         "product_name" => $row["naam"],
         "zichtbaar" => $row["zichtbaar"],
-        "soort" => "kit"
+        "soort" => "kit",
+        "lening_id" => ""
       );
     } else {
       $loanDetails[] = array(
@@ -362,21 +364,6 @@ $conn->close();
 // Convert loanDetails to JSON
 $loanDetailsJSON = json_encode($loanDetails);
   ?>
-  <script>
-    function scrollToResults() {
-      // Scroll to the results section after form submission
-      setTimeout(function () {
-        document.getElementById('results').scrollIntoView({
-          behavior: 'smooth'
-        });
-      }, 100);
-    }
-    window.addEventListener('DOMContentLoaded', (event) => {
-      <?php if (isset($_GET['Zoeken'])): ?>
-        scrollToResults();
-      <?php endif; ?>
-    });
-  </script>
   <script>
     const loanDetails = <?php echo $loanDetailsJSON; ?>;
   </script>

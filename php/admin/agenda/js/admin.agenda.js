@@ -20,7 +20,7 @@ function extractDetails(loanDetails) {
 const details = extractDetails(loanDetails);
 const { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar, soort, kit_id } = details;
 
-console.log("tt"+productID);
+console.log("tt"+zichtbaar);
 
 // Function to format date to day/month format
 function formatDate(dateString) {
@@ -249,6 +249,7 @@ document.addEventListener('click', function(event) {
         const itemId = event.target.getAttribute('data-item-id');
         const indexLength = event.target.getAttribute('data-index');
         const soort = event.target.getAttribute('data-soort');
+        console.log("zichtbaar:: " + zichtbaar[indexLength]);
         // Perform desired actions
         Swal.fire({
             title: "Bent u zeker?",

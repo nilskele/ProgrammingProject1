@@ -57,15 +57,3 @@ document.addEventListener("DOMContentLoaded", function() {
     loadSearchType();
 });
 
-// Scroll to results if search was performed
-function scrollToResults() {
-    setTimeout(function() {
-        document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
-    }, 100); // Slight delay to ensure results are rendered
-}
-
-window.addEventListener('DOMContentLoaded', (event) => {
-    if (new URLSearchParams(window.location.search).has('Zoeken')) {
-        scrollToResults();
-    }
-});
