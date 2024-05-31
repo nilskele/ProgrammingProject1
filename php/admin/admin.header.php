@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="/ProgrammingProject1/css/styles.css" />
 <link rel="stylesheet" href="/ProgrammingProject1/css/admin.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<title>Medialab</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
