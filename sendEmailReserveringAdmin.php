@@ -26,7 +26,8 @@ $startDatum = $_GET['startDatum'];
 $eindDatum = $_GET['eindDatum'];
 $aantal = $_GET['aantal'];
 $product_id = $_GET['productNr'];
-$Email = $_GET['email'];
+// $Email = $_GET['email'];
+$Email = "jente.tavernier01@gmail.com";
 
 // productnaam ophalen
 $query = "SELECT GROEP.naam
@@ -107,8 +108,8 @@ $email = (new Email())
             color: #666;
         }
 
-        .a_img {
-            width: 30px;
+        .ehb_img {
+            width: 200px;
         }
     </style>
     </head>

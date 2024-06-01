@@ -55,7 +55,8 @@ $result = $stmt->get_result();
 
 if ($result && $result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    $Email = $row['email'];
+    // $Email = $row['email'];
+    $Email = "jentetavernier01@gmail.com";
     $groepNaam = $row['naam'];
     $startDatum = $row['Uitleendatum'];
     $eindDatum = $row['terugbrengDatum'];
@@ -99,8 +100,8 @@ if ($result && $result->num_rows > 0) {
             p {
                 color: #666;
             }
-            .a_img {
-                width: 30px;
+            .ehb_img {
+                width: 200px;
             }
         </style>
         </head>

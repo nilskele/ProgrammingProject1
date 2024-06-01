@@ -66,7 +66,8 @@ if ($isKit == 1) {
         error_log("Fout bij het uitvoeren van de query: " . $conn->error);
     }
 
-    $Email = $_SESSION['email'];
+    // $Email = $_SESSION['email'];
+    $Email = "jentetavernier01@gmail.com";
 
     // smtp transport instellen
     $transport = (new Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport
@@ -181,7 +182,8 @@ if ($isKit == 1) {
         error_log("Fout bij het uitvoeren van de query: " . $conn->error);
     }
     
-    $Email = $_SESSION['email'];
+    // $Email = $_SESSION['email'];
+    $Email = "jentetavernier01@gmail.com";
     
     // smtp transport instellen
     $transport = (new Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport
@@ -226,8 +228,8 @@ if ($isKit == 1) {
                 color: #666;
             }
     
-            .a_img {
-                width: 30px;
+            .ehb_img {
+                width: 200px;
             }
         </style>
         </head>

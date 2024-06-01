@@ -26,7 +26,8 @@ $startDatum = $_GET['startDatum'];
 $eindDatum = $_GET['eindDatum'];
 $aantal = $_GET['aantal'];
 $KitNr = $_GET['KitNr'];
-$Email = $_GET['email'];
+// $Email = $_GET['email'];
+$Email = "jente.tavernier01@gmail.com";
 
 // kitnaam ophalen
 $query = "SELECT kit_naam
@@ -63,7 +64,7 @@ if ($result2) {
     error_log("Fout bij het uitvoeren van de query: " . $conn->error);
 }
 
-$Email = $_SESSION['email'];
+// $Email = $_SESSION['email'];
 
 // smtp transport instellen
 $transport = (new Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport
@@ -108,8 +109,8 @@ $email = (new Email())
             color: #666;
         }
 
-        .a_img {
-            width: 30px;
+        .ehb_img {
+            width: 200px;
         }
     </style>
     </head>
