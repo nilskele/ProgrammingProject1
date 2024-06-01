@@ -1,7 +1,7 @@
 <?php
 
-include ('database.php');
-require ('vendor/autoload.php');
+include('database.php');
+require('vendor/autoload.php');
 require_once __DIR__.'/vendor/autoload.php';
 
 use Symfony\Component\Mailer\Mailer;
@@ -11,7 +11,6 @@ use Dotenv\Dotenv;
 
 session_start();
 
-// Load environment variables
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
@@ -35,17 +34,31 @@ $query = "SELECT email, GROEP.naam, Uitleendatum, terugbrengDatum
           JOIN GROEP ON PRODUCT.groep_id = GROEP.groep_id
           WHERE lening_id = ?";
 
+
 $stmt = $conn->prepare($query);
+if (!$stmt) {
+    error_log("Fout bij het voorbereiden van de query: " . $conn->error);
+    echo json_encode(array("success" => false, "error" => "Fout bij het voorbereiden van de query"));
+    exit;
+}
+
 $stmt->bind_param("s", $lening_id);
-$stmt->execute();
+$executeSuccess = $stmt->execute();
+
+if (!$executeSuccess) {
+    error_log("Fout bij het uitvoeren van de query: " . $stmt->error);
+    echo json_encode(array("success" => false, "error" => "Fout bij het uitvoeren van de query"));
+    exit;
+}
+
 $result = $stmt->get_result();
 
-if ($result && $row = $result->fetch_assoc()) {
+if ($result && $result->num_rows > 0) {
+    $row = $result->fetch_assoc();
     $Email = $row['email'];
     $groepNaam = $row['naam'];
     $startDatum = $row['Uitleendatum'];
     $eindDatum = $row['terugbrengDatum'];
-    error_log("Groep: " . $groepNaam);
 
     $transport = (new EsmtpTransport('mail.smtp2go.com', 2525))
                     ->setUsername($smtpUsername)
@@ -110,7 +123,6 @@ if ($result && $row = $result->fetch_assoc()) {
         ");
 
     try {
-        // Email versturen
         $mailer->send($email);
         error_log("Email sent");
         echo json_encode(array("success" => true));
@@ -119,8 +131,8 @@ if ($result && $row = $result->fetch_assoc()) {
         echo json_encode(array("success" => false, "error" => "Fout bij het verzenden van de bevestigingsmail: " . $e->getMessage()));
     }
 } else {
-    error_log("Fout bij het uitvoeren van de query: " . $conn->error);
-    echo json_encode(array("success" => false, "error" => "Fout bij het ophalen van de gebruikersgegevens"));
+    error_log("Geen resultaten gevonden of fout bij het uitvoeren van de query: " . $conn->error);
+    echo json_encode(array("success" => false, "error" => "Geen resultaten gevonden voor de opgegeven lening_id"));
 }
 
 $conn->close();
