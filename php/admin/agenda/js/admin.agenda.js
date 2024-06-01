@@ -281,16 +281,14 @@ document.addEventListener('click', function(event) {
     }
 });
 
-// Add event listener to a parent element
 document.addEventListener('click', function(event) {
-    // Check if the clicked element is a button with the class 'calendar-button'
     if (event.target.classList.contains('fa-eye') || event.target.classList.contains('fa-eye-slash')) {
-        // Extract necessary data attributes from the button
         const itemId = event.target.getAttribute('data-item-id');
         const indexLength = event.target.getAttribute('data-index');
         const soort = event.target.getAttribute('data-soort');
-        console.log("zichtbaar:: " + itemId[indexLength]);
-        // Perform desired actions
+        
+        console.log(`Visibility change requested for item ${itemId} of type ${soort} at index ${indexLength}`);
+
         Swal.fire({
             title: "Bent u zeker?",
             text: zichtbaar[indexLength] === 1 ? "Wilt u dit item onzichtbaar maken, u zal deze wel nog zien in de catalogus!" : "Wilt u dit item zichtbaar maken?",
@@ -303,6 +301,9 @@ document.addEventListener('click', function(event) {
         }).then((result) => {
             if (result.isConfirmed) {
                 const newVisibility = zichtbaar[indexLength] === 1 ? 0 : 1; // Toggle visibility
+                
+                console.log(`Setting new visibility to ${newVisibility} for item ${itemId}`);
+
                 fetch('http://127.0.0.1/ProgrammingProject1/php/admin/agenda/php/update_visibility.php', {
                     method: 'POST',
                     headers: {
@@ -312,6 +313,7 @@ document.addEventListener('click', function(event) {
                         itemId: itemId,
                         visibility: newVisibility,
                         soort: soort,
+                        action: "zichtbaar",
                     }),
                 })
                 .then(response => {
@@ -324,12 +326,15 @@ document.addEventListener('click', function(event) {
                     if (data.error) {
                         throw new Error(data.error);
                     }
+                    
+                    console.log(`Visibility update response: ${JSON.stringify(data)}`);
+                    
+                    zichtbaar[indexLength] = data.visibility; // Update visibility in the array
                     Swal.fire(
                         data.visibility === 1 ? 'Zichtbaar!' : 'Onzichtbaar!',
                         `Het item is ${data.visibility === 1 ? 'zichtbaar' : 'onzichtbaar'} gezet`,
                         'success'
                     ).then(() => {
-                        zichtbaar[indexLength] = data.visibility; // Update visibility in the array
                         window.location.reload(); // Reload the page after the success message
                     });
                 })
@@ -337,7 +342,7 @@ document.addEventListener('click', function(event) {
                     console.error('There was a problem with the fetch operation:', error);
                     Swal.fire(
                         'Error',
-                        'Failed to update item visibility',
+                        'Failed to update item visibility: ' + error.message,
                         'error'
                     );
                 });
@@ -351,6 +356,7 @@ document.addEventListener('click', function(event) {
         });
     }
 });
+
 
 document.addEventListener('click', function(event) {
     if (event.target.classList.contains('fa-trash-o')) {

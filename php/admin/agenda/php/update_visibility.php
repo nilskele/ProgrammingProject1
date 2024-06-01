@@ -3,10 +3,16 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+ob_start(); // Start output buffering
+
 include("../../../../database.php");
 
+$response = array();
+
 if ($conn->connect_error) {
-    echo json_encode(array('error' => 'Connection failed: ' . $conn->connect_error));
+    $response['error'] = 'Connection failed: ' . $conn->connect_error;
+    echo json_encode($response);
+    ob_end_clean();
     exit();
 }
 
@@ -31,10 +37,10 @@ if ($action === 'delete') {
             }
 
             $conn->commit();
-            echo json_encode(array('success' => true));
+            $response['success'] = true;
         } catch (Exception $e) {
             $conn->rollback();
-            echo json_encode(array('error' => $e->getMessage()));
+            $response['error'] = $e->getMessage();
         }
     } else {
         try {
@@ -51,15 +57,13 @@ if ($action === 'delete') {
             }
 
             $conn->commit();
-            echo json_encode(array('success' => true));
+            $response['success'] = true;
         } catch (Exception $e) {
             $conn->rollback();
-            echo json_encode(array('error' => $e->getMessage()));
+            $response['error'] = $e->getMessage();
         }
     }
-} 
-
-elseif ($action === 'annuleer') {
+} elseif ($action === 'annuleer') {
     $conn->begin_transaction();
     try {
         // SQL query to check for matching records
@@ -77,7 +81,7 @@ elseif ($action === 'annuleer') {
 
         // Check if the query has a result
         if ($result->num_rows > 0) {
-            echo json_encode(array('error' => 'Er is een defect gemeld voor dit product'));
+            $response['error'] = 'Er is een defect gemeld voor dit product';
         } else {
             // Update the PRODUCT table
             $veranderIsUitgeleend = "UPDATE PRODUCT 
@@ -107,16 +111,14 @@ elseif ($action === 'annuleer') {
             $stmt2->close();
 
             $conn->commit();
-            echo json_encode(array('success' => true));
+            $response['success'] = true;
         }
         $stmt->close();
     } catch (Exception $e) {
         $conn->rollback();
-        echo json_encode(array('error' => $e->getMessage()));
+        $response['error'] = $e->getMessage();
     }
-}
-
-else {
+} else {
     $visibility = intval($data['visibility']);
     if ($soort == "kit") {
         $updateZichtbaarheid = "UPDATE KIT SET zichtbaar = {$visibility} WHERE kit_id = {$itemId}";
@@ -124,11 +126,14 @@ else {
         $updateZichtbaarheid = "UPDATE PRODUCT SET zichtbaar = {$visibility} WHERE product_id = {$itemId}";
     }
     if ($conn->query($updateZichtbaarheid) === TRUE) {
-        echo json_encode(array('visibility' => $visibility));
+        $response['visibility'] = $visibility;
     } else {
-        echo json_encode(array('error' => 'Error updating record: ' . $conn->error));
+        $response['error'] = 'Error updating record: ' . $conn->error;
     }
 }
 
 $conn->close();
+
+ob_end_clean(); // Clean the buffer and end buffering
+echo json_encode($response);
 ?>

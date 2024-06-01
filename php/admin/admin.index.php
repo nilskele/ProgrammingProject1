@@ -326,7 +326,7 @@ if ($isKit) {
     JOIN GROEP g ON p.groep_id = g.groep_id
     LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
   } else {
-    $sql_all = "SELECT  p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum, l.lening_id
+    $sql_all = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum, l.lening_id
     FROM PRODUCT p
     JOIN GROEP g ON p.groep_id = g.groep_id
     LEFT JOIN MIJN_LENINGEN l ON p.product_id = l.product_id_fk";
