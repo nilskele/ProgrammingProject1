@@ -180,7 +180,7 @@ document.addEventListener('click', function(event) {
             if (result.isConfirmed) {
                 console.log('Confirmed');
 
-                fetch('http://127.0.0.1/ProgrammingProject1/php/admin/agenda/php/update_visibility.php', {
+                fetch('/ProgrammingProject1/php/admin/agenda/php/update_visibility.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -202,33 +202,26 @@ document.addEventListener('click', function(event) {
                     console.log('Data received:', data);
                     if (data.error) {
                         Swal.fire(
-                            'Error',
+                            'Error5',
                             data.error,
                             'error'
                         );
                     } else if (data.success) {
 
                         $.ajax({
-                            url: '../../../sendAnullering.php',
+                            url: '/ProgrammingProject1/sendAnullering.php',
                             type: 'POST',
                             data: {
                                 lening_id: lening_id,
                                 itemId: itemId,
                             },
                             success: function(response) {
+                                console.log(response);
                                 if (response.success) {
                                     Swal.fire({
                                         title: 'Succes!',
                                         text: 'De reservering is geannuleerd en de bevestigingsmail is verzonden.',
                                         icon: 'success',
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    });
-                                } else {
-                                    Swal.fire({
-                                        title: 'Fout!',
-                                        text: response.error,
-                                        icon: 'error',
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
@@ -304,7 +297,7 @@ document.addEventListener('click', function(event) {
                 
                 console.log(`Setting new visibility to ${newVisibility} for item ${itemId}`);
 
-                fetch('http://127.0.0.1/ProgrammingProject1/php/admin/agenda/php/update_visibility.php', {
+                fetch('/ProgrammingProject1/php/admin/agenda/php/update_visibility.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
