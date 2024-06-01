@@ -173,6 +173,7 @@ include ('../../database.php');
       <ul class="dates"></ul>
     </section>
   </div>
+  <script src="agenda/js/admin.agenda.search.js"></script>
   <?php
   // Check connection
   if ($conn->connect_error) {
@@ -206,7 +207,7 @@ include ('../../database.php');
         FROM KIT k
         JOIN KIT_PRODUCT kp ON k.kit_id = kp.kit_id_fk
         JOIN GROEP g ON kp.groep_id_fk = g.groep_id
-        LEFT JOIN MIJN_LENINGEN l ON kp.product_id_fk = l.product_id_fk
+        LEFT JOIN MIJN_LENINGEN l ON kp.groep_id_fk = l.product_id_fk
         WHERE k.kit_naam LIKE ?";
     } elseif ($searchType === 'id') {
         if ($itemStatus === 'gereserveerd') {
@@ -311,7 +312,7 @@ if ($isKit) {
   FROM KIT k
   JOIN KIT_PRODUCT kp ON k.kit_id = kp.kit_id_fk
   JOIN GROEP g ON kp.groep_id_fk = g.groep_id
-  LEFT JOIN MIJN_LENINGEN l ON kp.product_id_fk = l.product_id_fk";
+  LEFT JOIN MIJN_LENINGEN l ON kp.groep_id_fk = l.product_id_fk";
 } elseif ($itemStatus === "gereserveerd" && ($searchType === 'id' || $searchType === 'naam')) {
   $sql_all = "SELECT p.product_id, g.naam AS product_name, p.zichtbaar, l.Uitleendatum, l.terugbrengDatum, l.lening_id
   FROM PRODUCT p

@@ -88,7 +88,7 @@ elseif ($action === 'annuleer') {
             if (!$stmt1) {
                 throw new Exception('Error preparing update statement: ' . $conn->error);
             }
-            $stmt1->bind_param("i", $itemId);
+            $stmt1->bind_param("i",$itemId);
             if (!$stmt1->execute()) {
                 throw new Exception('Error updating PRODUCT: ' . $stmt1->error);
             }
@@ -100,7 +100,7 @@ elseif ($action === 'annuleer') {
             if (!$stmt2) {
                 throw new Exception('Error preparing delete statement: ' . $conn->error);
             }
-            $stmt2->bind_param("i", $lening_id);
+            $stmt2->bind_param("i",$lening_id);
             if (!$stmt2->execute()) {
                 throw new Exception('Error deleting from MIJN_LENINGEN: ' . $stmt2->error);
             }

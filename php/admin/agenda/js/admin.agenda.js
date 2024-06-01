@@ -21,7 +21,7 @@ function extractDetails(loanDetails) {
 const details = extractDetails(loanDetails);
 const { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar, soort, kit_id, lening_id} = details;
 
-console.log("tt");
+console.log("tt" + productID);
 
 // Function to format date to day/month format
 function formatDate(dateString) {
@@ -148,7 +148,7 @@ for (let indexLength = 0; indexLength < productNames.length; indexLength++) {
             console.log(itemId);
             html += `<li class="inactive">
             <button class="inactive calendar-button" 
-                data-lening-id="${lening_id[indexLength]}" data-item-id="${itemId[indexLength]}"
+                data-lening-id="${lening_id[indexLength]}" data-item-id="${itemId}"
             >Uitgeleend</button>
          </li>`;
 
@@ -165,7 +165,7 @@ document.addEventListener('click', function(event) {
     if (event.target.classList.contains('calendar-button')) {
         const lening_id = event.target.getAttribute('data-lening-id');
         const itemId = event.target.getAttribute('data-item-id');
-        console.log('Item ID:', lening_id);
+        console.log('lening ID:', lening_id , "Item ID: " + itemId);
 
         Swal.fire({
             title: "Bent u zeker?",
@@ -252,7 +252,7 @@ document.addEventListener('click', function(event) {
                             'De reservatie is geannuleerd',
                             'success'
                         ).then(() => {
-                            window.location.reload();
+                           // window.location.reload();
                         });
                     } else {
                         throw new Error('Unexpected response format');
@@ -260,13 +260,13 @@ document.addEventListener('click', function(event) {
                 })
                 .catch(error => {
                     //JSON probleem voor nu uitgezet.
-                    // console.error('Fetch error:', error);
-                     //Swal.fire(
-                       // 'Error',
-                       // 'Failed to annuleer reservatie: ' + error.message,
-                        //'error'
-                  // );
-                   window.location.reload();
+                     console.error('Fetch error:', error);
+                     Swal.fire(
+                        'Error',
+                        'Failed to annuleer reservatie: ' + error.message,
+                        'error'
+                   );
+                   //window.location.reload();
                 });
             } else {
                 console.log('Cancelled');
@@ -281,9 +281,6 @@ document.addEventListener('click', function(event) {
     }
 });
 
-
-
-
 // Add event listener to a parent element
 document.addEventListener('click', function(event) {
     // Check if the clicked element is a button with the class 'calendar-button'
@@ -292,7 +289,7 @@ document.addEventListener('click', function(event) {
         const itemId = event.target.getAttribute('data-item-id');
         const indexLength = event.target.getAttribute('data-index');
         const soort = event.target.getAttribute('data-soort');
-        console.log("zichtbaar:: " + zichtbaar[indexLength]);
+        console.log("zichtbaar:: " + itemId[indexLength]);
         // Perform desired actions
         Swal.fire({
             title: "Bent u zeker?",
