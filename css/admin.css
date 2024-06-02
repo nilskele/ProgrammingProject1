@@ -334,7 +334,7 @@ h1 {
 }
 
 .buttons_kalender form input[type="text"]::placeholder {
-    color: red;
+    color: black;
 }
 
 /* css kalender */

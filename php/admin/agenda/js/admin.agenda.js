@@ -21,7 +21,7 @@ function extractDetails(loanDetails) {
 const details = extractDetails(loanDetails);
 const { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar, soort, kit_id, lening_id} = details;
 
-console.log("tt" + productID);
+console.log("tt" + zichtbaar);
 
 // Function to format date to day/month format
 function formatDate(dateString) {
@@ -262,7 +262,7 @@ document.addEventListener('click', function(event) {
         const indexLength = event.target.getAttribute('data-index');
         const soort = event.target.getAttribute('data-soort');
         
-        console.log(`Visibility change requested for item ${itemId} of type ${soort} at index ${indexLength}`);
+        console.log(`Visibility change requested for item ${itemId} of type ${soort} at index ${indexLength} with visibility ${zichtbaar}`);
 
         Swal.fire({
             title: "Bent u zeker?",
@@ -276,7 +276,6 @@ document.addEventListener('click', function(event) {
         }).then((result) => {
             if (result.isConfirmed) {
                 const newVisibility = zichtbaar[indexLength] === 1 ? 0 : 1; // Toggle visibility
-                
                 console.log(`Setting new visibility to ${newVisibility} for item ${itemId}`);
 
                 fetch('/ProgrammingProject1/php/admin/agenda/php/update_visibility.php', {

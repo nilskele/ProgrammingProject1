@@ -115,33 +115,36 @@ include ('../../database.php');
 <body>
   <div class="buttons_kalender">
 
-    <form action="" method="GET">
-      <div class="form_zoek">
-        <div class="search-input-container">
-          <input type="text" id="searchInput" name="Zoeken" placeholder="Zoeken...">
-        </div>
-        <div class="toggle-container">
-          <span id="labelID" class="toggle-label active">ID</span>
-          <label class="switch">
-            <input type="checkbox" id="searchToggle" onclick="updateSearchType()">
-            <span class="slider round"></span>
-          </label>
-          <span id="labelNaam" class="toggle-label">Naam</span>
-        </div>
+  <form action="" method="GET">
+  <div class="form_zoek">
+    <div class="search-bar">
+      <input type="text" id="searchInput" name="Zoeken" placeholder="Zoeken...">
+      <button class="button_zoeken1" type="submit">Zoek</button>
+    </div>
+    <div class="options">
+      <div class="toggle-container">
+        <span id="labelID" class="toggle-label active">ID</span>
+        <label class="switch">
+          <input type="checkbox" id="searchToggle" onclick="updateSearchType()">
+          <span class="slider round"></span>
+        </label>
+        <span id="labelNaam" class="toggle-label">Naam</span>
         <input type="hidden" id="searchType" name="searchType" value="naam">
-        <div class="checkboxKit">
-          <input type="checkbox" id="kitCheckbox" name="kitCheckbox" value="kit" onclick="updateKitCheckbox()">
-          <label for="kitCheckbox">KIT</label><br>
-        </div>
-        <div class="selection-container">
-          <select id="itemStatus" name="itemStatus">
-            <option value="gereserveerd">Gereserveerd</option>
-            <option value="alleItems">Alle items</option>
-          </select>
-        </div>
-        <button class="button_zoeken" type="submit">Zoek</button>
       </div>
-    </form>
+      <div class="checkboxKit">
+        <input type="checkbox" id="kitCheckbox" name="kitCheckbox" value="kit" onclick="updateKitCheckbox()">
+        <label for="kitCheckbox">KIT</label>
+      </div>
+      <div class="selection-container">
+        <select id="itemStatus" name="itemStatus">
+          <option value="gereserveerd">Gereserveerd</option>
+          <option value="alleItems">Alle items</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</form>
+
     <div class="buttons-container">
       <a href="/ProgrammingProject1/php/admin/kitToevoegen/kit_toevoegen.php"><button>Kit toevoegen</button></a>
       <a href="/ProgrammingProject1/php/admin/productToevoegen/product_toevoegen.php"><button>Product
