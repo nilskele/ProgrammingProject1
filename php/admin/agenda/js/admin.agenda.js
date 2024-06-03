@@ -272,16 +272,16 @@ document.addEventListener('click', function(event) {
 
         Swal.fire({
             title: "Bent u zeker?",
-            text: zichtbaar[indexLength] === 1 ? "Wilt u dit item onzichtbaar maken, u zal deze wel nog zien in de catalogus!" : "Wilt u dit item zichtbaar maken?",
+            text: zichtbaar[indexLength] == 1 ? "Wilt u dit item onzichtbaar maken, u zal deze wel nog zien in de catalogus!" : "Wilt u dit item zichtbaar maken?",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: zichtbaar[indexLength] === 1 ? 'Ja, maak het item onzichtbaar!' : 'Ja, maak het item zichtbaar!',
+            confirmButtonText: zichtbaar[indexLength] == 1 ? 'Ja, maak het item onzichtbaar!' : 'Ja, maak het item zichtbaar!',
             cancelButtonText: 'Nee, maak het item niet zichtbaar!'
         }).then((result) => {
             if (result.isConfirmed) {
-                const newVisibility = zichtbaar[indexLength] === 1 ? 0 : 1; // Toggle visibility
+                const newVisibility = zichtbaar[indexLength] == 1 ? 0 : 1; // Toggle visibility
                 console.log(newVisibility);
                 console.log(`Setting new visibility to ${newVisibility} for item ${itemId}`);
 
@@ -312,8 +312,8 @@ document.addEventListener('click', function(event) {
                     
                     zichtbaar[indexLength] = data.visibility; // Update visibility in the array
                     Swal.fire(
-                        data.visibility === 1 ? 'Zichtbaar!' : 'Onzichtbaar!',
-                        `Het item is ${data.visibility === 1 ? 'zichtbaar' : 'onzichtbaar'} gezet`,
+                        data.visibility == 1 ? 'Zichtbaar!' : 'Onzichtbaar!',
+                        `Het item is ${data.visibility == 1 ? 'zichtbaar' : 'onzichtbaar'} gezet`,
                         'success'
                     ).then(() => {
                         window.location.reload(); // Reload the page after the success message
@@ -330,7 +330,7 @@ document.addEventListener('click', function(event) {
             } else {
                 Swal.fire(
                     'Cancelled',
-                    `Het item is niet ${zichtbaar[indexLength] === 1 ? 'onzichtbaar' : 'zichtbaar'} gezet.`,
+                    `Het item is niet ${zichtbaar[indexLength] == 1 ? 'onzichtbaar' : 'zichtbaar'} gezet.`,
                     'error'
                 );
             }
