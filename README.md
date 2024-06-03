@@ -22,7 +22,7 @@
       STAP 5: Start een secure connection met de school server dankszij een VPN. <br>
       STAP 6: Open het project in een IDE bevoorbeeld "Visual studio code". <br>
       STAP 7: Maak een .env file aan in de root van het project. <br>
-      STAP 8: Vul deze variabelen dan met de nodige gegevens in. <br>
+      STAP 8: Vul deze variabelen dan met de nodige gegevens in. (Staan in Teams Groep 2 .env_credentials.txt) <br>
       
 ```
 DB_HOST=
