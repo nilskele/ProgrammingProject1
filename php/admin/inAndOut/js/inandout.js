@@ -321,7 +321,7 @@ $(function () {
     var leningId = $this.closest(".inOutProduct").data("lening-id");
     Swal.fire({
       title: "Weet u zeker dat u dit wilt doen?",
-      text: "Dit product zal worden geaccepteerd.",
+      text: "Dit product zal worden geconfirmeerd.",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -337,6 +337,11 @@ $(function () {
             // Upon successful update, hide the row from the page
             if (response === "success") {
               $this.closest(".inOutProduct").hide();
+              Swal.fire({
+                icon: "success",
+                title: "Gelukt!",
+                text: "Het product is geconfirmeerd!",
+              })
             } else {
               console.error("Failed to update terugbrengDatum");
             }
@@ -428,8 +433,8 @@ $(function () {
         success: function (data) {
           if (data === "true") {
             Swal.fire({
-              title: "Are you sure?",
-              text: "You are about to perform an action. Do you want to proceed?",
+              title: "Weet u zeker dat u dit wilt doen?",
+              text: "Dit product zal worden geaccepteerd.",
               icon: "warning",
               showCancelButton: true,
               confirmButtonColor: "#3085d6",
@@ -445,6 +450,11 @@ $(function () {
                     if (responsee === "success") {
                       console.log("success");
                       $this.closest(".inOutProduct").remove();
+                      Swal.fire({
+                        icon: "success",
+                        title: "Gelukt!",
+                        text: "Het product is geaccepteerd!",
+                      })
                     } else {
                       console.error("Failed to delete row");
                     }

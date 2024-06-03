@@ -210,7 +210,13 @@ document.addEventListener("DOMContentLoaded", function() {
                         success: function(response) {
                             if (response === 'success') {
                                 console.log("checkcheck")
-                                
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Product geaccepteerd!',
+                                    text: 'Het product is geaccepteerd.',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });                                
                             } else {
                                 console.error('Failed to delete row');
                                 
