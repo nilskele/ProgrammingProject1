@@ -31,7 +31,7 @@ include('../../../database.php');
 
 <div class="inAndOut">
 
-    <h1>Defectenlijst. </h1>
+    <h1>Defectenlijst</h1>
     <div class="searchbar">
         <input type="text" id="zoekbalk" name="zoekbalk" placeholder="Zoek naar product nr" class="inputZoekbalk6">
     </div>

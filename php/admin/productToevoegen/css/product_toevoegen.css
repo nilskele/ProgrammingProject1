@@ -7,9 +7,6 @@
     width: 70%;
     height: 60%;
     border-radius: 1em;
-    background-color: white;
-    border: 1px solid #cecbcb;
-    box-shadow: #cecbcb 6px 6px;
     padding-top:5em;
 }
 
@@ -91,4 +88,8 @@ input#formFile {
 
 .labelcontainers {
     width: 90%
+}
+
+.product_toevoegen_titel {
+  margin: 20;
 }
