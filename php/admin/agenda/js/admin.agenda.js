@@ -119,7 +119,6 @@ function renderCalendar() {
     header.textContent = `${months[currentMonth]} ${currentYear}`;
 
 
-  // Update the HTML of the dates
 let html = "";
 for (let indexLength = 0; indexLength < productNames.length; indexLength++) {
     let maxAantallen = 8;
@@ -128,29 +127,36 @@ for (let indexLength = 0; indexLength < productNames.length; indexLength++) {
         const itemId = isKit ? kit_id[indexLength] : productID[indexLength]; // Use indexLength here
         const datesBetween = getDatesBetween(uitleendatums[indexLength], terugbrengDatums[indexLength]);
         if (index === 0) {
+            console.log("zichtbaar:"+zichtbaar[indexLength]);
+            //zichtbaar[indexLength] = 1;
+            let visibilityButton;
+            if (zichtbaar[indexLength] == 1) {
+                visibilityButton = `<button class="fa fa-eye" style="font-size:15px" data-item-id="${itemId}" data-index="${indexLength}" data-soort="${soort[indexLength]}"></button>`;
+            } else {
+                visibilityButton = `<button class="fa fa-eye-slash" style="font-size:15px" data-item-id="${itemId}" data-index="${indexLength}" data-soort="${soort[indexLength]}"></button>`;
+            }
+            
             html += `<li class="inactive">
-    <div class="items" style="font-size:18px">
-    ${productNames[indexLength] + ", " + productID[indexLength]}
-    </div>
-    <div class="buttons_item">
-        <button class="reserveren" href="/reserveren/reserveren.php">Reserveren</button> </br>
-        ${zichtbaar[indexLength] === 0
-            ? `<button class="fa fa-eye-slash" style="font-size:15px" data-item-id="${itemId}" data-index="${indexLength}" data-soort="${soort[indexLength]}"></button>` 
-            : `<button class="fa fa-eye" style="font-size:15px" data-item-id="${itemId}" data-index="${indexLength}" data-soort="${soort[indexLength]}"></button>`}
-        <button class="fa fa-trash-o" style="font-size:15px" data-item-id="${itemId}" data-index="${indexLength}" data-soort="${soort[indexLength]}"></button>
-        <button class="fa fa-pencil" style="font-size:15px" data-product-id="${itemId}"></button>       
-    </div>
-</li>`;
+                <div class="items" style="font-size:18px">
+                ${productNames[indexLength] + ", " + productID[indexLength]}
+                </div>
+                <div class="buttons_item">
+                    <button class="reserveren" href="/reserveren/reserveren.php">Reserveren</button> </br>
+                    ${visibilityButton}
+                    <button class="fa fa-trash-o" style="font-size:15px" data-item-id="${itemId}" data-index="${indexLength}" data-soort="${soort[indexLength]}"></button>
+                    <button class="fa fa-pencil" style="font-size:15px" data-product-id="${itemId}"></button>       
+                </div>
+            </li>`;
         } else if (currentYear != new Date(uitleendatums[indexLength]).getFullYear() &&
             currentYear != new Date(terugbrengDatums[indexLength]).getFullYear()) {
             html += `<li class="inactive">${"/"}</li>`;
         } else if (datesBetween.some(r => dagenWeek[index - 1].includes(r))) {
             console.log(itemId);
             html += `<li class="inactive">
-            <button class="inactive calendar-button" 
-                data-lening-id="${lening_id[indexLength]}" data-item-id="${itemId}"
-            >Uitgeleend</button>
-         </li>`;
+                <button class="inactive calendar-button" 
+                    data-lening-id="${lening_id[indexLength]}" data-item-id="${itemId}"
+                >Uitgeleend</button>
+            </li>`;
 
         } else {
             html += `<li class="inactive">${"/"}</li>`;
@@ -158,7 +164,7 @@ for (let indexLength = 0; indexLength < productNames.length; indexLength++) {
     }
 }
 
-// Update the HTML of the dates
+
 dates.innerHTML = html;
 }
 document.addEventListener('click', function(event) {
@@ -266,16 +272,17 @@ document.addEventListener('click', function(event) {
 
         Swal.fire({
             title: "Bent u zeker?",
-            text: zichtbaar[indexLength] === 1 ? "Wilt u dit item onzichtbaar maken, u zal deze wel nog zien in de catalogus!" : "Wilt u dit item zichtbaar maken?",
+            text: zichtbaar[indexLength] == 1 ? "Wilt u dit item onzichtbaar maken, u zal deze wel nog zien in de catalogus!" : "Wilt u dit item zichtbaar maken?",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: zichtbaar[indexLength] === 1 ? 'Ja, maak het item onzichtbaar!' : 'Ja, maak het item zichtbaar!',
+            confirmButtonText: zichtbaar[indexLength] == 1 ? 'Ja, maak het item onzichtbaar!' : 'Ja, maak het item zichtbaar!',
             cancelButtonText: 'Nee, maak het item niet zichtbaar!'
         }).then((result) => {
             if (result.isConfirmed) {
-                const newVisibility = zichtbaar[indexLength] === 1 ? 0 : 1; // Toggle visibility
+                const newVisibility = zichtbaar[indexLength] == 1 ? 0 : 1; // Toggle visibility
+                console.log(newVisibility);
                 console.log(`Setting new visibility to ${newVisibility} for item ${itemId}`);
 
                 fetch('/ProgrammingProject1/php/admin/agenda/php/update_visibility.php', {
@@ -305,8 +312,8 @@ document.addEventListener('click', function(event) {
                     
                     zichtbaar[indexLength] = data.visibility; // Update visibility in the array
                     Swal.fire(
-                        data.visibility === 1 ? 'Zichtbaar!' : 'Onzichtbaar!',
-                        `Het item is ${data.visibility === 1 ? 'zichtbaar' : 'onzichtbaar'} gezet`,
+                        data.visibility == 1 ? 'Zichtbaar!' : 'Onzichtbaar!',
+                        `Het item is ${data.visibility == 1 ? 'zichtbaar' : 'onzichtbaar'} gezet`,
                         'success'
                     ).then(() => {
                         window.location.reload(); // Reload the page after the success message
@@ -323,7 +330,7 @@ document.addEventListener('click', function(event) {
             } else {
                 Swal.fire(
                     'Cancelled',
-                    `Het item is niet ${zichtbaar[indexLength] === 1 ? 'onzichtbaar' : 'zichtbaar'} gezet.`,
+                    `Het item is niet ${zichtbaar[indexLength] == 1 ? 'onzichtbaar' : 'zichtbaar'} gezet.`,
                     'error'
                 );
             }
