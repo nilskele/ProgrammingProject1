@@ -21,8 +21,6 @@ function extractDetails(loanDetails) {
 const details = extractDetails(loanDetails);
 const { productNames, uitleendatums, terugbrengDatums, productID, zichtbaar, soort, kit_id, lening_id} = details;
 
-console.log("tt" + zichtbaar);
-
 // Function to format date to day/month format
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -127,7 +125,6 @@ for (let indexLength = 0; indexLength < productNames.length; indexLength++) {
         const itemId = isKit ? kit_id[indexLength] : productID[indexLength]; // Use indexLength here
         const datesBetween = getDatesBetween(uitleendatums[indexLength], terugbrengDatums[indexLength]);
         if (index === 0) {
-            console.log("zichtbaar:"+zichtbaar[indexLength]);
             //zichtbaar[indexLength] = 1;
             let visibilityButton;
             if (zichtbaar[indexLength] == 1) {
@@ -151,7 +148,6 @@ for (let indexLength = 0; indexLength < productNames.length; indexLength++) {
             currentYear != new Date(terugbrengDatums[indexLength]).getFullYear()) {
             html += `<li class="inactive">${"/"}</li>`;
         } else if (datesBetween.some(r => dagenWeek[index - 1].includes(r))) {
-            console.log(itemId);
             html += `<li class="inactive">
                 <button class="inactive calendar-button" 
                     data-lening-id="${lening_id[indexLength]}" data-item-id="${itemId}"
@@ -184,7 +180,6 @@ document.addEventListener('click', function(event) {
             cancelButtonText: 'Nee, annuleer de reservatie niet'
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log('Confirmed');
                 $.ajax({
                     url: '/ProgrammingProject1/sendAnullering.php',
                     type: 'POST',
@@ -194,7 +189,6 @@ document.addEventListener('click', function(event) {
                     },
                     success: function(response) {
                         console.log(response);
-                        console.log('mail verzonden');
                     },
                     error: function(xhr, status, error) {
                         console.error(error);
@@ -268,8 +262,6 @@ document.addEventListener('click', function(event) {
         const indexLength = event.target.getAttribute('data-index');
         const soort = event.target.getAttribute('data-soort');
         
-        console.log(`Visibility change requested for item ${itemId} of type ${soort} at index ${indexLength} with visibility ${zichtbaar}`);
-
         Swal.fire({
             title: "Bent u zeker?",
             text: zichtbaar[indexLength] == 1 ? "Wilt u dit item onzichtbaar maken, u zal deze wel nog zien in de catalogus!" : "Wilt u dit item zichtbaar maken?",
@@ -282,8 +274,6 @@ document.addEventListener('click', function(event) {
         }).then((result) => {
             if (result.isConfirmed) {
                 const newVisibility = zichtbaar[indexLength] == 1 ? 0 : 1; // Toggle visibility
-                console.log(newVisibility);
-                console.log(`Setting new visibility to ${newVisibility} for item ${itemId}`);
 
                 fetch('/ProgrammingProject1/php/admin/agenda/php/update_visibility.php', {
                     method: 'POST',
@@ -307,8 +297,6 @@ document.addEventListener('click', function(event) {
                     if (data.error) {
                         throw new Error(data.error);
                     }
-                    
-                    console.log(`Visibility update response: ${JSON.stringify(data)}`);
                     
                     zichtbaar[indexLength] = data.visibility; // Update visibility in the array
                     Swal.fire(
