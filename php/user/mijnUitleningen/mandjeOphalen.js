@@ -1,12 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   function fetchDataAndPopulateTable() {
-    console.log("Fetching data to populate the table...");
     $.ajax({
       url: "mandjeOphalen.php",
       method: "GET",
       dataType: "json",
       success: function (data) {
-        console.log("Data fetched successfully:", data);
         const tableBody = $("table tbody");
         tableBody.empty();
 
@@ -255,7 +253,6 @@ document.addEventListener("DOMContentLoaded", function () {
       dataType: "json",
       success: function (data) {
         if (data.success) {
-          console.log("Date updated successfully:", data.message);
         } else {
           console.error("Error updating date:", data.message);
         }
@@ -274,7 +271,6 @@ document.addEventListener("DOMContentLoaded", function () {
       dataType: "json",
       success: function (data) {
         if (data.success) {
-          console.log("Row deleted successfully:", data.message);
         } else {
           console.error("Error deleting row:", data.message);
         }
