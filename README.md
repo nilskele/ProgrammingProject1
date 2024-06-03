@@ -33,7 +33,7 @@ SMTP_USERNAME= %% eigen SMTP server credentails %%
 SMTP_PASSWORD= %% eigen SMTP server credentails %%
 ```
 <br>
-      STAP 9: ga naar u browser en type dit in http://127.0.0.1/programmingProject1/php/.<br><br>
+      STAP 9: ga naar u browser en type dit in http://127.0.0.1/ProgrammingProject1/php/.<br><br>
     <p>In onze oplossing kan een student een product of een kit reserveren. Voordat de student het product heeft afgehaald kan hij dit product nog annuleren. 
     Op de dag van de uitlening gaat de user naar het MediaLab, hier ziet de medewerker heb het admindashboard welk product de student nodig heeft.
     Wanneer de student op de terugbrengdatum het product wilt terugbrengen kan de admin deze via het productnummer of de email van de student het product accepteren.</p>
