@@ -42,7 +42,7 @@ if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
         AND PRODUCT.isUitgeleend = false
         AND PRODUCT.datumBeschikbaar < ?
     )
-    ROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data
+    GROUP BY KIT.kit_id, KIT.kit_naam, MERK.naam, KIT.opmerkingen, IMAGE.image_data
 HAVING COUNT(DISTINCT KIT_PRODUCT.groep_id_fk) >= (
     SELECT COUNT(*)
     FROM KIT_PRODUCT

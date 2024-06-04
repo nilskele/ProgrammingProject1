@@ -5,38 +5,40 @@
     <p>Welkom op onze repository voor Programming Project 1, deze opdracht werd ons gegeven door onze profs op de ErasmusHogeschool Brussel.</p>
     <p>Ons team bestaat uit een Scrum Master Nils Kelecom en 4 developers: Gust Berchmans, Jente Tavernier, Lucas Huygen en Samia Almtlek</p>
   <h2>Voorstelling probleem en oplossing</h2>
-    <p>De huidige status van het uitelnigssysteem van het MediaLab is zeer abreidsintensief waardoor het niet efficiënt verloopt. Er werd ons aan ons gevraagd om de uitleningsdienst te streamlinen.</p>
-    <p>Voor de oplossing zijn we begonnen met fase 1: oplijsten van de user stories die nodig zijn voor dit proejct. <br>
+    <p>De huidige status van het uitleensysteem van het MediaLab is zeer arbeidsintensief waardoor het niet efficiënt verloopt. Er werd ons aan ons gevraagd om de uitleningsdienst te stroomlijnen</p>
+    <p>Voor de oplossing zijn we begonnen met fase 1: oplijsten van de user stories die nodig zijn voor dit project <br>
     Hierna zijn we begonnen met fase 2: het prototype maken. Hiervoor hebben we Figma gebruikt om een design te maken voor onze applicatie.
     Dan zijn we begonnen aan fase 3: de development fase. 
     In deze fase hebben we gebruik gemaakt van Trello om hierin alle user stories te plaatsen die we in fase 1 hebben genoteerd.
     Voor elke userstorie hebben we een checklist gemaakt van alle functionaliteit die het nodig heeft om hem af te ronden.
-    We zijn dan itertaief in sprints gaan werken waardoor we op een constante snelheid suer stories konden voltooien.</p>
+    We zijn dan iteratief in sprints gaan werken waardoor we op een constante snelheid user stories konden voltooien.</p>
   <h2>De oplossing</h2>
     <p>Wij hebben voor dit project gebruik gemaakt van PHP in combinatie met Javascript en wij gebruiken een MySQL database. <br><br>
       Om deze oplossing te runnen hebben wij een stappenplan gemaakt om het makkelijk te maken: <br>
       STAP 1: Download XAMPP. <br>
-      STAP 2: Downloaden de repository. <br>
+      STAP 2: Download de repository. <br>
       STAP 3: Zet de gedownloade repository map in de HTDOCS map van XAMPP. <br>
       STAP 4: Open XAMPP en run the apache server. <br>
       STAP 5: Start een secure connection met de school server dankszij een VPN. <br>
       STAP 6: Open het project in een IDE bevoorbeeld "Visual studio code". <br>
       STAP 7: Maak een .env file aan in de root van het project. <br>
-      STAP 8: Vul deze variabelen dan met de nodige gegevens in. (Staan in Teams Groep 2 .env_credentials.txt) <br>
+      STAP 8: Vul deze variabelen dan met de nodige gegevens in. (Staan in Teams Groep 2 Finale bestanden/.env_credentials.txt, de SMTP-gegevens voor de mail kun met je eigen server invullen) <br>
       
 ```
 DB_HOST=
 DB_USERNAME=
 DB_PASSWORD=
 DB_DATABASE=
+SMTP_USERNAME= %% eigen SMTP server credentails %%
+SMTP_PASSWORD= %% eigen SMTP server credentails %%
 ```
 <br>
-      STAP 9: ga naar u browser en type dit in http://127.0.0.1/programmingProject1/php/.<br><br>
+      STAP 9: ga naar u browser en type dit in http://127.0.0.1/ProgrammingProject1/php/.<br><br>
     <p>In onze oplossing kan een student een product of een kit reserveren. Voordat de student het product heeft afgehaald kan hij dit product nog annuleren. 
-    Op de dag van de uitlening gaat de user naar het MediaLab, hier ziet de medwerker heb het admindashboard welk product de student nodig heeft.
+    Op de dag van de uitlening gaat de user naar het MediaLab, hier ziet de medewerker heb het admindashboard welk product de student nodig heeft.
     Wanneer de student op de terugbrengdatum het product wilt terugbrengen kan de admin deze via het productnummer of de email van de student het product accepteren.</p>
     <br>
-    <p>Onze oplossing bevat ook nog funtionaliteiten zoals blacklist, te laat, product of kit toevoegen/wijzigen/verwijderen/onzichtbaar, statistieken, defecten en uitleningen bekijken.</p>
+    <p>Onze oplossing bevat ook nog funtionaliteiten zoals blacklist, te laat, product of kit toevoegen/wijzigen/verwijderen/onzichtbaar maken, statistieken, defecten en uitleningen bekijken.</p>
       
 </div>
 <div>
@@ -55,6 +57,7 @@ https://github.com/Ileriayo/markdown-badges
 <br>vlucas/PHP dotenv: https://github.com/vlucas/phpdotenv?tab=readme-ov-file
 <br>Symfony Mailer: https://symfony.com/doc/current/mailer.html
 <br>Formsubmit: https://formsubmit.co/
+<br>ChromePhp: https://github.com/ccampbell/chromephp
 <br>
 
 ![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white) ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white) ![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white) ![W3schools](https://img.shields.io/badge/W3Schools-04AA6D?style=for-the-badge&logo=W3Schools&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)

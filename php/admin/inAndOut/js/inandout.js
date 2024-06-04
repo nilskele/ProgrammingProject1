@@ -24,8 +24,6 @@ $(function () {
         var query1Data = data.filter((item) => item.source === "query1");
         var query3Data = data.filter((item) => item.source === "query3");
 
-        console.log("checkcheck");
-
         // Process query1Data
         query1Data.forEach(function (item1) {
           // Check if there is a matching item in query3Data
@@ -116,7 +114,6 @@ $(function () {
           // Parse the JSON response
           var data = JSON.parse(response);
           data.forEach(function (item) {
-            console.log(item.product_id, productNr1);
             if (item.product_id === productNr1) {
               // Replace 'productNr' with the actual property name
               telaattekst = $this
@@ -132,8 +129,6 @@ $(function () {
           console.error(error);
         },
       });
-
-      console.log("Mouse entered");
     });
 
     $(document).on("mouseleave", ".erroricon", function () {
@@ -141,8 +136,6 @@ $(function () {
       if (telaattekst) {
         telaattekst.html(``);
       }
-
-      console.log("Mouse left");
     });
   });
 
@@ -233,7 +226,6 @@ $(function () {
     },
     function (start, end, label) {
       var selectedDate = start.format("YYYY-MM-DD");
-      console.log("checkcheck");
 
       // Call fetchDataUitleendatum function with the selected date
       fetchDataUitleendatum(selectedDate);

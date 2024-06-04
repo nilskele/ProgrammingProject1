@@ -13,7 +13,7 @@
 </div>
 <form id="productForm" enctype="multipart/form-data" method="post">
   <div class="container">
-    <h1>Product Toevoegen</h1>
+    <h1 class="product_toevoegen_titel">Product Toevoegen</h1>
     <div class="product_toevoegen">
       <div class="labelcontainers">
         <div>
@@ -42,10 +42,6 @@
         <div>
           <label for="beschrijving">Beschrijving:</label>
           <input type="text" id="beschrijving" name="beschrijving" required>
-        </div>
-        <div>
-          <label for="opmerkingen">Opmerkingen:</label>
-          <input type="text" id="opmerkingen" name="opmerkingen">
         </div>
       </div>
       <div class="mb-3">
