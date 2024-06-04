@@ -25,10 +25,10 @@
       STAP 8: Vul deze variabelen dan met de nodige gegevens in. (Staan in Teams Groep 2 Finale bestanden/.env_credentials.txt, de SMTP-gegevens voor de mail kun met je eigen server invullen) <br>
       
 ```
-DB_HOST=dt5.ehb.be
-DB_USERNAME=2324PROGPRGR02
-DB_PASSWORD=kEtUhDU5
-DB_DATABASE=2324PROGPRGR02
+DB_HOST=
+DB_USERNAME=
+DB_PASSWORD=
+DB_DATABASE=
 SMTP_USERNAME= %% eigen SMTP server credentails %%
 SMTP_PASSWORD= %% eigen SMTP server credentails %%
 ```
